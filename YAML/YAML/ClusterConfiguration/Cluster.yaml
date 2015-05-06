@@ -1,0 +1,477 @@
+---
+swagger: '2.0'
+info:
+  version: 1.0.0
+  title: Echo
+  description: |
+    #### Echos back every URL, method, parameter and header
+    Feel free to make a path or an operation and use **Try Operation** to test it. The echo server will
+    render back everything.
+schemes:
+  - http
+
+basePath: /:http://0.0.0.0:8099
+
+paths:
+
+
+  /DVP/API/:version/CloudConfiguration/Cloud :
+    
+    post:
+    
+      parameters:
+        - name: Create Cloud
+          in: body
+          description: Record
+          schema:
+           $ref: '#/definitions/Cloud'
+          
+      responses:
+       200:
+        description: New Cloud has been created
+        
+
+
+  /DVP/API/:version/CloudConfiguration/Cloud/{id}/Activate/{status} :
+    
+    post:
+    
+      parameters:
+        - name: id
+          in: path
+          type: integer
+          description: id
+        - name: status
+          in: path
+          type: boolean
+          description: status
+        
+      responses:
+       200:
+        description: Cloud configuration succeeded
+  
+
+  /DVP/API/:version/CloudConfiguration/Cloud/{id}/Activate/{status} :
+    
+    post:
+    
+      parameters:
+        - name: id
+          in: path
+          type: integer
+          description: id
+        - name: status
+          in: path
+          type: boolean
+          description: status
+        
+      responses:
+       200:
+        description: call rule regex succeeded
+        
+  /DVP/API/:version/CloudConfiguration/Cloud/{id} :
+   
+    get: 
+      parameters: 
+      
+        - name: id
+          in: path
+          type: integer
+          description: ID of the cloud
+          required: true
+        
+      responses:
+        200:
+          description: All Cloud details returned
+          
+  /DVP/API/:version/CloudConfiguration/CallServer :
+    
+    post:
+    
+      parameters:
+        - name: Create Cloud
+          in: body
+          description: Record
+          schema:
+           $ref: '#/definitions/CallServer'
+          
+      responses:
+       200:
+        description: New Cloud has been created
+
+
+  /DVP/API/:version/CloudConfiguration/CallServer/{id}/Activate/{status} :
+    
+    post:
+    
+      parameters:
+        - name: id
+          in: path
+          type: integer
+          description: id
+        - name: status
+          in: path
+          type: boolean
+          description: status
+        
+      responses:
+       200:
+        description: call server activation is succeeded
+          
+          
+          
+  /DVP/API/:version/CloudConfiguration/CallServer/{id} :
+   
+    get: 
+      parameters: 
+      
+        - name: id
+          in: path
+          type: integer
+          description: ID of the call server
+          required: true
+        
+      responses:
+        200:
+          description: All Call Server details returned       
+          
+
+  /DVP/API/:version/CloudConfiguration/Callserver/{id}/AssignTo/{cloudid} :
+    
+    post:
+    
+      parameters:
+        - name: id
+          in: path
+          type: integer
+          description: id
+        - name: cloudid
+          in: path
+          type: integer
+          description: cloudid
+        
+      responses:
+       200:
+        description: call server assigning to cloud is succeeded
+        
+  /DVP/API/:version/CloudConfiguration/Callserver/{childid}/SetParent/{parentid} :
+    
+    post:
+    
+      parameters:
+        - name: childid
+          in: path
+          type: integer
+          description: childid
+        - name: parentid
+          in: path
+          type: integer
+          description: parentid
+        
+      responses:
+       200:
+        description: Set call server to a parent server is completed
+        
+        
+  /DVP/API/:version/CloudConfiguration/LoadBalancer :
+    
+    post:
+    
+      parameters:
+        - name: Create Load Balancer
+          in: body
+          description: Record
+          schema:
+           $ref: '#/definitions/LoadBalancer'
+          
+      responses:
+       200:
+        description: New Load Balancer has been created
+        
+  /DVP/API/:version/CloudConfiguration/Network/TelcoNetwork :
+    
+    post:
+    
+      parameters:
+        - name: Configure Telco NW
+          in: body
+          description: Record
+          schema:
+           $ref: '#/definitions/Telco'
+          
+      responses:
+       200:
+        description: New Telco Newtwork has been configured
+        
+  /DVP/API/:version/CloudConfiguration/Network/UserNetwork :
+    
+    post:
+    
+      parameters:
+        - name: Configure EndUser NW
+          in: body
+          description: Record
+          schema:
+           $ref: '#/definitions/Telco'
+          
+      responses:
+       200:
+        description: New Telco Newtwork has been configured     
+    
+  /DVP/API/:version/CloudConfiguration/Network/{networkid}/SetTelcoNetworkToCloud/{cloudid} :
+    
+    post:
+    
+      parameters:
+        - name: networkid
+          in: path
+          type: integer
+          description: networkid
+        - name: cloudid
+          in: path
+          type: integer
+          description: cloudid
+        
+      responses:
+       200:
+        description: Set Telco Network to Cloud is done      
+   
+  /DVP/API/:version/CloudConfiguration/Network/{networkid}/SetTelcoNetworkToUser/{userid}:
+    
+    post:
+    
+      parameters:
+        - name: networkid
+          in: path
+          type: integer
+          description: networkid
+        - name: userid
+          in: path
+          type: integer
+          description: userid
+        
+      responses:
+       200:
+        description: Set Telco Network to user is done 
+        
+  /DVP/API/:version/CloudConfiguration/CloudEndUser :
+    
+    post:
+    
+      parameters:
+        - name: Add Cloud EndUser 
+          in: body
+          description: Record
+          schema:
+           $ref: '#/definitions/CloudEndUser'
+          
+      responses:
+       200:
+        description: New Cloud end user has been inserted
+
+
+  /DVP/API/:version/CloudConfiguration/Profile :
+    
+    post:
+    
+      parameters:
+        - name: New Profile is added 
+          in: body
+          description: Record
+          schema:
+           $ref: '#/definitions/Profile'
+          
+      responses:
+       200:
+        description: New profile has been inserted
+
+  /DVP/API/:version/CloudConfiguration/Profile/{profileid}/SetProfileToCallServer/{callserverid}:
+    
+    post:
+    
+      parameters:
+        - name: profileid
+          in: path
+          type: integer
+          description: profileid
+        - name: callserverid
+          in: path
+          type: integer
+          description: callserverid
+        
+      responses:
+       200:
+        description: Set Profile to callserver is done
+
+  /DVP/API/:version/CloudConfiguration/Profile/{profileid}/SetProfileToEndUser/{enduser}:
+    
+    post:
+    
+      parameters:
+        - name: profileid
+          in: path
+          type: integer
+          description: profileid
+        - name: enduser
+          in: path
+          type: integer
+          description: enduser
+        
+      responses:
+       200:
+        description: Set Profile to Enduser is done
+
+
+  /DVP/API/:version/CloudConfiguration/Profile/{id} :
+   
+    get: 
+      parameters: 
+      
+        - name: id
+          in: path
+          type: integer
+          description: ID of the Profile
+          required: true
+        
+      responses:
+        200:
+          description: All Profile details returned 
+
+  /DVP/API/:version/CloudConfiguration/IPAddress :
+    
+    post:
+    
+      parameters:
+        - name: Configure IP 
+          in: body
+          description: Record
+          schema:
+           $ref: '#/definitions/IP'
+          
+      responses:
+       200:
+        description: New profile has been inserted
+
+
+
+
+definitions:        
+  Cloud:
+    properties:
+     
+     CloudModel:
+      type: integer
+     Name: 
+      type: string
+     Class:
+      type: string
+     Type: 
+      type: string
+     Category:
+      type: string
+     TenantId:
+      type: integer
+     CompanyId:
+      type: integer
+      
+      
+  CallServer:
+    properties:
+     
+     Activate:
+      type: boolean
+     Name: 
+      type: string
+     Class:
+      type: string
+     Type: 
+      type: string
+     Category:
+      type: string
+     TenantId:
+      type: integer
+     CompanyId:
+      type: integer
+     Code:
+      type: integer
+     InternalMainIP:
+      type: string
+      
+  LoadBalancer:
+    properties:
+     
+     Type: 
+      type: string
+     MainIP:
+      type: string
+      
+  Telco:
+    properties:
+     
+     Network:
+      type: string
+     Mask: 
+      type: integer
+     NATIP:
+      type: string
+     TenantId:
+      type: integer
+     CompanyId:
+      type: integer
+      
+  CloudEndUser:
+    properties:
+     
+     clusterID:
+      type: integer
+     Provision: 
+      type: integer
+     Domain:
+      type: string
+     TenantId:
+      type: integer
+     CompanyId:
+      type: integer
+      
+  Profile:
+    properties:
+     
+     ProfileName:
+      type: string
+     MainIp: 
+      type: string
+     InternalIp:
+      type: string
+     InternalRtpIp:
+      type: string
+     ExternalIp:
+      type: string
+     ExternalRtpIp:
+      type: string
+     Port :
+      type: integer
+     ObjClass:
+      type: string
+     ObjType: 
+      type: string
+     ObjCategory:
+      type: string
+     TenantId:
+      type: integer
+     CompanyId:
+      type: integer
+      
+      
+  IP:
+    properties:
+     
+     CallserverID:
+      type: integer
+     MainIp: 
+      type: string
+     IP:
+      type: string
+     IsAllocated:
+      type: boolean  
+      
+      

@@ -1,0 +1,317 @@
+{
+    "swagger": "2.0",
+    "info": {
+        "version": "1.0.0",
+        "title": "Echo",
+        "description": "#### Echos back every URL, method, parameter and header\nFeel free to make a path or an operation and use **Try Operation** to test it. The echo server will\nrender back everything.\n"
+    },
+    "schemes": [
+        "http"
+    ],
+    "host": "localhost:8085",
+	"consumes": [
+    "application/json",
+    "application/x-www-form-urlencoded"
+  ],
+    "basePath": "/dvp",
+    "paths": {
+        "/:version/APPRegistry/AppDeveloperManagement/AddNewDeveloperRecord": {
+            "post": {
+                "parameters": [
+                    {
+                        "name": "Developer Record",
+                        "in": "body",
+                        "description": "Record",
+                        "schema": {
+                            "$ref": "#/definitions/Developer"
+                        }
+                    }
+                ],
+                "responses": {
+                    "200": {
+                        "description": "New Record Added"
+                    }
+                }
+            }
+        },
+        "/dvp/:version/APPRegistry/VoiceAppManagement/AddNewVoiceAppRecord": {
+            "post": {
+                "parameters": [
+                    {
+                        "name": "Voice App Record",
+                        "in": "body",
+                        "description": "Record",
+                        "schema": {
+                            "$ref": "#/definitions/VoiceApp"
+                        }
+                    }
+                ],
+                "responses": {
+                    "200": {
+                        "description": "New Voice app Record Added"
+                    }
+                }
+            }
+        },
+        "/dvp/:version/APPRegistry/VoiceAppManagement/MapDeveloperAndApplication": {
+            "post": {
+                "parameters": [
+                    {
+                        "name": "Map App and Developer",
+                        "in": "body",
+                        "description": "Record",
+                        "schema": {
+                            "$ref": "#/definitions/MapApp"
+                        }
+                    }
+                ],
+                "responses": {
+                    "200": {
+                        "description": "New Mapping happens"
+                    }
+                }
+            }
+        },
+        "/dvp/:version/APPRegistry/VoiceAppManagement/DeleteVoiceAppRecord": {
+            "post": {
+                "parameters": [
+                    {
+                        "name": "Voice App deletion",
+                        "in": "body",
+                        "description": "Record",
+                        "schema": {
+                            "$ref": "#/definitions/DeleteApp"
+                        }
+                    }
+                ],
+                "responses": {
+                    "200": {
+                        "description": "New Mapping happens"
+                    }
+                }
+            }
+        },
+        "/dvp/:version/APPRegistry/VoiceAppManagement/ChangeVoiceAppAvailability": {
+            "post": {
+                "parameters": [
+                    {
+                        "name": "Availability updation",
+                        "in": "body",
+                        "description": "Record",
+                        "schema": {
+                            "$ref": "#/definitions/AppAvailability"
+                        }
+                    }
+                ],
+                "responses": {
+                    "200": {
+                        "description": "Updation succeeded"
+                    }
+                }
+            }
+        },
+        "dvp/:version/APPRegistry/VoiceAppManagement/VoiceAppUrlModification": {
+            "post": {
+                "parameters": [
+                    {
+                        "name": "VoiceApp URL modifocation",
+                        "in": "body",
+                        "description": "Record",
+                        "schema": {
+                            "$ref": "#/definitions/ModifyUrl"
+                        }
+                    }
+                ],
+                "responses": {
+                    "200": {
+                        "description": "Url updation succeeded"
+                    }
+                }
+            }
+        },
+        "/dvp/:version/APPRegistry/VoiceAppManagement/URLtest": {
+            "post": {
+                "parameters": [
+                    {
+                        "name": "Check URL",
+                        "in": "body",
+                        "description": "Record",
+                        "schema": {
+                            "$ref": "#/definitions/ChkUrl"
+                        }
+                    }
+                ],
+                "responses": {
+                    "200": {
+                        "description": "Url updation succeeded"
+                    }
+                }
+            }
+        },
+        "/:version/APPRegistry/VoiceAppManagement/FindAllVoiceAppRecords/{DevID}": {
+            "get": {
+                "parameters": [
+                    {
+                        "name": "DevID",
+                        "in": "path",
+                        "type": "integer",
+                        "description": "ID of the Developer",
+                        "required": true
+                    }
+                ],
+                "responses": {
+                    "200": {
+                        "description": "Sends the Availability"
+                    }
+                }
+            }
+        },
+        "/dvp/:version/APPRegistry/VoiceAppManagement/FindVoiceAppRecordForID/{VID}/{DevID}": {
+            "get": {
+                "parameters": [
+                    {
+                        "name": "DevID",
+                        "in": "path",
+                        "type": "integer",
+                        "description": "ID of the Developer",
+                        "required": true
+                    },
+                    {
+                        "name": "VID",
+                        "in": "path",
+                        "type": "integer",
+                        "description": "ID of the VoiceApp",
+                        "required": true
+                    }
+                ],
+                "responses": {
+                    "200": {
+                        "description": "Sends the Availability"
+                    }
+                }
+            }
+        }
+    },
+    "definitions": {
+        "Developer": {
+            "properties": {
+                "Username": {
+                    "type": "string"
+                },
+                "Password": {
+                    "type": "string"
+                },
+                "Email": {
+                    "type": "string"
+                },
+                "Phone": {
+                    "type": "string"
+                },
+                "CompanyId": {
+                    "type": "integer"
+                },
+                "TenantId": {
+                    "type": "integer"
+                },
+                "ObjClass": {
+                    "type": "string"
+                },
+                "ObjType": {
+                    "type": "string"
+                },
+                "ObjCategory": {
+                    "type": "string"
+                },
+                "RefId": {
+                    "type": "string"
+                },
+                "Availability": {
+                    "type": "boolean"
+                }
+            }
+        },
+        "VoiceApp": {
+            "properties": {
+                "AppName": {
+                    "type": "string"
+                },
+                "Description": {
+                    "type": "string"
+                },
+                "Url": {
+                    "type": "string"
+                },
+                "CompanyId": {
+                    "type": "integer"
+                },
+                "TenantId": {
+                    "type": "integer"
+                },
+                "ObjClass": {
+                    "type": "string"
+                },
+                "ObjType": {
+                    "type": "string"
+                },
+                "ObjCategory": {
+                    "type": "string"
+                },
+                "Availability": {
+                    "type": "boolean"
+                }
+            }
+        },
+        "MapApp": {
+            "properties": {
+                "Appid": {
+                    "type": "integer"
+                },
+                "Devid": {
+                    "type": "integer"
+                }
+            }
+        },
+        "DeleteApp": {
+            "properties": {
+                "id": {
+                    "type": "integer"
+                }
+            }
+        },
+        "AppAvailability": {
+            "properties": {
+                "Availability": {
+                    "type": "boolean"
+                }
+            }
+        },
+        "ModifyUrl": {
+            "properties": {
+                "VID": {
+                    "type": "integer"
+                },
+                "DevID": {
+                    "type": "integer"
+                },
+                "Url": {
+                    "type": "string"
+                }
+            }
+        },
+        "ChkUrl": {
+            "properties": {
+                "VID": {
+                    "type": "integer"
+                },
+                "DevID": {
+                    "type": "integer"
+                },
+                "Url": {
+                    "type": "string"
+                }
+            }
+        }
+    }
+	
+	
+}

@@ -1,0 +1,556 @@
+---
+swagger: '2.0'
+info:
+  version: 1.0.0
+  title: Echo
+  description: |
+    #### Echos back every URL, method, parameter and header
+    Feel free to make a path or an operation and use **Try Operation** to test it. The echo server will
+    render back everything.
+schemes:
+  - http
+
+basePath: /:http://0.0.0.0:8099
+paths:
+  /dvp/:version/context_mgmt/save_contextdata :
+    
+    post:
+    
+      parameters:
+        - name: New Context Record
+          in: body
+          description: Record
+          schema:
+           $ref: '#/definitions/Context'
+      responses:
+       200:
+        description: New Context Record Added
+          
+        
+        
+  /dvp/:version/uac_mgmt/save_uac:
+  
+    post:
+      
+      parameters:
+        - name: New UAC Record
+          in: body
+          description: Record
+          schema:
+           $ref: '#/definitions/UAC'
+      responses:
+       200:
+        description: New Schedule Record Added
+        
+  /dvp/:version/uac_mgmt/updt_uac:
+  
+    post:
+      
+      parameters:
+        - name: Update Schedule details
+          in: body
+          description: Update
+          schema:
+           $ref: '#/definitions/UpdtUAC'
+      responses:
+       200:
+        description: New Mapping happens
+        
+  /dvp/:version/ext_mgmt/update_extension_st/{ref}/{st}:
+  
+    post:
+      
+      parameters:
+        - name: ref
+          in: path
+          type: string
+          description: ExtRefID
+          
+        - name: st
+          in: path
+          description: Status
+          type: boolean
+          
+      responses:
+       200:
+        description: New Mapping happens
+        
+  /dvp/:version/ext_mgmt/add_extension:
+  
+    post:
+      
+      parameters:
+        - name: AddExtention 
+          in: body
+          description: Record
+          schema:
+           $ref: '#/definitions/Extention'
+      responses:
+       200:
+        description: Updation succeeded
+        
+  /dvp/:version/ext_mgmt/map_extension:
+  
+    post:
+      
+      parameters:
+        - name: Map Extention and sip 
+          in: body
+          description: Record
+          schema:
+           $ref: '#/definitions/MapExUAC'
+      responses:
+       200:
+        description: map extension with user succeeded
+        
+  /dvp/:version/ext_mgmt/map_extension_group:
+  
+    post:
+      
+      parameters:
+        - name: Map Extention and Map 
+          in: body
+          description: Record
+          schema:
+           $ref: '#/definitions/MapExGrp'
+      responses:
+       200:
+        description: Map extension with group succeeded
+        
+  /dvp/:version/sipgroup_mgt/sipuser_group/add_sipuser_group:
+  
+    post:
+      
+      parameters:
+        - name: Add Sip User group 
+          in: body
+          description: Record
+          schema:
+           $ref: '#/definitions/UserGroup'
+      responses:
+       200:
+        description: New user group added
+        
+  /dvp/:version/sipgroup_mgt/sipuser_group/update_sipuser_group:
+  
+    post:
+      
+      parameters:
+        - name: Update Sip User group 
+          in: body
+          description: Record
+          schema:
+           $ref: '#/definitions/UserGroup'
+      responses:
+       200:
+        description: Update sip user group succeeded
+        
+        
+    
+  /dvp/:version/uac_mgmt/find_context/{cmpid}:
+   
+   get:
+      parameters:
+        - name: cmpid
+          in: path
+          type: string
+          description: Company ID
+          required: true
+      responses:
+        200:
+          description: All contexts of the company returns
+          
+  /dvp/:version/sipgroup_mgt/sipuser_group/get_group_data/{name}:
+   
+   get:
+      parameters:
+        - name: name
+          in: path
+          type: string
+          description: Name of Group
+          required: true
+        
+      responses:
+        200:
+          description: Group details found
+          
+  /dvp/:version/sipgroup_mgt/sipuser_group/get_group_endpoints/{GID}:
+   
+   get:
+      parameters:
+        - name: GID
+          in: path
+          type: string
+          description: ID of Group
+          required: true
+        
+      responses:
+        200:
+          description: Group's enpoint details found
+          
+          
+  /dvp/:version/sipgroup_mgt/sipuser_group/endpoint_groupid/{EID}:
+   
+   get:
+      parameters:
+        - name: EID
+          in: path
+          type: string
+          description: ID of Endpoint
+          required: true
+        
+      responses:
+        200:
+          description: Endpoint's group details found
+          
+          
+  /dvp/:version/sipgroup_mgt/sipuser_group/AllRecWithCompany/{CompanyId}:
+   
+   get:
+      parameters:
+        - name: CompanyId
+          in: path
+          type: string
+          description: ID of Company
+          required: true
+        
+      responses:
+        200:
+          description: All of company  
+  
+  /dvp/:version/sipgroup_mgt/sipuser_group/get_all_users_in_group/{companyid}:
+   
+   get:
+      parameters:
+        - name: companyid
+          in: path
+          type: string
+          description: ID of Company
+          required: true
+        
+      responses:
+        200:
+          description: All of company
+          
+          
+          
+          
+    
+          
+  /dvp/:version/limit_handler/schedule/Pick_valid_Appointment:
+   
+   get:
+      
+      responses:
+        200:
+          description: Decrementation happened
+   
+  /dvp/:version/limit_handler/schedule/check_availables/{dt}/{dy}/{tm}:
+   
+   get:
+      parameters:
+        - name: dt
+          in: path
+          type: string
+          description: date checking
+          required: true
+        
+        - name: dy
+          in: path
+          type: string
+          description: day checking
+          required: true
+          
+        - name: tm
+          in: path
+          type: string
+          description: time checking
+          required: true
+        
+      responses:
+        200:
+          description: Decrementation happened       
+   
+        
+  /dvp/:version/limit_handler/schedule/pick_app_through_schedule/{cmp}/{tent}/{dt}/{dy}/{tm}:
+   
+   get:
+      parameters:
+        - name: dt
+          in: path
+          type: string
+          description: date checking
+          required: true
+        
+        - name: dy
+          in: path
+          type: string
+          description: day checking
+          required: true
+          
+        - name: tm
+          in: path
+          type: string
+          description: time checking
+          required: true
+          
+        - name: cmp
+          in: path
+          type: integer
+          description: company checking
+          required: true
+          
+        - name: tent
+          in: path
+          type: integer
+          description: company checking
+          required: true
+        
+      responses:
+        200:
+          description: Decrementation happened       
+        
+  /dvp/:version/limit_handler/schedule/pick_schedule/{id}:
+   
+   get:
+      parameters:
+        - name: id
+          in: path
+          type: string
+          description: ID of the schedule
+          required: true
+        
+      responses:
+        200:
+          description: Schedule picked
+          
+  /dvp/:version/limit_handler/schedule/pick_schedule_action/{id}:
+   
+   get:
+      parameters:
+        - name: id
+          in: path
+          type: string
+          description: ID of the schedule
+          required: true
+        
+      responses:
+        200:
+          description: Schedule Action picked   
+          
+  /dvp/:version/limit_handler/schedule/pick_appointment/{id}:
+   
+   get:
+      parameters:
+        - name: id
+          in: path
+          type: string
+          description: ID of the Appointment
+          required: true
+        
+      responses:
+        200:
+          description: Appointment picked 
+          
+  /dvp/:version/limit_handler/schedule/pick_apointment_action/{id}:
+   
+   get:
+      parameters:
+        - name: id
+          in: path
+          type: string
+          description: ID of the Appointment
+          required: true
+        
+      responses:
+        200:
+          description: Appointment Action picked 
+          
+  /dvp/:version/limit_handler/limitapi/get_current_limit/{Rid}:
+   
+   get:
+      parameters:
+        - name: Rid
+          in: path
+          type: string
+          description: ID of the Appointment
+          required: true
+        
+      responses:
+        200:
+          description: Appointment Action picked 
+  
+  /dvp/:version/limit_handler/limitapi/get_max_limit/{Rid}:
+   
+   get:
+      parameters:
+        - name: Rid
+          in: path
+          type: string
+          description: ID of the Appointment
+          required: true
+        
+      responses:
+        200:
+          description: Appointment Action picked 
+          
+definitions:
+
+     
+  Context:
+    properties:
+     
+     Context:
+      type: string
+     Description:
+      type: string
+     ContextCat:
+      type: string
+     CompanyId:
+      type: integer
+     TenantId:
+      type: integer
+     ObjClass:
+      type: string
+     ObjType:
+      type: string
+     ObjCategory:
+      type: string
+     AddUser:
+      type: string
+     UpdateUser:
+      type: string
+      
+  UAC:
+    properties:
+     
+     SipUsername:
+      type: string
+     Password:
+      type: string
+     Enabled:
+      type: boolean
+     CompanyId:
+      type: integer
+     TenantId:
+      type: integer
+     ObjClass:
+      type: string
+     ObjType:
+      type: string
+     ObjCategory:
+      type: string
+     ExtraData:
+      type: string
+     EmailAddress:
+      type: string
+     GuRefId:
+      type: string
+     AddUser:
+      type: string
+     UpdateUser:
+      type: string
+
+      
+  UpdtUAC:
+    properties:
+     
+     SipUsername:
+      type: string
+     Password: 
+      type: string
+     ExtraData:
+      type: string
+     CompanyId:
+      type: integer
+     TenantId:
+      type: integer
+     ObjClass:
+      type: string
+     ObjType:
+      type: string
+     ObjCategory:
+      type: string
+     GuRefId:
+      type: string
+      
+  Extention:
+    properties:
+     
+     Extension:
+      type: string
+     ExtensionName: 
+      type: string
+     ExtraData:
+      type: string
+     CompanyId:
+      type: integer
+     TenantId:
+      type: integer
+     ObjClass:
+      type: string
+     ObjType:
+      type: string
+     ObjCategory:
+      type: string
+     AddUser:
+      type: string
+     UpdateUser:
+      type: string
+     Enabled:
+      type: boolean
+     ExtRefId:
+      type: string
+      
+  UserGroup:
+    properties:
+     
+     GroupName:
+      type: string
+     Domain: 
+      type: string
+     ExtraData:
+      type: string
+     CompanyId:
+      type: integer
+     TenantId:
+      type: integer
+     ObjClass:
+      type: string
+     ObjType:
+      type: string
+     ObjCategory:
+      type: string
+      
+  
+     
+     
+      
+  MapExUAC:
+    properties:
+     Extension:
+      type: string
+     UACid:
+      type: integer
+    SipExtension:
+      type: string
+    CompanyId:
+      type: integer
+      
+  
+      
+  MapExGrp:
+    properties:
+     ExtensionId:
+      type: integer
+     GroupID:
+      type: integer
+    CompanyId:
+      type: integer
+  
+
+  
+    
+     
+ 
+ 
