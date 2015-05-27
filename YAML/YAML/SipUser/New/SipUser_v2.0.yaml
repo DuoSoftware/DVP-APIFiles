@@ -1,0 +1,680 @@
+---
+swagger: '2.0'
+info:
+  version: 1.0.0
+  title: Echo
+  description: |
+    #### Echos back every URL, method, parameter and header
+    Feel free to make a path or an operation and use **Try Operation** to test it. The echo server will
+    render back everything.
+schemes:
+  - http
+  
+
+basePath: /DVP/API
+paths:
+  /{version}/ContextManagement/Context:
+    
+    post:
+    
+      parameters:
+        - name: New Context Record
+          in: body
+          description: Record
+          schema:
+           $ref: '#/definitions/Context'
+        
+        - name: version
+          in: path
+          type: string
+          description: Version checking
+          required: true
+          
+        - in: header
+          name: api_key
+          description: ""
+          required: true
+          type: string
+      responses:
+       200:
+        description: New Context Record Added
+          
+        
+        
+  /{version}/UACManagement/UAC:
+  
+    post:
+      
+      parameters:
+        - name: New UAC Record
+          in: body
+          description: Record
+          schema:
+           $ref: '#/definitions/UAC'
+        
+        - name: version
+          in: path
+          type: string
+          description: Version checking
+          required: true
+          
+        - in: header
+          name: api_key
+          description: ""
+          required: true
+          type: string
+          
+      responses:
+       200:
+        description: New Schedule Record Added
+        
+  /{version}/UACManagement/UAC/{Username}:
+  
+    post:
+      
+      parameters:
+        - name: Update Schedule details
+          in: body
+          description: Update
+          schema:
+           $ref: '#/definitions/UpdtUAC'
+           
+        - name: version
+          in: path
+          type: string
+          description: Version checking
+          required: true
+          
+        - name: Username
+          in: path
+          type: string
+          description: UserName of UAC
+          required: true
+          
+        - in: header
+          name: api_key
+          description: ""
+          required: true
+          type: string
+      responses:
+       200:
+        description: New Mapping happens
+        
+  /{version}/UACManagement/SipUserByUuid/{uuid}:
+   
+   get:
+      parameters:
+        - name: uuid
+          in: path
+          type: string
+          description: UUID of the Developer
+          required: true
+          
+        - name: version
+          in: path
+          type: string
+          description: Version checking
+          required: true
+          
+        - in: header
+          name: api_key
+          description: ""
+          required: true
+          type: string
+        
+          
+      responses:
+        200:
+          description: Sends the Availability
+        
+  /{version}/ExtensionManagement/ExtensionStatus/{id}/{st}:
+  
+    post:
+      
+      parameters:
+        - name: id
+          in: path
+          type: integer
+          description: ExtensionId
+          
+        - name: st
+          in: path
+          description: Status
+          type: boolean
+        
+        - name: version
+          in: path
+          type: string
+          description: Version checking
+          required: true
+          
+        - in: header
+          name: api_key
+          description: ""
+          required: true
+          type: string
+          
+      responses:
+       200:
+        description: Extension status updated
+        
+  /{version}/ExtensionManagement/Extension:
+  
+    post:
+      
+      parameters:
+        - name: AddExtention 
+          in: body
+          description: Record
+          schema:
+           $ref: '#/definitions/Extention'
+           
+        - name: version
+          in: path
+          type: string
+          description: Version checking
+          required: true
+          
+        - in: header
+          name: api_key
+          description: ""
+          required: true
+          type: string
+          
+      responses:
+       200:
+        description: Updation succeeded
+        
+  /{version}/ExtensionManagement/{Ext}/MapToUAC/{UAC}:
+  
+    post:
+      
+      parameters:
+        - name: Map Extention and sip 
+          in: body
+          description: Record
+          schema:
+           $ref: '#/definitions/MapExUAC'
+        
+        - name: version
+          in: path
+          type: string
+          description: Version checking
+          required: true
+        
+        - name: Ext
+          in: path
+          type: integer
+          description: Extension ID
+          required: true
+        
+        - name: UAC
+          in: path
+          type: integer
+          description: UAC ID
+          required: true
+          
+        - in: header
+          name: api_key
+          description: ""
+          required: true
+          type: string
+          
+      responses:
+       200:
+        description: map extension with user succeeded
+        
+  /{version}/ExtensionManagement/ExtensionManagement/{Ext}/MapToGroup/{Grp}:
+  
+    post:
+      
+      parameters:
+             
+        - name: Ext
+          in: path
+          type: integer
+          description: Extension ID
+          required: true
+        
+        - name: Grp
+          in: path
+          type: integer
+          description: UAC ID
+          required: true
+          
+        - in: header
+          name: api_key
+          description: ""
+          required: true
+          type: string
+        
+        - name: version
+          in: path
+          type: string
+          description: Version checking
+          required: true
+          
+      responses:
+       200:
+        description: Map extension with group succeeded
+        
+  /{version}/SIPUserGroupManagemnt/SIPUserGroup:
+  
+    post:
+      
+      parameters:
+        - name: Add Sip User group 
+          in: body
+          description: Record
+          schema:
+           $ref: '#/definitions/UserGroup'
+        
+        - in: header
+          name: api_key
+          description: ""
+          required: true
+          type: string
+        
+        - name: version
+          in: path
+          type: string
+          description: Version checking
+          required: true
+          
+      responses:
+       200:
+        description: New user group added
+        
+  /{version}/SIPUserGroupManagemnt/SIPUserGroup/{id}:
+  
+    post:
+      
+      parameters:
+        - name: Update Sip User group 
+          in: body
+          description: Record
+          schema:
+           $ref: '#/definitions/UserGroup'
+        
+        - name: version
+          in: path
+          type: string
+          description: Version checking
+          required: true
+        
+        - in: header
+          name: api_key
+          description: ""
+          required: true
+          type: string
+        
+        - name: id
+          in: path
+          type: integer
+          description: Version checking
+          required: true
+      responses:
+       200:
+        description: Update sip user group succeeded
+        
+        
+    
+  /{version}/UACManagement/Context/{cmpid}:
+   
+   get:
+      parameters:
+        - name: cmpid
+          in: path
+          type: integer
+          description: Company ID
+          required: true
+        
+        - name: version
+          in: path
+          type: string
+          description: Version checking
+          required: true
+        
+        - in: header
+          name: api_key
+          description: ""
+          required: true
+          type: string
+          
+      responses:
+        200:
+          description: All contexts of the company returns
+          
+  /{version}/SIPUserGroupManagemnt/Group/{name}:
+   
+   get:
+      parameters:
+        - name: name
+          in: path
+          type: string
+          description: Name of Group
+          required: true
+        
+        - name: version
+          in: path
+          type: string
+          description: Version checking
+          required: true
+        
+        - in: header
+          name: api_key
+          description: ""
+          required: true
+          type: string
+        
+      responses:
+        200:
+          description: Group details found
+          
+  /{version}/SIPUserGroupManagemnt/GroupEndPoints/{GID}:
+   
+   get:
+      parameters:
+        - name: GID
+          in: path
+          type: integer
+          description: ID of Group
+          required: true
+        
+        - name: version
+          in: path
+          type: string
+          description: Version checking
+          required: true
+        
+        - in: header
+          name: api_key
+          description: ""
+          required: true
+          type: string
+        
+      responses:
+        200:
+          description: Group's enpoint details found
+          
+          
+  /{version}/SIPUserGroupManagemnt/EndPointGroupId/{EID}:
+   
+   get:
+      parameters:
+        - name: EID
+          in: path
+          type: integer
+          description: ID of Endpoint
+          required: true
+          
+        - name: version
+          in: path
+          type: string
+          description: Version checking
+          required: true
+        
+        - in: header
+          name: api_key
+          description: ""
+          required: true
+          type: string
+        
+      responses:
+        200:
+          description: Endpoint's group details found
+          
+          
+  /{version}/SIPUserGroupManagemnt/GroupsOfCompany/{CompanyId}:
+   
+   get:
+      parameters:
+        - name: CompanyId
+          in: path
+          type: integer
+          description: ID of Company
+          required: true
+        
+        - name: version
+          in: path
+          type: string
+          description: Version checking
+          required: true
+        
+        - in: header
+          name: api_key
+          description: ""
+          required: true
+          type: string
+        
+      responses:
+        200:
+          description: All groups of company  
+  
+  /{version}/SIPUserGroupManagemnt/UsersInGroup/{Grp}:
+   
+   get:
+      parameters:
+        - name: Grp
+          in: path
+          type: integer
+          description: ID of Group
+          required: true
+        
+        - name: version
+          in: path
+          type: string
+          description: Version checking
+          required: true
+        
+        - in: header
+          name: api_key
+          description: ""
+          required: true
+          type: string
+        
+      responses:
+        200:
+          description: All users of group
+          
+  /{version}/UACManagement/UsersOfCompany/{CompId}:
+   
+   get:
+      parameters:
+        - name: CompId
+          in: path
+          type: integer
+          description: ID of Company
+          required: true
+        
+        - name: version
+          in: path
+          type: string
+          description: Version checking
+          required: true
+        
+        - in: header
+          name: api_key
+          description: ""
+          required: true
+          type: string
+        
+      responses:
+        200:
+          description: All users of company        
+          
+  /{version}/ExtensionManagement/UsersOfExtension/{Ext}:
+   
+   get:
+      parameters:
+        - name: Ext
+          in: path
+          type: integer
+          description: ID of Extension
+          required: true
+        
+        - name: version
+          in: path
+          type: string
+          description: Version checking
+          required: true
+        
+        - in: header
+          name: api_key
+          description: ""
+          required: true
+          type: string
+        
+      responses:
+        200:
+          description: All users of Extension     
+    
+  /{version}/ExtensionManagement/ExtensionsOfCompany/{Cmp}:
+   
+   get:
+      parameters:
+        - name: Cmp
+          in: path
+          type: integer
+          description: ID of Company
+          required: true
+        
+        - name: version
+          in: path
+          type: string
+          description: Version checking
+          required: true
+        
+        - in: header
+          name: api_key
+          description: ""
+          required: true
+          type: string
+        
+      responses:
+        200:
+          description: All Extensions of Extension       
+  
+  /{version}/ExtensionManagement/ExtensionsOfCompany/{Cmp}:
+   
+   get:
+      parameters:
+        - name: Cmp
+          in: path
+          type: integer
+          description: ID of Company
+          required: true
+        
+        - name: version
+          in: path
+          type: string
+          description: Version checking
+          required: true
+        
+        - in: header
+          name: api_key
+          description: ""
+          required: true
+          type: string
+        
+      responses:
+        200:
+          description: All Extensions of Extension    
+          
+definitions:
+
+     
+  Context:
+    properties:
+     
+     Context:
+      type: string
+     Description:
+      type: string
+     ContextCat:
+      type: string
+     AddUser:
+      type: string
+     UpdateUser:
+      type: string
+      
+  UAC:
+    properties:
+     
+     SipUsername:
+      type: string
+     Password:
+      type: string
+     Enabled:
+      type: boolean
+     ExtraData:
+      type: string
+     EmailAddress:
+      type: string
+     GuRefId:
+      type: string
+     AddUser:
+      type: string
+     UpdateUser:
+      type: string
+
+      
+  UpdtUAC:
+    properties:
+     
+     Password: 
+      type: string
+     ExtraData:
+      type: string
+     GuRefId:
+      type: string
+      
+  Extention:
+    properties:
+     
+     Extension:
+      type: string
+     ExtensionName: 
+      type: string
+     ExtraData:
+      type: string
+     AddUser:
+      type: string
+     UpdateUser:
+      type: string
+     Enabled:
+      type: boolean
+     ExtRefId:
+      type: string
+      
+  UserGroup:
+    properties:
+     
+     GroupName:
+      type: string
+     Domain: 
+      type: string
+     ExtraData:
+      type: string
+      
+  
+     
+     
+      
+  MapExUAC:
+    properties:
+    
+     SipExtension:
+      type: string
+   
+     
+  
+      
+  
+  
+
+  
+    
+     
+ 
+ 
