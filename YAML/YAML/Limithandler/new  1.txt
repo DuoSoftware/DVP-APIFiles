@@ -1,0 +1,445 @@
+---
+swagger: '2.0'
+info:
+  version: 1.0.0
+  title: Echo
+  description: |
+    #### Echos back every URL, method, parameter and header
+    Feel free to make a path or an operation and use **Try Operation** to test it. The echo server will
+    render back everything.
+schemes:
+  - http
+host: mazimi-prod.apigee.net
+basePath: /:http://0.0.0.0:8085
+paths:
+  /dvp/:version/limit_handler/schedule/add_appointment:
+    
+    post:
+      
+      parameters:
+        - name: New Appointment Record
+          in: body
+          description: Record
+          schema:
+           $ref: '#/definitions/Appointment'
+      responses:
+       200:
+        description: New Appointment Record Added
+        
+  /dvp/:version/limit_handler/schedule/add_schedule:
+  
+    post:
+      
+      parameters:
+        - name: New Schedule Record
+          in: body
+          description: Record
+          schema:
+           $ref: '#/definitions/Schedule'
+      responses:
+       200:
+        description: New Schedule Record Added
+        
+  /dvp/:version/limit_handler/schedule/Update_Schedule:
+  
+    post:
+      
+      parameters:
+        - name: Update Schedule details
+          in: body
+          description: Update
+          schema:
+           $ref: '#/definitions/UpdtSchedule'
+      responses:
+       200:
+        description: New Mapping happens
+        
+  /dvp/:version/limit_handler/schedule/update_scheduleID:
+  
+    post:
+      
+      parameters:
+        - name: Map Schedule and Appointment
+          in: body
+          description: Map
+          schema:
+           $ref: '#/definitions/MapShApp'
+      responses:
+       200:
+        description: New Mapping happens
+        
+  /dvp/:version/limit_handler/schedule/update_appoinment_data:
+  
+    post:
+      
+      parameters:
+        - name: Availability updation 
+          in: body
+          description: Record
+          schema:
+           $ref: '#/definitions/UpdtApp'
+      responses:
+       200:
+        description: Updation succeeded
+        
+  /dvp/:version/limit_handler/limitapi/add_new_limit_record:
+  
+    post:
+      
+      parameters:
+        - name: Limit record 
+          in: body
+          description: Record
+          schema:
+           $ref: '#/definitions/LimitInfo'
+      responses:
+       200:
+        description: Limit record insertion Succeeded
+        
+  /dvp/:version/limit_handler/limitapi/update_maxlimit:
+  
+    post:
+      
+      parameters:
+        - name: Update Max 
+          in: body
+          description: Record
+          schema:
+           $ref: '#/definitions/LimMax'
+      responses:
+       200:
+        description: Limit max updation Succeeded
+        
+  /dvp/:version/limit_handler/limitapi/Update_EnableState:
+  
+    post:
+      
+      parameters:
+        - name: Update Enability 
+          in: body
+          description: Record
+          schema:
+           $ref: '#/definitions/LimEnbl'
+      responses:
+       200:
+        description: Limit max updation Succeeded
+  
+ 
+        
+  /dvp/:version/limit_handler/limitapi/limit_increment/{key}:
+   
+   get:
+      parameters:
+        - name: key
+          in: path
+          type: string
+          description: ID of Limit
+          required: true
+      responses:
+        200:
+          description: Incrementation happened
+          
+  /dvp/:version/limit_handler/limitapi/limit_decrement/{key}:
+   
+   get:
+      parameters:
+        - name: key
+          in: path
+          type: string
+          description: ID of the Limit
+          required: true
+        
+      responses:
+        200:
+          description: Decrementation happened
+          
+  /dvp/:version/limit_handler/schedule/Pick_valid_Appointment:
+   
+   get:
+      
+      responses:
+        200:
+          description: Decrementation happened
+   
+  /dvp/:version/limit_handler/schedule/check_availables/{dt}/{dy}/{tm}:
+   
+   get:
+      parameters:
+        - name: dt
+          in: path
+          type: string
+          description: date checking
+          required: true
+        
+        - name: dy
+          in: path
+          type: string
+          description: day checking
+          required: true
+          
+        - name: tm
+          in: path
+          type: string
+          description: time checking
+          required: true
+        
+      responses:
+        200:
+          description: Decrementation happened       
+   
+        
+  /dvp/:version/limit_handler/schedule/pick_app_through_schedule/{cmp}/{tent}/{dt}/{dy}/{tm}:
+   
+   get:
+      parameters:
+        - name: dt
+          in: path
+          type: string
+          description: date checking
+          required: true
+        
+        - name: dy
+          in: path
+          type: string
+          description: day checking
+          required: true
+          
+        - name: tm
+          in: path
+          type: string
+          description: time checking
+          required: true
+          
+        - name: cmp
+          in: path
+          type: integer
+          description: company checking
+          required: true
+          
+        - name: tent
+          in: path
+          type: integer
+          description: company checking
+          required: true
+        
+      responses:
+        200:
+          description: Decrementation happened       
+        
+  /dvp/:version/limit_handler/schedule/pick_schedule/{id}:
+   
+   get:
+      parameters:
+        - name: id
+          in: path
+          type: string
+          description: ID of the schedule
+          required: true
+        
+      responses:
+        200:
+          description: Schedule picked
+          
+  /dvp/:version/limit_handler/schedule/pick_schedule_action/{id}:
+   
+   get:
+      parameters:
+        - name: id
+          in: path
+          type: string
+          description: ID of the schedule
+          required: true
+        
+      responses:
+        200:
+          description: Schedule Action picked   
+          
+  /dvp/:version/limit_handler/schedule/pick_appointment/{id}:
+   
+   get:
+      parameters:
+        - name: id
+          in: path
+          type: string
+          description: ID of the Appointment
+          required: true
+        
+      responses:
+        200:
+          description: Appointment picked 
+          
+  /dvp/:version/limit_handler/schedule/pick_apointment_action/{id}:
+   
+   get:
+      parameters:
+        - name: id
+          in: path
+          type: string
+          description: ID of the Appointment
+          required: true
+        
+      responses:
+        200:
+          description: Appointment Action picked 
+          
+definitions:
+  Appointment:
+    properties:
+     ScheduleId:
+      type: integer
+     AppointmentName:
+      type: string
+     Action:
+      type: string
+     ExtraData:
+      type: string
+     StartDate:
+      type: string
+     EndDate:
+      type: string
+     StartTime:
+      type: string
+     EndTime:
+      type: string
+     DaysOfWeek:
+      type: string
+     ObjClass:
+      type: string
+     ObjType:
+      type: string
+     ObjCategory:
+      type: string
+     CompanyId:
+      type: integer
+     TenantId:
+      type: integer
+      
+      
+  Schedule:
+    properties:
+     
+     AppName:
+      type: string
+     Description:
+      type: string
+     Url:
+      type: string
+     CompanyId:
+      type: integer
+     TenantId:
+      type: integer
+     ObjClass:
+      type: string
+     ObjType:
+      type: string
+     ObjCategory:
+      type: string
+     Availability:
+      type: boolean
+      
+
+      
+  UpdtSchedule:
+    properties:
+     
+     id:
+      type: integer
+     Action: 
+      type: string
+     ExtraData:
+      type: string
+     CompanyId:
+      type: integer
+     TenantId:
+      type: integer
+     ObjClass:
+      type: string
+     ObjType:
+      type: string
+     ObjCategory:
+      type: string
+     
+      
+  MapShApp:
+    properties:
+     SID:
+      type: integer
+     AID:
+      type: integer
+  
+  UpdtApp:
+    properties:
+
+     id:
+      type: integer
+     Action:
+      type: string
+     ExtraData:
+      type: string
+     StartDate:
+      type: string
+     EndDate:
+      type: string
+     StartTime:
+      type: string
+     EndTime:
+      type: string
+     DaysOfWeek:
+      type: string
+     ObjClass:
+      type: string
+     ObjType:
+      type: string
+     ObjCategory:
+      type: string
+     CompanyId:
+      type: integer
+     TenantId:
+      type: integer
+  
+  
+  
+      
+  LimitInfo:
+    properties:
+     LimitDescription:
+      type: string
+     ObjClass:
+      type: string
+     ObjType:
+      type: string
+     ObjCategory :
+      type: string
+     MaxCount:
+      type: integer
+     CompanyId:
+      type: integer
+     TenantId:
+      type: integer
+     Enable:
+      type: boolean
+      
+  LimMax:
+    properties:
+     
+     MaxCount:
+      type: integer
+     CompanyId:
+      type: integer
+     LimitId:
+      type: string
+    
+      
+  LimEnbl:
+    properties:
+     
+     Enable:
+      type: boolean
+     CompanyId:
+      type: integer
+     LimitId:
+      type: string
+    
+     
+ 
+ 
