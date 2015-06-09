@@ -1,0 +1,859 @@
+{
+    "swagger": "2.0",
+    "info": {
+        "version": "1.0.0",
+        "title": "Echo",
+        "description": "#### Echos back every URL, method, parameter and header\nFeel free to make a path or an operation and use **Try Operation** to test it. The echo server will\nrender back everything.\n"
+    },
+    "schemes": [
+        "http"
+    ],
+    "basePath": "/DVP/API",
+    "paths": {
+        "/{hostVersion}/CallRule/GetCallRules/{companyId}/{tenantId}": {
+            "get": {
+                "parameters": [
+                    {
+                        "name": "companyId",
+                        "in": "path",
+                        "type": "integer",
+                        "description": "ID of the Company",
+                        "required": true
+                    },
+                    {
+                        "name": "tenantId",
+                        "in": "path",
+                        "type": "integer",
+                        "description": "ID of the Tenent",
+                        "required": true
+                    },
+                    {
+                        "name": "hostVersion",
+                        "in": "path",
+                        "type": "string",
+                        "description": "Version checking",
+                        "required": true
+                    },
+                    {
+                        "in": "header",
+                        "name": "api_key",
+                        "description": "",
+                        "required": true,
+                        "type": "string"
+                    }
+                ],
+                "responses": {
+                    "200": {
+                        "description": "All rules returned"
+                    }
+                }
+            }
+        },
+        "/{hostVersion}/CallRule/GetCallRule/{id}/{companyId}/{tenantId}": {
+            "get": {
+                "parameters": [
+                    {
+                        "name": "companyId",
+                        "in": "path",
+                        "type": "integer",
+                        "description": "ID of the Company",
+                        "required": true
+                    },
+                    {
+                        "name": "tenantId",
+                        "in": "path",
+                        "type": "integer",
+                        "description": "ID of the Tenent",
+                        "required": true
+                    },
+                    {
+                        "name": "id",
+                        "in": "path",
+                        "type": "integer",
+                        "description": "ID of the Company",
+                        "required": true
+                    },
+                    {
+                        "name": "hostVersion",
+                        "in": "path",
+                        "type": "string",
+                        "description": "Version checking",
+                        "required": true
+                    },
+                    {
+                        "in": "header",
+                        "name": "api_key",
+                        "description": "",
+                        "required": true,
+                        "type": "string"
+                    }
+                ],
+                "responses": {
+                    "200": {
+                        "description": "All rules returned"
+                    }
+                }
+            }
+        },
+        "/{hostVersion}/CallRule/AssignTrunkNumberToOutboundRule/{id}": {
+            "post": {
+                "parameters": [
+                    {
+                        "name": "id",
+                        "in": "path",
+                        "type": "integer",
+                        "description": "Trunk id"
+                    },
+                    {
+                        "name": "hostVersion",
+                        "in": "path",
+                        "type": "string",
+                        "description": "Version checking",
+                        "required": true
+                    },
+                    {
+                        "in": "header",
+                        "name": "api_key",
+                        "description": "",
+                        "required": true,
+                        "type": "string"
+                    },
+                    {
+                        "name": "Trunk Details",
+                        "in": "body",
+                        "description": "Record",
+                        "schema": {
+                            "$ref": "#/definitions/TrunkToOutBound"
+                        }
+                    }
+                ],
+                "responses": {
+                    "200": {
+                        "description": "Trunk number has been set"
+                    }
+                }
+            }
+        },
+        "/{hostVersion}/CallRule/SetCallRuleRegEx/{id}": {
+            "post": {
+                "parameters": [
+                    {
+                        "name": "id",
+                        "in": "path",
+                        "type": "integer",
+                        "description": "id"
+                    },
+                    {
+                        "name": "hostVersion",
+                        "in": "path",
+                        "type": "string",
+                        "description": "Version checking",
+                        "required": true
+                    },
+                    {
+                        "in": "header",
+                        "name": "api_key",
+                        "description": "",
+                        "required": true,
+                        "type": "string"
+                    },
+                    {
+                        "name": "callruleRegEx Details",
+                        "in": "body",
+                        "description": "Record",
+                        "schema": {
+                            "$ref": "#/definitions/CallRuleRegEx"
+                        }
+                    }
+                ],
+                "responses": {
+                    "200": {
+                        "description": "call rule regex succeeded"
+                    }
+                }
+            }
+        },
+        "/{hostVersion}/CallRule/SetCallRuleAvailability/{id}": {
+            "post": {
+                "parameters": [
+                    {
+                        "name": "id",
+                        "in": "path",
+                        "type": "integer",
+                        "description": "callrule id"
+                    },
+                    {
+                        "name": "hostVersion",
+                        "in": "path",
+                        "type": "string",
+                        "description": "Version checking",
+                        "required": true
+                    },
+                    {
+                        "in": "header",
+                        "name": "api_key",
+                        "description": "",
+                        "required": true,
+                        "type": "string"
+                    },
+                    {
+                        "name": "callrule Details",
+                        "in": "body",
+                        "description": "Record",
+                        "schema": {
+                            "$ref": "#/definitions/CallRuleEnbl"
+                        }
+                    }
+                ],
+                "responses": {
+                    "200": {
+                        "description": "call availability has been set"
+                    }
+                }
+            }
+        },
+        "/{hostVersion}/CallRule/SetCallRulePriority/{id}": {
+            "post": {
+                "parameters": [
+                    {
+                        "name": "id",
+                        "in": "path",
+                        "type": "integer",
+                        "description": "id"
+                    },
+                    {
+                        "name": "hostVersion",
+                        "in": "path",
+                        "type": "string",
+                        "description": "Version checking",
+                        "required": true
+                    },
+                    {
+                        "in": "header",
+                        "name": "api_key",
+                        "description": "",
+                        "required": true,
+                        "type": "string"
+                    },
+                    {
+                        "name": "callrule Details",
+                        "in": "body",
+                        "description": "Record",
+                        "schema": {
+                            "$ref": "#/definitions/CallRulePriority"
+                        }
+                    }
+                ],
+                "responses": {
+                    "200": {
+                        "description": "call priority has been set"
+                    }
+                }
+            }
+        },
+        "/{hostVersion}/CallRule/SetCallRuleSchedule/{id}": {
+            "post": {
+                "parameters": [
+                    {
+                        "name": "id",
+                        "in": "path",
+                        "type": "integer",
+                        "description": "id"
+                    },
+                    {
+                        "name": "hostVersion",
+                        "in": "path",
+                        "type": "string",
+                        "description": "Version checking",
+                        "required": true
+                    },
+                    {
+                        "in": "header",
+                        "name": "api_key",
+                        "description": "",
+                        "required": true,
+                        "type": "string"
+                    },
+                    {
+                        "name": "callrule Details",
+                        "in": "body",
+                        "description": "Record",
+                        "schema": {
+                            "$ref": "#/definitions/CallRuleSchedule"
+                        }
+                    }
+                ],
+                "responses": {
+                    "200": {
+                        "description": "Call RuleSchedule has been set"
+                    }
+                }
+            }
+        },
+        "/{hostVersion}/CallRule/SetCallRuleTranslation/{id}": {
+            "post": {
+                "parameters": [
+                    {
+                        "name": "id",
+                        "in": "path",
+                        "type": "integer",
+                        "description": "id"
+                    },
+                    {
+                        "name": "hostVersion",
+                        "in": "path",
+                        "type": "string",
+                        "description": "Version checking",
+                        "required": true
+                    },
+                    {
+                        "in": "header",
+                        "name": "api_key",
+                        "description": "",
+                        "required": true,
+                        "type": "string"
+                    },
+                    {
+                        "name": "callrule Details",
+                        "in": "body",
+                        "description": "Record",
+                        "schema": {
+                            "$ref": "#/definitions/CallRuleTransalation"
+                        }
+                    }
+                ],
+                "responses": {
+                    "200": {
+                        "description": "Call RuleSchedule has been set"
+                    }
+                }
+            }
+        },
+        "/{hostVersion}/CallRule/AddOutboundRule": {
+            "post": {
+                "parameters": [
+                    {
+                        "name": "New OutBound Rule",
+                        "in": "body",
+                        "description": "Record",
+                        "schema": {
+                            "$ref": "#/definitions/CallRuleOtBound"
+                        }
+                    },
+                    {
+                        "name": "hostVersion",
+                        "in": "path",
+                        "type": "string",
+                        "description": "Version checking",
+                        "required": true
+                    },
+                    {
+                        "in": "header",
+                        "name": "api_key",
+                        "description": "",
+                        "required": true,
+                        "type": "string"
+                    }
+                ],
+                "responses": {
+                    "200": {
+                        "description": "OutBound rule has been set"
+                    }
+                }
+            }
+        },
+        "/{hostVersion}/CallRule/AddInboundRule": {
+            "post": {
+                "parameters": [
+                    {
+                        "name": "New UAC Record",
+                        "in": "body",
+                        "description": "Record",
+                        "schema": {
+                            "$ref": "#/definitions/CallRuleOtBound"
+                        }
+                    },
+                    {
+                        "name": "hostVersion",
+                        "in": "path",
+                        "type": "string",
+                        "description": "Version checking",
+                        "required": true
+                    },
+                    {
+                        "in": "header",
+                        "name": "api_key",
+                        "description": "",
+                        "required": true,
+                        "type": "string"
+                    }
+                ],
+                "responses": {
+                    "200": {
+                        "description": "InBound rule has been set"
+                    }
+                }
+            }
+        },
+        "/DVP/API/:version/CallRule/AssignApp/{appId}/ToRule/{ruleId}": {
+            "post": {
+                "parameters": [
+                    {
+                        "name": "appId",
+                        "in": "path",
+                        "type": "integer",
+                        "description": "appId"
+                    },
+                    {
+                        "name": "ruleId",
+                        "in": "path",
+                        "type": "integer",
+                        "description": "ruleId"
+                    }
+                ],
+                "responses": {
+                    "200": {
+                        "description": "App added to rule"
+                    }
+                }
+            }
+        },
+        "/{hostVersion}/CallRule/DeleteCallRule/{id}": {
+            "delete": {
+                "parameters": [
+                    {
+                        "name": "id",
+                        "in": "path",
+                        "type": "integer",
+                        "description": "id"
+                    },
+                    {
+                        "name": "hostVersion",
+                        "in": "path",
+                        "type": "string",
+                        "description": "Version checking",
+                        "required": true
+                    },
+                    {
+                        "in": "header",
+                        "name": "api_key",
+                        "description": "",
+                        "required": true,
+                        "type": "string"
+                    },
+                    {
+                        "name": "Company and Tenant",
+                        "in": "body",
+                        "description": "Record",
+                        "schema": {
+                            "$ref": "#/definitions/ComTent"
+                        }
+                    }
+                ],
+                "responses": {
+                    "200": {
+                        "description": "Call RuleSchedule has been deleted"
+                    }
+                }
+            }
+        },
+        "/{hostVersion}/CallRule/TranslationsByCompany/{companyId}/{tenantId}": {
+            "get": {
+                "parameters": [
+                    {
+                        "name": "companyId",
+                        "in": "path",
+                        "type": "integer",
+                        "description": "ID of the Company",
+                        "required": true
+                    },
+                    {
+                        "name": "tenantId",
+                        "in": "path",
+                        "type": "integer",
+                        "description": "ID of the Tenent",
+                        "required": true
+                    },
+                    {
+                        "name": "hostVersion",
+                        "in": "path",
+                        "type": "string",
+                        "description": "Version checking",
+                        "required": true
+                    },
+                    {
+                        "in": "header",
+                        "name": "api_key",
+                        "description": "",
+                        "required": true,
+                        "type": "string"
+                    }
+                ],
+                "responses": {
+                    "200": {
+                        "description": "Translations of Company returned"
+                    }
+                }
+            }
+        },
+        "/{hostVersion}/CallRule/TranslationById/{id}/{companyId}/{tenantId}": {
+            "get": {
+                "parameters": [
+                    {
+                        "name": "companyId",
+                        "in": "path",
+                        "type": "integer",
+                        "description": "ID of the Company",
+                        "required": true
+                    },
+                    {
+                        "name": "tenantId",
+                        "in": "path",
+                        "type": "integer",
+                        "description": "ID of the Tenent",
+                        "required": true
+                    },
+                    {
+                        "name": "id",
+                        "in": "path",
+                        "type": "integer",
+                        "description": "ID of the Company",
+                        "required": true
+                    },
+                    {
+                        "name": "hostVersion",
+                        "in": "path",
+                        "type": "string",
+                        "description": "Version checking",
+                        "required": true
+                    },
+                    {
+                        "in": "header",
+                        "name": "api_key",
+                        "description": "",
+                        "required": true,
+                        "type": "string"
+                    }
+                ],
+                "responses": {
+                    "200": {
+                        "description": "All rules returned"
+                    }
+                }
+            }
+        },
+        "/{hostVersion}/CallRule/SaveTranslation": {
+            "post": {
+                "parameters": [
+                    {
+                        "name": "Translation Details",
+                        "in": "body",
+                        "description": "Record",
+                        "schema": {
+                            "$ref": "#/definitions/Translation"
+                        }
+                    },
+                    {
+                        "name": "hostVersion",
+                        "in": "path",
+                        "type": "string",
+                        "description": "Version checking",
+                        "required": true
+                    },
+                    {
+                        "in": "header",
+                        "name": "api_key",
+                        "description": "",
+                        "required": true,
+                        "type": "string"
+                    }
+                ],
+                "responses": {
+                    "200": {
+                        "description": "InBound rule has been set"
+                    }
+                }
+            }
+        },
+        "/{hostVersion}/CallRule/UpdateTranslation/{id}": {
+            "post": {
+                "parameters": [
+                    {
+                        "name": "Translation Details",
+                        "in": "body",
+                        "description": "Record",
+                        "schema": {
+                            "$ref": "#/definitions/UpdtTranslation"
+                        }
+                    },
+                    {
+                        "name": "hostVersion",
+                        "in": "path",
+                        "type": "string",
+                        "description": "Version checking",
+                        "required": true
+                    },
+                    {
+                        "in": "header",
+                        "name": "api_key",
+                        "description": "",
+                        "required": true,
+                        "type": "string"
+                    },
+                    {
+                        "in": "path",
+                        "name": "id",
+                        "description": "",
+                        "required": true,
+                        "type": "integer"
+                    }
+                ],
+                "responses": {
+                    "200": {
+                        "description": "InBound rule has been set"
+                    }
+                }
+            }
+        }
+    },
+    "definitions": {
+        "CallRuleOtBound": {
+            "properties": {
+                "ObjType": {
+                    "type": "string"
+                },
+                "ObjClass": {
+                    "type": "string"
+                },
+                "ObjCategory": {
+                    "type": "string"
+                },
+                "Enable": {
+                    "type": "boolean"
+                },
+                "TenantId": {
+                    "type": "integer"
+                },
+                "CompanyId": {
+                    "type": "integer"
+                },
+                "DNISRegEx": {
+                    "type": "string"
+                },
+                "ANIRegEx": {
+                    "type": "string"
+                },
+                "ContextRegEx": {
+                    "type": "string"
+                },
+                "RegExPattern": {
+                    "type": "string"
+                },
+                "ANIRegExPattern": {
+                    "type": "string"
+                },
+                "DNIS": {
+                    "type": "string"
+                },
+                "ANI": {
+                    "type": "string"
+                },
+                "Priority": {
+                    "type": "integer"
+                },
+                "TargetScript": {
+                    "type": "string"
+                },
+                "TrunkId": {
+                    "type": "integer"
+                },
+                "TrunkNumber": {
+                    "type": "string"
+                },
+                "ExtraData": {
+                    "type": "string"
+                },
+                "CallRuleDescription": {
+                    "type": "string"
+                }
+            }
+        },
+        "Translation": {
+            "properties": {
+                "TransName": {
+                    "type": "string"
+                },
+                "ObjType": {
+                    "type": "string"
+                },
+                "ObjClass": {
+                    "type": "string"
+                },
+                "ObjCategory": {
+                    "type": "string"
+                },
+                "TenantId": {
+                    "type": "integer"
+                },
+                "CompanyId": {
+                    "type": "integer"
+                },
+                "TransDescription": {
+                    "type": "string"
+                },
+                "Enable": {
+                    "type": "boolean"
+                },
+                "LAdd": {
+                    "type": "string"
+                },
+                "LRemove": {
+                    "type": "string"
+                },
+                "RAdd": {
+                    "type": "string"
+                },
+                "RRemove": {
+                    "type": "string"
+                },
+                "Replace": {
+                    "type": "integer"
+                }
+            }
+        },
+        "UpdtTranslation": {
+            "properties": {
+                "TransName": {
+                    "type": "string"
+                },
+                "ObjType": {
+                    "type": "string"
+                },
+                "ObjClass": {
+                    "type": "string"
+                },
+                "ObjCategory": {
+                    "type": "string"
+                },
+                "TransDescription": {
+                    "type": "string"
+                },
+                "Enable": {
+                    "type": "boolean"
+                },
+                "LAdd": {
+                    "type": "string"
+                },
+                "LRemove": {
+                    "type": "string"
+                },
+                "RAdd": {
+                    "type": "string"
+                },
+                "RRemove": {
+                    "type": "string"
+                },
+                "Replace": {
+                    "type": "integer"
+                }
+            }
+        },
+        "TrunkToOutBound": {
+            "properties": {
+                "trunkNumber": {
+                    "type": "string"
+                },
+                "TenantId": {
+                    "type": "integer"
+                },
+                "CompanyId": {
+                    "type": "integer"
+                }
+            }
+        },
+        "CallRuleRegEx": {
+            "properties": {
+                "DNISRegExMethod": {
+                    "type": "string"
+                },
+                "ANIRegExMethod": {
+                    "type": "string"
+                },
+                "DNIS": {
+                    "type": "string"
+                },
+                "ANI": {
+                    "type": "string"
+                },
+                "companyId": {
+                    "type": "integer"
+                },
+                "tenantId": {
+                    "type": "integer"
+                }
+            }
+        },
+        "CallRuleEnbl": {
+            "properties": {
+                "enabled": {
+                    "type": "boolean"
+                },
+                "companyId": {
+                    "type": "integer"
+                },
+                "tenantId": {
+                    "type": "integer"
+                }
+            }
+        },
+        "CallRulePriority": {
+            "properties": {
+                "priority": {
+                    "type": "integer"
+                },
+                "companyId": {
+                    "type": "integer"
+                },
+                "tenantId": {
+                    "type": "integer"
+                }
+            }
+        },
+        "CallRuleSchedule": {
+            "properties": {
+                "scheduleId": {
+                    "type": "integer"
+                },
+                "companyId": {
+                    "type": "integer"
+                },
+                "tenantId": {
+                    "type": "integer"
+                }
+            }
+        },
+        "CallRuleTransalation": {
+            "properties": {
+                "transId": {
+                    "type": "integer"
+                },
+                "companyId": {
+                    "type": "integer"
+                },
+                "tenantId": {
+                    "type": "integer"
+                }
+            }
+        },
+        "ComTent": {
+            "properties": {
+                "companyId": {
+                    "type": "integer"
+                },
+                "tenantId": {
+                    "type": "integer"
+                }
+            }
+        }
+    }
+}
