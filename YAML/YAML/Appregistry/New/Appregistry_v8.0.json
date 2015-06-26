@@ -1,0 +1,454 @@
+{
+    "swagger": "2.0",
+    "info": {
+        "version": "1.0.0",
+        "title": "Echo",
+        "description": "#### Echos back every URL, method, parameter and header\nFeel free to make a path or an operation and use **Try Operation** to test it. The echo server will\nrender back everything.\n"
+    },
+    "schemes": [
+        "http"
+    ],
+    "basePath": "/DVP/API",
+    "paths": {
+        "/{version}/APPRegistry/AppDeveloperManagement/Developer": {
+            "post": {
+                "parameters": [
+                    {
+                        "name": "Developer Record",
+                        "in": "body",
+                        "description": "Record",
+                        "schema": {
+                            "$ref": "#/definitions/Developer"
+                        }
+                    },
+                    {
+                        "name": "version",
+                        "in": "path",
+                        "type": "string",
+                        "description": "Version checking",
+                        "required": true
+                    },
+                    {
+                        "in": "header",
+                        "name": "api_key",
+                        "description": "",
+                        "required": true,
+                        "type": "string"
+                    }
+                ],
+                "responses": {
+                    "200": {
+                        "description": "New Record Added"
+                    }
+                }
+            }
+        },
+        "/{version}/APPRegistry/VoiceAppManagement/VoiceApp": {
+            "post": {
+                "parameters": [
+                    {
+                        "name": "Voice App Record",
+                        "in": "body",
+                        "description": "Record",
+                        "schema": {
+                            "$ref": "#/definitions/VoiceApp"
+                        }
+                    },
+                    {
+                        "name": "version",
+                        "in": "path",
+                        "type": "string",
+                        "description": "Version checking",
+                        "required": true
+                    },
+                    {
+                        "in": "header",
+                        "name": "api_key",
+                        "description": "",
+                        "required": true,
+                        "type": "string"
+                    }
+                ],
+                "responses": {
+                    "200": {
+                        "description": "New Voice app Record Added"
+                    }
+                }
+            }
+        },
+        "/{version}/APPRegistry/VoiceAppManagement/Application/{AppID}/MapWithDeveloper/{DevID}": {
+            "post": {
+                "parameters": [
+                    {
+                        "name": "version",
+                        "in": "path",
+                        "type": "string",
+                        "description": "Version checking",
+                        "required": true
+                    },
+                    {
+                        "name": "AppID",
+                        "in": "path",
+                        "type": "string",
+                        "description": "ApplicationId",
+                        "required": true
+                    },
+                    {
+                        "name": "DevID",
+                        "in": "path",
+                        "type": "integer",
+                        "description": "Version checking",
+                        "required": true
+                    },
+                    {
+                        "in": "header",
+                        "name": "api_key",
+                        "description": "",
+                        "required": true,
+                        "type": "string"
+                    }
+                ],
+                "responses": {
+                    "200": {
+                        "description": "New Mapping happens"
+                    }
+                }
+            }
+        },
+        "/{version}/APPRegistry/VoiceAppManagement/Application/{MAppID}/SetAsMasterAppOf/{CAppID}": {
+            "post": {
+                "parameters": [
+                    {
+                        "name": "version",
+                        "in": "path",
+                        "type": "string",
+                        "description": "Version checking",
+                        "required": true
+                    },
+                    {
+                        "name": "MAppID",
+                        "in": "path",
+                        "type": "string",
+                        "description": "Master ApplicationId",
+                        "required": true
+                    },
+                    {
+                        "name": "CAppID",
+                        "in": "path",
+                        "type": "integer",
+                        "description": "Child ApplicationId",
+                        "required": true
+                    },
+                    {
+                        "in": "header",
+                        "name": "api_key",
+                        "description": "",
+                        "required": true,
+                        "type": "string"
+                    }
+                ],
+                "responses": {
+                    "200": {
+                        "description": "New Mapping happens"
+                    }
+                }
+            }
+        },
+        "/{version}/APPRegistry/VoiceAppManagement/VoiceApp/{id}": {
+            "delete": {
+                "parameters": [
+                    {
+                        "name": "version",
+                        "in": "path",
+                        "type": "string",
+                        "description": "Version checking",
+                        "required": true
+                    },
+                    {
+                        "name": "id",
+                        "in": "path",
+                        "type": "integer",
+                        "description": "Voice App Id",
+                        "required": true
+                    },
+                    {
+                        "in": "header",
+                        "name": "api_key",
+                        "description": "",
+                        "required": true,
+                        "type": "string"
+                    }
+                ],
+                "responses": {
+                    "200": {
+                        "description": "New Mapping happens"
+                    }
+                }
+            }
+        },
+        "/{version}/APPRegistry/VoiceAppManagement/VoiceAppAvailability/{id}": {
+            "post": {
+                "parameters": [
+                    {
+                        "name": "Availability updation",
+                        "in": "body",
+                        "description": "Record",
+                        "schema": {
+                            "$ref": "#/definitions/AppAvailability"
+                        }
+                    },
+                    {
+                        "name": "version",
+                        "in": "path",
+                        "type": "string",
+                        "description": "Version checking",
+                        "required": true
+                    },
+                    {
+                        "name": "id",
+                        "in": "path",
+                        "type": "integer",
+                        "description": "Voice App Id",
+                        "required": true
+                    },
+                    {
+                        "in": "header",
+                        "name": "api_key",
+                        "description": "",
+                        "required": true,
+                        "type": "string"
+                    }
+                ],
+                "responses": {
+                    "200": {
+                        "description": "Updation succeeded"
+                    }
+                }
+            }
+        },
+        "/{version}/APPRegistry/VoiceAppManagement/VoiceAppUrlModification/{AppID}": {
+            "post": {
+                "parameters": [
+                    {
+                        "name": "VoiceApp URL modifocation",
+                        "in": "body",
+                        "description": "Record",
+                        "schema": {
+                            "$ref": "#/definitions/ModifyUrl"
+                        }
+                    },
+                    {
+                        "name": "version",
+                        "in": "path",
+                        "type": "string",
+                        "description": "Version checking",
+                        "required": true
+                    },
+                    {
+                        "name": "AppID",
+                        "in": "path",
+                        "type": "integer",
+                        "description": "Voice App Id",
+                        "required": true
+                    },
+                    {
+                        "in": "header",
+                        "name": "api_key",
+                        "description": "",
+                        "required": true,
+                        "type": "string"
+                    }
+                ],
+                "responses": {
+                    "200": {
+                        "description": "Url updation succeeded"
+                    }
+                }
+            }
+        },
+        "/{version}/APPRegistry/VoiceAppManagement/URLCheckout/{AppID}": {
+            "post": {
+                "parameters": [
+                    {
+                        "name": "Check URL",
+                        "in": "body",
+                        "description": "Record",
+                        "schema": {
+                            "$ref": "#/definitions/ChkUrl"
+                        }
+                    },
+                    {
+                        "name": "version",
+                        "in": "path",
+                        "type": "string",
+                        "description": "Version checking",
+                        "required": true
+                    },
+                    {
+                        "name": "AppID",
+                        "in": "path",
+                        "type": "integer",
+                        "description": "Voice App Id",
+                        "required": true
+                    },
+                    {
+                        "in": "header",
+                        "name": "api_key",
+                        "description": "",
+                        "required": true,
+                        "type": "string"
+                    }
+                ],
+                "responses": {
+                    "200": {
+                        "description": "Url updation succeeded"
+                    }
+                }
+            }
+        },
+        "/{version}/APPRegistry/VoiceAppManagement/VoiceAppRecordsOfDeveloper/{DevID}": {
+            "get": {
+                "parameters": [
+                    {
+                        "name": "DevID",
+                        "in": "path",
+                        "type": "integer",
+                        "description": "ID of the Developer",
+                        "required": true
+                    },
+                    {
+                        "name": "version",
+                        "in": "path",
+                        "type": "string",
+                        "description": "Version checking",
+                        "required": true
+                    },
+                    {
+                        "in": "header",
+                        "name": "api_key",
+                        "description": "",
+                        "required": true,
+                        "type": "string"
+                    }
+                ],
+                "responses": {
+                    "200": {
+                        "description": "Sends the Availability"
+                    }
+                }
+            }
+        },
+        "/{version}/VoiceAppManagement/VoiceAppRecordOf/{VID}/DevelopedBy/{DevID}": {
+            "get": {
+                "parameters": [
+                    {
+                        "name": "DevID",
+                        "in": "path",
+                        "type": "integer",
+                        "description": "ID of the Developer",
+                        "required": true
+                    },
+                    {
+                        "name": "VID",
+                        "in": "path",
+                        "type": "integer",
+                        "description": "ID of the VoiceApp",
+                        "required": true
+                    },
+                    {
+                        "name": "version",
+                        "in": "path",
+                        "type": "string",
+                        "description": "Version checking",
+                        "required": true
+                    },
+                    {
+                        "in": "header",
+                        "name": "api_key",
+                        "description": "",
+                        "required": true,
+                        "type": "string"
+                    }
+                ],
+                "responses": {
+                    "200": {
+                        "description": "Sends the Availability"
+                    }
+                }
+            }
+        }
+    },
+    "definitions": {
+        "Developer": {
+            "properties": {
+                "Username": {
+                    "type": "string"
+                },
+                "Password": {
+                    "type": "string"
+                },
+                "Email": {
+                    "type": "string"
+                },
+                "Phone": {
+                    "type": "string"
+                },
+                "RefId": {
+                    "type": "string"
+                },
+                "Availability": {
+                    "type": "boolean"
+                }
+            }
+        },
+        "VoiceApp": {
+            "properties": {
+                "AppName": {
+                    "type": "string"
+                },
+                "Description": {
+                    "type": "string"
+                },
+                "Url": {
+                    "type": "string"
+                },
+                "Availability": {
+                    "type": "boolean"
+                },
+                "IsDeveloper": {
+                    "type": "boolean"
+                },
+                "Protocol": {
+                    "type": "string"
+                }
+            }
+        },
+        "AppAvailability": {
+            "properties": {
+                "Availability": {
+                    "type": "boolean"
+                }
+            }
+        },
+        "ModifyUrl": {
+            "properties": {
+                "DevID": {
+                    "type": "integer"
+                },
+                "Url": {
+                    "type": "string"
+                }
+            }
+        },
+        "ChkUrl": {
+            "properties": {
+                "DevID": {
+                    "type": "integer"
+                },
+                "Url": {
+                    "type": "string"
+                }
+            }
+        }
+    }
+}
