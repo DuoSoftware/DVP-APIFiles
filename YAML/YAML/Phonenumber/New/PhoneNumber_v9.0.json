@@ -1,0 +1,765 @@
+{
+    "swagger": "2.0",
+    "info": {
+        "version": "1.0.0",
+        "title": "Echo",
+        "description": "#### Echos back every URL, method, parameter and header\nFeel free to make a path or an operation and use **Try Operation** to test it. The echo server will\nrender back everything.\n"
+    },
+    "schemes": [
+        "http"
+    ],
+    "basePath": "/DVP/API",
+    "paths": {
+        "/{hostVersion}/PhoneNumberTrunkApi/TrunkNumber": {
+            "post": {
+                "parameters": [
+                    {
+                        "name": "Addnumber",
+                        "in": "body",
+                        "description": "Record",
+                        "schema": {
+                            "$ref": "#/definitions/AddNumber"
+                        }
+                    },
+                    {
+                        "name": "hostVersion",
+                        "in": "path",
+                        "type": "string",
+                        "description": "Version checking",
+                        "required": true
+                    },
+                    {
+                        "in": "header",
+                        "name": "api_key",
+                        "description": "",
+                        "required": true,
+                        "type": "string"
+                    }
+                ],
+                "responses": {
+                    "200": {
+                        "description": "Adding Phone number to trunk is succceded"
+                    }
+                }
+            }
+        },
+        "/{hostVersion}/PhoneNumberTrunkApi/TrunkNumber/{PhoneNumber}": {
+            "get": {
+                "parameters": [
+                    {
+                        "name": "PhoneNumber",
+                        "in": "path",
+                        "type": "integer",
+                        "description": "ID of the PhoneNumber",
+                        "required": true
+                    },
+                    {
+                        "name": "hostVersion",
+                        "in": "path",
+                        "type": "string",
+                        "description": "Version checking",
+                        "required": true
+                    },
+                    {
+                        "in": "header",
+                        "name": "api_key",
+                        "description": "",
+                        "required": true,
+                        "type": "string"
+                    }
+                ],
+                "responses": {
+                    "200": {
+                        "description": "All Phone number details are  returned"
+                    }
+                }
+            }
+        },
+        "/{hostVersion}/PhoneNumberTrunkApi/BuyNumber": {
+            "post": {
+                "parameters": [
+                    {
+                        "name": "Buy Number",
+                        "in": "body",
+                        "description": "Record",
+                        "schema": {
+                            "$ref": "#/definitions/BuyNumber"
+                        }
+                    },
+                    {
+                        "name": "hostVersion",
+                        "in": "path",
+                        "type": "string",
+                        "description": "Version checking",
+                        "required": true
+                    },
+                    {
+                        "in": "header",
+                        "name": "api_key",
+                        "description": "",
+                        "required": true,
+                        "type": "string"
+                    }
+                ],
+                "responses": {
+                    "200": {
+                        "description": "Buy Number is succeeded"
+                    }
+                }
+            }
+        },
+        "/{hostVersion}/PhoneNumberTrunkApi/Trunk": {
+            "post": {
+                "parameters": [
+                    {
+                        "name": "Create Trunk",
+                        "in": "body",
+                        "description": "Record",
+                        "schema": {
+                            "$ref": "#/definitions/Trunk"
+                        }
+                    },
+                    {
+                        "name": "hostVersion",
+                        "in": "path",
+                        "type": "string",
+                        "description": "Version checking",
+                        "required": true
+                    },
+                    {
+                        "in": "header",
+                        "name": "api_key",
+                        "description": "",
+                        "required": true,
+                        "type": "string"
+                    }
+                ],
+                "responses": {
+                    "200": {
+                        "description": "Buy Number is succeeded"
+                    }
+                }
+            }
+        },
+        "/{hostVersion}/PhoneNumberTrunkApi/Operator": {
+            "post": {
+                "parameters": [
+                    {
+                        "name": "Add Operator",
+                        "in": "body",
+                        "description": "Record",
+                        "schema": {
+                            "$ref": "#/definitions/Operator"
+                        }
+                    },
+                    {
+                        "name": "hostVersion",
+                        "in": "path",
+                        "type": "string",
+                        "description": "Version checking",
+                        "required": true
+                    },
+                    {
+                        "in": "header",
+                        "name": "api_key",
+                        "description": "",
+                        "required": true,
+                        "type": "string"
+                    }
+                ],
+                "responses": {
+                    "200": {
+                        "description": "Adding new Operator is succeeded"
+                    }
+                }
+            }
+        },
+        "/{hostVersion}/PhoneNumberTrunkApi/Trunk/{id}": {
+            "get": {
+                "parameters": [
+                    {
+                        "name": "id",
+                        "in": "path",
+                        "type": "integer",
+                        "description": "ID of the Trunk",
+                        "required": true
+                    },
+                    {
+                        "name": "hostVersion",
+                        "in": "path",
+                        "type": "string",
+                        "description": "Version checking",
+                        "required": true
+                    },
+                    {
+                        "in": "header",
+                        "name": "api_key",
+                        "description": "",
+                        "required": true,
+                        "type": "string"
+                    }
+                ],
+                "responses": {
+                    "200": {
+                        "description": "All Trunk details of the ID are returned"
+                    }
+                }
+            }
+        },
+        "/{hostVersion}/PhoneNumberTrunkApi/Trunk/{id}/SetLoadBalancer/{lbId}": {
+            "post": {
+                "parameters": [
+                    {
+                        "name": "id",
+                        "in": "path",
+                        "type": "integer",
+                        "description": "id"
+                    },
+                    {
+                        "name": "lbId",
+                        "in": "path",
+                        "type": "integer",
+                        "description": "lbId"
+                    },
+                    {
+                        "name": "hostVersion",
+                        "in": "path",
+                        "type": "string",
+                        "description": "Version checking",
+                        "required": true
+                    },
+                    {
+                        "in": "header",
+                        "name": "api_key",
+                        "description": "",
+                        "required": true,
+                        "type": "string"
+                    }
+                ],
+                "responses": {
+                    "200": {
+                        "description": "Trunk is successfully attached to Load balancer"
+                    }
+                }
+            }
+        },
+        "/{hostVersion}/PhoneNumberTrunkApi/Trunk/{id}/SetSipProfile/{profId}": {
+            "post": {
+                "parameters": [
+                    {
+                        "name": "id",
+                        "in": "path",
+                        "type": "integer",
+                        "description": "id"
+                    },
+                    {
+                        "name": "profId",
+                        "in": "path",
+                        "type": "integer",
+                        "description": "profId"
+                    },
+                    {
+                        "name": "hostVersion",
+                        "in": "path",
+                        "type": "string",
+                        "description": "Version checking",
+                        "required": true
+                    },
+                    {
+                        "in": "header",
+                        "name": "api_key",
+                        "description": "",
+                        "required": true,
+                        "type": "string"
+                    }
+                ],
+                "responses": {
+                    "200": {
+                        "description": "Trunk is successfully attached to Sip profile"
+                    }
+                }
+            }
+        },
+        "/{hostVersion}/PhoneNumberTrunkApi/Trunk/{id}/SetTranslation/{transId}": {
+            "post": {
+                "parameters": [
+                    {
+                        "name": "id",
+                        "in": "path",
+                        "type": "integer",
+                        "description": "id"
+                    },
+                    {
+                        "name": "transId",
+                        "in": "path",
+                        "type": "integer",
+                        "description": "transId"
+                    },
+                    {
+                        "name": "hostVersion",
+                        "in": "path",
+                        "type": "string",
+                        "description": "Version checking",
+                        "required": true
+                    },
+                    {
+                        "in": "header",
+                        "name": "api_key",
+                        "description": "",
+                        "required": true,
+                        "type": "string"
+                    }
+                ],
+                "responses": {
+                    "200": {
+                        "description": "Trunk is successfully attached to Translation"
+                    }
+                }
+            }
+        },
+        "/{hostVersion}/PhoneNumberTrunkApi/Trunk/{id}/SetOperator/{opId}": {
+            "post": {
+                "parameters": [
+                    {
+                        "name": "id",
+                        "in": "path",
+                        "type": "integer",
+                        "description": "id"
+                    },
+                    {
+                        "name": "opId",
+                        "in": "path",
+                        "type": "integer",
+                        "description": "opId"
+                    },
+                    {
+                        "name": "hostVersion",
+                        "in": "path",
+                        "type": "string",
+                        "description": "Version checking",
+                        "required": true
+                    },
+                    {
+                        "in": "header",
+                        "name": "api_key",
+                        "description": "",
+                        "required": true,
+                        "type": "string"
+                    }
+                ],
+                "responses": {
+                    "200": {
+                        "description": "Operator is successfully assigned to Trunk"
+                    }
+                }
+            }
+        },
+        "/{hostVersion}/PhoneNumberTrunkApi/TrunkNumber/{trNum}/SetInboundLimit/{limId}": {
+            "post": {
+                "parameters": [
+                    {
+                        "name": "trNum",
+                        "in": "path",
+                        "type": "string",
+                        "description": "trNum"
+                    },
+                    {
+                        "name": "limId",
+                        "in": "path",
+                        "type": "string",
+                        "description": "limId"
+                    },
+                    {
+                        "name": "hostVersion",
+                        "in": "path",
+                        "type": "string",
+                        "description": "Version checking",
+                        "required": true
+                    },
+                    {
+                        "in": "header",
+                        "name": "api_key",
+                        "description": "",
+                        "required": true,
+                        "type": "string"
+                    }
+                ],
+                "responses": {
+                    "200": {
+                        "description": "Trunk number set inbound limit successfull"
+                    }
+                }
+            }
+        },
+        "/{hostVersion}/PhoneNumberTrunkApi/TrunkNumber/{trNum}/SetOutboundLimit/{limId}": {
+            "post": {
+                "parameters": [
+                    {
+                        "name": "trNum",
+                        "in": "path",
+                        "type": "string",
+                        "description": "trNum"
+                    },
+                    {
+                        "name": "limId",
+                        "in": "path",
+                        "type": "string",
+                        "description": "limId"
+                    },
+                    {
+                        "name": "hostVersion",
+                        "in": "path",
+                        "type": "string",
+                        "description": "Version checking",
+                        "required": true
+                    },
+                    {
+                        "in": "header",
+                        "name": "api_key",
+                        "description": "",
+                        "required": true,
+                        "type": "string"
+                    }
+                ],
+                "responses": {
+                    "200": {
+                        "description": "Trunk number set outbound limit successfull"
+                    }
+                }
+            }
+        },
+        "/{hostVersion}/PhoneNumberTrunkApi/TrunkNumber/{trNum}/SetBothLimit/{limId}": {
+            "post": {
+                "parameters": [
+                    {
+                        "name": "trNum",
+                        "in": "path",
+                        "type": "string",
+                        "description": "trNum"
+                    },
+                    {
+                        "name": "limId",
+                        "in": "path",
+                        "type": "string",
+                        "description": "limId"
+                    },
+                    {
+                        "name": "hostVersion",
+                        "in": "path",
+                        "type": "string",
+                        "description": "Version checking",
+                        "required": true
+                    },
+                    {
+                        "in": "header",
+                        "name": "api_key",
+                        "description": "",
+                        "required": true,
+                        "type": "string"
+                    }
+                ],
+                "responses": {
+                    "200": {
+                        "description": "Trunk number set inbound limit successfull"
+                    }
+                }
+            }
+        },
+        "/{hostVersion}/PhoneNumberTrunkApi/Trunk/{id}/Availability/{status}": {
+            "post": {
+                "parameters": [
+                    {
+                        "name": "id",
+                        "in": "path",
+                        "type": "integer",
+                        "description": "id"
+                    },
+                    {
+                        "name": "status",
+                        "in": "path",
+                        "type": "boolean",
+                        "description": "status"
+                    },
+                    {
+                        "name": "hostVersion",
+                        "in": "path",
+                        "type": "string",
+                        "description": "Version checking",
+                        "required": true
+                    },
+                    {
+                        "in": "header",
+                        "name": "api_key",
+                        "description": "",
+                        "required": true,
+                        "type": "string"
+                    }
+                ],
+                "responses": {
+                    "200": {
+                        "description": "Trunk availability is successfully changed"
+                    }
+                }
+            }
+        },
+        "/{hostVersion}/PhoneNumberTrunkApi/Operator/{operatorId}/UnAllocatedNumbers": {
+            "get": {
+                "parameters": [
+                    {
+                        "name": "operatorId",
+                        "in": "path",
+                        "type": "integer",
+                        "description": "ID of the Operator",
+                        "required": true
+                    },
+                    {
+                        "name": "hostVersion",
+                        "in": "path",
+                        "type": "string",
+                        "description": "Version checking",
+                        "required": true
+                    },
+                    {
+                        "in": "header",
+                        "name": "api_key",
+                        "description": "",
+                        "required": true,
+                        "type": "string"
+                    }
+                ],
+                "responses": {
+                    "200": {
+                        "description": "All unallocated numbers are  returned"
+                    }
+                }
+            }
+        },
+        "/{hostVersion}/PhoneNumberTrunkApi/Operator/{operatorId}/AllocatedNumbers": {
+            "get": {
+                "parameters": [
+                    {
+                        "name": "operatorId",
+                        "in": "path",
+                        "type": "integer",
+                        "description": "ID of the Operator",
+                        "required": true
+                    },
+                    {
+                        "name": "hostVersion",
+                        "in": "path",
+                        "type": "string",
+                        "description": "Version checking",
+                        "required": true
+                    },
+                    {
+                        "in": "header",
+                        "name": "api_key",
+                        "description": "",
+                        "required": true,
+                        "type": "string"
+                    }
+                ],
+                "responses": {
+                    "200": {
+                        "description": "All allocated numbers are  returned"
+                    }
+                }
+            }
+        },
+        "/{hostVersion}/PhoneNumberTrunkApi/TrunkNumber/{phonenumber}/Availability/{enable}": {
+            "post": {
+                "parameters": [
+                    {
+                        "name": "phonenumber",
+                        "in": "path",
+                        "type": "string",
+                        "description": "phonenumber"
+                    },
+                    {
+                        "name": "enable",
+                        "in": "path",
+                        "type": "boolean",
+                        "description": "enable"
+                    },
+                    {
+                        "name": "hostVersion",
+                        "in": "path",
+                        "type": "string",
+                        "description": "Version checking",
+                        "required": true
+                    },
+                    {
+                        "in": "header",
+                        "name": "api_key",
+                        "description": "",
+                        "required": true,
+                        "type": "string"
+                    }
+                ],
+                "responses": {
+                    "200": {
+                        "description": "Phone Number availability is successfully changed"
+                    }
+                }
+            }
+        },
+        "/{hostVersion}/PhoneNumberTrunkApi/TrunkNumber/Category/{phone}": {
+            "post": {
+                "parameters": [
+                    {
+                        "name": "phone",
+                        "in": "path",
+                        "type": "string",
+                        "description": "PhoneNumber"
+                    },
+                    {
+                        "name": "UpdateCategory",
+                        "in": "body",
+                        "description": "Record",
+                        "schema": {
+                            "$ref": "#/definitions/Updtcategory"
+                        }
+                    },
+                    {
+                        "name": "hostVersion",
+                        "in": "path",
+                        "type": "string",
+                        "description": "Version checking",
+                        "required": true
+                    },
+                    {
+                        "in": "header",
+                        "name": "api_key",
+                        "description": "",
+                        "required": true,
+                        "type": "string"
+                    }
+                ],
+                "responses": {
+                    "200": {
+                        "description": "Trunk detail updation is succeeded"
+                    }
+                }
+            }
+        },
+        "/{hostVersion}/PhoneNumberTrunkApi/TrunkNumbers": {
+            "get": {
+                "parameters": [
+                    {
+                        "name": "hostVersion",
+                        "in": "path",
+                        "type": "string",
+                        "description": "Version checking",
+                        "required": true
+                    },
+                    {
+                        "in": "header",
+                        "name": "api_key",
+                        "description": "",
+                        "required": true,
+                        "type": "string"
+                    }
+                ],
+                "responses": {
+                    "200": {
+                        "description": "All Phone numbers of Company are  returned"
+                    }
+                }
+            }
+        }
+    },
+    "definitions": {
+        "AddNumber": {
+            "properties": {
+                "PhoneNumber": {
+                    "type": "integer"
+                },
+                "Enable": {
+                    "type": "boolean"
+                },
+                "ObjClass": {
+                    "type": "string"
+                },
+                "ObjType": {
+                    "type": "string"
+                },
+                "ObjCategory": {
+                    "type": "string"
+                },
+                "TrunkId": {
+                    "type": "integer"
+                }
+            }
+        },
+        "BuyNumber": {
+            "properties": {
+                "PhoneNumber": {
+                    "type": "string"
+                },
+                "CompanyToChange": {
+                    "type": "integer"
+                },
+                "TenantToChange": {
+                    "type": "integer"
+                }
+            }
+        },
+        "Trunk": {
+            "properties": {
+                "TrunkCode": {
+                    "type": "string"
+                },
+                "TrunkName": {
+                    "type": "string"
+                },
+                "ObjClass": {
+                    "type": "string"
+                },
+                "ObjType": {
+                    "type": "string"
+                },
+                "ObjCategory": {
+                    "type": "string"
+                },
+                "IpUrl": {
+                    "type": "string"
+                },
+                "Enable": {
+                    "type": "boolean"
+                },
+                "FaxType": {
+                    "type": "string"
+                }
+            }
+        },
+        "Operator": {
+            "properties": {
+                "OperatorCode": {
+                    "type": "string"
+                },
+                "OperatorName": {
+                    "type": "string"
+                },
+                "ObjClass": {
+                    "type": "string"
+                },
+                "ObjType": {
+                    "type": "string"
+                },
+                "ObjCategory": {
+                    "type": "string"
+                }
+            }
+        },
+        "Updtcategory": {
+            "properties": {
+                "CompanyId": {
+                    "type": "integer"
+                },
+                "ObjCategory": {
+                    "type": "string"
+                }
+            }
+        }
+    }
+}
