@@ -401,7 +401,25 @@ paths:
           type: string
       responses:
         '200':
-          description: Appointment Action picked
+          description: Max Limit picked
+  '/{version}/LimitAPI/Limit/Info':
+    get:
+      parameters:
+        
+        - name: version
+          in: path
+          type: string
+          description: Version checking
+          required: true
+        - in: header
+          name: api_key
+          description: ''
+          required: true
+          type: string
+      responses:
+        '200':
+          description: Limit Informations picked
+          
 definitions:
   Appointment:
     properties:
