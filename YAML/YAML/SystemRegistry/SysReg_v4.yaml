@@ -1,0 +1,533 @@
+---
+swagger: '2.0'
+info:
+  version: 1.0.0
+  title: Echo
+  description: |
+    #### Echos back every URL, method, parameter and header
+    Feel free to make a path or an operation and use **Try Operation** to test it. The echo server will
+    render back everything.
+schemes:
+  - http
+  
+host: systemregistry.104.131.17.220.xip.io,
+basePath: /DVP/API
+paths:
+  /{version}/SystemRegistry/Template:
+    
+    post:
+    
+      parameters:
+        - name: New Template Record
+          in: body
+          description: Record
+          schema:
+           $ref: '#/definitions/Template'
+        
+        - name: version
+          in: path
+          type: string
+          description: Version checking
+          required: true
+          
+        - in: header
+          name: Authorization
+          description: ""
+          required: true
+          type: string
+      responses:
+       200:
+        description: New Conference Room Added
+        
+  /{version}/SystemRegistry/Templates:
+    
+    get:
+      parameters:
+      
+          
+        - name: version
+          in: path
+          type: string
+          description: Version checking
+          required: true
+        
+        - in: header
+          name: Authorization
+          description: ""
+          required: true
+          type: string
+        
+      responses:
+       200:
+        description: All Template details returned  succeeded      
+        
+  /{version}/SystemRegistry/Template/{id}:
+    
+    get:
+      parameters:
+      
+        - name: id
+          in: path
+          type: string
+          description: Image ID
+          required: true
+          
+        - name: version
+          in: path
+          type: string
+          description: Version checking
+          required: true
+        
+        - in: header
+          name: Authorization
+          description: ""
+          required: true
+          type: string
+        
+      responses:
+       200:
+        description: Template details returned  succeeded      
+        
+  /{version}/SystemRegistry/TemplateByName/{name}:
+    
+    get:
+      parameters:
+      
+      
+        - name: name
+          in: path
+          type: string
+          description: Image name
+          required: true
+          
+        - name: version
+          in: path
+          type: string
+          description: Version checking
+          required: true
+        
+        - in: header
+          name: Authorization
+          description: ""
+          required: true
+          type: string
+        
+      responses:
+       200:
+        description: Template details returned succeeded      
+  
+  
+  
+        
+  /{version}/SystemRegistry/Image:
+    
+    post:
+    
+      parameters:
+        - name: New Image Record
+          in: body
+          description: Record
+          schema:
+           $ref: '#/definitions/Image'
+        
+        - name: version
+          in: path
+          type: string
+          description: Version checking
+          required: true
+          
+        - in: header
+          name: Authorization
+          description: ""
+          required: true
+          type: string
+      responses:
+       200:
+        description: New Image Added
+          
+  /{version}/SystemRegistry/Images:
+    
+    get:
+      parameters:
+      
+        - name: version
+          in: path
+          type: string
+          description: Version checking
+          required: true
+        
+        - in: header
+          name: Authorization
+          description: ""
+          required: true
+          type: string
+        
+      responses:
+       200:
+        description: All image details succeeded      
+        
+  /{version}/SystemRegistry/Image/{id}:
+    
+    get:
+      parameters:
+      
+      
+        - name: id
+          in: path
+          type: string
+          description: Image ID
+          required: true
+          
+        - name: version
+          in: path
+          type: string
+          description: Version checking
+          required: true
+        
+        - in: header
+          name: Authorization
+          description: ""
+          required: true
+          type: string
+        
+      responses:
+       200:
+        description: All image details returned  succeeded      
+        
+  /{version}/SystemRegistry/ImageByName/{name}:
+    
+    get:
+      parameters:
+      
+      
+        - name: name
+          in: path
+          type: string
+          description: Image name
+          required: true
+          
+        - name: version
+          in: path
+          type: string
+          description: Version checking
+          required: true
+        
+        - in: header
+          name: Authorization
+          description: ""
+          required: true
+          type: string
+        
+      responses:
+       200:
+        description: All image details returned succeeded      
+  
+  /{version}/SystemRegistry/Image/{imageName}/Variable:
+  
+    post:
+      
+      parameters:
+       
+        - name: New variable Details
+          in: body
+          description: Update
+          schema:
+           $ref: '#/definitions/Variable'
+       
+        - name: version
+          in: path
+          type: string
+          description: Version checking
+          required: true
+          
+        - name: imageName
+          in: path
+          type: string
+          description: Image Name
+          required: true
+          
+        - in: header
+          name: Authorization
+          description: ""
+          required: true
+          type: string
+      responses:
+       200:
+        description: New Conference user adding happens
+        
+    
+        
+        
+  /{version}/SystemRegistry/Image/{imageName}/DependOn/{dependImageName}:
+  
+    post:
+      parameters:
+        - name: imageName
+          in: path
+          type: string
+          description: Image Name
+          required: true
+        
+        - name: dependImageName
+          in: path
+          type: string
+          description: Image Name
+          required: true
+        
+        - name: version
+          in: path
+          type: string
+          description: Version checking
+          required: true
+        
+        - in: header
+          name: Authorization
+          description: ""
+          required: true
+          type: string
+        
+      responses:
+       200:
+        description: Get Conference User details succeeded
+        
+  /{version}/SystemRegistry/Template/{templateName}/AddBaseImage/{imageName}/{priority}:
+  
+   
+    post:
+      parameters:
+        - name: imageName
+          in: path
+          type: string
+          description: Image Name
+          required: true
+        
+        - name: templateName
+          in: path
+          type: string
+          description: Template Name
+          required: true
+        
+        - name: priority
+          in: path
+          type: integer
+          description: Set priority
+          required: true
+        
+        - name: version
+          in: path
+          type: string
+          description: Version checking
+          required: true
+        
+        - in: header
+          name: Authorization
+          description: ""
+          required: true
+          type: string
+        
+      responses:
+       200:
+        description: Add BaseImage to Template  
+        
+  /{version}/SystemRegistry/Template/{templateID}/AddOptionalImage/{imageID}/{priority}:
+  
+        
+    post:
+      parameters:
+        - name: templateID
+          in: path
+          type: string
+          description: Template ID
+          required: true
+        
+        - name: imageID
+          in: path
+          type: string
+          description: Image ID
+          required: true
+        
+        - name: priority
+          in: path
+          type: integer
+          description: Set priority
+          required: true
+        
+        - name: version
+          in: path
+          type: string
+          description: Version checking
+          required: true
+        
+        - in: header
+          name: Authorization
+          description: ""
+          required: true
+          type: string
+        
+      responses:
+       200:
+        description: Add Optional Image to Template  
+    
+        
+        
+  /{version}/SystemRegistry/Image/{imageName}/Service:
+  
+    post:
+      
+      parameters:
+       
+        - name: New Service Details
+          in: body
+          description: Update
+          schema:
+           $ref: '#/definitions/Service'
+       
+        - name: version
+          in: path
+          type: string
+          description: Version checking
+          required: true
+          
+        - name: imageName
+          in: path
+          type: string
+          description: Image Name
+          required: true
+          
+        - in: header
+          name: Authorization
+          description: ""
+          required: true
+          type: string
+      responses:
+       200:
+        description: New Conference user adding happens
+        
+        
+     
+          
+definitions:
+
+     
+  Template:
+    properties:
+     
+     Name:
+      type: string
+     Description:
+      type: string
+     Class:
+      type: string
+     Type:
+      type: string
+     Category:
+      type: string
+     
+      
+  Image:
+    properties:
+     
+    
+     Name:
+      type: string
+     Description:
+      type: string
+     Version:
+      type: string
+     VersionStatus:
+      type: string
+     Type:
+      {
+        description: Image Type,
+        type: string,
+        enum: ["EXTERNAL", "INTERNAL"]
+        
+      }
+     Class:
+      {
+        description: if Type value -> INTERNAL then Class = DOCKERFILE && if Type value -> EXTERNAL then Class = DOCKER,
+        type: string,
+        enum: ["DOCKER", "DOCKERFILE"]
+        
+      }
+      
+     SourceUrl:
+      {
+        type: string,
+        description:   Type value Should be INTERNAL 
+      
+      }
+     DockerUrl:
+      {
+        type: string,
+        description:   Type value Should be EXTERNAL
+      
+      }
+     
+     
+     DockerUrl:
+      type: string
+     Category:
+      type: string
+     Cmd:
+      type: string
+     Importance:
+      type: string
+     
+      
+  
+  
+  Variable:
+    properties:
+     
+     Name:
+      type: string
+     Description:
+      type: string
+     Export:
+      type: boolean
+     DefaultValue:
+      type: string
+     Type:
+      type: string
+      
+  
+  Service:
+    properties:
+     
+     Name:
+      type: string
+     Description:
+      type: string
+     Class:
+      type: string
+     Type:
+      type: string
+     DockerUrl:
+      type: string
+     Category:
+      type: string
+     MultiPorts:
+      type: boolean
+     Direction:
+      type: string
+     Protocol:
+      type: string
+     Port:
+      type: string
+     
+  
+     
+  
+  
+     
+  
+      
+  
+  
+
+  
+    
+     
+ 
+ 
