@@ -31,7 +31,7 @@ paths:
           required: true
           
         - in: header
-          name: api_key
+          name: authorization
           description: ""
           required: true
           type: string
@@ -58,7 +58,7 @@ paths:
           required: true
           
         - in: header
-          name: api_key
+          name: authorization
           description: ""
           required: true
           type: string
@@ -92,7 +92,7 @@ paths:
           required: true
         
         - in: header
-          name: api_key
+          name: authorization
           description: ""
           required: true
           type: string
@@ -126,7 +126,7 @@ paths:
           required: true
         
         - in: header
-          name: api_key
+          name: authorization
           description: ""
           required: true
           type: string
@@ -156,7 +156,7 @@ paths:
           required: true
         
         - in: header
-          name: api_key
+          name: authorization
           description: ""
           required: true
           type: string
@@ -191,7 +191,7 @@ paths:
           required: true
         
         - in: header
-          name: api_key
+          name: authorization
           description: ""
           required: true
           type: string
@@ -224,7 +224,7 @@ paths:
           required: true
         
         - in: header
-          name: api_key
+          name: authorization
           description: ""
           required: true
           type: string
@@ -252,7 +252,7 @@ paths:
           required: true
         
         - in: header
-          name: api_key
+          name: authorization
           description: ""
           required: true
           type: string
@@ -278,7 +278,7 @@ paths:
           required: true
           
         - in: header
-          name: api_key
+          name: authorization
           description: ""
           required: true
           type: string
@@ -306,7 +306,7 @@ paths:
           required: true
         
         - in: header
-          name: api_key
+          name: authorization
           description: ""
           required: true
           type: string

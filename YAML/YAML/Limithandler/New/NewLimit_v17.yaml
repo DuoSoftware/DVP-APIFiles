@@ -28,7 +28,7 @@ paths:
           schema:
             $ref: '#/definitions/Appointment'
         - in: header
-          name: api_key
+          name: authorization
           description: ''
           required: true
           type: string
@@ -49,7 +49,7 @@ paths:
           schema:
             $ref: '#/definitions/Schedule'
         - in: header
-          name: api_key
+          name: authorization
           description: ''
           required: true
           type: string
@@ -70,7 +70,7 @@ paths:
           description: Version checking
           required: true
         - in: header
-          name: api_key
+          name: authorization
           description: ''
           required: true
           type: string
@@ -88,7 +88,7 @@ paths:
           description: Version checking
           required: true
         - in: header
-          name: api_key
+          name: authorization
           description: ''
           required: true
           type: string
@@ -115,7 +115,7 @@ paths:
           description: AppointmentID
           required: true
         - in: header
-          name: api_key
+          name: authorization
           description: ''
           required: true
           type: string
@@ -141,7 +141,7 @@ paths:
           schema:
             $ref: '#/definitions/UpdtApp'
         - in: header
-          name: api_key
+          name: authorization
           description: ''
           required: true
           type: string
@@ -162,7 +162,7 @@ paths:
           schema:
             $ref: '#/definitions/LimitInfo'
         - in: header
-          name: api_key
+          name: authorization
           description: ''
           required: true
           type: string
@@ -188,7 +188,7 @@ paths:
           description: LimitId
           required: true
         - in: header
-          name: api_key
+          name: authorization
           description: ''
           required: true
           type: string
@@ -214,7 +214,7 @@ paths:
           description: LimitId
           required: true
         - in: header
-          name: api_key
+          name: authorization
           description: ''
           required: true
           type: string
@@ -235,7 +235,7 @@ paths:
           description: Version checking
           required: true
         - in: header
-          name: api_key
+          name: authorization
           description: ''
           required: true
           type: string
@@ -256,7 +256,7 @@ paths:
           description: Version checking
           required: true
         - in: header
-          name: api_key
+          name: authorization
           description: ''
           required: true
           type: string
@@ -277,7 +277,7 @@ paths:
           description: Schedule Id of Appointment
           required: true
         - in: header
-          name: api_key
+          name: authorization
           description: ''
           required: true
           type: string
@@ -308,7 +308,7 @@ paths:
           description: Version checking
           required: true
         - in: header
-          name: api_key
+          name: authorization
           description: ''
           required: true
           type: string
@@ -330,7 +330,7 @@ paths:
           description: Version checking
           required: true
         - in: header
-          name: api_key
+          name: authorization
           description: ''
           required: true
           type: string
@@ -351,7 +351,7 @@ paths:
           description: Version checking
           required: true
         - in: header
-          name: api_key
+          name: authorization
           description: ''
           required: true
           type: string
@@ -372,7 +372,7 @@ paths:
           description: Version checking
           required: true
         - in: header
-          name: api_key
+          name: authorization
           description: ''
           required: true
           type: string
@@ -393,7 +393,7 @@ paths:
           description: Version checking
           required: true
         - in: header
-          name: api_key
+          name: authorization
           description: ''
           required: true
           type: string
@@ -414,7 +414,7 @@ paths:
           description: Version checking
           required: true
         - in: header
-          name: api_key
+          name: authorization
           description: ''
           required: true
           type: string
@@ -431,7 +431,7 @@ paths:
           description: Version checking
           required: true
         - in: header
-          name: api_key
+          name: authorization
           description: ''
           required: true
           type: string

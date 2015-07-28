@@ -33,7 +33,7 @@ paths:
           description: Version
         
         - in: header
-          name: api_key
+          name: authorization
           description: ""
           required: true
           type: string
@@ -66,7 +66,7 @@ paths:
           description: Version
         
         - in: header
-          name: api_key
+          name: authorization
           description: ""
           required: true
           type: string
@@ -93,7 +93,7 @@ paths:
           description: Version
         
         - in: header
-          name: api_key
+          name: authorization
           description: ""
           required: true
           type: string
@@ -113,7 +113,7 @@ paths:
           description: Version
         
         - in: header
-          name: api_key
+          name: authorization
           description: ""
           required: true
           type: string
@@ -139,7 +139,7 @@ paths:
           description: Version
         
         - in: header
-          name: api_key
+          name: authorization
           description: ""
           required: true
           type: string
@@ -170,7 +170,7 @@ paths:
           description: Version
         
         - in: header
-          name: api_key
+          name: authorization
           description: ""
           required: true
           type: string
@@ -198,7 +198,7 @@ paths:
           description: Version
         
         - in: header
-          name: api_key
+          name: authorization
           description: ""
           required: true
           type: string
@@ -219,7 +219,7 @@ paths:
           description: Version
         
         - in: header
-          name: api_key
+          name: authorization
           description: ""
           required: true
           type: string
@@ -250,7 +250,7 @@ paths:
           description: Version
         
         - in: header
-          name: api_key
+          name: authorization
           description: ""
           required: true
           type: string
@@ -280,7 +280,7 @@ paths:
           description: Version
           
         - in: header
-          name: api_key
+          name: authorization
           description: ""
           required: true
           type: string
@@ -307,7 +307,7 @@ paths:
           description: Version
         
         - in: header
-          name: api_key
+          name: authorization
           description: ""
           required: true
           type: string
@@ -333,7 +333,7 @@ paths:
           description: Version
           
         - in: header
-          name: api_key
+          name: authorization
           description: ""
           required: true
           type: string
@@ -359,7 +359,7 @@ paths:
           description: Version
         
         - in: header
-          name: api_key
+          name: authorization
           description: ""
           required: true
           type: string
@@ -389,7 +389,7 @@ paths:
           description: Version
         
         - in: header
-          name: api_key
+          name: authorization
           description: ""
           required: true
           type: string
@@ -419,7 +419,7 @@ paths:
           description: Version
         
         - in: header
-          name: api_key
+          name: authorization
           description: ""
           required: true
           type: string
@@ -442,7 +442,7 @@ paths:
           description: Version
         
         - in: header
-          name: api_key
+          name: authorization
           description: ""
           required: true
           type: string
@@ -469,7 +469,7 @@ paths:
           required: true
         
         - in: header
-          name: api_key
+          name: authorization
           description: ""
           required: true
           type: string
@@ -498,7 +498,7 @@ paths:
           description: Version
         
         - in: header
-          name: api_key
+          name: authorization
           description: ""
           required: true
           type: string
@@ -526,7 +526,7 @@ paths:
           description: CloudId
         
         - in: header
-          name: api_key
+          name: authorization
           description: ""
           required: true
           type: string
@@ -554,7 +554,7 @@ paths:
           description: Version
         
         - in: header
-          name: api_key
+          name: authorization
           description: ""
           required: true
           type: string
@@ -584,7 +584,7 @@ paths:
           description: Version
         
         - in: header
-          name: api_key
+          name: authorization
           description: ""
           required: true
           type: string
@@ -614,7 +614,7 @@ paths:
           description: Version
         
         - in: header
-          name: api_key
+          name: authorization
           description: ""
           required: true
           type: string
@@ -641,7 +641,7 @@ paths:
           description: Version
         
         - in: header
-          name: api_key
+          name: authorization
           description: ""
           required: true
           type: string
@@ -661,7 +661,7 @@ paths:
           description: Version
         
         - in: header
-          name: api_key
+          name: authorization
           description: ""
           required: true
           type: string
@@ -683,7 +683,7 @@ paths:
            $ref: '#/definitions/IP'
         
         - in: header
-          name: api_key
+          name: authorization
           description: ""
           required: true
           type: string

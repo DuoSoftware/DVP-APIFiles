@@ -31,7 +31,7 @@
                     },
                     {
                         "in": "header",
-                        "name": "api_key",
+                        "name": "authorization",
                         "description": "",
                         "required": true,
                         "type": "string"
@@ -64,7 +64,7 @@
                     },
                     {
                         "in": "header",
-                        "name": "api_key",
+                        "name": "authorization",
                         "description": "",
                         "required": true,
                         "type": "string"
@@ -103,7 +103,7 @@
                     },
                     {
                         "in": "header",
-                        "name": "api_key",
+                        "name": "authorization",
                         "description": "",
                         "required": true,
                         "type": "string"
@@ -142,7 +142,7 @@
                     },
                     {
                         "in": "header",
-                        "name": "api_key",
+                        "name": "authorization",
                         "description": "",
                         "required": true,
                         "type": "string"
@@ -174,7 +174,7 @@
                     },
                     {
                         "in": "header",
-                        "name": "api_key",
+                        "name": "authorization",
                         "description": "",
                         "required": true,
                         "type": "string"
@@ -213,7 +213,7 @@
                     },
                     {
                         "in": "header",
-                        "name": "api_key",
+                        "name": "authorization",
                         "description": "",
                         "required": true,
                         "type": "string"
@@ -253,7 +253,7 @@
                     },
                     {
                         "in": "header",
-                        "name": "api_key",
+                        "name": "authorization",
                         "description": "",
                         "required": true,
                         "type": "string"
@@ -285,7 +285,7 @@
                     },
                     {
                         "in": "header",
-                        "name": "api_key",
+                        "name": "authorization",
                         "description": "",
                         "required": true,
                         "type": "string"
@@ -317,7 +317,7 @@
                     },
                     {
                         "in": "header",
-                        "name": "api_key",
+                        "name": "authorization",
                         "description": "",
                         "required": true,
                         "type": "string"
@@ -349,7 +349,7 @@
                     },
                     {
                         "in": "header",
-                        "name": "api_key",
+                        "name": "authorization",
                         "description": "",
                         "required": true,
                         "type": "string"
