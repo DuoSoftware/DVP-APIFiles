@@ -8,7 +8,7 @@
     "schemes": [
         "http"
     ],
-    "host": "phonenumbertrunkservice.104.131.17.220.xip.io,",
+    "host": "phonenumbertrunkservice.104.131.17.220.xip.io",
     "basePath": "/DVP/API",
     "paths": {
         "/{hostVersion}/PhoneNumberTrunkApi/TrunkNumber": {

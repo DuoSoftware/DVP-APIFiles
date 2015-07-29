@@ -10,7 +10,7 @@ info:
 schemes:
   - http
   
-host: clusterconfig.104.131.17.220.xip.io,
+host: clusterconfig.104.131.17.220.xip.io
 basePath: /DVP/API
 
 paths:

@@ -10,7 +10,7 @@ info:
 schemes:
   - http
   
-host: systemregistry.104.131.17.220.xip.io,
+host: systemregistry.104.131.17.220.xip.io
 basePath: /DVP/API
 paths:
   /{version}/SystemRegistry/Template:

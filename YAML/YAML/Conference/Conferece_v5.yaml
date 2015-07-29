@@ -10,7 +10,7 @@ info:
 schemes:
   - http
   
-host: conferenceapi.104.131.17.220.xip.io,
+host: conferenceapi.104.131.17.220.xip.io
 basePath: /DVP/API
 
 paths:
