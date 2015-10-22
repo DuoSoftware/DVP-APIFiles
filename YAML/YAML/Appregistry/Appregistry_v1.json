@@ -8,7 +8,7 @@
     "schemes": [
         "http"
     ],
-    "host": "appregistry.104.131.17.220.xip.io",
+    "host": "appregistry"
     "basePath": "/DVP/API",
     "paths": {
         "/{version}/APPRegistry/Developer": {
