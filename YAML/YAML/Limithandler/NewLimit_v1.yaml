@@ -11,7 +11,7 @@ info:
     render back everything.
 schemes:
   - http
-host: limithandler.104.131.17.220.xip.io
+
 basePath: /DVP/API
 paths:
   '/{version}/LimitAPI/Schedule/Appointment':
