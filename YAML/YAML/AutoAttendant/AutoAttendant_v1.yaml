@@ -274,6 +274,7 @@ paths:
           type: string
           description: Version checking
           required: true
+          
         - in: header
           name: Authorization
           description: ''
@@ -303,18 +304,25 @@ paths:
           type: string
           description: Version checking
           required: true
+          
         - in: header
           name: Authorization
           description: ''
           required: true
           type: string
+          
+        - name: New Action Record
+          in: body
+          description: Record
+          schema:
+            $ref: '#/definitions/Actions'
       responses:
         '200':
           description: Action updated
-          
   
           
 definitions:
+
   AutoAttendant:
     properties:
       Name:
@@ -339,6 +347,16 @@ definitions:
         type: integer
       Tenant:
         type: integer
+        
+  Actions:
+    properties:
+      Name:
+        type: string
+      Action:
+        type: string
+      Data:
+        type: string
+      
       
         
  

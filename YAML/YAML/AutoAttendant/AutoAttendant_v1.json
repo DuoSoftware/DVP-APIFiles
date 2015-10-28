@@ -393,6 +393,14 @@
                         "description": "",
                         "required": true,
                         "type": "string"
+                    },
+                    {
+                        "name": "New Action Record",
+                        "in": "body",
+                        "description": "Record",
+                        "schema": {
+                            "$ref": "#/definitions/Actions"
+                        }
                     }
                 ],
                 "responses": {
@@ -438,6 +446,19 @@
                 },
                 "Tenant": {
                     "type": "integer"
+                }
+            }
+        },
+        "Actions": {
+            "properties": {
+                "Name": {
+                    "type": "string"
+                },
+                "Action": {
+                    "type": "string"
+                },
+                "Data": {
+                    "type": "string"
                 }
             }
         }
