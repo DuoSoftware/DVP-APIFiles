@@ -1,0 +1,445 @@
+{
+    "swagger": "2.0",
+    "info": {
+        "version": "1.0.0",
+        "title": "Echo",
+        "description": "#### Echos back every URL, method, parameter and header\nFeel free to make a path or an operation and use **Try Operation** to test it. The echo server will\nrender back everything.\n"
+    },
+    "schemes": [
+        "http"
+    ],
+    "host": "autoattendant.104.131.67.21.xip.io",
+    "basePath": "/DVP/API",
+    "paths": {
+        "/{version}/AuttoAttendant": {
+            "post": {
+                "parameters": [
+                    {
+                        "name": "New Campaign Record",
+                        "in": "body",
+                        "description": "Record",
+                        "schema": {
+                            "$ref": "#/definitions/AutoAttendant"
+                        }
+                    },
+                    {
+                        "name": "version",
+                        "in": "path",
+                        "type": "string",
+                        "description": "Version checking",
+                        "required": true
+                    },
+                    {
+                        "in": "header",
+                        "name": "Authorization",
+                        "description": "",
+                        "required": true,
+                        "type": "string"
+                    }
+                ],
+                "responses": {
+                    "200": {
+                        "description": "New record Added"
+                    }
+                }
+            },
+            "get": {
+                "parameters": [
+                    {
+                        "name": "version",
+                        "in": "path",
+                        "type": "string",
+                        "description": "Version checking",
+                        "required": true
+                    },
+                    {
+                        "in": "header",
+                        "name": "Authorization",
+                        "description": "",
+                        "required": true,
+                        "type": "string"
+                    }
+                ],
+                "responses": {
+                    "200": {
+                        "description": "AutoAttendant details recieved"
+                    }
+                }
+            }
+        },
+        "/{version}/AuttoAttendant/{name}": {
+            "get": {
+                "parameters": [
+                    {
+                        "name": "name",
+                        "in": "path",
+                        "type": "string",
+                        "description": "AutoAttendant name",
+                        "required": true
+                    },
+                    {
+                        "name": "version",
+                        "in": "path",
+                        "type": "string",
+                        "description": "Version checking",
+                        "required": true
+                    },
+                    {
+                        "in": "header",
+                        "name": "Authorization",
+                        "description": "",
+                        "required": true,
+                        "type": "string"
+                    }
+                ],
+                "responses": {
+                    "200": {
+                        "description": "Campaign updated"
+                    }
+                }
+            },
+            "delete": {
+                "parameters": [
+                    {
+                        "name": "name",
+                        "in": "path",
+                        "type": "string",
+                        "description": "AutoAttendant name",
+                        "required": true
+                    },
+                    {
+                        "name": "version",
+                        "in": "path",
+                        "type": "string",
+                        "description": "Version checking",
+                        "required": true
+                    },
+                    {
+                        "in": "header",
+                        "name": "Authorization",
+                        "description": "",
+                        "required": true,
+                        "type": "string"
+                    }
+                ],
+                "responses": {
+                    "200": {
+                        "description": "Autoattendant deleted"
+                    }
+                }
+            }
+        },
+        "/{version}/AuttoAttendant/{name}/DayGreeting/{file}": {
+            "post": {
+                "parameters": [
+                    {
+                        "name": "name",
+                        "in": "path",
+                        "type": "string",
+                        "description": "AutoAttendant name",
+                        "required": true
+                    },
+                    {
+                        "name": "file",
+                        "in": "path",
+                        "type": "string",
+                        "description": "File name",
+                        "required": true
+                    },
+                    {
+                        "name": "version",
+                        "in": "path",
+                        "type": "string",
+                        "description": "Version checking",
+                        "required": true
+                    },
+                    {
+                        "in": "header",
+                        "name": "Authorization",
+                        "description": "",
+                        "required": true,
+                        "type": "string"
+                    }
+                ],
+                "responses": {
+                    "200": {
+                        "description": "Day greating file updated"
+                    }
+                }
+            }
+        },
+        "/{version}/AuttoAttendant/{name}/NightGreeting/{file}": {
+            "post": {
+                "parameters": [
+                    {
+                        "name": "name",
+                        "in": "path",
+                        "type": "string",
+                        "description": "AutoAttendant name",
+                        "required": true
+                    },
+                    {
+                        "name": "file",
+                        "in": "path",
+                        "type": "string",
+                        "description": "File name",
+                        "required": true
+                    },
+                    {
+                        "name": "version",
+                        "in": "path",
+                        "type": "string",
+                        "description": "Version checking",
+                        "required": true
+                    },
+                    {
+                        "in": "header",
+                        "name": "Authorization",
+                        "description": "",
+                        "required": true,
+                        "type": "string"
+                    }
+                ],
+                "responses": {
+                    "200": {
+                        "description": "NightGreeting file updated"
+                    }
+                }
+            }
+        },
+        "/{version}/AuttoAttendant/{name}/Menue/{file}": {
+            "post": {
+                "parameters": [
+                    {
+                        "name": "name",
+                        "in": "path",
+                        "type": "string",
+                        "description": "AutoAttendant name",
+                        "required": true
+                    },
+                    {
+                        "name": "file",
+                        "in": "path",
+                        "type": "string",
+                        "description": "File name",
+                        "required": true
+                    },
+                    {
+                        "name": "version",
+                        "in": "path",
+                        "type": "string",
+                        "description": "Version checking",
+                        "required": true
+                    },
+                    {
+                        "in": "header",
+                        "name": "Authorization",
+                        "description": "",
+                        "required": true,
+                        "type": "string"
+                    }
+                ],
+                "responses": {
+                    "200": {
+                        "description": "Menu file updated"
+                    }
+                }
+            }
+        },
+        "/{version}/AuttoAttendant/{name}/Loop/{count}": {
+            "post": {
+                "parameters": [
+                    {
+                        "name": "count",
+                        "in": "path",
+                        "type": "integer",
+                        "description": "Loop count",
+                        "required": true
+                    },
+                    {
+                        "name": "name",
+                        "in": "path",
+                        "type": "string",
+                        "description": "AutoAttendant name",
+                        "required": true
+                    },
+                    {
+                        "name": "version",
+                        "in": "path",
+                        "type": "string",
+                        "description": "Version checking",
+                        "required": true
+                    },
+                    {
+                        "in": "header",
+                        "name": "Authorization",
+                        "description": "",
+                        "required": true,
+                        "type": "string"
+                    }
+                ],
+                "responses": {
+                    "200": {
+                        "description": "Loop count updated"
+                    }
+                }
+            }
+        },
+        "/{version}/AuttoAttendant/{name}/Timeout/{sec}": {
+            "post": {
+                "parameters": [
+                    {
+                        "name": "sec",
+                        "in": "path",
+                        "type": "integer",
+                        "description": "Time out time",
+                        "required": true
+                    },
+                    {
+                        "name": "name",
+                        "in": "path",
+                        "type": "string",
+                        "description": "AutoAttendant name",
+                        "required": true
+                    },
+                    {
+                        "name": "version",
+                        "in": "path",
+                        "type": "string",
+                        "description": "Version checking",
+                        "required": true
+                    },
+                    {
+                        "in": "header",
+                        "name": "Authorization",
+                        "description": "",
+                        "required": true,
+                        "type": "string"
+                    }
+                ],
+                "responses": {
+                    "200": {
+                        "description": "New timeout updated"
+                    }
+                }
+            }
+        },
+        "/{version}/AuttoAttendant/{name}/EnableExtention/{status}": {
+            "post": {
+                "parameters": [
+                    {
+                        "name": "name",
+                        "in": "path",
+                        "type": "string",
+                        "description": "AutoAttendant name",
+                        "required": true
+                    },
+                    {
+                        "name": "status",
+                        "in": "path",
+                        "type": "string",
+                        "description": "AutoAttendant status to be set",
+                        "required": true
+                    },
+                    {
+                        "name": "version",
+                        "in": "path",
+                        "type": "string",
+                        "description": "Version checking",
+                        "required": true
+                    },
+                    {
+                        "in": "header",
+                        "name": "Authorization",
+                        "description": "",
+                        "required": true,
+                        "type": "string"
+                    }
+                ],
+                "responses": {
+                    "200": {
+                        "description": "Extention status updated"
+                    }
+                }
+            }
+        },
+        "/{version}/AuttoAttendant/{name}/Action/{on}": {
+            "post": {
+                "parameters": [
+                    {
+                        "name": "name",
+                        "in": "path",
+                        "type": "string",
+                        "description": "AutoAttendant name",
+                        "required": true
+                    },
+                    {
+                        "name": "on",
+                        "in": "path",
+                        "type": "string",
+                        "description": "Action to be set",
+                        "required": true
+                    },
+                    {
+                        "name": "version",
+                        "in": "path",
+                        "type": "string",
+                        "description": "Version checking",
+                        "required": true
+                    },
+                    {
+                        "in": "header",
+                        "name": "Authorization",
+                        "description": "",
+                        "required": true,
+                        "type": "string"
+                    }
+                ],
+                "responses": {
+                    "200": {
+                        "description": "Action updated"
+                    }
+                }
+            }
+        }
+    },
+    "definitions": {
+        "AutoAttendant": {
+            "properties": {
+                "Name": {
+                    "type": "string"
+                },
+                "Code": {
+                    "type": "string"
+                },
+                "Extention": {
+                    "type": "string"
+                },
+                "DayGreeting": {
+                    "type": "string"
+                },
+                "NightGreeting": {
+                    "type": "string"
+                },
+                "MenuSound": {
+                    "type": "string"
+                },
+                "Tries": {
+                    "type": "integer"
+                },
+                "TimeOut": {
+                    "type": "integer"
+                },
+                "EnableExtention": {
+                    "type": "boolean"
+                },
+                "Company": {
+                    "type": "integer"
+                },
+                "Tenant": {
+                    "type": "integer"
+                }
+            }
+        }
+    }
+}

@@ -1,0 +1,177 @@
+{
+    "swagger": "2.0",
+    "info": {
+        "version": "1.0.0",
+        "title": "Echo",
+        "description": "#### Echos back every URL, method, parameter and header\nFeel free to make a path or an operation and use **Try Operation** to test it. The echo server will\nrender back everything.\n"
+    },
+    "schemes": [
+        "http"
+    ],
+    "host": "queuemusic.104.131.67.21.xip.io",
+    "basePath": "/DVP/API",
+    "paths": {
+        "/{version}/QueueMusic/Profile": {
+            "post": {
+                "parameters": [
+                    {
+                        "name": "New Profile Record",
+                        "in": "body",
+                        "description": "Record",
+                        "schema": {
+                            "$ref": "#/definitions/Profile"
+                        }
+                    },
+                    {
+                        "name": "version",
+                        "in": "path",
+                        "type": "string",
+                        "description": "Version checking",
+                        "required": true
+                    },
+                    {
+                        "in": "header",
+                        "name": "Authorization",
+                        "description": "",
+                        "required": true,
+                        "type": "string"
+                    }
+                ],
+                "responses": {
+                    "200": {
+                        "description": "New Porfile added"
+                    }
+                }
+            }
+        },
+        "/{version}QueueMusic/Profile/{name}": {
+            "get": {
+                "parameters": [
+                    {
+                        "name": "name",
+                        "in": "path",
+                        "type": "string",
+                        "description": "Profile Name",
+                        "required": true
+                    },
+                    {
+                        "name": "version",
+                        "in": "path",
+                        "type": "string",
+                        "description": "Version checking",
+                        "required": true
+                    },
+                    {
+                        "in": "header",
+                        "name": "Authorization",
+                        "description": "",
+                        "required": true,
+                        "type": "string"
+                    }
+                ],
+                "responses": {
+                    "200": {
+                        "description": "Success"
+                    }
+                }
+            }
+        },
+        "/{version}/QueueMusic/Profile/{name}": {
+            "delete": {
+                "parameters": [
+                    {
+                        "name": "name",
+                        "in": "path",
+                        "type": "string",
+                        "description": "Profile Name",
+                        "required": true
+                    },
+                    {
+                        "name": "version",
+                        "in": "path",
+                        "type": "string",
+                        "description": "Version checking",
+                        "required": true
+                    },
+                    {
+                        "in": "header",
+                        "name": "Authorization",
+                        "description": "",
+                        "required": true,
+                        "type": "string"
+                    }
+                ],
+                "responses": {
+                    "200": {
+                        "description": "Deleted successfully"
+                    }
+                }
+            }
+        },
+        "/{version}/QueueMusic/plain/Profile/{name}": {
+            "get": {
+                "parameters": [
+                    {
+                        "name": "name",
+                        "in": "path",
+                        "type": "string",
+                        "description": "Profile Name",
+                        "required": true
+                    },
+                    {
+                        "name": "version",
+                        "in": "path",
+                        "type": "string",
+                        "description": "Version checking",
+                        "required": true
+                    },
+                    {
+                        "in": "header",
+                        "name": "Authorization",
+                        "description": "",
+                        "required": true,
+                        "type": "string"
+                    }
+                ],
+                "responses": {
+                    "200": {
+                        "description": "Status updated"
+                    }
+                }
+            }
+        }
+    },
+    "definitions": {
+        "Profile": {
+            "properties": {
+                "Name": {
+                    "type": "string"
+                },
+                "Description": {
+                    "type": "string"
+                },
+                "Class": {
+                    "type": "string"
+                },
+                "Type": {
+                    "type": "string"
+                },
+                "Category": {
+                    "type": "string"
+                },
+                "MOH": {
+                    "type": "string"
+                },
+                "Announcement": {
+                    "type": "string"
+                },
+                "FirstAnnounement": {
+                    "type": "string"
+                },
+                "AnnouncementTime": {
+                    "type": "integer"
+                }
+            }
+        }
+    }
+}
