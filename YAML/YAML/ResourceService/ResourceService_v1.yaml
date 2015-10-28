@@ -1,0 +1,904 @@
+swagger: '2.0'
+info:
+  version: 1.0.0
+  title: Echo
+  description: >
+    #### Echos back every URL, method, parameter and header
+
+    Feel free to make a path or an operation and use **Try Operation** to test
+    it. The echo server will
+
+    render back everything.
+schemes:
+  - http
+host: resourceservice.104.131.67.21.xip.io
+basePath: /DVP/API
+paths:
+  '/{version}/ResourceManager/AttributeHandler/Attribute':
+    post:
+      parameters:
+        - name: New Attribute Record
+          in: body
+          description: Record
+          schema:
+            $ref: '#/definitions/Attributes'
+        - name: version
+          in: path
+          type: string
+          description: Version checking
+          required: true
+        - in: header
+          name: authorization
+          description: ''
+          required: true
+          type: string
+      responses:
+        '200':
+          description: New Attribute Record Added
+    get:
+      parameters:
+        
+        - name: version
+          in: path
+          type: string
+          description: Version checking
+          required: true
+          
+        - in: header
+          name: authorization
+          description: ''
+          required: true
+          type: string
+      responses:
+        '200':
+          description:  Attribute Records recieved
+          
+  '/{version}/ResourceManager/AttributeHandler/Attribute/{AttributeId}':
+    put:
+      parameters:
+      
+        - name: AttributeId
+          in: path
+          type: integer
+          description: AttributeId
+          required: true
+          
+        - name: New Attribute Record
+          in: body
+          description: Record
+          schema:
+            $ref: '#/definitions/Attributes'
+            
+        - name: version
+          in: path
+          type: string
+          description: Version checking
+          required: true
+          
+        - in: header
+          name: authorization
+          description: ''
+          required: true
+          type: string
+      responses:
+        '200':
+          description: Attribute updated
+    delete:
+      parameters:
+        
+        - name: AttributeId
+          in: path
+          type: integer
+          description: AttributeId
+          required: true
+          
+        - name: version
+          in: path
+          type: string
+          description: Version checking
+          required: true
+          
+        - in: header
+          name: authorization
+          description: ''
+          required: true
+          type: string
+      responses:
+        '200':
+          description: Attribute deleted
+    get:
+      parameters:
+        
+        - name: AttributeId
+          in: path
+          type: integer
+          description: AttributeId
+          required: true
+          
+        - name: version
+          in: path
+          type: string
+          description: Version checking
+          required: true
+          
+        - in: header
+          name: authorization
+          description: ''
+          required: true
+          type: string
+      responses:
+        '200':
+          description: Attribute recieved
+          
+  '/{version}/ResourceManager/AttributeHandler/Attribute/{RowCount}/{PageNo}':
+
+    get:
+      parameters:
+        
+        - name: version
+          in: path
+          type: string
+          description: Version checking
+          required: true
+          
+        - name: RowCount
+          in: path
+          type: integer
+          description: RowCount
+          required: true
+          
+        - name: PageNo
+          in: path
+          type: integer
+          description: PageNo
+          required: true
+        - in: header
+          name: authorization
+          description: ''
+          required: true
+          
+          type: string
+      responses:
+        '200':
+          description: success
+   
+ 
+  '/{version}/ResourceManager/AttributeHandler/Attribute/{AttributeId}/Details':
+    get:
+      parameters:
+        - name: AttributeId
+          in: path
+          type: integer
+          description: AttributeId
+          required: true
+          
+        - name: version
+          in: path
+          type: string
+          description: Version checking
+          required: true
+          
+        - in: header
+          name: authorization
+          description: ''
+          required: true
+          type: string
+          
+      responses:
+        '200':
+          description: Attribute details recieved successfully
+          
+  '/{version}/ResourceManager/GroupHandler/Group':
+    post:
+      parameters:
+      
+        - name: Add new Group data
+          in: body
+          description: Record
+          schema:
+            $ref: '#/definitions/Group'
+
+          
+        - name: version
+          in: path
+          type: string
+          description: Version checking
+          required: true
+          
+        - in: header
+          name: authorization
+          description: ''
+          required: true
+          type: string
+      responses:
+        '200':
+          description: New ResGroup Added
+    get:
+      parameters:
+        - name: version
+          in: path
+          type: string
+          description: Version checking
+          required: true
+          
+        - in: header
+          name: authorization
+          description: ''
+          required: true
+          type: string
+      responses:
+        '200':
+          description: Res group details recievd
+          
+  '/{version}/ResourceManager/GroupHandler/Group/{GroupId}':
+    put:
+      parameters:
+        - name: version
+          in: path
+          type: string
+          description: Version checking
+          required: true
+       
+        - name: GroupId
+          in: path
+          type: integer
+          description: ResGroup ID
+          required: true
+          
+        - in: header
+          name: authorization
+          description: ''
+          required: true
+          type: string
+          
+      responses:
+        '200':
+          description: Res group details updated
+    delete:
+      parameters:
+        - name: version
+          in: path
+          type: string
+          description: Version checking
+          required: true
+       
+        - name: GroupId
+          in: path
+          type: integer
+          description: ResGroup ID
+          required: true
+          
+        - in: header
+          name: authorization
+          description: ''
+          required: true
+          type: string
+      responses:
+        '200':
+          description: Res group deleted
+    get:
+      parameters:
+        - name: version
+          in: path
+          type: string
+          description: Version checking
+          required: true
+       
+        - name: GroupId
+          in: path
+          type: integer
+          description: ResGroup ID
+          required: true
+          
+        - in: header
+          name: authorization
+          description: ''
+          required: true
+          type: string
+          
+      responses:
+        '200':
+          description: Res group details recieved
+          
+  '/{version}/ResourceManager/GroupHandler/Groups/{RowCount}/{PageNo}':
+    get:
+      parameters:
+        
+        - name: version
+          in: path
+          type: string
+          description: Version checking
+          required: true
+          
+        - name: RowCount
+          in: path
+          type: integer
+          description: RowCount
+          required: true
+          
+        - name: PageNo
+          in: path
+          type: integer
+          description: PageNo
+          required: true
+        - in: header
+          name: authorization
+          description: ''
+          required: true
+          
+          type: string
+      responses:
+        '200':
+          description: success
+          
+  '/{version}/ResourceManager/GroupHandler/Group/Attribute':
+    put:
+      parameters:
+        - name: New group attribute
+          in: body
+          description: Record
+          schema:
+            $ref: '#/definitions/GroupAttribute'
+        - name: version
+          in: path
+          type: string
+          description: Version checking
+          required: true
+        - in: header
+          name: authorization
+          description: ''
+          required: true
+          type: string
+        
+      responses:
+        '200':
+          description: adding New group attribute
+    
+    
+  '/{version}/ResourceManager/GroupHandler/Group/{GroupId}/Attribute':
+    put:
+      parameters:
+        - name: version
+          in: path
+          type: string
+          description: Version checking
+          required: true
+        - name: GroupId
+          in: path
+          type: string
+          description: GroupId
+          required: true
+          
+        - name: updategroup attribute
+          in: body
+          description: Record
+          schema:
+            $ref: '#/definitions/UpdtGroupAttribute'
+            
+        - in: header
+          name: authorization
+          description: ''
+          required: true
+          type: string
+      responses:
+        '200':
+          description: Group Attribute updated
+    get:
+      parameters:
+        - name: version
+          in: path
+          type: string
+          description: Version checking
+          required: true
+          
+        - name: GroupId
+          in: path
+          type: string
+          description: GroupId
+          required: true
+        
+        - in: header
+          name: authorization
+          description: ''
+          required: true
+          type: string
+      responses:
+        '200':
+          description: Group Attribute recieved
+          
+  '/{version}/ResourceManager/GroupHandler/Group/{GroupId}/Attribute/Details':
+    post:
+      parameters:
+        - name: GroupId
+          in: path
+          type: string
+          description: GroupId
+          required: true
+          
+        - in: header
+          name: authorization
+          description: ''
+          required: true
+          
+          type: string
+        - name: version
+          in: path
+          type: string
+          description: Version checking
+          required: true
+          
+      responses:
+        '200':
+          description:  group attribute details recieved
+ 
+  '/{version}/ResourceManager/GroupHandler/Group/{GroupId}/Attribute/{AttributeId}':
+    delete:
+      parameters:
+        - name: GroupId
+          in: path
+          type: string
+          description: GroupId
+          required: true
+        
+        - name: AttributeId
+          in: path
+          type: string
+          description: AttributeId
+          required: true
+          
+        - name: version
+          in: path
+          type: string
+          description: Version checking
+          required: true
+          
+        - in: header
+          name: authorization
+          description: ''
+          required: true
+          type: string
+      responses:
+        '200':
+          description: Group attribute deleted
+          
+  '/{version}/ResourceManager/ResourceHandler/Resource':
+    post:
+      parameters:
+        - name: New resource 
+          in: body
+          description: Record
+          schema:
+            $ref: '#/definitions/Resource'
+        - name: version
+          in: path
+          type: string
+          description: Version checking
+          required: true
+        - in: header
+          name: authorization
+          description: ''
+          required: true
+          type: string
+      responses:
+        '200':
+          description: New resource added
+    get:
+      parameters:
+        
+        - name: version
+          in: path
+          type: string
+          description: Version checking
+          required: true
+        - in: header
+          name: authorization
+          description: ''
+          required: true
+          type: string
+      responses:
+        '200':
+          description:  resource recieved
+   
+  
+  '/{version}/ResourceManager/ResourceHandler/Resource/{ResourceId}':
+    put:
+      parameters:
+      
+        - name: New resource 
+          in: body
+          description: Record
+          schema:
+            $ref: '#/definitions/Resource'
+            
+        - name: ResourceId
+          in: path
+          type: integer
+          description: Resource ID
+          required: true
+          
+        - name: version
+          in: path
+          type: string
+          description: Version checking
+          required: true
+          
+        - in: header
+          name: authorization
+          description: ''
+          required: true
+          type: string
+          
+      responses:
+        '200':
+          description: Resource updated
+     
+    delete:
+      parameters:
+      
+        - name: ResourceId
+          in: path
+          type: integer
+          description: Resource ID
+          required: true
+          
+        - name: version
+          in: path
+          type: string
+          description: Version checking
+          required: true
+          
+        - in: header
+          name: authorization
+          description: ''
+          required: true
+          type: string
+          
+      responses:
+        '200':
+          description: Resource deleted   
+    
+    get:
+      parameters:
+      
+        - name: ResourceId
+          in: path
+          type: integer
+          description: Resource ID
+          required: true
+          
+        - name: version
+          in: path
+          type: string
+          description: Version checking
+          required: true
+          
+        - in: header
+          name: authorization
+          description: ''
+          required: true
+          type: string
+          
+      responses:
+        '200':
+          description: Resource recieved     
+   
+   
+  
+  
+  '/{version}/ResourceManager/ResourceHandler/Resource/{ResourceId}/Tasks/{TaskId}':
+    put:
+      parameters:
+        - name: ResourceId
+          in: path
+          type: integer
+          description: ID of Resource
+          required: true
+          
+        - name: TaskId
+          in: path
+          type: integer
+          description: ID of Task
+          required: true
+          
+        - name: version
+          in: path
+          type: string
+          description: Version checking
+          required: true
+          
+        - in: header
+          name: authorization
+          description: ''
+          required: true
+          type: string
+        
+        - name: New Task 
+          in: body
+          description: Record
+          schema:
+            $ref: '#/definitions/Task'
+            
+      responses:
+        '200':
+          description: Task updated
+          
+          
+          
+          
+          
+  '/{version}//ResourceManager/ResourceHandler/Resource/{ResourceId}/Tasks':
+    get:
+      parameters:
+        - name: ResourceId
+          in: path
+          type: integer
+          description: ID of Resource
+          required: true
+          
+        - name: version
+          in: path
+          type: string
+          description: Version checking
+          required: true
+          
+        - in: header
+          name: authorization
+          description: ''
+          required: true
+          type: string
+      responses:
+        '200':
+          description: Task recieved
+          
+          
+  '/{version}/ResourceManager/TaskHandler/Task':
+    post:
+      parameters:
+      
+        - name: New Task 
+          in: body
+          description: Record
+          schema:
+            $ref: '#/definitions/Task'
+        
+        - name: version
+          in: path
+          type: string
+          description: Version checking
+          required: true
+          
+        - in: header
+          name: authorization
+          description: ''
+          required: true
+          type: string
+      responses:
+        '200':
+          description: Task added
+      
+    get:
+      parameters:
+      
+        
+        - name: version
+          in: path
+          type: string
+          description: Version checking
+          required: true
+          
+        - in: header
+          name: authorization
+          description: ''
+          required: true
+          type: string
+      responses:
+        '200':
+          description: Task recieved
+          
+          
+  '/{version}/ResourceManager/TaskHandler/Task/{TaskId}':
+    put:
+      parameters:
+        - name: TaskId
+          in: path
+          type: integer
+          description: ID of Task
+          required: true
+          
+        - name: update Task 
+          in: body
+          description: Record
+          schema:
+            $ref: '#/definitions/Task'
+          
+        - name: version
+          in: path
+          type: string
+          description: Version checking
+          required: true
+          
+        - in: header
+          name: authorization
+          description: ''
+          required: true
+          type: string
+      responses:
+        '200':
+          description: Task updated
+      
+    delete:
+      parameters:
+        - name: TaskId
+          in: path
+          type: integer
+          description: ID of Task
+          required: true
+      
+          
+        - name: version
+          in: path
+          type: string
+          description: Version checking
+          required: true
+          
+        - in: header
+          name: authorization
+          description: ''
+          required: true
+          type: string
+      responses:
+        '200':
+          description: Task deleted
+    
+    get:
+      parameters:
+        - name: TaskId
+          in: path
+          type: integer
+          description: ID of Task
+          required: true
+      
+          
+        - name: version
+          in: path
+          type: string
+          description: Version checking
+          required: true
+          
+        - in: header
+          name: authorization
+          description: ''
+          required: true
+          type: string
+      responses:
+        '200':
+          description: Task recieved
+          
+  
+  
+  '/{version}/ResourceManager/TaskHandler/Task/{TaskId}/Resources':
+    get:
+      parameters:
+        - name: TaskId
+          in: path
+          type: integer
+          description: ID of Task
+          required: true
+          
+        - name: version
+          in: path
+          type: string
+          description: Version checking
+          required: true
+          
+        - in: header
+          name: authorization
+          description: ''
+          required: true
+          type: string
+      responses:
+        '200':
+          description: Resources of task recieved
+          
+          
+          
+  '/{version}/ResourceManager/TaskInfoHandler/TaskInfo':
+    get:
+      parameters:
+       
+        - name: version
+          in: path
+          type: string
+          description: Version checking
+          required: true
+        - in: header
+          name: authorization
+          description: ''
+          required: true
+          type: string
+      responses:
+        '200':
+          description: All Taskinfo 
+          
+  
+
+definitions:
+  Attributes:
+    properties:
+      Attribute:
+        type: string
+      AttClass:
+        type: string
+      AttType:
+        type: string
+      AttCategory:
+        type: string
+      OtherData:
+        type: string
+        
+  Group:
+    properties:
+      GroupName:
+        type: string
+      GroupClass:
+        type: string
+      GroupType:
+        type: string
+      GroupCategory:
+        type: string
+      OtherData:
+        type: string
+      Percentage:
+        type: integer
+        
+  GroupAttribute:
+    properties:
+      AttributeIds:
+        type: integer
+      GroupName:
+        type: string
+      GroupClass:
+        type: string
+      GroupType:
+        type: string
+      GroupCategory:
+        type: string
+      OtherData:
+        type: string
+      Percentage:
+        type: integer
+  
+  UpdtGroupAttribute:
+    properties:
+      AttributeIds:
+        type: integer
+      OtherData:
+        type: string
+        
+  Resource:
+    properties:
+      ResClass:
+        type: string
+      ResType:
+        type: string
+      ResCategory:
+        type: string
+      ResourceName:
+        type: string
+      OtherData:
+        type: string
+ 
+  Task:
+    properties:
+      Concurrency:
+        type: string
+      RefInfo:
+        type: string
+      OtherData:
+        type: string
+      
+         
+  
+    
+ 
+ 
