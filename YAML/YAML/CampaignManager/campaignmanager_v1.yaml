@@ -1,0 +1,629 @@
+swagger: '2.0'
+info:
+  version: 1.0.0
+  title: Echo
+  description: >
+    #### Echos back every URL, method, parameter and header
+
+    Feel free to make a path or an operation and use **Try Operation** to test
+    it. The echo server will
+
+    render back everything.
+schemes:
+  - http
+host: systemregistry.104.131.17.220.xip.io
+basePath: /DVP/API
+paths:
+  
+  '/{version}/CampaignManager/Campaign':
+    post:
+      parameters:
+        - name: New Campaign Record
+          in: body
+          description: Record
+          schema:
+            $ref: '#/definitions/Campaign'
+        - name: version
+          in: path
+          type: string
+          description: Version checking
+          required: true
+        - in: header
+          name: Authorization
+          description: ''
+          required: true
+          type: string
+      responses:
+        '200':
+          description: New Campaign Added
+          
+  '/{version}/CampaignManager/Campaign/{CampaignId}':
+    put:
+      parameters:
+        - name: New Campaign Record
+          in: body
+          description: Record
+          schema:
+            $ref: '#/definitions/Campaign'
+            
+        - name: CampaignId
+          in: path
+          type: integer
+          description: ID of Campaign
+          required: true
+          
+        - name: version
+          in: path
+          type: string
+          description: Version checking
+          required: true
+        - in: header
+          name: Authorization
+          description: ''
+          required: true
+          type: string
+      responses:
+        '200':
+          description:  Campaign updated
+    delete:
+      parameters:
+        
+        - name: CampaignId
+          in: path
+          type: integer
+          description: ID of Campaign
+          required: true
+          
+        - name: version
+          in: path
+          type: string
+          description: Version checking
+          required: true
+        - in: header
+          name: Authorization
+          description: ''
+          required: true
+          type: string
+      responses:
+        '200':
+          description:  Campaign deleted  
+          
+    get:
+      parameters:
+        
+        - name: CampaignId
+          in: path
+          type: integer
+          description: ID of Campaign
+          required: true
+
+        - name: version
+          in: path
+          type: string
+          description: Version checking
+          required: true
+          
+        - in: header
+          name: Authorization
+          description: ''
+          required: true
+          type: string
+      responses:
+        '200':
+          description:  Campain details recieved
+    
+  '/{version}/CampaignManager/Campaign/{CampaignId}/State/{Command}':
+    put:
+      parameters:
+        
+        - name: CampaignId
+          in: path
+          type: integer
+          description: ID of Campaign
+          required: true
+          
+        - name: Command
+          in: path
+          type: string
+          description: State commands.((offline,ongoing,Pending)
+          required: true
+          
+        - name: version
+          in: path
+          type: string
+          description: Version checking
+          required: true
+        - in: header
+          name: Authorization
+          description: ''
+          required: true
+          type: string
+      responses:
+        '200':
+          description:  Status updated
+          
+  '/{version}/CampaignManager/Campaigns/{Count}':
+    get:
+      parameters:
+        
+        - name: Count
+          in: path
+          type: integer
+          description: Number of Campaigns needed
+          required: true
+
+        - name: version
+          in: path
+          type: string
+          description: Version checking
+          required: true
+          
+        - in: header
+          name: Authorization
+          description: ''
+          required: true
+          type: string
+      responses:
+        '200':
+          description:  Campaign details recieved
+  
+  '/{version}/CampaignManager/Campaigns/State/{Command}/{Count}':
+    get:
+      parameters:
+        
+        - name: Count
+          in: path
+          type: integer
+          description: Number of Campaigns needed
+          required: true
+        
+        - name: Command
+          in: path
+          type: string
+          description: State command.(offline,ongoing,Pending)
+          required: true
+
+        - name: version
+          in: path
+          type: string
+          description: Version checking
+          required: true
+          
+        - in: header
+          name: Authorization
+          description: ''
+          required: true
+          type: string
+      responses:
+        '200':
+          description:  Campain details recieved
+ 
+  '/{version}/CampaignManager/Campaign/{CampaignId}/AdditinalData':
+    post:
+      parameters:
+      
+        - name: CampaignId
+          in: path
+          type: string
+          description: ID of Campaign
+          required: true
+          
+        - name: New Campaign Record
+          in: body
+          description: Record
+          schema:
+            $ref: '#/definitions/AdditionalData'
+            
+        - name: version
+          in: path
+          type: string
+          description: Version checking
+          required: true
+          
+        - in: header
+          name: Authorization
+          description: ''
+          required: true
+          type: string
+      responses:
+        '200':
+          description: New Campaign Added  
+    
+    put:
+      parameters:
+      
+        - name: CampaignId
+          in: path
+          type: string
+          description: ID of Campaign
+          required: true
+          
+        - name: Update Campaign Record
+          in: body
+          description: Record
+          schema:
+            $ref: '#/definitions/UpdtAdditionalData'
+            
+        - name: version
+          in: path
+          type: string
+          description: Version checking
+          required: true
+          
+        - in: header
+          name: Authorization
+          description: ''
+          required: true
+          type: string
+      responses:
+        '200':
+          description: Campaign Updated Added 
+          
+    get:
+      parameters:
+        
+        - name: CampaignId
+          in: path
+          type: string
+          description: ID of Campaign
+          required: true
+        
+        - name: version
+          in: path
+          type: string
+          description: Version checking
+          required: true
+          
+        - in: header
+          name: Authorization
+          description: ''
+          required: true
+          type: string
+      responses:
+        '200':
+          description:  Campaign details recieved
+          
+          
+  '/{version}/CampaignManager/Campaign/AdditinalData/{AdditionalDataId}':
+    get:
+      parameters:
+        
+        - name: AdditionalDataId
+          in: path
+          type: integer
+          description: AdditionalData's ID
+          required: true
+        
+        - name: version
+          in: path
+          type: string
+          description: Version checking
+          required: true
+          
+        - in: header
+          name: Authorization
+          description: ''
+          required: true
+          type: string
+      responses:
+        '200':
+          description:  Campaign Additional details recieved
+          
+  '/{version}/CampaignManager/Campaign/{CampaignId}/AdditinalData/{DataClass}/{DataType}/{DataCategory}':
+    get:
+      parameters:
+        
+        - name: CampaignId
+          in: path
+          type: integer
+          description: campaign's ID
+          required: true
+        
+        - name: DataType
+          in: path
+          type: integer
+          description: Additional datatype
+          required: true
+        
+        - name: DataClass
+          in: path
+          type: integer
+          description: Additional class
+          required: true
+        
+        - name: DataCategory
+          in: path
+          type: integer
+          description: Additional DataCategory
+          required: true
+        
+        - name: version
+          in: path
+          type: string
+          description: Version checking
+          required: true
+          
+        - in: header
+          name: Authorization
+          description: ''
+          required: true
+          type: string
+      responses:
+        '200':
+          description:  Campaign Additional details recieved
+          
+ 
+  '/{version}/CampaignManager/Campaign/{CampaignId}/Operations':
+    post:
+      parameters:
+ 
+        - name: CampaignId
+          in: path
+          type: integer
+          description: campaign's ID
+          required: true
+ 
+        - name: New Campaign configuration
+          in: body
+          description: Record
+          schema:
+            $ref: '#/definitions/Operations'
+            
+        - name: version
+          in: path
+          type: string
+          description: Version checking
+          required: true
+          
+        - in: header
+          name: Authorization
+          description: ''
+          required: true
+          type: string
+      responses:
+        '200':
+          description: New operation added to campaign 
+          
+  '/{version}/CampaignManager/Campaign/{CampaignId}/Operations/{Command}':
+    put:
+      parameters:
+ 
+        - name: CampaignId
+          in: path
+          type: integer
+          description: campaign's ID
+          required: true
+        
+        - name: Command
+          in: path
+          type: string
+          description: operation command
+          required: true
+
+        - name: version
+          in: path
+          type: string
+          description: Version checking
+          required: true
+          
+        - in: header
+          name: Authorization
+          description: ''
+          required: true
+          type: string
+      responses:
+        '200':
+          description: operation updated of campaign 
+          
+  '/{version}/CampaignManager/Campaign/{CampaignId}/Operations/State/{DialerId}/{CampaignState}':
+    get:
+      parameters:
+ 
+        - name: CampaignId
+          in: path
+          type: integer
+          description: campaign ID
+          required: true
+          
+        - name: DialerId
+          in: path
+          type: integer
+          description: ID of Dialer
+          required: true
+        
+        - name: CampaignState
+          in: path
+          type: string
+          description: campaign's state
+          required: true
+
+        - name: version
+          in: path
+          type: string
+          description: Version checking
+          required: true
+          
+        - in: header
+          name: Authorization
+          description: ''
+          required: true
+          type: string
+      responses:
+        '200':
+          description: campaign data recieved 
+          
+  
+  '/{version}/CampaignManager/Campaigns/Operations/State/{Command}':
+    get:
+      parameters:
+ 
+        - name: Command
+          in: path
+          type: string
+          description: campaign's state
+          required: true
+
+        - name: version
+          in: path
+          type: string
+          description: Version checking
+          required: true
+          
+        - in: header
+          name: Authorization
+          description: ''
+          required: true
+          type: string
+      responses:
+        '200':
+          description: campaign data recieved 
+ 
+  '/{version}/CampaignManager/Campaign/{CampaignId}/Configuration':
+    post:
+      parameters:
+ 
+        - name: CampaignId
+          in: path
+          type: integer
+          description: campaign's ID
+          required: true
+ 
+        - name: New Campaign configuration
+          in: body
+          description: Record
+          schema:
+            $ref: '#/definitions/Configuration'
+            
+        - name: version
+          in: path
+          type: string
+          description: Version checking
+          required: true
+          
+        - in: header
+          name: Authorization
+          description: ''
+          required: true
+          type: string
+      responses:
+        '200':
+          description: New operation added to campaign
+          
+    put:
+      parameters:
+ 
+        - name: CampaignId
+          in: path
+          type: integer
+          description: campaign's ID
+          required: true
+ 
+        - name: New Campaign configuration
+          in: body
+          description: Record
+          schema:
+            $ref: '#/definitions/UpdtConfiguration'
+            
+        - name: version
+          in: path
+          type: string
+          description: Version checking
+          required: true
+          
+        - in: header
+          name: Authorization
+          description: ''
+          required: true
+          type: string
+      responses:
+        '200':
+          description: New operation added to campaign
+          
+          
+definitions:
+   Campaign:
+    properties:
+      CampaignName:
+        type: string
+      CampaignMode:
+        type: string
+      CampaignChannel:
+        type: string
+      DialoutMechanism:
+        type: string
+        enum:
+          - BLAST
+          - FIFO
+          - PREVIEW
+      tenantId:
+        type: integer
+      companyId:
+        type: integer
+      Class:
+        type: string
+      Type:
+        type: string
+      Category:
+        type: string
+      Extension:
+        type: string
+        
+   
+   AdditionalData:
+    properties:
+      DataClass:
+        type: string
+      DataType:
+        type: string
+      DataCategory:
+        type: string
+      AdditionalData:
+        type: string
+        
+   UpdtAdditionalData:
+    properties:
+      AdditionalDataId:
+        type: integer
+      DataClass:
+        type: string
+      DataType:
+        type: string
+      DataCategory:
+        type: string
+      AdditionalData:
+        type: string
+        
+   Operations:
+    properties:
+      DialerId:
+        type: integer
+  
+   Configuration:
+    properties:
+      Caller:
+        type: string
+      AllowCallBack:
+        type: boolean
+      StartDate:
+        type: string
+      EndDate:
+        type: string
+        
+   UpdtConfiguration:
+    properties:
+      ConfigureId:
+        type: string
+      ChannelConcurrency:
+        type: integer
+      AllowCallBack:
+        type: boolean
+      Caller:
+        type: string
+      AllowCallBack:
+        type: boolean
+      StartDate:
+        type: string
+      EndDate:
+        type: string
+      
+      
