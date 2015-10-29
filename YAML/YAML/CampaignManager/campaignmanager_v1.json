@@ -293,44 +293,6 @@
                     }
                 }
             },
-            "put": {
-                "parameters": [
-                    {
-                        "name": "CampaignId",
-                        "in": "path",
-                        "type": "string",
-                        "description": "ID of Campaign",
-                        "required": true
-                    },
-                    {
-                        "name": "Update Campaign Record",
-                        "in": "body",
-                        "description": "Record",
-                        "schema": {
-                            "$ref": "#/definitions/UpdtAdditionalData"
-                        }
-                    },
-                    {
-                        "name": "version",
-                        "in": "path",
-                        "type": "string",
-                        "description": "Version checking",
-                        "required": true
-                    },
-                    {
-                        "in": "header",
-                        "name": "Authorization",
-                        "description": "",
-                        "required": true,
-                        "type": "string"
-                    }
-                ],
-                "responses": {
-                    "200": {
-                        "description": "Campaign Updated Added"
-                    }
-                }
-            },
             "get": {
                 "parameters": [
                     {
@@ -358,6 +320,53 @@
                 "responses": {
                     "200": {
                         "description": "Campaign details recieved"
+                    }
+                }
+            }
+        },
+        "/{version}/CampaignManager/Campaign/{CampaignId}/AdditinalData/{AdditionalDataId}": {
+            "put": {
+                "parameters": [
+                    {
+                        "name": "CampaignId",
+                        "in": "path",
+                        "type": "string",
+                        "description": "ID of Campaign",
+                        "required": true
+                    },
+                    {
+                        "name": "AdditionalDataId",
+                        "in": "path",
+                        "type": "string",
+                        "description": "AdditionalDataId",
+                        "required": true
+                    },
+                    {
+                        "name": "New Campaign Record",
+                        "in": "body",
+                        "description": "Record",
+                        "schema": {
+                            "$ref": "#/definitions/AdditionalData"
+                        }
+                    },
+                    {
+                        "name": "version",
+                        "in": "path",
+                        "type": "string",
+                        "description": "Version checking",
+                        "required": true
+                    },
+                    {
+                        "in": "header",
+                        "name": "Authorization",
+                        "description": "",
+                        "required": true,
+                        "type": "string"
+                    }
+                ],
+                "responses": {
+                    "200": {
+                        "description": "Additional data updated"
                     }
                 }
             }
@@ -447,7 +456,7 @@
                 }
             }
         },
-        "/{version}/CampaignManager/Campaign/{CampaignId}/Operations": {
+        "/{version}/CampaignManager/Campaign/{CampaignId}/Operations/{DialerId}": {
             "post": {
                 "parameters": [
                     {
@@ -455,6 +464,13 @@
                         "in": "path",
                         "type": "integer",
                         "description": "campaign's ID",
+                        "required": true
+                    },
+                    {
+                        "name": "DialerId",
+                        "in": "path",
+                        "type": "integer",
+                        "description": "DialerId",
                         "required": true
                     },
                     {
@@ -485,9 +501,7 @@
                         "description": "New operation added to campaign"
                     }
                 }
-            }
-        },
-        "/{version}/CampaignManager/Campaign/{CampaignId}/Operations/{Command}": {
+            },
             "put": {
                 "parameters": [
                     {
@@ -498,10 +512,10 @@
                         "required": true
                     },
                     {
-                        "name": "Command",
+                        "name": "DialerId",
                         "in": "path",
                         "type": "string",
-                        "description": "operation command",
+                        "description": "put command here",
                         "required": true
                     },
                     {
@@ -642,7 +656,9 @@
                         "description": "New operation added to campaign"
                     }
                 }
-            },
+            }
+        },
+        "/{version}/CampaignManager/Campaign/{CampaignId}/Configuration/{ConfigureId}": {
             "put": {
                 "parameters": [
                     {
@@ -653,11 +669,18 @@
                         "required": true
                     },
                     {
+                        "name": "ConfigureId",
+                        "in": "path",
+                        "type": "integer",
+                        "description": "ConfigureId",
+                        "required": true
+                    },
+                    {
                         "name": "New Campaign configuration",
                         "in": "body",
                         "description": "Record",
                         "schema": {
-                            "$ref": "#/definitions/UpdtConfiguration"
+                            "$ref": "#/definitions/Configuration"
                         }
                     },
                     {
@@ -678,6 +701,534 @@
                 "responses": {
                     "200": {
                         "description": "New operation added to campaign"
+                    }
+                }
+            }
+        },
+        "/{version}/CampaignManager/Campaign/Configuration/{ConfigureId}": {
+            "delete": {
+                "parameters": [
+                    {
+                        "name": "ConfigureId",
+                        "in": "path",
+                        "type": "integer",
+                        "description": "ConfigureId",
+                        "required": true
+                    },
+                    {
+                        "name": "version",
+                        "in": "path",
+                        "type": "string",
+                        "description": "Version checking",
+                        "required": true
+                    },
+                    {
+                        "in": "header",
+                        "name": "Authorization",
+                        "description": "",
+                        "required": true,
+                        "type": "string"
+                    }
+                ],
+                "responses": {
+                    "200": {
+                        "description": "Configuration deleted"
+                    }
+                }
+            }
+        },
+        "/{version}/CampaignManager/Campaign/Configuration/Configs": {
+            "get": {
+                "parameters": [
+                    {
+                        "name": "version",
+                        "in": "path",
+                        "type": "string",
+                        "description": "Version checking",
+                        "required": true
+                    },
+                    {
+                        "in": "header",
+                        "name": "Authorization",
+                        "description": "",
+                        "required": true,
+                        "type": "string"
+                    }
+                ],
+                "responses": {
+                    "200": {
+                        "description": "Configuration deleted"
+                    }
+                }
+            }
+        },
+        "/{version}/CampaignManager/Campaign/Configuration/Configs/{ConfigureId}": {
+            "get": {
+                "parameters": [
+                    {
+                        "name": "ConfigureId",
+                        "in": "path",
+                        "type": "integer",
+                        "description": "ConfigureId",
+                        "required": true
+                    },
+                    {
+                        "name": "version",
+                        "in": "path",
+                        "type": "string",
+                        "description": "Version checking",
+                        "required": true
+                    },
+                    {
+                        "in": "header",
+                        "name": "Authorization",
+                        "description": "",
+                        "required": true,
+                        "type": "string"
+                    }
+                ],
+                "responses": {
+                    "200": {
+                        "description": "Configuration recieved"
+                    }
+                }
+            }
+        },
+        "/{version}/CampaignManager/Campaign/Configuration/{ConfigureId}/all": {
+            "get": {
+                "parameters": [
+                    {
+                        "name": "ConfigureId",
+                        "in": "path",
+                        "type": "integer",
+                        "description": "ConfigureId",
+                        "required": true
+                    },
+                    {
+                        "name": "version",
+                        "in": "path",
+                        "type": "string",
+                        "description": "Version checking",
+                        "required": true
+                    },
+                    {
+                        "in": "header",
+                        "name": "Authorization",
+                        "description": "",
+                        "required": true,
+                        "type": "string"
+                    }
+                ],
+                "responses": {
+                    "200": {
+                        "description": "All details of Configuration recieved"
+                    }
+                }
+            }
+        },
+        "/{version}/CampaignManager/Campaign/{CampaignId}/Configurations": {
+            "get": {
+                "parameters": [
+                    {
+                        "name": "CampaignId",
+                        "in": "path",
+                        "type": "integer",
+                        "description": "Campaign ID",
+                        "required": true
+                    },
+                    {
+                        "name": "version",
+                        "in": "path",
+                        "type": "string",
+                        "description": "Version checking",
+                        "required": true
+                    },
+                    {
+                        "in": "header",
+                        "name": "Authorization",
+                        "description": "",
+                        "required": true,
+                        "type": "string"
+                    }
+                ],
+                "responses": {
+                    "200": {
+                        "description": "All details of campaign Configuration recieved"
+                    }
+                }
+            }
+        },
+        "/{version}/CampaignManager/Campaign/Configuration/{ConfigureId}/Callback": {
+            "post": {
+                "parameters": [
+                    {
+                        "name": "ConfigureId",
+                        "in": "path",
+                        "type": "integer",
+                        "description": "ConfigureId",
+                        "required": true
+                    },
+                    {
+                        "name": "version",
+                        "in": "path",
+                        "type": "string",
+                        "description": "Version checking",
+                        "required": true
+                    },
+                    {
+                        "in": "header",
+                        "name": "Authorization",
+                        "description": "",
+                        "required": true,
+                        "type": "string"
+                    },
+                    {
+                        "name": "Callback updation",
+                        "in": "body",
+                        "description": "Record",
+                        "schema": {
+                            "$ref": "#/definitions/Callback"
+                        }
+                    }
+                ],
+                "responses": {
+                    "200": {
+                        "description": "Callback details added"
+                    }
+                }
+            }
+        },
+        "/{version}/CampaignManager/Campaign/Configuration/{ConfigureId}/Callback/{CallBackConfId}": {
+            "put": {
+                "parameters": [
+                    {
+                        "name": "ConfigureId",
+                        "in": "path",
+                        "type": "integer",
+                        "description": "ConfigureId",
+                        "required": true
+                    },
+                    {
+                        "name": "CallBackConfId",
+                        "in": "path",
+                        "type": "integer",
+                        "description": "CallBackConfId",
+                        "required": true
+                    },
+                    {
+                        "name": "version",
+                        "in": "path",
+                        "type": "string",
+                        "description": "Version checking",
+                        "required": true
+                    },
+                    {
+                        "in": "header",
+                        "name": "Authorization",
+                        "description": "",
+                        "required": true,
+                        "type": "string"
+                    },
+                    {
+                        "name": "Callback updation",
+                        "in": "body",
+                        "description": "Record",
+                        "schema": {
+                            "$ref": "#/definitions/Callback"
+                        }
+                    }
+                ],
+                "responses": {
+                    "200": {
+                        "description": "Callback details updated"
+                    }
+                }
+            }
+        },
+        "/{version}/CampaignManager/Campaign/Configuration/Callback": {
+            "get": {
+                "parameters": [
+                    {
+                        "name": "version",
+                        "in": "path",
+                        "type": "string",
+                        "description": "Version checking",
+                        "required": true
+                    },
+                    {
+                        "in": "header",
+                        "name": "Authorization",
+                        "description": "",
+                        "required": true,
+                        "type": "string"
+                    }
+                ],
+                "responses": {
+                    "200": {
+                        "description": "config callback details recieved"
+                    }
+                }
+            }
+        },
+        "/{version}/CampaignManager/Campaign/Configuration/Callback/{CallBackConfId}": {
+            "get": {
+                "parameters": [
+                    {
+                        "name": "CallBackConfId",
+                        "in": "path",
+                        "type": "integer",
+                        "description": "CallBackConfId",
+                        "required": true
+                    },
+                    {
+                        "name": "version",
+                        "in": "path",
+                        "type": "string",
+                        "description": "Version checking",
+                        "required": true
+                    },
+                    {
+                        "in": "header",
+                        "name": "Authorization",
+                        "description": "",
+                        "required": true,
+                        "type": "string"
+                    }
+                ],
+                "responses": {
+                    "200": {
+                        "description": "Callback details recieved"
+                    }
+                }
+            }
+        },
+        "/{version}/CampaignManager/Campaign/Configuration/Reason": {
+            "post": {
+                "parameters": [
+                    {
+                        "name": "version",
+                        "in": "path",
+                        "type": "string",
+                        "description": "Version checking",
+                        "required": true
+                    },
+                    {
+                        "in": "header",
+                        "name": "Authorization",
+                        "description": "",
+                        "required": true,
+                        "type": "string"
+                    },
+                    {
+                        "name": "reason updation",
+                        "in": "body",
+                        "description": "Record",
+                        "schema": {
+                            "$ref": "#/definitions/Reason"
+                        }
+                    }
+                ],
+                "responses": {
+                    "200": {
+                        "description": "config reason added"
+                    }
+                }
+            }
+        },
+        "/{version}/CampaignManager/Campaign/Configuration/Reason/{ReasonId}": {
+            "delete": {
+                "parameters": [
+                    {
+                        "name": "ReasonId",
+                        "in": "path",
+                        "type": "integer",
+                        "description": "ReasonId",
+                        "required": true
+                    },
+                    {
+                        "name": "version",
+                        "in": "path",
+                        "type": "string",
+                        "description": "Version checking",
+                        "required": true
+                    },
+                    {
+                        "in": "header",
+                        "name": "Authorization",
+                        "description": "",
+                        "required": true,
+                        "type": "string"
+                    }
+                ],
+                "responses": {
+                    "200": {
+                        "description": "config reason deleted"
+                    }
+                }
+            },
+            "put": {
+                "parameters": [
+                    {
+                        "name": "ReasonId",
+                        "in": "path",
+                        "type": "integer",
+                        "description": "ReasonId",
+                        "required": true
+                    },
+                    {
+                        "name": "version",
+                        "in": "path",
+                        "type": "string",
+                        "description": "Version checking",
+                        "required": true
+                    },
+                    {
+                        "in": "header",
+                        "name": "Authorization",
+                        "description": "",
+                        "required": true,
+                        "type": "string"
+                    },
+                    {
+                        "name": "Callback updation",
+                        "in": "body",
+                        "description": "Record",
+                        "schema": {
+                            "$ref": "#/definitions/Reason"
+                        }
+                    }
+                ],
+                "responses": {
+                    "200": {
+                        "description": "Callback details updated"
+                    }
+                }
+            },
+            "get": {
+                "parameters": [
+                    {
+                        "name": "version",
+                        "in": "path",
+                        "type": "string",
+                        "description": "Version checking",
+                        "required": true
+                    },
+                    {
+                        "in": "header",
+                        "name": "Authorization",
+                        "description": "",
+                        "required": true,
+                        "type": "string"
+                    },
+                    {
+                        "name": "ReasonId",
+                        "in": "path",
+                        "type": "integer",
+                        "description": "ReasonId",
+                        "required": true
+                    }
+                ],
+                "responses": {
+                    "200": {
+                        "description": "config reasons recieved"
+                    }
+                }
+            }
+        },
+        "/{version}/CampaignManager/Campaign/Configuration/Reasons": {
+            "get": {
+                "parameters": [
+                    {
+                        "name": "version",
+                        "in": "path",
+                        "type": "string",
+                        "description": "Version checking",
+                        "required": true
+                    },
+                    {
+                        "in": "header",
+                        "name": "Authorization",
+                        "description": "",
+                        "required": true,
+                        "type": "string"
+                    }
+                ],
+                "responses": {
+                    "200": {
+                        "description": "config reasons recieved"
+                    }
+                }
+            }
+        },
+        "/{version}/CampaignManager/Campaign/Numbers": {
+            "post": {
+                "parameters": [
+                    {
+                        "name": "version",
+                        "in": "path",
+                        "type": "string",
+                        "description": "Version checking",
+                        "required": true
+                    },
+                    {
+                        "in": "header",
+                        "name": "Authorization",
+                        "description": "",
+                        "required": true,
+                        "type": "string"
+                    },
+                    {
+                        "name": "Callback updation",
+                        "in": "body",
+                        "description": "Record",
+                        "schema": {
+                            "$ref": "#/definitions/Numbers"
+                        }
+                    }
+                ],
+                "responses": {
+                    "200": {
+                        "description": "config reasons recieved"
+                    }
+                }
+            }
+        },
+        "/{version}/CampaignManager/Campaign/{CampaignId}/Numbers/Existing": {
+            "post": {
+                "parameters": [
+                    {
+                        "name": "CampaignId",
+                        "in": "path",
+                        "type": "integer",
+                        "description": "CampaignId",
+                        "required": true
+                    },
+                    {
+                        "name": "version",
+                        "in": "path",
+                        "type": "string",
+                        "description": "Version checking",
+                        "required": true
+                    },
+                    {
+                        "in": "header",
+                        "name": "Authorization",
+                        "description": "",
+                        "required": true,
+                        "type": "string"
+                    },
+                    {
+                        "name": "Callback updation",
+                        "in": "body",
+                        "description": "Record",
+                        "schema": {
+                            "$ref": "#/definitions/ExtNumber"
+                        }
+                    }
+                ],
+                "responses": {
+                    "200": {
+                        "description": "config reasons recieved"
                     }
                 }
             }
@@ -739,25 +1290,6 @@
                 }
             }
         },
-        "UpdtAdditionalData": {
-            "properties": {
-                "AdditionalDataId": {
-                    "type": "integer"
-                },
-                "DataClass": {
-                    "type": "string"
-                },
-                "DataType": {
-                    "type": "string"
-                },
-                "DataCategory": {
-                    "type": "string"
-                },
-                "AdditionalData": {
-                    "type": "string"
-                }
-            }
-        },
         "Operations": {
             "properties": {
                 "DialerId": {
@@ -778,27 +1310,54 @@
                 },
                 "EndDate": {
                     "type": "string"
-                }
-            }
-        },
-        "UpdtConfiguration": {
-            "properties": {
-                "ConfigureId": {
-                    "type": "string"
                 },
                 "ChannelConcurrency": {
                     "type": "integer"
+                }
+            }
+        },
+        "Callback": {
+            "properties": {
+                "MaxCallBackCount": {
+                    "type": "integer"
                 },
-                "AllowCallBack": {
-                    "type": "boolean"
+                "ReasonId": {
+                    "type": "integer"
                 },
-                "Caller": {
+                "CallbackInterval": {
+                    "type": "integer"
+                }
+            }
+        },
+        "Reason": {
+            "properties": {
+                "Reason": {
+                    "type": "string"
+                }
+            }
+        },
+        "Numbers": {
+            "properties": {
+                "Contacts": {
                     "type": "string"
                 },
-                "StartDate": {
+                "CampaignId": {
+                    "type": "integer"
+                },
+                "CamScheduleId": {
+                    "type": "integer"
+                },
+                "CategoryID": {
+                    "type": "integer"
+                }
+            }
+        },
+        "ExtNumber": {
+            "properties": {
+                "ContactIds": {
                     "type": "string"
                 },
-                "EndDate": {
+                "CamScheduleIds": {
                     "type": "string"
                 }
             }

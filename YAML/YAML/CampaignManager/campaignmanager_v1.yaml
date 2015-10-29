@@ -11,67 +11,85 @@ info:
     render back everything.
 schemes:
   - http
-host: systemregistry.104.131.17.220.xip.io
+host: resourceservice.104.131.67.21.xip.io
 basePath: /DVP/API
 paths:
-  
-  '/{version}/CampaignManager/Campaign':
+  '/{version}/ResourceManager/AttributeHandler/Attribute':
     post:
       parameters:
-        - name: New Campaign Record
+        - name: New Attribute Record
           in: body
           description: Record
           schema:
-            $ref: '#/definitions/Campaign'
+            $ref: '#/definitions/Attributes'
         - name: version
           in: path
           type: string
           description: Version checking
           required: true
         - in: header
-          name: Authorization
+          name: authorization
           description: ''
           required: true
           type: string
       responses:
         '200':
-          description: New Campaign Added
+          description: New Attribute Record Added
+    get:
+      parameters:
+        
+        - name: version
+          in: path
+          type: string
+          description: Version checking
+          required: true
           
-  '/{version}/CampaignManager/Campaign/{CampaignId}':
+        - in: header
+          name: authorization
+          description: ''
+          required: true
+          type: string
+      responses:
+        '200':
+          description:  Attribute Records recieved
+          
+  '/{version}/ResourceManager/AttributeHandler/Attribute/{AttributeId}':
     put:
       parameters:
-        - name: New Campaign Record
+      
+        - name: AttributeId
+          in: path
+          type: integer
+          description: AttributeId
+          required: true
+          
+        - name: New Attribute Record
           in: body
           description: Record
           schema:
-            $ref: '#/definitions/Campaign'
+            $ref: '#/definitions/Attributes'
             
-        - name: CampaignId
-          in: path
-          type: integer
-          description: ID of Campaign
-          required: true
-          
         - name: version
           in: path
           type: string
           description: Version checking
           required: true
+          
         - in: header
-          name: Authorization
+          name: authorization
           description: ''
           required: true
           type: string
       responses:
         '200':
-          description:  Campaign updated
+          description: Attribute updated
     delete:
       parameters:
         
-        - name: CampaignId
+        - name: AttributeId
           in: path
           type: integer
-          description: ID of Campaign
+          description: AttributeId
           required: true
           
         - name: version
@@ -79,551 +97,808 @@ paths:
           type: string
           description: Version checking
           required: true
+          
         - in: header
-          name: Authorization
+          name: authorization
           description: ''
           required: true
           type: string
       responses:
         '200':
-          description:  Campaign deleted  
-          
+          description: Attribute deleted
     get:
       parameters:
         
-        - name: CampaignId
+        - name: AttributeId
           in: path
           type: integer
-          description: ID of Campaign
+          description: AttributeId
           required: true
+          
+        - name: version
+          in: path
+          type: string
+          description: Version checking
+          required: true
+          
+        - in: header
+          name: authorization
+          description: ''
+          required: true
+          type: string
+      responses:
+        '200':
+          description: Attribute recieved
+          
+  '/{version}/ResourceManager/AttributeHandler/Attribute/{RowCount}/{PageNo}':
 
-        - name: version
-          in: path
-          type: string
-          description: Version checking
-          required: true
-          
-        - in: header
-          name: Authorization
-          description: ''
-          required: true
-          type: string
-      responses:
-        '200':
-          description:  Campain details recieved
-    
-  '/{version}/CampaignManager/Campaign/{CampaignId}/State/{Command}':
-    put:
-      parameters:
-        
-        - name: CampaignId
-          in: path
-          type: integer
-          description: ID of Campaign
-          required: true
-          
-        - name: Command
-          in: path
-          type: string
-          description: State commands.((offline,ongoing,Pending)
-          required: true
-          
-        - name: version
-          in: path
-          type: string
-          description: Version checking
-          required: true
-        - in: header
-          name: Authorization
-          description: ''
-          required: true
-          type: string
-      responses:
-        '200':
-          description:  Status updated
-          
-  '/{version}/CampaignManager/Campaigns/{Count}':
     get:
       parameters:
         
-        - name: Count
-          in: path
-          type: integer
-          description: Number of Campaigns needed
-          required: true
-
         - name: version
           in: path
           type: string
           description: Version checking
           required: true
           
-        - in: header
-          name: Authorization
-          description: ''
-          required: true
-          type: string
-      responses:
-        '200':
-          description:  Campaign details recieved
-  
-  '/{version}/CampaignManager/Campaigns/State/{Command}/{Count}':
-    get:
-      parameters:
-        
-        - name: Count
+        - name: RowCount
           in: path
           type: integer
-          description: Number of Campaigns needed
-          required: true
-        
-        - name: Command
-          in: path
-          type: string
-          description: State command.(offline,ongoing,Pending)
-          required: true
-
-        - name: version
-          in: path
-          type: string
-          description: Version checking
+          description: RowCount
           required: true
           
-        - in: header
-          name: Authorization
-          description: ''
-          required: true
-          type: string
-      responses:
-        '200':
-          description:  Campain details recieved
- 
-  '/{version}/CampaignManager/Campaign/{CampaignId}/AdditinalData':
-    post:
-      parameters:
-      
-        - name: CampaignId
-          in: path
-          type: string
-          description: ID of Campaign
-          required: true
-          
-        - name: New Campaign Record
-          in: body
-          description: Record
-          schema:
-            $ref: '#/definitions/AdditionalData'
-            
-        - name: version
-          in: path
-          type: string
-          description: Version checking
-          required: true
-          
-        - in: header
-          name: Authorization
-          description: ''
-          required: true
-          type: string
-      responses:
-        '200':
-          description: New Campaign Added  
-    
-    put:
-      parameters:
-      
-        - name: CampaignId
-          in: path
-          type: string
-          description: ID of Campaign
-          required: true
-          
-        - name: Update Campaign Record
-          in: body
-          description: Record
-          schema:
-            $ref: '#/definitions/UpdtAdditionalData'
-            
-        - name: version
-          in: path
-          type: string
-          description: Version checking
-          required: true
-          
-        - in: header
-          name: Authorization
-          description: ''
-          required: true
-          type: string
-      responses:
-        '200':
-          description: Campaign Updated Added 
-          
-    get:
-      parameters:
-        
-        - name: CampaignId
-          in: path
-          type: string
-          description: ID of Campaign
-          required: true
-        
-        - name: version
-          in: path
-          type: string
-          description: Version checking
-          required: true
-          
-        - in: header
-          name: Authorization
-          description: ''
-          required: true
-          type: string
-      responses:
-        '200':
-          description:  Campaign details recieved
-          
-          
-  '/{version}/CampaignManager/Campaign/AdditinalData/{AdditionalDataId}':
-    get:
-      parameters:
-        
-        - name: AdditionalDataId
+        - name: PageNo
           in: path
           type: integer
-          description: AdditionalData's ID
+          description: PageNo
           required: true
-        
-        - name: version
-          in: path
-          type: string
-          description: Version checking
-          required: true
-          
         - in: header
-          name: Authorization
+          name: authorization
           description: ''
           required: true
+          
           type: string
       responses:
         '200':
-          description:  Campaign Additional details recieved
-          
-  '/{version}/CampaignManager/Campaign/{CampaignId}/AdditinalData/{DataClass}/{DataType}/{DataCategory}':
-    get:
-      parameters:
-        
-        - name: CampaignId
-          in: path
-          type: integer
-          description: campaign's ID
-          required: true
-        
-        - name: DataType
-          in: path
-          type: integer
-          description: Additional datatype
-          required: true
-        
-        - name: DataClass
-          in: path
-          type: integer
-          description: Additional class
-          required: true
-        
-        - name: DataCategory
-          in: path
-          type: integer
-          description: Additional DataCategory
-          required: true
-        
-        - name: version
-          in: path
-          type: string
-          description: Version checking
-          required: true
-          
-        - in: header
-          name: Authorization
-          description: ''
-          required: true
-          type: string
-      responses:
-        '200':
-          description:  Campaign Additional details recieved
-          
- 
-  '/{version}/CampaignManager/Campaign/{CampaignId}/Operations':
-    post:
-      parameters:
- 
-        - name: CampaignId
-          in: path
-          type: integer
-          description: campaign's ID
-          required: true
- 
-        - name: New Campaign configuration
-          in: body
-          description: Record
-          schema:
-            $ref: '#/definitions/Operations'
-            
-        - name: version
-          in: path
-          type: string
-          description: Version checking
-          required: true
-          
-        - in: header
-          name: Authorization
-          description: ''
-          required: true
-          type: string
-      responses:
-        '200':
-          description: New operation added to campaign 
-          
-  '/{version}/CampaignManager/Campaign/{CampaignId}/Operations/{Command}':
-    put:
-      parameters:
- 
-        - name: CampaignId
-          in: path
-          type: integer
-          description: campaign's ID
-          required: true
-        
-        - name: Command
-          in: path
-          type: string
-          description: operation command
-          required: true
-
-        - name: version
-          in: path
-          type: string
-          description: Version checking
-          required: true
-          
-        - in: header
-          name: Authorization
-          description: ''
-          required: true
-          type: string
-      responses:
-        '200':
-          description: operation updated of campaign 
-          
-  '/{version}/CampaignManager/Campaign/{CampaignId}/Operations/State/{DialerId}/{CampaignState}':
-    get:
-      parameters:
- 
-        - name: CampaignId
-          in: path
-          type: integer
-          description: campaign ID
-          required: true
-          
-        - name: DialerId
-          in: path
-          type: integer
-          description: ID of Dialer
-          required: true
-        
-        - name: CampaignState
-          in: path
-          type: string
-          description: campaign's state
-          required: true
-
-        - name: version
-          in: path
-          type: string
-          description: Version checking
-          required: true
-          
-        - in: header
-          name: Authorization
-          description: ''
-          required: true
-          type: string
-      responses:
-        '200':
-          description: campaign data recieved 
-          
-  
-  '/{version}/CampaignManager/Campaigns/Operations/State/{Command}':
-    get:
-      parameters:
- 
-        - name: Command
-          in: path
-          type: string
-          description: campaign's state
-          required: true
-
-        - name: version
-          in: path
-          type: string
-          description: Version checking
-          required: true
-          
-        - in: header
-          name: Authorization
-          description: ''
-          required: true
-          type: string
-      responses:
-        '200':
-          description: campaign data recieved 
- 
-  '/{version}/CampaignManager/Campaign/{CampaignId}/Configuration':
-    post:
-      parameters:
- 
-        - name: CampaignId
-          in: path
-          type: integer
-          description: campaign's ID
-          required: true
- 
-        - name: New Campaign configuration
-          in: body
-          description: Record
-          schema:
-            $ref: '#/definitions/Configuration'
-            
-        - name: version
-          in: path
-          type: string
-          description: Version checking
-          required: true
-          
-        - in: header
-          name: Authorization
-          description: ''
-          required: true
-          type: string
-      responses:
-        '200':
-          description: New operation added to campaign
-          
-    put:
-      parameters:
- 
-        - name: CampaignId
-          in: path
-          type: integer
-          description: campaign's ID
-          required: true
- 
-        - name: New Campaign configuration
-          in: body
-          description: Record
-          schema:
-            $ref: '#/definitions/UpdtConfiguration'
-            
-        - name: version
-          in: path
-          type: string
-          description: Version checking
-          required: true
-          
-        - in: header
-          name: Authorization
-          description: ''
-          required: true
-          type: string
-      responses:
-        '200':
-          description: New operation added to campaign
-          
-          
-definitions:
-   Campaign:
-    properties:
-      CampaignName:
-        type: string
-      CampaignMode:
-        type: string
-      CampaignChannel:
-        type: string
-      DialoutMechanism:
-        type: string
-        enum:
-          - BLAST
-          - FIFO
-          - PREVIEW
-      tenantId:
-        type: integer
-      companyId:
-        type: integer
-      Class:
-        type: string
-      Type:
-        type: string
-      Category:
-        type: string
-      Extension:
-        type: string
-        
+          description: success
    
-   AdditionalData:
+ 
+  '/{version}/ResourceManager/AttributeHandler/Attribute/{AttributeId}/Details':
+    get:
+      parameters:
+        - name: AttributeId
+          in: path
+          type: integer
+          description: AttributeId
+          required: true
+          
+        - name: version
+          in: path
+          type: string
+          description: Version checking
+          required: true
+          
+        - in: header
+          name: authorization
+          description: ''
+          required: true
+          type: string
+          
+      responses:
+        '200':
+          description: Attribute details recieved successfully
+          
+  '/{version}/ResourceManager/GroupHandler/Group':
+    post:
+      parameters:
+      
+        - name: Add new Group data
+          in: body
+          description: Record
+          schema:
+            $ref: '#/definitions/Group'
+
+          
+        - name: version
+          in: path
+          type: string
+          description: Version checking
+          required: true
+          
+        - in: header
+          name: authorization
+          description: ''
+          required: true
+          type: string
+      responses:
+        '200':
+          description: New ResGroup Added
+    get:
+      parameters:
+        - name: version
+          in: path
+          type: string
+          description: Version checking
+          required: true
+          
+        - in: header
+          name: authorization
+          description: ''
+          required: true
+          type: string
+      responses:
+        '200':
+          description: Res group details recievd
+          
+  '/{version}/ResourceManager/GroupHandler/Group/{GroupId}':
+    put:
+      parameters:
+        - name: version
+          in: path
+          type: string
+          description: Version checking
+          required: true
+       
+        - name: GroupId
+          in: path
+          type: integer
+          description: ResGroup ID
+          required: true
+          
+        - in: header
+          name: authorization
+          description: ''
+          required: true
+          type: string
+          
+      responses:
+        '200':
+          description: Res group details updated
+    delete:
+      parameters:
+        - name: version
+          in: path
+          type: string
+          description: Version checking
+          required: true
+       
+        - name: GroupId
+          in: path
+          type: integer
+          description: ResGroup ID
+          required: true
+          
+        - in: header
+          name: authorization
+          description: ''
+          required: true
+          type: string
+      responses:
+        '200':
+          description: Res group deleted
+    get:
+      parameters:
+        - name: version
+          in: path
+          type: string
+          description: Version checking
+          required: true
+       
+        - name: GroupId
+          in: path
+          type: integer
+          description: ResGroup ID
+          required: true
+          
+        - in: header
+          name: authorization
+          description: ''
+          required: true
+          type: string
+          
+      responses:
+        '200':
+          description: Res group details recieved
+          
+  '/{version}/ResourceManager/GroupHandler/Groups/{RowCount}/{PageNo}':
+    get:
+      parameters:
+        
+        - name: version
+          in: path
+          type: string
+          description: Version checking
+          required: true
+          
+        - name: RowCount
+          in: path
+          type: integer
+          description: RowCount
+          required: true
+          
+        - name: PageNo
+          in: path
+          type: integer
+          description: PageNo
+          required: true
+        - in: header
+          name: authorization
+          description: ''
+          required: true
+          
+          type: string
+      responses:
+        '200':
+          description: success
+          
+  '/{version}/ResourceManager/GroupHandler/Group/Attribute':
+    put:
+      parameters:
+        - name: New group attribute
+          in: body
+          description: Record
+          schema:
+            $ref: '#/definitions/GroupAttribute'
+        - name: version
+          in: path
+          type: string
+          description: Version checking
+          required: true
+        - in: header
+          name: authorization
+          description: ''
+          required: true
+          type: string
+        
+      responses:
+        '200':
+          description: adding New group attribute
+    
+    
+  '/{version}/ResourceManager/GroupHandler/Group/{GroupId}/Attribute':
+    put:
+      parameters:
+        - name: version
+          in: path
+          type: string
+          description: Version checking
+          required: true
+        - name: GroupId
+          in: path
+          type: string
+          description: GroupId
+          required: true
+          
+        - name: updategroup attribute
+          in: body
+          description: Record
+          schema:
+            $ref: '#/definitions/UpdtGroupAttribute'
+            
+        - in: header
+          name: authorization
+          description: ''
+          required: true
+          type: string
+      responses:
+        '200':
+          description: Group Attribute updated
+    get:
+      parameters:
+        - name: version
+          in: path
+          type: string
+          description: Version checking
+          required: true
+          
+        - name: GroupId
+          in: path
+          type: string
+          description: GroupId
+          required: true
+        
+        - in: header
+          name: authorization
+          description: ''
+          required: true
+          type: string
+      responses:
+        '200':
+          description: Group Attribute recieved
+          
+  '/{version}/ResourceManager/GroupHandler/Group/{GroupId}/Attribute/Details':
+    post:
+      parameters:
+        - name: GroupId
+          in: path
+          type: string
+          description: GroupId
+          required: true
+          
+        - in: header
+          name: authorization
+          description: ''
+          required: true
+          
+          type: string
+        - name: version
+          in: path
+          type: string
+          description: Version checking
+          required: true
+          
+      responses:
+        '200':
+          description:  group attribute details recieved
+ 
+  '/{version}/ResourceManager/GroupHandler/Group/{GroupId}/Attribute/{AttributeId}':
+    delete:
+      parameters:
+        - name: GroupId
+          in: path
+          type: string
+          description: GroupId
+          required: true
+        
+        - name: AttributeId
+          in: path
+          type: string
+          description: AttributeId
+          required: true
+          
+        - name: version
+          in: path
+          type: string
+          description: Version checking
+          required: true
+          
+        - in: header
+          name: authorization
+          description: ''
+          required: true
+          type: string
+      responses:
+        '200':
+          description: Group attribute deleted
+          
+  '/{version}/ResourceManager/ResourceHandler/Resource':
+    post:
+      parameters:
+        - name: New resource 
+          in: body
+          description: Record
+          schema:
+            $ref: '#/definitions/Resource'
+        - name: version
+          in: path
+          type: string
+          description: Version checking
+          required: true
+        - in: header
+          name: authorization
+          description: ''
+          required: true
+          type: string
+      responses:
+        '200':
+          description: New resource added
+    get:
+      parameters:
+        
+        - name: version
+          in: path
+          type: string
+          description: Version checking
+          required: true
+        - in: header
+          name: authorization
+          description: ''
+          required: true
+          type: string
+      responses:
+        '200':
+          description:  resource recieved
+   
+  
+  '/{version}/ResourceManager/ResourceHandler/Resource/{ResourceId}':
+    put:
+      parameters:
+      
+        - name: New resource 
+          in: body
+          description: Record
+          schema:
+            $ref: '#/definitions/Resource'
+            
+        - name: ResourceId
+          in: path
+          type: integer
+          description: Resource ID
+          required: true
+          
+        - name: version
+          in: path
+          type: string
+          description: Version checking
+          required: true
+          
+        - in: header
+          name: authorization
+          description: ''
+          required: true
+          type: string
+          
+      responses:
+        '200':
+          description: Resource updated
+     
+    delete:
+      parameters:
+      
+        - name: ResourceId
+          in: path
+          type: integer
+          description: Resource ID
+          required: true
+          
+        - name: version
+          in: path
+          type: string
+          description: Version checking
+          required: true
+          
+        - in: header
+          name: authorization
+          description: ''
+          required: true
+          type: string
+          
+      responses:
+        '200':
+          description: Resource deleted   
+    
+    get:
+      parameters:
+      
+        - name: ResourceId
+          in: path
+          type: integer
+          description: Resource ID
+          required: true
+          
+        - name: version
+          in: path
+          type: string
+          description: Version checking
+          required: true
+          
+        - in: header
+          name: authorization
+          description: ''
+          required: true
+          type: string
+          
+      responses:
+        '200':
+          description: Resource recieved     
+   
+   
+  
+  
+  '/{version}/ResourceManager/ResourceHandler/Resource/{ResourceId}/Tasks/{TaskId}':
+    put:
+      parameters:
+        - name: ResourceId
+          in: path
+          type: integer
+          description: ID of Resource
+          required: true
+          
+        - name: TaskId
+          in: path
+          type: integer
+          description: ID of Task
+          required: true
+          
+        - name: version
+          in: path
+          type: string
+          description: Version checking
+          required: true
+          
+        - in: header
+          name: authorization
+          description: ''
+          required: true
+          type: string
+        
+        - name: New Task 
+          in: body
+          description: Record
+          schema:
+            $ref: '#/definitions/Task'
+            
+      responses:
+        '200':
+          description: Task updated
+          
+          
+          
+          
+          
+  '/{version}//ResourceManager/ResourceHandler/Resource/{ResourceId}/Tasks':
+    get:
+      parameters:
+        - name: ResourceId
+          in: path
+          type: integer
+          description: ID of Resource
+          required: true
+          
+        - name: version
+          in: path
+          type: string
+          description: Version checking
+          required: true
+          
+        - in: header
+          name: authorization
+          description: ''
+          required: true
+          type: string
+      responses:
+        '200':
+          description: Task recieved
+          
+          
+  '/{version}/ResourceManager/TaskHandler/Task':
+    post:
+      parameters:
+      
+        - name: New Task 
+          in: body
+          description: Record
+          schema:
+            $ref: '#/definitions/Task'
+        
+        - name: version
+          in: path
+          type: string
+          description: Version checking
+          required: true
+          
+        - in: header
+          name: authorization
+          description: ''
+          required: true
+          type: string
+      responses:
+        '200':
+          description: Task added
+      
+    get:
+      parameters:
+      
+        
+        - name: version
+          in: path
+          type: string
+          description: Version checking
+          required: true
+          
+        - in: header
+          name: authorization
+          description: ''
+          required: true
+          type: string
+      responses:
+        '200':
+          description: Task recieved
+          
+          
+  '/{version}/ResourceManager/TaskHandler/Task/{TaskId}':
+    put:
+      parameters:
+        - name: TaskId
+          in: path
+          type: integer
+          description: ID of Task
+          required: true
+          
+        - name: update Task 
+          in: body
+          description: Record
+          schema:
+            $ref: '#/definitions/Task'
+          
+        - name: version
+          in: path
+          type: string
+          description: Version checking
+          required: true
+          
+        - in: header
+          name: authorization
+          description: ''
+          required: true
+          type: string
+      responses:
+        '200':
+          description: Task updated
+      
+    delete:
+      parameters:
+        - name: TaskId
+          in: path
+          type: integer
+          description: ID of Task
+          required: true
+      
+          
+        - name: version
+          in: path
+          type: string
+          description: Version checking
+          required: true
+          
+        - in: header
+          name: authorization
+          description: ''
+          required: true
+          type: string
+      responses:
+        '200':
+          description: Task deleted
+    
+    get:
+      parameters:
+        - name: TaskId
+          in: path
+          type: integer
+          description: ID of Task
+          required: true
+      
+          
+        - name: version
+          in: path
+          type: string
+          description: Version checking
+          required: true
+          
+        - in: header
+          name: authorization
+          description: ''
+          required: true
+          type: string
+      responses:
+        '200':
+          description: Task recieved
+          
+  
+  
+  '/{version}/ResourceManager/TaskHandler/Task/{TaskId}/Resources':
+    get:
+      parameters:
+        - name: TaskId
+          in: path
+          type: integer
+          description: ID of Task
+          required: true
+          
+        - name: version
+          in: path
+          type: string
+          description: Version checking
+          required: true
+          
+        - in: header
+          name: authorization
+          description: ''
+          required: true
+          type: string
+      responses:
+        '200':
+          description: Resources of task recieved
+          
+          
+          
+  '/{version}/ResourceManager/TaskInfoHandler/TaskInfo':
+    get:
+      parameters:
+       
+        - name: version
+          in: path
+          type: string
+          description: Version checking
+          required: true
+        - in: header
+          name: authorization
+          description: ''
+          required: true
+          type: string
+      responses:
+        '200':
+          description: All Taskinfo 
+          
+  
+
+definitions:
+  Attributes:
     properties:
-      DataClass:
+      Attribute:
         type: string
-      DataType:
+      AttClass:
         type: string
-      DataCategory:
+      AttType:
         type: string
-      AdditionalData:
+      AttCategory:
+        type: string
+      OtherData:
         type: string
         
-   UpdtAdditionalData:
+  Group:
     properties:
-      AdditionalDataId:
+      GroupName:
+        type: string
+      GroupClass:
+        type: string
+      GroupType:
+        type: string
+      GroupCategory:
+        type: string
+      OtherData:
+        type: string
+      Percentage:
         type: integer
-      DataClass:
-        type: string
-      DataType:
-        type: string
-      DataCategory:
-        type: string
-      AdditionalData:
-        type: string
         
-   Operations:
+  GroupAttribute:
     properties:
-      DialerId:
+      AttributeIds:
+        type: integer
+      GroupName:
+        type: string
+      GroupClass:
+        type: string
+      GroupType:
+        type: string
+      GroupCategory:
+        type: string
+      OtherData:
+        type: string
+      Percentage:
         type: integer
   
-   Configuration:
+  UpdtGroupAttribute:
     properties:
-      Caller:
-        type: string
-      AllowCallBack:
-        type: boolean
-      StartDate:
-        type: string
-      EndDate:
+      AttributeIds:
+        type: integer
+      OtherData:
         type: string
         
-   UpdtConfiguration:
+  Resource:
     properties:
-      ConfigureId:
+      ResClass:
         type: string
-      ChannelConcurrency:
-        type: integer
-      AllowCallBack:
-        type: boolean
-      Caller:
+      ResType:
         type: string
-      AllowCallBack:
-        type: boolean
-      StartDate:
+      ResCategory:
         type: string
-      EndDate:
+      ResourceName:
+        type: string
+      OtherData:
+        type: string
+ 
+  Task:
+    properties:
+      Concurrency:
+        type: string
+      RefInfo:
+        type: string
+      OtherData:
         type: string
       
-      
+         
+  
+    
+ 
+ 
