@@ -1090,7 +1090,7 @@
                         "type": "string"
                     },
                     {
-                        "name": "Callback updation",
+                        "name": "Reason data",
                         "in": "body",
                         "description": "Record",
                         "schema": {
@@ -1178,7 +1178,7 @@
                         "type": "string"
                     },
                     {
-                        "name": "Callback updation",
+                        "name": "Number data",
                         "in": "body",
                         "description": "Record",
                         "schema": {
@@ -1218,7 +1218,7 @@
                         "type": "string"
                     },
                     {
-                        "name": "Callback updation",
+                        "name": "Number data",
                         "in": "body",
                         "description": "Record",
                         "schema": {
@@ -1229,6 +1229,1070 @@
                 "responses": {
                     "200": {
                         "description": "config reasons recieved"
+                    }
+                }
+            }
+        },
+        "/{version}/CampaignManager/Campaign/Numbers/Category": {
+            "post": {
+                "parameters": [
+                    {
+                        "name": "version",
+                        "in": "path",
+                        "type": "string",
+                        "description": "Version checking",
+                        "required": true
+                    },
+                    {
+                        "in": "header",
+                        "name": "Authorization",
+                        "description": "",
+                        "required": true,
+                        "type": "string"
+                    },
+                    {
+                        "name": "catagory data",
+                        "in": "body",
+                        "description": "Record",
+                        "schema": {
+                            "$ref": "#/definitions/Catagory"
+                        }
+                    }
+                ],
+                "responses": {
+                    "200": {
+                        "description": "Number catagory added"
+                    }
+                }
+            }
+        },
+        "/{version}/CampaignManager/Campaign/{CampaignId}/Number": {
+            "put": {
+                "parameters": [
+                    {
+                        "name": "CampaignId",
+                        "in": "path",
+                        "type": "integer",
+                        "description": "CampaignId",
+                        "required": true
+                    },
+                    {
+                        "name": "version",
+                        "in": "path",
+                        "type": "string",
+                        "description": "Version checking",
+                        "required": true
+                    },
+                    {
+                        "in": "header",
+                        "name": "Authorization",
+                        "description": "",
+                        "required": true,
+                        "type": "string"
+                    },
+                    {
+                        "name": "Numbers",
+                        "in": "body",
+                        "description": "Record",
+                        "schema": {
+                            "$ref": "#/definitions/UpdtNumber"
+                        }
+                    }
+                ],
+                "responses": {
+                    "200": {
+                        "description": "Number updated"
+                    }
+                }
+            }
+        },
+        "/{version}/CampaignManager/Campaign/{CampaignId}/Numbers": {
+            "put": {
+                "parameters": [
+                    {
+                        "name": "CampaignId",
+                        "in": "path",
+                        "type": "integer",
+                        "description": "CampaignId",
+                        "required": true
+                    },
+                    {
+                        "name": "version",
+                        "in": "path",
+                        "type": "string",
+                        "description": "Version checking",
+                        "required": true
+                    },
+                    {
+                        "in": "header",
+                        "name": "Authorization",
+                        "description": "",
+                        "required": true,
+                        "type": "string"
+                    },
+                    {
+                        "name": "Numbers",
+                        "in": "body",
+                        "description": "Record",
+                        "schema": {
+                            "$ref": "#/definitions/UpdtNumbers"
+                        }
+                    }
+                ],
+                "responses": {
+                    "200": {
+                        "description": "Numbers updated"
+                    }
+                }
+            },
+            "delete": {
+                "parameters": [
+                    {
+                        "name": "CampaignId",
+                        "in": "path",
+                        "type": "integer",
+                        "description": "CampaignId",
+                        "required": true
+                    },
+                    {
+                        "name": "version",
+                        "in": "path",
+                        "type": "string",
+                        "description": "Version checking",
+                        "required": true
+                    },
+                    {
+                        "in": "header",
+                        "name": "Authorization",
+                        "description": "",
+                        "required": true,
+                        "type": "string"
+                    }
+                ],
+                "responses": {
+                    "200": {
+                        "description": "Numbers deleted"
+                    }
+                }
+            },
+            "get": {
+                "parameters": [
+                    {
+                        "name": "CampaignId",
+                        "in": "path",
+                        "type": "integer",
+                        "description": "CampaignId",
+                        "required": true
+                    },
+                    {
+                        "name": "version",
+                        "in": "path",
+                        "type": "string",
+                        "description": "Version checking",
+                        "required": true
+                    },
+                    {
+                        "in": "header",
+                        "name": "Authorization",
+                        "description": "",
+                        "required": true,
+                        "type": "string"
+                    }
+                ],
+                "responses": {
+                    "200": {
+                        "description": "Numbers received"
+                    }
+                }
+            }
+        },
+        "/{version}/CampaignManager/Campaign/Numbers/Category/{CategoryID}": {
+            "put": {
+                "parameters": [
+                    {
+                        "name": "CategoryID",
+                        "in": "path",
+                        "type": "integer",
+                        "description": "CategoryID",
+                        "required": true
+                    },
+                    {
+                        "name": "version",
+                        "in": "path",
+                        "type": "string",
+                        "description": "Version checking",
+                        "required": true
+                    },
+                    {
+                        "in": "header",
+                        "name": "Authorization",
+                        "description": "",
+                        "required": true,
+                        "type": "string"
+                    },
+                    {
+                        "name": "catagory data",
+                        "in": "body",
+                        "description": "Record",
+                        "schema": {
+                            "$ref": "#/definitions/Catagory"
+                        }
+                    }
+                ],
+                "responses": {
+                    "200": {
+                        "description": "catagory name updated"
+                    }
+                }
+            },
+            "get": {
+                "parameters": [
+                    {
+                        "name": "CategoryID",
+                        "in": "path",
+                        "type": "integer",
+                        "description": "CategoryID",
+                        "required": true
+                    },
+                    {
+                        "name": "version",
+                        "in": "path",
+                        "type": "string",
+                        "description": "Version checking",
+                        "required": true
+                    },
+                    {
+                        "in": "header",
+                        "name": "Authorization",
+                        "description": "",
+                        "required": true,
+                        "type": "string"
+                    }
+                ],
+                "responses": {
+                    "200": {
+                        "description": "catagory details received"
+                    }
+                }
+            }
+        },
+        "/{version}/CampaignManager/Campaign/Numbers/all": {
+            "get": {
+                "parameters": [
+                    {
+                        "name": "version",
+                        "in": "path",
+                        "type": "string",
+                        "description": "Version checking",
+                        "required": true
+                    },
+                    {
+                        "in": "header",
+                        "name": "Authorization",
+                        "description": "",
+                        "required": true,
+                        "type": "string"
+                    }
+                ],
+                "responses": {
+                    "200": {
+                        "description": "Numbers recieved"
+                    }
+                }
+            }
+        },
+        "/{version}/CampaignManager/Campaign/{CampaignId}/Numbers/{ScheduleId}/{RowCount}/{PageNo}": {
+            "get": {
+                "parameters": [
+                    {
+                        "name": "CampaignId",
+                        "in": "path",
+                        "type": "integer",
+                        "description": "CampaignId",
+                        "required": true
+                    },
+                    {
+                        "name": "ScheduleId",
+                        "in": "path",
+                        "type": "integer",
+                        "description": "ScheduleId",
+                        "required": true
+                    },
+                    {
+                        "name": "RowCount",
+                        "in": "path",
+                        "type": "integer",
+                        "description": "RowCount",
+                        "required": true
+                    },
+                    {
+                        "name": "PageNo",
+                        "in": "path",
+                        "type": "integer",
+                        "description": "PageNo",
+                        "required": true
+                    },
+                    {
+                        "name": "version",
+                        "in": "path",
+                        "type": "string",
+                        "description": "Version checking",
+                        "required": true
+                    },
+                    {
+                        "in": "header",
+                        "name": "Authorization",
+                        "description": "",
+                        "required": true,
+                        "type": "string"
+                    }
+                ],
+                "responses": {
+                    "200": {
+                        "description": "All Contact By CampaignId and ScheduleId recieved"
+                    }
+                }
+            }
+        },
+        "/{version}/CampaignManager/Campaign/Numbers/Categorys": {
+            "get": {
+                "parameters": [
+                    {
+                        "name": "version",
+                        "in": "path",
+                        "type": "string",
+                        "description": "Version checking",
+                        "required": true
+                    },
+                    {
+                        "in": "header",
+                        "name": "Authorization",
+                        "description": "",
+                        "required": true,
+                        "type": "string"
+                    }
+                ],
+                "responses": {
+                    "200": {
+                        "description": "Number catagorys receieved"
+                    }
+                }
+            }
+        },
+        "/{version}/CampaignManager/Campaign/{CampaignId}/Numbers/{contactId}}/{PageNo}/{RowCount}": {
+            "get": {
+                "parameters": [
+                    {
+                        "name": "CampaignId",
+                        "in": "path",
+                        "type": "integer",
+                        "description": "CampaignId",
+                        "required": true
+                    },
+                    {
+                        "name": "contactId",
+                        "in": "path",
+                        "type": "integer",
+                        "description": "contactId",
+                        "required": true
+                    },
+                    {
+                        "name": "RowCount",
+                        "in": "path",
+                        "type": "integer",
+                        "description": "RowCount",
+                        "required": true
+                    },
+                    {
+                        "name": "PageNo",
+                        "in": "path",
+                        "type": "integer",
+                        "description": "PageNo",
+                        "required": true
+                    },
+                    {
+                        "name": "version",
+                        "in": "path",
+                        "type": "string",
+                        "description": "Version checking",
+                        "required": true
+                    },
+                    {
+                        "in": "header",
+                        "name": "Authorization",
+                        "description": "",
+                        "required": true,
+                        "type": "string"
+                    }
+                ],
+                "responses": {
+                    "200": {
+                        "description": "Extra Data By ContactId recieved"
+                    }
+                }
+            }
+        },
+        "/{version}/CampaignManager/Campaign/Schedule": {
+            "post": {
+                "parameters": [
+                    {
+                        "name": "version",
+                        "in": "path",
+                        "type": "string",
+                        "description": "Version checking",
+                        "required": true
+                    },
+                    {
+                        "in": "header",
+                        "name": "Authorization",
+                        "description": "",
+                        "required": true,
+                        "type": "string"
+                    },
+                    {
+                        "name": "Schedule data",
+                        "in": "body",
+                        "description": "Record",
+                        "schema": {
+                            "$ref": "#/definitions/Schedule"
+                        }
+                    }
+                ],
+                "responses": {
+                    "200": {
+                        "description": "Schedule receieved"
+                    }
+                }
+            }
+        },
+        "/{version}/CampaignManager/Campaign/Schedule/{CamScheduleId}": {
+            "put": {
+                "parameters": [
+                    {
+                        "name": "CamScheduleId",
+                        "in": "path",
+                        "type": "integer",
+                        "description": "CamScheduleId",
+                        "required": true
+                    },
+                    {
+                        "name": "version",
+                        "in": "path",
+                        "type": "string",
+                        "description": "Version checking",
+                        "required": true
+                    },
+                    {
+                        "in": "header",
+                        "name": "Authorization",
+                        "description": "",
+                        "required": true,
+                        "type": "string"
+                    },
+                    {
+                        "name": "Schedule data",
+                        "in": "body",
+                        "description": "Record",
+                        "schema": {
+                            "$ref": "#/definitions/Schedule"
+                        }
+                    }
+                ],
+                "responses": {
+                    "200": {
+                        "description": "Schedule updated"
+                    }
+                }
+            },
+            "delete": {
+                "parameters": [
+                    {
+                        "name": "CamScheduleId",
+                        "in": "path",
+                        "type": "integer",
+                        "description": "CamScheduleId",
+                        "required": true
+                    },
+                    {
+                        "name": "version",
+                        "in": "path",
+                        "type": "string",
+                        "description": "Version checking",
+                        "required": true
+                    },
+                    {
+                        "in": "header",
+                        "name": "Authorization",
+                        "description": "",
+                        "required": true,
+                        "type": "string"
+                    }
+                ],
+                "responses": {
+                    "200": {
+                        "description": "Schedule deleted"
+                    }
+                }
+            },
+            "get": {
+                "parameters": [
+                    {
+                        "name": "CamScheduleId",
+                        "in": "path",
+                        "type": "integer",
+                        "description": "CamScheduleId",
+                        "required": true
+                    },
+                    {
+                        "name": "version",
+                        "in": "path",
+                        "type": "string",
+                        "description": "Version checking",
+                        "required": true
+                    },
+                    {
+                        "in": "header",
+                        "name": "Authorization",
+                        "description": "",
+                        "required": true,
+                        "type": "string"
+                    }
+                ],
+                "responses": {
+                    "200": {
+                        "description": "Schedule recieved"
+                    }
+                }
+            }
+        },
+        "/{version}/CampaignManager/Campaign/Schedules/all": {
+            "get": {
+                "parameters": [
+                    {
+                        "name": "version",
+                        "in": "path",
+                        "type": "string",
+                        "description": "Version checking",
+                        "required": true
+                    },
+                    {
+                        "in": "header",
+                        "name": "Authorization",
+                        "description": "",
+                        "required": true,
+                        "type": "string"
+                    }
+                ],
+                "responses": {
+                    "200": {
+                        "description": "Schedules receieved"
+                    }
+                }
+            }
+        },
+        "/{version}/CampaignManager/Campaign/{CampaignId}/Schedule": {
+            "get": {
+                "parameters": [
+                    {
+                        "name": "CampaignId",
+                        "in": "path",
+                        "type": "integer",
+                        "description": "CampaignId",
+                        "required": true
+                    },
+                    {
+                        "name": "version",
+                        "in": "path",
+                        "type": "string",
+                        "description": "Version checking",
+                        "required": true
+                    },
+                    {
+                        "in": "header",
+                        "name": "Authorization",
+                        "description": "",
+                        "required": true,
+                        "type": "string"
+                    }
+                ],
+                "responses": {
+                    "200": {
+                        "description": "Campaign's Schedule receieved"
+                    }
+                }
+            }
+        },
+        "/{version}/CampaignManager/Campaign/Schedule/ScheduleType/{Type}": {
+            "get": {
+                "parameters": [
+                    {
+                        "name": "Type",
+                        "in": "path",
+                        "type": "integer",
+                        "description": "Type",
+                        "required": true
+                    },
+                    {
+                        "name": "version",
+                        "in": "path",
+                        "type": "string",
+                        "description": "Version checking",
+                        "required": true
+                    },
+                    {
+                        "in": "header",
+                        "name": "Authorization",
+                        "description": "",
+                        "required": true,
+                        "type": "string"
+                    }
+                ],
+                "responses": {
+                    "200": {
+                        "description": "Schedules by type receieved"
+                    }
+                }
+            }
+        },
+        "/{version}/CampaignManager/Campaign/{CampaignId}/Schedule/{ScheduleType}": {
+            "get": {
+                "parameters": [
+                    {
+                        "name": "CampaignId",
+                        "in": "path",
+                        "type": "integer",
+                        "description": "CampaignId",
+                        "required": true
+                    },
+                    {
+                        "name": "ScheduleType",
+                        "in": "path",
+                        "type": "integer",
+                        "description": "ScheduleType",
+                        "required": true
+                    },
+                    {
+                        "name": "version",
+                        "in": "path",
+                        "type": "string",
+                        "description": "Version checking",
+                        "required": true
+                    },
+                    {
+                        "in": "header",
+                        "name": "Authorization",
+                        "description": "",
+                        "required": true,
+                        "type": "string"
+                    }
+                ],
+                "responses": {
+                    "200": {
+                        "description": "Schedule by Campaign and Schedule IDs receieved"
+                    }
+                }
+            }
+        },
+        "/{version}/CampaignManager/Campaign/Session": {
+            "post": {
+                "parameters": [
+                    {
+                        "name": "version",
+                        "in": "path",
+                        "type": "string",
+                        "description": "Version checking",
+                        "required": true
+                    },
+                    {
+                        "in": "header",
+                        "name": "Authorization",
+                        "description": "",
+                        "required": true,
+                        "type": "string"
+                    },
+                    {
+                        "name": "catagory data",
+                        "in": "body",
+                        "description": "Record",
+                        "schema": {
+                            "$ref": "#/definitions/Session"
+                        }
+                    }
+                ],
+                "responses": {
+                    "200": {
+                        "description": "Session added"
+                    }
+                }
+            }
+        },
+        "/{version}/CampaignManager/Campaign/Session/{DialoutId}": {
+            "put": {
+                "parameters": [
+                    {
+                        "name": "DialoutId",
+                        "in": "path",
+                        "type": "integer",
+                        "description": "DialoutId",
+                        "required": true
+                    },
+                    {
+                        "name": "version",
+                        "in": "path",
+                        "type": "string",
+                        "description": "Version checking",
+                        "required": true
+                    },
+                    {
+                        "in": "header",
+                        "name": "Authorization",
+                        "description": "",
+                        "required": true,
+                        "type": "string"
+                    },
+                    {
+                        "name": "catagory data",
+                        "in": "body",
+                        "description": "Record",
+                        "schema": {
+                            "$ref": "#/definitions/Session"
+                        }
+                    }
+                ],
+                "responses": {
+                    "200": {
+                        "description": "Session updated"
+                    }
+                }
+            },
+            "get": {
+                "parameters": [
+                    {
+                        "name": "DialoutId",
+                        "in": "path",
+                        "type": "integer",
+                        "description": "DialoutId",
+                        "required": true
+                    },
+                    {
+                        "name": "version",
+                        "in": "path",
+                        "type": "string",
+                        "description": "Version checking",
+                        "required": true
+                    },
+                    {
+                        "in": "header",
+                        "name": "Authorization",
+                        "description": "",
+                        "required": true,
+                        "type": "string"
+                    }
+                ],
+                "responses": {
+                    "200": {
+                        "description": "Session received"
+                    }
+                }
+            }
+        },
+        "/{version}/CampaignManager/Campaign/Session/all": {
+            "get": {
+                "parameters": [
+                    {
+                        "name": "version",
+                        "in": "path",
+                        "type": "string",
+                        "description": "Version checking",
+                        "required": true
+                    },
+                    {
+                        "in": "header",
+                        "name": "Authorization",
+                        "description": "",
+                        "required": true,
+                        "type": "string"
+                    }
+                ],
+                "responses": {
+                    "200": {
+                        "description": "Session data received"
+                    }
+                }
+            }
+        },
+        "/{version}/CampaignManager/Campaign/{CampaignId}/Callback": {
+            "post": {
+                "parameters": [
+                    {
+                        "name": "CampaignId",
+                        "in": "path",
+                        "type": "integer",
+                        "description": "CampaignId",
+                        "required": true
+                    },
+                    {
+                        "name": "version",
+                        "in": "path",
+                        "type": "string",
+                        "description": "Version checking",
+                        "required": true
+                    },
+                    {
+                        "in": "header",
+                        "name": "Authorization",
+                        "description": "",
+                        "required": true,
+                        "type": "string"
+                    },
+                    {
+                        "name": "catagory data",
+                        "in": "body",
+                        "description": "Record",
+                        "schema": {
+                            "$ref": "#/definitions/CampaignCallback"
+                        }
+                    }
+                ],
+                "responses": {
+                    "200": {
+                        "description": "Campaign callback added"
+                    }
+                }
+            },
+            "get": {
+                "parameters": [
+                    {
+                        "name": "CampaignId",
+                        "in": "path",
+                        "type": "integer",
+                        "description": "CampaignId",
+                        "required": true
+                    },
+                    {
+                        "name": "version",
+                        "in": "path",
+                        "type": "string",
+                        "description": "Version checking",
+                        "required": true
+                    },
+                    {
+                        "in": "header",
+                        "name": "Authorization",
+                        "description": "",
+                        "required": true,
+                        "type": "string"
+                    }
+                ],
+                "responses": {
+                    "200": {
+                        "description": "Campaign callback data recieved"
+                    }
+                }
+            }
+        },
+        "/{version}/CampaignManager/Campaign/{CampaignId}/Callback/{CallBackId}": {
+            "put": {
+                "parameters": [
+                    {
+                        "name": "CampaignId",
+                        "in": "path",
+                        "type": "integer",
+                        "description": "CampaignId",
+                        "required": true
+                    },
+                    {
+                        "name": "CallBackId",
+                        "in": "path",
+                        "type": "integer",
+                        "description": "CallBackId",
+                        "required": true
+                    },
+                    {
+                        "name": "version",
+                        "in": "path",
+                        "type": "string",
+                        "description": "Version checking",
+                        "required": true
+                    },
+                    {
+                        "in": "header",
+                        "name": "Authorization",
+                        "description": "",
+                        "required": true,
+                        "type": "string"
+                    },
+                    {
+                        "name": "catagory data",
+                        "in": "body",
+                        "description": "Record",
+                        "schema": {
+                            "$ref": "#/definitions/UpdtCampaignCallback"
+                        }
+                    }
+                ],
+                "responses": {
+                    "200": {
+                        "description": "Campaign callback updated"
+                    }
+                }
+            },
+            "delete": {
+                "parameters": [
+                    {
+                        "name": "CampaignId",
+                        "in": "path",
+                        "type": "integer",
+                        "description": "CampaignId",
+                        "required": true
+                    },
+                    {
+                        "name": "CallBackId",
+                        "in": "path",
+                        "type": "integer",
+                        "description": "CallBackId",
+                        "required": true
+                    },
+                    {
+                        "name": "version",
+                        "in": "path",
+                        "type": "string",
+                        "description": "Version checking",
+                        "required": true
+                    },
+                    {
+                        "in": "header",
+                        "name": "Authorization",
+                        "description": "",
+                        "required": true,
+                        "type": "string"
+                    }
+                ],
+                "responses": {
+                    "200": {
+                        "description": "Campaign callback deleted"
+                    }
+                }
+            },
+            "get": {
+                "parameters": [
+                    {
+                        "name": "CampaignId",
+                        "in": "path",
+                        "type": "integer",
+                        "description": "CampaignId",
+                        "required": true
+                    },
+                    {
+                        "name": "CallBackId",
+                        "in": "path",
+                        "type": "integer",
+                        "description": "CallBackId",
+                        "required": true
+                    },
+                    {
+                        "name": "version",
+                        "in": "path",
+                        "type": "string",
+                        "description": "Version checking",
+                        "required": true
+                    },
+                    {
+                        "in": "header",
+                        "name": "Authorization",
+                        "description": "",
+                        "required": true,
+                        "type": "string"
+                    }
+                ],
+                "responses": {
+                    "200": {
+                        "description": "Campaign callback recieved"
+                    }
+                }
+            }
+        },
+        "/{version}/CampaignManager/Campaign/{CampaignId}/Callbacks/Info": {
+            "get": {
+                "parameters": [
+                    {
+                        "name": "CampaignId",
+                        "in": "path",
+                        "type": "integer",
+                        "description": "CampaignId",
+                        "required": true
+                    },
+                    {
+                        "name": "version",
+                        "in": "path",
+                        "type": "string",
+                        "description": "Version checking",
+                        "required": true
+                    },
+                    {
+                        "in": "header",
+                        "name": "Authorization",
+                        "description": "",
+                        "required": true,
+                        "type": "string"
+                    }
+                ],
+                "responses": {
+                    "200": {
+                        "description": "Campaign callbacks info recieved"
+                    }
+                }
+            }
+        },
+        "/{version}/CampaignManager/Campaign/{CampaignId}/Callback/{CallbackClass}/{CallbackType}/{CallbackCategory}": {
+            "get": {
+                "parameters": [
+                    {
+                        "name": "CampaignId",
+                        "in": "path",
+                        "type": "integer",
+                        "description": "CampaignId",
+                        "required": true
+                    },
+                    {
+                        "name": "CallbackClass",
+                        "in": "path",
+                        "type": "string",
+                        "description": "CallbackClass",
+                        "required": true
+                    },
+                    {
+                        "name": "CallbackType",
+                        "in": "path",
+                        "type": "string",
+                        "description": "CallbackType",
+                        "required": true
+                    },
+                    {
+                        "name": "CallbackCategory",
+                        "in": "path",
+                        "type": "string",
+                        "description": "CallbackCategory",
+                        "required": true
+                    },
+                    {
+                        "name": "version",
+                        "in": "path",
+                        "type": "string",
+                        "description": "Version checking",
+                        "required": true
+                    },
+                    {
+                        "in": "header",
+                        "name": "Authorization",
+                        "description": "",
+                        "required": true,
+                        "type": "string"
+                    }
+                ],
+                "responses": {
+                    "200": {
+                        "description": "Campaign callback data by class, type, category"
                     }
                 }
             }
@@ -1359,6 +2423,100 @@
                 },
                 "CamScheduleIds": {
                     "type": "string"
+                }
+            }
+        },
+        "Catagory": {
+            "properties": {
+                "CategoryName": {
+                    "type": "string"
+                }
+            }
+        },
+        "UpdtNumber": {
+            "properties": {
+                "Contact": {
+                    "type": "string"
+                }
+            }
+        },
+        "UpdtNumbers": {
+            "properties": {
+                "Contacts": {
+                    "type": "string"
+                }
+            }
+        },
+        "Schedule": {
+            "properties": {
+                "CampaignId": {
+                    "type": "integer"
+                },
+                "ScheduleId": {
+                    "type": "integer"
+                },
+                "ScheduleType": {
+                    "type": "string"
+                }
+            }
+        },
+        "Session": {
+            "properties": {
+                "CampaignId": {
+                    "type": "integer"
+                },
+                "DialerId": {
+                    "type": "integer"
+                },
+                "DialerStatus": {
+                    "type": "string"
+                },
+                "Dialtime": {
+                    "type": "integer"
+                },
+                "Reason": {
+                    "type": "string"
+                },
+                "SessionId": {
+                    "type": "integer"
+                },
+                "TryCount": {
+                    "type": "integer"
+                }
+            }
+        },
+        "CampaignCallback": {
+            "properties": {
+                "ContactId": {
+                    "type": "integer"
+                },
+                "DialoutTime": {
+                    "type": "integer"
+                },
+                "CallBackCount": {
+                    "type": "integer"
+                },
+                "CallbackClass": {
+                    "type": "string"
+                },
+                "CallbackType": {
+                    "type": "string"
+                },
+                "CallbackCategory": {
+                    "type": "string"
+                }
+            }
+        },
+        "UpdtCampaignCallback": {
+            "properties": {
+                "ContactId": {
+                    "type": "integer"
+                },
+                "DialoutTime": {
+                    "type": "integer"
+                },
+                "CallBackCount": {
+                    "type": "integer"
                 }
             }
         }
