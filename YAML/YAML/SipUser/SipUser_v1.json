@@ -72,7 +72,7 @@
                 ],
                 "responses": {
                     "200": {
-                        "description": "New Schedule Record Added"
+                        "description": "New User Record Added"
                     }
                 }
             }
@@ -81,7 +81,7 @@
             "put": {
                 "parameters": [
                     {
-                        "name": "Update Schedule details",
+                        "name": "Update sipuser details",
                         "in": "body",
                         "description": "Update",
                         "schema": {
@@ -112,7 +112,7 @@
                 ],
                 "responses": {
                     "200": {
-                        "description": "New Mapping happens"
+                        "description": "Sipuser details updated"
                     }
                 }
             },
@@ -143,6 +143,70 @@
                 "responses": {
                     "200": {
                         "description": "Get user details succeeded"
+                    }
+                }
+            }
+        },
+        "/{version}/SipUser/Users": {
+            "get": {
+                "parameters": [
+                    {
+                        "name": "version",
+                        "in": "path",
+                        "type": "string",
+                        "description": "Version checking",
+                        "required": true
+                    },
+                    {
+                        "in": "header",
+                        "name": "authorization",
+                        "description": "",
+                        "required": true,
+                        "type": "string"
+                    }
+                ],
+                "responses": {
+                    "200": {
+                        "description": "All user records recieved"
+                    }
+                }
+            }
+        },
+        "/{version}/SipUser/User/{Username}/Status/{st}": {
+            "put": {
+                "parameters": [
+                    {
+                        "name": "version",
+                        "in": "path",
+                        "type": "string",
+                        "description": "Version checking",
+                        "required": true
+                    },
+                    {
+                        "name": "Username",
+                        "in": "path",
+                        "type": "string",
+                        "description": "UserName of UAC",
+                        "required": true
+                    },
+                    {
+                        "name": "st",
+                        "in": "path",
+                        "type": "string",
+                        "description": "Status of UAC",
+                        "required": true
+                    },
+                    {
+                        "in": "header",
+                        "name": "authorization",
+                        "description": "",
+                        "required": true,
+                        "type": "string"
+                    }
+                ],
+                "responses": {
+                    "200": {
+                        "description": "Ststus updation succeeded"
                     }
                 }
             }

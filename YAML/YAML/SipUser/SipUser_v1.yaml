@@ -55,11 +55,12 @@ paths:
           type: string
       responses:
         '200':
-          description: New Schedule Record Added
+          description: New User Record Added
+          
   '/{version}/SipUser/User/{Username}':
     put:
       parameters:
-        - name: Update Schedule details
+        - name: Update sipuser details
           in: body
           description: Update
           schema:
@@ -81,7 +82,7 @@ paths:
           type: string
       responses:
         '200':
-          description: New Mapping happens
+          description: Sipuser details updated
     get:
       parameters:
         - name: Username
@@ -102,6 +103,58 @@ paths:
       responses:
         '200':
           description: Get user details succeeded
+    
+    
+  '/{version}/SipUser/Users':
+    get:
+      parameters:
+        
+        - name: version
+          in: path
+          type: string
+          description: Version checking
+          required: true
+          
+        - in: header
+          name: authorization
+          description: ''
+          required: true
+          type: string
+      responses:
+        '200':
+          description: All user records recieved       
+          
+  '/{version}/SipUser/User/{Username}/Status/{st}':
+    put:
+      parameters:
+        
+        - name: version
+          in: path
+          type: string
+          description: Version checking
+          required: true
+          
+        - name: Username
+          in: path
+          type: string
+          description: UserName of UAC
+          required: true
+          
+        - name: st
+          in: path
+          type: string
+          description: Status of UAC
+          required: true
+          
+        - in: header
+          name: authorization
+          description: ''
+          required: true
+          type: string
+      responses:
+        '200':
+          description: Ststus updation succeeded
+          
   '/{version}/SipUser/Extension':
     post:
       parameters:
@@ -120,6 +173,7 @@ paths:
           description: ''
           required: true
           type: string
+          
       responses:
         '200':
           description: Updation succeeded
@@ -131,19 +185,16 @@ paths:
           type: string
           description: extension
           required: true
-          
         - name: st
           in: path
           description: Status
           type: boolean
           required: true
-          
         - name: version
           in: path
           type: string
           description: Version checking
           required: true
-          
         - in: header
           name: authorization
           description: ''
@@ -712,8 +763,7 @@ definitions:
       TransConferenceEnable:
         type: boolean
       TransGroupEnable:
-        type: boolean 
-        
+        type: boolean
   UpdtUAC:
     properties:
       Password:
@@ -729,9 +779,7 @@ definitions:
       TransConferenceEnable:
         type: boolean
       TransGroupEnable:
-        type: boolean 
-        
-        
+        type: boolean
   Extention:
     properties:
       Extension:
