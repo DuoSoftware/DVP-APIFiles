@@ -184,6 +184,8 @@ paths:
       responses:
         '200':
           description: New ResGroup Added
+          
+  '/{version}/ResourceManager/Groups':
     get:
       parameters:
         - name: version
@@ -420,7 +422,9 @@ paths:
           type: string
       responses:
         '200':
-          description: New resource added
+         description: New resource added
+         
+  '/{version}/ResourceManager/Resources':
     get:
       parameters:
         - name: version
@@ -575,6 +579,8 @@ paths:
       responses:
         '200':
           description: Task added
+          
+  '/{version}/ResourceManager/Task':        
     get:
       parameters:
         - name: version

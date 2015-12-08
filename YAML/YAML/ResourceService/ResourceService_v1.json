@@ -269,7 +269,9 @@
                         "description": "New ResGroup Added"
                     }
                 }
-            },
+            }
+        },
+        "/{version}/ResourceManager/Groups": {
             "get": {
                 "parameters": [
                     {
@@ -630,7 +632,9 @@
                         "description": "New resource added"
                     }
                 }
-            },
+            }
+        },
+        "/{version}/ResourceManager/Resources": {
             "get": {
                 "parameters": [
                     {
@@ -835,37 +839,6 @@
             }
         },
         "/{version}/ResourceManager/Task": {
-            "post": {
-                "parameters": [
-                    {
-                        "name": "New Task",
-                        "in": "body",
-                        "description": "Record",
-                        "schema": {
-                            "$ref": "#/definitions/Task"
-                        }
-                    },
-                    {
-                        "name": "version",
-                        "in": "path",
-                        "type": "string",
-                        "description": "Version checking",
-                        "required": true
-                    },
-                    {
-                        "in": "header",
-                        "name": "authorization",
-                        "description": "",
-                        "required": true,
-                        "type": "string"
-                    }
-                ],
-                "responses": {
-                    "200": {
-                        "description": "Task added"
-                    }
-                }
-            },
             "get": {
                 "parameters": [
                     {
