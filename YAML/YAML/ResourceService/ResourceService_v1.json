@@ -11,7 +11,7 @@
     "host": "resourceservice.104.131.67.21.xip.io",
     "basePath": "/DVP/API",
     "paths": {
-        "/{version}/ResourceManager/AttributeHandler/Attribute": {
+        "/{version}/ResourceManager/Attribute": {
             "post": {
                 "parameters": [
                     {
@@ -67,7 +67,7 @@
                 }
             }
         },
-        "/{version}/ResourceManager/AttributeHandler/Attribute/{AttributeId}": {
+        "/{version}/ResourceManager/Attribute/{AttributeId}": {
             "put": {
                 "parameters": [
                     {
@@ -167,7 +167,7 @@
                 }
             }
         },
-        "/{version}/ResourceManager/AttributeHandler/Attribute/{RowCount}/{PageNo}": {
+        "/{version}/ResourceManager/Attribute/{RowCount}/{PageNo}": {
             "get": {
                 "parameters": [
                     {
@@ -206,7 +206,7 @@
                 }
             }
         },
-        "/{version}/ResourceManager/AttributeHandler/Attribute/{AttributeId}/Details": {
+        "/{version}/ResourceManager/Attribute/{AttributeId}/Details": {
             "get": {
                 "parameters": [
                     {
@@ -238,7 +238,7 @@
                 }
             }
         },
-        "/{version}/ResourceManager/GroupHandler/Group": {
+        "/{version}/ResourceManager/Group": {
             "post": {
                 "parameters": [
                     {
@@ -294,7 +294,7 @@
                 }
             }
         },
-        "/{version}/ResourceManager/GroupHandler/Group/{GroupId}": {
+        "/{version}/ResourceManager/Group/{GroupId}": {
             "put": {
                 "parameters": [
                     {
@@ -386,7 +386,7 @@
                 }
             }
         },
-        "/{version}/ResourceManager/GroupHandler/Groups/{RowCount}/{PageNo}": {
+        "/{version}/ResourceManager/Groups/{RowCount}/{PageNo}": {
             "get": {
                 "parameters": [
                     {
@@ -425,7 +425,7 @@
                 }
             }
         },
-        "/{version}/ResourceManager/GroupHandler/Group/Attribute": {
+        "/{version}/ResourceManager/Group/Attribute": {
             "put": {
                 "parameters": [
                     {
@@ -458,7 +458,7 @@
                 }
             }
         },
-        "/{version}/ResourceManager/GroupHandler/Group/{GroupId}/Attribute": {
+        "/{version}/ResourceManager/Group/{GroupId}/Attribute": {
             "put": {
                 "parameters": [
                     {
@@ -528,7 +528,7 @@
                 }
             }
         },
-        "/{version}/ResourceManager/GroupHandler/Group/{GroupId}/Attribute/Details": {
+        "/{version}/ResourceManager/Group/{GroupId}/Attribute/Details": {
             "post": {
                 "parameters": [
                     {
@@ -560,7 +560,7 @@
                 }
             }
         },
-        "/{version}/ResourceManager/GroupHandler/Group/{GroupId}/Attribute/{AttributeId}": {
+        "/{version}/ResourceManager/Group/{GroupId}/Attribute/{AttributeId}": {
             "delete": {
                 "parameters": [
                     {
@@ -599,7 +599,7 @@
                 }
             }
         },
-        "/{version}/ResourceManager/ResourceHandler/Resource": {
+        "/{version}/ResourceManager/Resource": {
             "post": {
                 "parameters": [
                     {
@@ -655,7 +655,7 @@
                 }
             }
         },
-        "/{version}/ResourceManager/ResourceHandler/Resource/{ResourceId}": {
+        "/{version}/ResourceManager/Resource/{ResourceId}": {
             "put": {
                 "parameters": [
                     {
@@ -755,7 +755,7 @@
                 }
             }
         },
-        "/{version}/ResourceManager/ResourceHandler/Resource/{ResourceId}/Tasks/{TaskId}": {
+        "/{version}/ResourceManager/Resource/{ResourceId}/Tasks/{TaskId}": {
             "put": {
                 "parameters": [
                     {
@@ -802,7 +802,7 @@
                 }
             }
         },
-        "/{version}//ResourceManager/ResourceHandler/Resource/{ResourceId}/Tasks": {
+        "/{version}//ResourceManager/Resource/{ResourceId}/Tasks": {
             "get": {
                 "parameters": [
                     {
@@ -834,7 +834,7 @@
                 }
             }
         },
-        "/{version}/ResourceManager/TaskHandler/Task": {
+        "/{version}/ResourceManager/Task": {
             "post": {
                 "parameters": [
                     {
@@ -890,7 +890,7 @@
                 }
             }
         },
-        "/{version}/ResourceManager/TaskHandler/Task/{TaskId}": {
+        "/{version}/ResourceManager/Task/{TaskId}": {
             "put": {
                 "parameters": [
                     {
@@ -990,7 +990,7 @@
                 }
             }
         },
-        "/{version}/ResourceManager/TaskHandler/Task/{TaskId}/Resources": {
+        "/{version}/ResourceManager/Task/{TaskId}/Resources": {
             "get": {
                 "parameters": [
                     {
@@ -1022,7 +1022,7 @@
                 }
             }
         },
-        "/{version}/ResourceManager/TaskInfoHandler/TaskInfo": {
+        "/{version}/ResourceManager/TaskInfo": {
             "get": {
                 "parameters": [
                     {

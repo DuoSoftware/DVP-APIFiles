@@ -14,7 +14,7 @@ schemes:
 host: resourceservice.104.131.67.21.xip.io
 basePath: /DVP/API
 paths:
-  '/{version}/ResourceManager/AttributeHandler/Attribute':
+  '/{version}/ResourceManager/Attribute':
     post:
       parameters:
         - name: New Attribute Record
@@ -37,13 +37,11 @@ paths:
           description: New Attribute Record Added
     get:
       parameters:
-        
         - name: version
           in: path
           type: string
           description: Version checking
           required: true
-          
         - in: header
           name: authorization
           description: ''
@@ -51,30 +49,25 @@ paths:
           type: string
       responses:
         '200':
-          description:  Attribute Records recieved
-          
-  '/{version}/ResourceManager/AttributeHandler/Attribute/{AttributeId}':
+          description: Attribute Records recieved
+  '/{version}/ResourceManager/Attribute/{AttributeId}':
     put:
       parameters:
-      
         - name: AttributeId
           in: path
           type: integer
           description: AttributeId
           required: true
-          
         - name: New Attribute Record
           in: body
           description: Record
           schema:
             $ref: '#/definitions/Attributes'
-            
         - name: version
           in: path
           type: string
           description: Version checking
           required: true
-          
         - in: header
           name: authorization
           description: ''
@@ -85,19 +78,16 @@ paths:
           description: Attribute updated
     delete:
       parameters:
-        
         - name: AttributeId
           in: path
           type: integer
           description: AttributeId
           required: true
-          
         - name: version
           in: path
           type: string
           description: Version checking
           required: true
-          
         - in: header
           name: authorization
           description: ''
@@ -108,19 +98,16 @@ paths:
           description: Attribute deleted
     get:
       parameters:
-        
         - name: AttributeId
           in: path
           type: integer
           description: AttributeId
           required: true
-          
         - name: version
           in: path
           type: string
           description: Version checking
           required: true
-          
         - in: header
           name: authorization
           description: ''
@@ -129,24 +116,19 @@ paths:
       responses:
         '200':
           description: Attribute recieved
-          
-  '/{version}/ResourceManager/AttributeHandler/Attribute/{RowCount}/{PageNo}':
-
+  '/{version}/ResourceManager/Attribute/{RowCount}/{PageNo}':
     get:
       parameters:
-        
         - name: version
           in: path
           type: string
           description: Version checking
           required: true
-          
         - name: RowCount
           in: path
           type: integer
           description: RowCount
           required: true
-          
         - name: PageNo
           in: path
           type: integer
@@ -156,14 +138,11 @@ paths:
           name: authorization
           description: ''
           required: true
-          
           type: string
       responses:
         '200':
           description: success
-   
- 
-  '/{version}/ResourceManager/AttributeHandler/Attribute/{AttributeId}/Details':
+  '/{version}/ResourceManager/Attribute/{AttributeId}/Details':
     get:
       parameters:
         - name: AttributeId
@@ -171,40 +150,32 @@ paths:
           type: integer
           description: AttributeId
           required: true
-          
         - name: version
           in: path
           type: string
           description: Version checking
           required: true
-          
         - in: header
           name: authorization
           description: ''
           required: true
           type: string
-          
       responses:
         '200':
           description: Attribute details recieved successfully
-          
-  '/{version}/ResourceManager/GroupHandler/Group':
+  '/{version}/ResourceManager/Group':
     post:
       parameters:
-      
         - name: Add new Group data
           in: body
           description: Record
           schema:
             $ref: '#/definitions/Group'
-
-          
         - name: version
           in: path
           type: string
           description: Version checking
           required: true
-          
         - in: header
           name: authorization
           description: ''
@@ -220,7 +191,6 @@ paths:
           type: string
           description: Version checking
           required: true
-          
         - in: header
           name: authorization
           description: ''
@@ -229,8 +199,7 @@ paths:
       responses:
         '200':
           description: Res group details recievd
-          
-  '/{version}/ResourceManager/GroupHandler/Group/{GroupId}':
+  '/{version}/ResourceManager/Group/{GroupId}':
     put:
       parameters:
         - name: version
@@ -238,19 +207,16 @@ paths:
           type: string
           description: Version checking
           required: true
-       
         - name: GroupId
           in: path
           type: integer
           description: ResGroup ID
           required: true
-          
         - in: header
           name: authorization
           description: ''
           required: true
           type: string
-          
       responses:
         '200':
           description: Res group details updated
@@ -261,13 +227,11 @@ paths:
           type: string
           description: Version checking
           required: true
-       
         - name: GroupId
           in: path
           type: integer
           description: ResGroup ID
           required: true
-          
         - in: header
           name: authorization
           description: ''
@@ -283,39 +247,32 @@ paths:
           type: string
           description: Version checking
           required: true
-       
         - name: GroupId
           in: path
           type: integer
           description: ResGroup ID
           required: true
-          
         - in: header
           name: authorization
           description: ''
           required: true
           type: string
-          
       responses:
         '200':
           description: Res group details recieved
-          
-  '/{version}/ResourceManager/GroupHandler/Groups/{RowCount}/{PageNo}':
+  '/{version}/ResourceManager/Groups/{RowCount}/{PageNo}':
     get:
       parameters:
-        
         - name: version
           in: path
           type: string
           description: Version checking
           required: true
-          
         - name: RowCount
           in: path
           type: integer
           description: RowCount
           required: true
-          
         - name: PageNo
           in: path
           type: integer
@@ -325,13 +282,11 @@ paths:
           name: authorization
           description: ''
           required: true
-          
           type: string
       responses:
         '200':
           description: success
-          
-  '/{version}/ResourceManager/GroupHandler/Group/Attribute':
+  '/{version}/ResourceManager/Group/Attribute':
     put:
       parameters:
         - name: New group attribute
@@ -349,13 +304,10 @@ paths:
           description: ''
           required: true
           type: string
-        
       responses:
         '200':
           description: adding New group attribute
-    
-    
-  '/{version}/ResourceManager/GroupHandler/Group/{GroupId}/Attribute':
+  '/{version}/ResourceManager/Group/{GroupId}/Attribute':
     put:
       parameters:
         - name: version
@@ -368,13 +320,11 @@ paths:
           type: string
           description: GroupId
           required: true
-          
         - name: updategroup attribute
           in: body
           description: Record
           schema:
             $ref: '#/definitions/UpdtGroupAttribute'
-            
         - in: header
           name: authorization
           description: ''
@@ -390,13 +340,11 @@ paths:
           type: string
           description: Version checking
           required: true
-          
         - name: GroupId
           in: path
           type: string
           description: GroupId
           required: true
-        
         - in: header
           name: authorization
           description: ''
@@ -405,8 +353,7 @@ paths:
       responses:
         '200':
           description: Group Attribute recieved
-          
-  '/{version}/ResourceManager/GroupHandler/Group/{GroupId}/Attribute/Details':
+  '/{version}/ResourceManager/Group/{GroupId}/Attribute/Details':
     post:
       parameters:
         - name: GroupId
@@ -414,24 +361,20 @@ paths:
           type: string
           description: GroupId
           required: true
-          
         - in: header
           name: authorization
           description: ''
           required: true
-          
           type: string
         - name: version
           in: path
           type: string
           description: Version checking
           required: true
-          
       responses:
         '200':
-          description:  group attribute details recieved
- 
-  '/{version}/ResourceManager/GroupHandler/Group/{GroupId}/Attribute/{AttributeId}':
+          description: group attribute details recieved
+  '/{version}/ResourceManager/Group/{GroupId}/Attribute/{AttributeId}':
     delete:
       parameters:
         - name: GroupId
@@ -439,19 +382,16 @@ paths:
           type: string
           description: GroupId
           required: true
-        
         - name: AttributeId
           in: path
           type: string
           description: AttributeId
           required: true
-          
         - name: version
           in: path
           type: string
           description: Version checking
           required: true
-          
         - in: header
           name: authorization
           description: ''
@@ -460,11 +400,10 @@ paths:
       responses:
         '200':
           description: Group attribute deleted
-          
-  '/{version}/ResourceManager/ResourceHandler/Resource':
+  '/{version}/ResourceManager/Resource':
     post:
       parameters:
-        - name: New resource 
+        - name: New resource
           in: body
           description: Record
           schema:
@@ -484,7 +423,6 @@ paths:
           description: New resource added
     get:
       parameters:
-        
         - name: version
           in: path
           type: string
@@ -497,95 +435,74 @@ paths:
           type: string
       responses:
         '200':
-          description:  resource recieved
-   
-  
-  '/{version}/ResourceManager/ResourceHandler/Resource/{ResourceId}':
+          description: resource recieved
+  '/{version}/ResourceManager/Resource/{ResourceId}':
     put:
       parameters:
-      
-        - name: New resource 
+        - name: New resource
           in: body
           description: Record
           schema:
             $ref: '#/definitions/Resource'
-            
         - name: ResourceId
           in: path
           type: integer
           description: Resource ID
           required: true
-          
         - name: version
           in: path
           type: string
           description: Version checking
           required: true
-          
         - in: header
           name: authorization
           description: ''
           required: true
           type: string
-          
       responses:
         '200':
           description: Resource updated
-     
     delete:
       parameters:
-      
         - name: ResourceId
           in: path
           type: integer
           description: Resource ID
           required: true
-          
         - name: version
           in: path
           type: string
           description: Version checking
           required: true
-          
         - in: header
           name: authorization
           description: ''
           required: true
           type: string
-          
       responses:
         '200':
-          description: Resource deleted   
-    
+          description: Resource deleted
     get:
       parameters:
-      
         - name: ResourceId
           in: path
           type: integer
           description: Resource ID
           required: true
-          
         - name: version
           in: path
           type: string
           description: Version checking
           required: true
-          
         - in: header
           name: authorization
           description: ''
           required: true
           type: string
-          
       responses:
         '200':
-          description: Resource recieved     
-   
-   
-  
-  
-  '/{version}/ResourceManager/ResourceHandler/Resource/{ResourceId}/Tasks/{TaskId}':
+          description: Resource recieved
+  '/{version}/ResourceManager/Resource/{ResourceId}/Tasks/{TaskId}':
     put:
       parameters:
         - name: ResourceId
@@ -593,40 +510,30 @@ paths:
           type: integer
           description: ID of Resource
           required: true
-          
         - name: TaskId
           in: path
           type: integer
           description: ID of Task
           required: true
-          
         - name: version
           in: path
           type: string
           description: Version checking
           required: true
-          
         - in: header
           name: authorization
           description: ''
           required: true
           type: string
-        
-        - name: New Task 
+        - name: New Task
           in: body
           description: Record
           schema:
             $ref: '#/definitions/Task'
-            
       responses:
         '200':
           description: Task updated
-          
-          
-          
-          
-          
-  '/{version}//ResourceManager/ResourceHandler/Resource/{ResourceId}/Tasks':
+  '/{version}//ResourceManager/Resource/{ResourceId}/Tasks':
     get:
       parameters:
         - name: ResourceId
@@ -634,13 +541,11 @@ paths:
           type: integer
           description: ID of Resource
           required: true
-          
         - name: version
           in: path
           type: string
           description: Version checking
           required: true
-          
         - in: header
           name: authorization
           description: ''
@@ -649,24 +554,19 @@ paths:
       responses:
         '200':
           description: Task recieved
-          
-          
-  '/{version}/ResourceManager/TaskHandler/Task':
+  '/{version}/ResourceManager/Task':
     post:
       parameters:
-      
-        - name: New Task 
+        - name: New Task
           in: body
           description: Record
           schema:
             $ref: '#/definitions/Task'
-        
         - name: version
           in: path
           type: string
           description: Version checking
           required: true
-          
         - in: header
           name: authorization
           description: ''
@@ -675,17 +575,13 @@ paths:
       responses:
         '200':
           description: Task added
-      
     get:
       parameters:
-      
-        
         - name: version
           in: path
           type: string
           description: Version checking
           required: true
-          
         - in: header
           name: authorization
           description: ''
@@ -694,9 +590,7 @@ paths:
       responses:
         '200':
           description: Task recieved
-          
-          
-  '/{version}/ResourceManager/TaskHandler/Task/{TaskId}':
+  '/{version}/ResourceManager/Task/{TaskId}':
     put:
       parameters:
         - name: TaskId
@@ -704,19 +598,16 @@ paths:
           type: integer
           description: ID of Task
           required: true
-          
-        - name: update Task 
+        - name: update Task
           in: body
           description: Record
           schema:
             $ref: '#/definitions/Task'
-          
         - name: version
           in: path
           type: string
           description: Version checking
           required: true
-          
         - in: header
           name: authorization
           description: ''
@@ -725,7 +616,6 @@ paths:
       responses:
         '200':
           description: Task updated
-      
     delete:
       parameters:
         - name: TaskId
@@ -733,14 +623,11 @@ paths:
           type: integer
           description: ID of Task
           required: true
-      
-          
         - name: version
           in: path
           type: string
           description: Version checking
           required: true
-          
         - in: header
           name: authorization
           description: ''
@@ -749,7 +636,6 @@ paths:
       responses:
         '200':
           description: Task deleted
-    
     get:
       parameters:
         - name: TaskId
@@ -757,14 +643,11 @@ paths:
           type: integer
           description: ID of Task
           required: true
-      
-          
         - name: version
           in: path
           type: string
           description: Version checking
           required: true
-          
         - in: header
           name: authorization
           description: ''
@@ -773,10 +656,7 @@ paths:
       responses:
         '200':
           description: Task recieved
-          
-  
-  
-  '/{version}/ResourceManager/TaskHandler/Task/{TaskId}/Resources':
+  '/{version}/ResourceManager/Task/{TaskId}/Resources':
     get:
       parameters:
         - name: TaskId
@@ -784,13 +664,11 @@ paths:
           type: integer
           description: ID of Task
           required: true
-          
         - name: version
           in: path
           type: string
           description: Version checking
           required: true
-          
         - in: header
           name: authorization
           description: ''
@@ -799,13 +677,9 @@ paths:
       responses:
         '200':
           description: Resources of task recieved
-          
-          
-          
-  '/{version}/ResourceManager/TaskInfoHandler/TaskInfo':
+  '/{version}/ResourceManager/TaskInfo':
     get:
       parameters:
-       
         - name: version
           in: path
           type: string
@@ -818,10 +692,7 @@ paths:
           type: string
       responses:
         '200':
-          description: All Taskinfo 
-          
-  
-
+          description: All Taskinfo
 definitions:
   Attributes:
     properties:
@@ -835,7 +706,6 @@ definitions:
         type: string
       OtherData:
         type: string
-        
   Group:
     properties:
       GroupName:
@@ -850,7 +720,6 @@ definitions:
         type: string
       Percentage:
         type: integer
-        
   GroupAttribute:
     properties:
       AttributeIds:
@@ -867,14 +736,12 @@ definitions:
         type: string
       Percentage:
         type: integer
-  
   UpdtGroupAttribute:
     properties:
       AttributeIds:
         type: integer
       OtherData:
         type: string
-        
   Resource:
     properties:
       ResClass:
@@ -887,7 +754,6 @@ definitions:
         type: string
       OtherData:
         type: string
- 
   Task:
     properties:
       Concurrency:
@@ -896,9 +762,3 @@ definitions:
         type: string
       OtherData:
         type: string
-      
-         
-  
-    
- 
- 
