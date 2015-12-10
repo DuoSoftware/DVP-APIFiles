@@ -806,7 +806,7 @@
                 }
             }
         },
-        "/{version}//ResourceManager/Resource/{ResourceId}/Tasks": {
+        "/{version}/ResourceManager/Resource/{ResourceId}/Tasks": {
             "get": {
                 "parameters": [
                     {
@@ -836,9 +836,101 @@
                         "description": "Task recieved"
                     }
                 }
+            },
+            "delete": {
+                "parameters": [
+                    {
+                        "name": "ResourceId",
+                        "in": "path",
+                        "type": "integer",
+                        "description": "Resource ID",
+                        "required": true
+                    },
+                    {
+                        "name": "version",
+                        "in": "path",
+                        "type": "string",
+                        "description": "Version checking",
+                        "required": true
+                    },
+                    {
+                        "in": "header",
+                        "name": "authorization",
+                        "description": "",
+                        "required": true,
+                        "type": "string"
+                    }
+                ],
+                "responses": {
+                    "200": {
+                        "description": "All tasks assign to resource are deleted"
+                    }
+                }
             }
         },
-        "/{version}/ResourceManager/Task": {
+        "/{version}/ResourceManager/Resource/Task/{TaskId}": {
+            "get": {
+                "parameters": [
+                    {
+                        "name": "TaskId",
+                        "in": "path",
+                        "type": "integer",
+                        "description": "ID of Resource",
+                        "required": true
+                    },
+                    {
+                        "name": "version",
+                        "in": "path",
+                        "type": "string",
+                        "description": "Version checking",
+                        "required": true
+                    },
+                    {
+                        "in": "header",
+                        "name": "authorization",
+                        "description": "",
+                        "required": true,
+                        "type": "string"
+                    }
+                ],
+                "responses": {
+                    "200": {
+                        "description": "Task recieved"
+                    }
+                }
+            },
+            "delete": {
+                "parameters": [
+                    {
+                        "name": "TaskId",
+                        "in": "path",
+                        "type": "integer",
+                        "description": "ID of Task",
+                        "required": true
+                    },
+                    {
+                        "name": "version",
+                        "in": "path",
+                        "type": "string",
+                        "description": "Version checking",
+                        "required": true
+                    },
+                    {
+                        "in": "header",
+                        "name": "authorization",
+                        "description": "",
+                        "required": true,
+                        "type": "string"
+                    }
+                ],
+                "responses": {
+                    "200": {
+                        "description": "Task deleted"
+                    }
+                }
+            }
+        },
+        "/{version}/ResourceManager/Tasks": {
             "get": {
                 "parameters": [
                     {
@@ -861,7 +953,9 @@
                         "description": "Task recieved"
                     }
                 }
-            },
+            }
+        },
+        "/{version}/ResourceManager/Task": {
             "post": {
                 "parameters": [
                     {
