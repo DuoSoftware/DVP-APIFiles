@@ -582,7 +582,7 @@ paths:
           in: body
           description: Record
           schema:
-            $ref: '#/definitions/Task'
+            $ref: '#/definitions/NewTask'
         - name: version
           in: path
           type: string
@@ -765,6 +765,14 @@ definitions:
     properties:
       Concurrency:
         type: string
+      RefInfo:
+        type: string
+      OtherData:
+        type: string
+        
+  NewTask:
+    properties:
+      
       RefInfo:
         type: string
       OtherData:
