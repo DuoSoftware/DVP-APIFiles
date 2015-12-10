@@ -930,6 +930,178 @@
                 }
             }
         },
+        "/{version}/ResourceManager/Resourcetask/{ResTaskId}/Attribute/{AttributeId}": {
+            "post": {
+                "parameters": [
+                    {
+                        "name": "Resource task data",
+                        "in": "body",
+                        "description": "Record",
+                        "schema": {
+                            "$ref": "#/definitions/AttribRes"
+                        }
+                    },
+                    {
+                        "name": "ResTaskId",
+                        "in": "path",
+                        "type": "integer",
+                        "description": "ID of ResourceTask",
+                        "required": true
+                    },
+                    {
+                        "name": "AttributeId",
+                        "in": "path",
+                        "type": "integer",
+                        "description": "ID of Attribute",
+                        "required": true
+                    },
+                    {
+                        "name": "version",
+                        "in": "path",
+                        "type": "string",
+                        "description": "Version checking",
+                        "required": true
+                    },
+                    {
+                        "in": "header",
+                        "name": "authorization",
+                        "description": "",
+                        "required": true,
+                        "type": "string"
+                    }
+                ],
+                "responses": {
+                    "200": {
+                        "description": "Resourse task added"
+                    }
+                }
+            }
+        },
+        "/{version}/ResourceManager/ResourceTaskAttribute/{ResAttId}": {
+            "put": {
+                "parameters": [
+                    {
+                        "name": "Resource task data",
+                        "in": "body",
+                        "description": "Record",
+                        "schema": {
+                            "$ref": "#/definitions/AttribRes"
+                        }
+                    },
+                    {
+                        "name": "ResAttId",
+                        "in": "path",
+                        "type": "integer",
+                        "description": "ID of ResourceAttrib",
+                        "required": true
+                    },
+                    {
+                        "name": "version",
+                        "in": "path",
+                        "type": "string",
+                        "description": "Version checking",
+                        "required": true
+                    },
+                    {
+                        "in": "header",
+                        "name": "authorization",
+                        "description": "",
+                        "required": true,
+                        "type": "string"
+                    }
+                ],
+                "responses": {
+                    "200": {
+                        "description": "ResAttribute updated"
+                    }
+                }
+            },
+            "delete": {
+                "parameters": [
+                    {
+                        "name": "ResAttId",
+                        "in": "path",
+                        "type": "integer",
+                        "description": "ID of ResourceAttrib",
+                        "required": true
+                    },
+                    {
+                        "name": "version",
+                        "in": "path",
+                        "type": "string",
+                        "description": "Version checking",
+                        "required": true
+                    },
+                    {
+                        "in": "header",
+                        "name": "authorization",
+                        "description": "",
+                        "required": true,
+                        "type": "string"
+                    }
+                ],
+                "responses": {
+                    "200": {
+                        "description": "ResAttribute deleted"
+                    }
+                }
+            },
+            "get": {
+                "parameters": [
+                    {
+                        "name": "ResAttId",
+                        "in": "path",
+                        "type": "integer",
+                        "description": "ID of ResourceAttrib",
+                        "required": true
+                    },
+                    {
+                        "name": "version",
+                        "in": "path",
+                        "type": "string",
+                        "description": "Version checking",
+                        "required": true
+                    },
+                    {
+                        "in": "header",
+                        "name": "authorization",
+                        "description": "",
+                        "required": true,
+                        "type": "string"
+                    }
+                ],
+                "responses": {
+                    "200": {
+                        "description": "ResAttribute recieved"
+                    }
+                }
+            }
+        },
+        "/{version}/ResourceManager/ResourceTaskAttribute": {
+            "get": {
+                "parameters": [
+                    {
+                        "name": "version",
+                        "in": "path",
+                        "type": "string",
+                        "description": "Version checking",
+                        "required": true
+                    },
+                    {
+                        "in": "header",
+                        "name": "authorization",
+                        "description": "",
+                        "required": true,
+                        "type": "string"
+                    }
+                ],
+                "responses": {
+                    "200": {
+                        "description": "All ResTaskAttribute recieved"
+                    }
+                }
+            }
+        },
         "/{version}/ResourceManager/Tasks": {
             "get": {
                 "parameters": [
@@ -1258,6 +1430,16 @@
         "NewTask": {
             "properties": {
                 "RefInfo": {
+                    "type": "string"
+                },
+                "OtherData": {
+                    "type": "string"
+                }
+            }
+        },
+        "AttribRes": {
+            "properties": {
+                "Percentage": {
                     "type": "string"
                 },
                 "OtherData": {
