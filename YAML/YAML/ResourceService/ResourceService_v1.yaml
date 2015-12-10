@@ -558,7 +558,24 @@ paths:
       responses:
         '200':
           description: Task recieved
-  '/{version}/ResourceManager/Task':
+  
+          
+  '/{version}/ResourceManager/Task':        
+    get:
+      parameters:
+        - name: version
+          in: path
+          type: string
+          description: Version checking
+          required: true
+        - in: header
+          name: authorization
+          description: ''
+          required: true
+          type: string
+      responses:
+        '200':
+          description: Task recieved
     post:
       parameters:
         - name: New Task
@@ -579,23 +596,6 @@ paths:
       responses:
         '200':
           description: Task added
-          
-  '/{version}/ResourceManager/Task':        
-    get:
-      parameters:
-        - name: version
-          in: path
-          type: string
-          description: Version checking
-          required: true
-        - in: header
-          name: authorization
-          description: ''
-          required: true
-          type: string
-      responses:
-        '200':
-          description: Task recieved
   '/{version}/ResourceManager/Task/{TaskId}':
     put:
       parameters:
@@ -683,6 +683,7 @@ paths:
       responses:
         '200':
           description: Resources of task recieved
+          
   '/{version}/ResourceManager/TaskInfo':
     get:
       parameters:

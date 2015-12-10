@@ -861,6 +861,37 @@
                         "description": "Task recieved"
                     }
                 }
+            },
+            "post": {
+                "parameters": [
+                    {
+                        "name": "New Task",
+                        "in": "body",
+                        "description": "Record",
+                        "schema": {
+                            "$ref": "#/definitions/Task"
+                        }
+                    },
+                    {
+                        "name": "version",
+                        "in": "path",
+                        "type": "string",
+                        "description": "Version checking",
+                        "required": true
+                    },
+                    {
+                        "in": "header",
+                        "name": "authorization",
+                        "description": "",
+                        "required": true,
+                        "type": "string"
+                    }
+                ],
+                "responses": {
+                    "200": {
+                        "description": "Task added"
+                    }
+                }
             }
         },
         "/{version}/ResourceManager/Task/{TaskId}": {
