@@ -37,6 +37,39 @@
                 }
             }
         },
+        "/{hostVersion}/CallRuleApi/CallRules/Direction/{direction}": {
+            "get": {
+                "description": "Api method to retrieve all call rules",
+                "parameters": [
+                    {
+                        "name": "direction",
+                        "in": "path",
+                        "type": "string",
+                        "description": "direction",
+                        "required": true
+                    },
+                    {
+                        "name": "hostVersion",
+                        "in": "path",
+                        "type": "string",
+                        "description": "API version",
+                        "required": true
+                    },
+                    {
+                        "in": "header",
+                        "name": "authorization",
+                        "description": "",
+                        "required": true,
+                        "type": "string"
+                    }
+                ],
+                "responses": {
+                    "200": {
+                        "description": "Call rules returned"
+                    }
+                }
+            }
+        },
         "/{hostVersion}/CallRuleApi/CallRule/{id}": {
             "delete": {
                 "parameters": [
@@ -44,7 +77,8 @@
                         "name": "id",
                         "in": "path",
                         "type": "integer",
-                        "description": "id"
+                        "description": "id",
+                        "required": true
                     },
                     {
                         "name": "hostVersion",
@@ -64,6 +98,44 @@
                 "responses": {
                     "200": {
                         "description": "Call rule has been deleted"
+                    }
+                }
+            },
+            "put": {
+                "parameters": [
+                    {
+                        "name": "Edit Call Rule",
+                        "in": "body",
+                        "description": "Record",
+                        "schema": {
+                            "$ref": "#/definitions/CallRule"
+                        }
+                    },
+                    {
+                        "name": "hostVersion",
+                        "in": "path",
+                        "type": "string",
+                        "description": "API version",
+                        "required": true
+                    },
+                    {
+                        "name": "id",
+                        "in": "path",
+                        "type": "integer",
+                        "description": "rule id to edit",
+                        "required": true
+                    },
+                    {
+                        "in": "header",
+                        "name": "authorization",
+                        "description": "",
+                        "type": "string",
+                        "required": true
+                    }
+                ],
+                "responses": {
+                    "200": {
+                        "description": "Call rule rule has been set"
                     }
                 }
             }
@@ -108,7 +180,7 @@
                 }
             }
         },
-        "/{hostVersion}/CallRuleApi/CallRule/{id}/SetTrunkNumber/{trNum}": {
+        "/{hostVersion}/CallRuleApi/CallRule/{id}/SetNumber/{trNum}": {
             "post": {
                 "description": "Method to set an outbound trunk number to an outbound rule",
                 "parameters": [
@@ -116,13 +188,15 @@
                         "name": "id",
                         "in": "path",
                         "type": "integer",
-                        "description": "Call rule id"
+                        "description": "Call rule id",
+                        "required": true
                     },
                     {
                         "name": "trNum",
                         "in": "path",
                         "type": "string",
-                        "description": "Outbound trunk number"
+                        "description": "Outbound trunk number",
+                        "required": true
                     },
                     {
                         "name": "hostVersion",
@@ -135,8 +209,8 @@
                         "in": "header",
                         "name": "authorization",
                         "description": "",
-                        "required": true,
-                        "type": "string"
+                        "type": "string",
+                        "required": true
                     }
                 ],
                 "responses": {
@@ -153,7 +227,8 @@
                         "name": "id",
                         "in": "path",
                         "type": "integer",
-                        "description": "Call rule id"
+                        "description": "Call rule id",
+                        "required": true
                     },
                     {
                         "name": "hostVersion",
@@ -166,8 +241,8 @@
                         "in": "header",
                         "name": "authorization",
                         "description": "",
-                        "required": true,
-                        "type": "string"
+                        "type": "string",
+                        "required": true
                     },
                     {
                         "name": "callruleRegEx Details",
@@ -192,13 +267,15 @@
                         "name": "id",
                         "in": "path",
                         "type": "integer",
-                        "description": "Call rule id"
+                        "description": "Call rule id",
+                        "required": true
                     },
                     {
                         "name": "enabled",
                         "in": "path",
                         "type": "boolean",
-                        "description": "Call rule availability"
+                        "description": "Call rule availability",
+                        "required": true
                     },
                     {
                         "name": "hostVersion",
@@ -211,8 +288,8 @@
                         "in": "header",
                         "name": "authorization",
                         "description": "",
-                        "required": true,
-                        "type": "string"
+                        "type": "string",
+                        "required": true
                     }
                 ],
                 "responses": {
@@ -229,13 +306,15 @@
                         "name": "id",
                         "in": "path",
                         "type": "integer",
-                        "description": "Call rule id"
+                        "description": "Call rule id",
+                        "required": true
                     },
                     {
                         "name": "priority",
                         "in": "path",
                         "type": "integer",
-                        "description": "Priority"
+                        "description": "Priority",
+                        "required": true
                     },
                     {
                         "name": "hostVersion",
@@ -248,8 +327,8 @@
                         "in": "header",
                         "name": "authorization",
                         "description": "",
-                        "required": true,
-                        "type": "string"
+                        "type": "string",
+                        "required": true
                     }
                 ],
                 "responses": {
@@ -266,13 +345,15 @@
                         "name": "id",
                         "in": "path",
                         "type": "integer",
-                        "description": "Call rule id"
+                        "description": "Call rule id",
+                        "required": true
                     },
                     {
                         "name": "scheduleId",
                         "in": "path",
                         "type": "integer",
-                        "description": "Schedule id"
+                        "description": "Schedule id",
+                        "required": true
                     },
                     {
                         "name": "hostVersion",
@@ -285,8 +366,8 @@
                         "in": "header",
                         "name": "authorization",
                         "description": "",
-                        "required": true,
-                        "type": "string"
+                        "type": "string",
+                        "required": true
                     }
                 ],
                 "responses": {
@@ -296,20 +377,22 @@
                 }
             }
         },
-        "/{hostVersion}/CallRuleApi/CallRule/{id}/SetTranslation/{transId}": {
+        "/{hostVersion}/CallRuleApi/CallRule/{id}/SetDNISTranslation/{transId}": {
             "post": {
                 "parameters": [
                     {
                         "name": "id",
                         "in": "path",
                         "type": "integer",
-                        "description": "Call rule id"
+                        "description": "Call rule id",
+                        "required": true
                     },
                     {
                         "name": "transId",
                         "in": "path",
                         "type": "integer",
-                        "description": "Translation id"
+                        "description": "DNIS Translation id",
+                        "required": true
                     },
                     {
                         "name": "hostVersion",
@@ -333,16 +416,22 @@
                 }
             }
         },
-        "/{hostVersion}/CallRuleApi/CallRule/Outbound": {
+        "/{hostVersion}/CallRuleApi/CallRule/{id}/SetANITranslation/{transId}": {
             "post": {
                 "parameters": [
                     {
-                        "name": "New OutBound Rule",
-                        "in": "body",
-                        "description": "Record",
-                        "schema": {
-                            "$ref": "#/definitions/CallRuleOtBound"
-                        }
+                        "name": "id",
+                        "in": "path",
+                        "type": "integer",
+                        "description": "Call rule id",
+                        "required": true
+                    },
+                    {
+                        "name": "transId",
+                        "in": "path",
+                        "type": "integer",
+                        "description": "ANI Translation id",
+                        "required": true
                     },
                     {
                         "name": "hostVersion",
@@ -361,40 +450,40 @@
                 ],
                 "responses": {
                     "200": {
-                        "description": "OutBound rule has been set"
+                        "description": "Call rule translation has been set"
                     }
                 }
             }
         },
-        "/{hostVersion}/CallRuleApi/CallRule/Inbound": {
+        "/{hostVersion}/CallRuleApi/CallRule": {
             "post": {
                 "parameters": [
                     {
-                        "name": "New Inbound rule",
+                        "name": "New Call Rule",
                         "in": "body",
-                        "description": "New Inbound rule",
+                        "description": "Record",
                         "schema": {
-                            "$ref": "#/definitions/CallRuleOtBound"
+                            "$ref": "#/definitions/CallRule"
                         }
                     },
                     {
                         "name": "hostVersion",
                         "in": "path",
                         "type": "string",
-                        "description": "API Version",
+                        "description": "API version",
                         "required": true
                     },
                     {
                         "in": "header",
                         "name": "authorization",
                         "description": "",
-                        "required": true,
-                        "type": "string"
+                        "type": "string",
+                        "required": true
                     }
                 ],
                 "responses": {
                     "200": {
-                        "description": "Inbound rule has been set"
+                        "description": "Call rule rule has been set"
                     }
                 }
             }
@@ -406,13 +495,15 @@
                         "name": "appId",
                         "in": "path",
                         "type": "integer",
-                        "description": "appId"
+                        "description": "appId",
+                        "required": true
                     },
                     {
                         "name": "ruleId",
                         "in": "path",
                         "type": "integer",
-                        "description": "ruleId"
+                        "description": "ruleId",
+                        "required": true
                     }
                 ],
                 "responses": {
@@ -448,7 +539,7 @@
             }
         },
         "/{hostVersion}/CallRuleApi/Translation/{id}": {
-            "post": {
+            "put": {
                 "parameters": [
                     {
                         "name": "Translation Details",
@@ -522,7 +613,7 @@
         }
     },
     "definitions": {
-        "CallRuleOtBound": {
+        "CallRule": {
             "properties": {
                 "Direction": {
                     "description": "Call rule direction",
@@ -558,6 +649,12 @@
                 "Context": {
                     "type": "string"
                 },
+                "CallRuleDescription": {
+                    "type": "string"
+                },
+                "ObjCategory": {
+                    "type": "string"
+                },
                 "DNIS": {
                     "type": "string"
                 },
@@ -567,13 +664,13 @@
                 "Priority": {
                     "type": "integer"
                 },
-                "TrunkId": {
-                    "type": "integer"
-                },
                 "TrunkNumber": {
                     "type": "string"
                 },
                 "ExtraData": {
+                    "type": "string"
+                },
+                "ScheduleId": {
                     "type": "string"
                 }
             }
@@ -592,32 +689,26 @@
                 "ObjCategory": {
                     "type": "string"
                 },
-                "TenantId": {
-                    "type": "integer"
-                },
-                "CompanyId": {
-                    "type": "integer"
-                },
                 "TransDescription": {
                     "type": "string"
                 },
-                "Enable": {
+                "Enabled": {
                     "type": "boolean"
                 },
                 "LAdd": {
                     "type": "string"
                 },
                 "LRemove": {
-                    "type": "string"
+                    "type": "integer"
                 },
                 "RAdd": {
                     "type": "string"
                 },
                 "RRemove": {
-                    "type": "string"
+                    "type": "integer"
                 },
                 "Replace": {
-                    "type": "integer"
+                    "type": "string"
                 }
             }
         },
