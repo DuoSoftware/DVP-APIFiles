@@ -31,6 +31,7 @@ paths:
           in: path
           type: string
           description: Version
+          required: true
         
         - in: header
           name: authorization
@@ -54,16 +55,19 @@ paths:
           in: path
           type: integer
           description: id
+          required: true
           
         - name: status
           in: path
           type: boolean
           description: status
+          required: true
           
         - name: version
           in: path
           type: string
           description: Version
+          required: true
         
         - in: header
           name: authorization
@@ -91,6 +95,7 @@ paths:
           in: path
           type: string
           description: Version
+          required: true
         
         - in: header
           name: authorization
@@ -102,6 +107,67 @@ paths:
         200:
           description: Cloud details returned
           
+    put:
+    
+      parameters:
+      
+        - name: id
+          in: path
+          type: integer
+          description: ID of the cloud
+          required: true
+          
+        - name: Update Cloud
+          in: body
+          description: Record
+          schema:
+           $ref: '#/definitions/UpdtCloud'
+           
+        - name: version
+          in: path
+          type: string
+          description: Version
+          required: true
+        
+        - in: header
+          name: authorization
+          description: ""
+          required: true
+          type: string
+        
+          
+      responses:
+       200:
+        description: Cloud has been updated
+          
+  /{version}/CloudConfiguration/Cloud/{id}/ActiveCallservers :
+   
+    get: 
+      parameters: 
+      
+        - name: id
+          in: path
+          type: integer
+          description: ID of the cloud
+          required: true
+          
+        - name: version
+          in: path
+          type: string
+          description: Version
+          required: true
+        
+        - in: header
+          name: authorization
+          description: ""
+          required: true
+          type: string
+        
+      responses:
+        200:
+          description: Cloud details returned        
+  
+          
   /{version}/CloudConfiguration/Clouds :
    
     get: 
@@ -111,6 +177,7 @@ paths:
           in: path
           type: string
           description: Version
+          required: true
         
         - in: header
           name: authorization
@@ -121,6 +188,7 @@ paths:
       responses:
         200:
           description: All Cloud details returned
+          
           
   /{version}/CloudConfiguration/CallServer :
     
@@ -137,6 +205,7 @@ paths:
           in: path
           type: string
           description: Version
+          required: true
         
         - in: header
           name: authorization
@@ -158,16 +227,19 @@ paths:
           in: path
           type: integer
           description: id
+          required: true
           
         - name: status
           in: path
           type: boolean
           description: status
+          required: true
         
         - name: version
           in: path
           type: string
           description: Version
+          required: true
         
         - in: header
           name: authorization
@@ -196,6 +268,7 @@ paths:
           in: path
           type: string
           description: Version
+          required: true
         
         - in: header
           name: authorization
@@ -206,7 +279,37 @@ paths:
       responses:
         200:
           description: Call Server details returned
-          
+    
+    put:
+    
+      parameters:
+        - name: id
+          in: path
+          type: integer
+          description: ID of the call server
+          required: true
+        
+        - name: Create Cloud
+          in: body
+          description: Record
+          schema:
+           $ref: '#/definitions/UpdtCallServer'  
+        
+        - name: version
+          in: path
+          type: string
+          description: Version
+          required: true
+        
+        - in: header
+          name: authorization
+          description: ""
+          required: true
+          type: string
+        
+      responses:
+       200:
+        description: call server updated successfully      
   
   /{version}/CloudConfiguration/CallServers :
    
@@ -217,6 +320,7 @@ paths:
           in: path
           type: string
           description: Version
+          required: true
         
         - in: header
           name: authorization
@@ -238,16 +342,19 @@ paths:
           in: path
           type: integer
           description: id
+          required: true
           
         - name: cloudid
           in: path
           type: integer
           description: cloudid
+          required: true
         
         - name: version
           in: path
           type: string
           description: Version
+          required: true
         
         - in: header
           name: authorization
@@ -258,6 +365,36 @@ paths:
       responses:
        200:
         description: call server assigning to cloud is succeeded
+    
+    delete:
+      parameters:
+        - name: id
+          in: path
+          type: integer
+          description: id
+          required: true
+          
+        - name: cloudid
+          in: path
+          type: integer
+          description: cloudid
+          required: true
+        
+        - name: version
+          in: path
+          type: string
+          description: Version
+          required: true
+        
+        - in: header
+          name: authorization
+          description: ""
+          required: true
+          type: string
+        
+      responses:
+       200:
+        description: Callserver successfully removed from cloud 
         
   /{version}/CloudConfiguration/Cloud/{childid}/SetParent/{parentid} :
     
@@ -268,16 +405,19 @@ paths:
           in: path
           type: integer
           description: childid
+          required: true
           
         - name: parentid
           in: path
           type: integer
           description: parentid
+          required: true
           
         - name: version
           in: path
           type: string
           description: Version
+          required: true
           
         - in: header
           name: authorization
@@ -305,6 +445,7 @@ paths:
           in: path
           type: string
           description: Version
+          required: true
         
         - in: header
           name: authorization
@@ -331,6 +472,7 @@ paths:
           in: path
           type: string
           description: Version
+          required: true
           
         - in: header
           name: authorization
@@ -345,7 +487,7 @@ paths:
   /{version}/CloudConfiguration/Network/UserNetwork :
     
     post:
-    
+  
       parameters:
         - name: Configure EndUser NW
           in: body
@@ -357,6 +499,7 @@ paths:
           in: path
           type: string
           description: Version
+          required: true
         
         - in: header
           name: authorization
@@ -377,16 +520,19 @@ paths:
           in: path
           type: integer
           description: networkid
+          required: true
           
         - name: cloudid
           in: path
           type: integer
           description: cloudid
+          required: true
         
         - name: version
           in: path
           type: string
           description: Version
+          required: true
         
         - in: header
           name: authorization
@@ -397,6 +543,37 @@ paths:
       responses:
        200:
         description: Set Telco Network to Cloud is done      
+    
+    delete:
+
+      parameters:
+        - name: networkid
+          in: path
+          type: integer
+          description: networkid
+          required: true
+          
+        - name: cloudid
+          in: path
+          type: integer
+          description: cloudid
+          required: true
+        
+        - name: version
+          in: path
+          type: string
+          description: Version
+          required: true
+        
+        - in: header
+          name: authorization
+          description: ""
+          required: true
+          type: string
+        
+      responses:
+       200:
+        description: Telco network removed from cloud 
    
   /{version}/CloudConfiguration/Network/{networkid}/SetTelcoNetworkToUser/{userid}:
     
@@ -407,16 +584,19 @@ paths:
           in: path
           type: integer
           description: networkid
+          required: true
           
         - name: userid
           in: path
           type: integer
           description: userid
+          required: true
         
         - name: version
           in: path
           type: string
           description: Version
+          required: true
         
         - in: header
           name: authorization
@@ -427,6 +607,37 @@ paths:
       responses:
        200:
         description: Set Telco Network to user is done 
+        
+    delete:
+
+      parameters:
+        - name: networkid
+          in: path
+          type: integer
+          description: networkid
+          required: true
+          
+        - name: userid
+          in: path
+          type: integer
+          description: userid
+          required: true
+        
+        - name: version
+          in: path
+          type: string
+          description: Version
+          required: true
+        
+        - in: header
+          name: authorization
+          description: ""
+          required: true
+          type: string
+        
+      responses:
+       200:
+        description: Removed telco network from user 
         
         
      
@@ -440,6 +651,7 @@ paths:
           in: path
           type: string
           description: Version
+          required: true
         
         - in: header
           name: authorization
@@ -450,7 +662,89 @@ paths:
       responses:
         200:
           description: All Network details returned
+   
+  /{version}/CloudConfiguration/Network/{id} :
+   
+    get: 
+      parameters: 
+      
+        - name: version
+          in: path
+          type: string
+          description: Version
+          required: true
+        
+        - name: id
+          in: path
+          type: integer
+          description: networkid
+          required: true
+        
+        - in: header
+          name: authorization
+          description: ""
+          required: true
+          type: string
+        
+      responses:
+        200:
+          description: Network record returned       
           
+    put:
+
+      parameters:
+        - name: id
+          in: path
+          type: integer
+          description: networkid
+          required: true
+          
+        - name: version
+          in: path
+          type: string
+          description: Version
+          required: true
+        
+        - in: header
+          name: authorization
+          description: ""
+          required: true
+          type: string
+        
+        - name: Configure Telco NW
+          in: body
+          description: Record
+          schema:
+           $ref: '#/definitions/UpdtNetwork'
+        
+      responses:
+       200:
+        description: Network record updated 
+        
+    delete: 
+      parameters: 
+      
+        - name: version
+          in: path
+          type: string
+          description: Version
+          required: true
+        
+        - name: id
+          in: path
+          type: integer
+          description: networkid
+          required: true
+        
+        - in: header
+          name: authorization
+          description: ""
+          required: true
+          type: string
+        
+      responses:
+        200:
+          description: Network record deleted       
           
   /{version}/CloudConfiguration/NetworksByClusterID/{id} :
    
@@ -461,12 +755,14 @@ paths:
           in: path
           type: string
           description: Version
+          required: true
           
         - name: id
           in: path
           type: integer
-          description: ID of the call server
+          description: ID of cluster
           required: true
+          
         
         - in: header
           name: authorization
@@ -476,7 +772,7 @@ paths:
         
       responses:
         200:
-          description: All Network details returned
+          description: All Network details of cluster returned
           
           
           
@@ -496,6 +792,7 @@ paths:
           in: path
           type: string
           description: Version
+          required: true
         
         - in: header
           name: authorization
@@ -505,9 +802,113 @@ paths:
           
       responses:
        200:
-        description: New Cloud end user has been inserted
+        description: New Cloud end user has been added
 
-  
+  /{version}/CloudConfiguration/CloudEndUser/{id} :
+    
+    put:
+
+      parameters:
+        - name: Add Cloud EndUser 
+          in: body
+          description: Record
+          schema:
+           $ref: '#/definitions/UpdtCloudEndUser'
+           
+        - name: version
+          in: path
+          type: string
+          description: Version
+          required: true
+        
+        - in: header
+          name: authorization
+          description: ""
+          required: true
+          type: string
+        
+        - name: id
+          in: path
+          type: integer
+          description: ID of Cloud Enduser
+          required: true
+          
+      responses:
+       200:
+        description: New Cloud end user has been added
+    
+    get:
+      parameters:
+        
+        - name: version
+          in: path
+          type: string
+          description: Version
+          required: true
+        
+        - in: header
+          name: authorization
+          description: ""
+          required: true
+          type: string
+        
+        - name: id
+          in: path
+          type: integer
+          description: ID of Cloud Enduser
+          required: true
+          
+      responses:
+       200:
+        description: Cloud enduser record found
+    
+    delete:
+      parameters:
+        
+        - name: version
+          in: path
+          type: string
+          description: Version
+          required: true
+        
+        - in: header
+          name: authorization
+          description: ""
+          required: true
+          type: string
+        
+        - name: id
+          in: path
+          type: integer
+          description: ID of Cloud Enduser
+          required: true
+          
+      responses:
+       200:
+        description: Cloud enduser record removed
+        
+  /{version}/CloudConfiguration/CloudEndUsers :
+    
+    get:
+
+      parameters:
+        
+        - name: version
+          in: path
+          type: string
+          description: Version
+          required: true
+        
+        - in: header
+          name: authorization
+          description: ""
+          required: true
+          type: string
+          
+      responses:
+       200:
+        description: Cloud end user records recieved
+        
         
   /{version}/CloudConfiguration/CloudEndUserByClusterID/{id} :
     
@@ -519,11 +920,13 @@ paths:
           in: path
           type: string
           description: Version
+          required: true
           
         - name: id
           in: path
           type: integer
           description: CloudId
+          required: true
         
         - in: header
           name: authorization
@@ -552,6 +955,7 @@ paths:
           in: path
           type: string
           description: Version
+          required: true
         
         - in: header
           name: authorization
@@ -572,16 +976,19 @@ paths:
           in: path
           type: integer
           description: profileid
+          required: true
           
         - name: callserverid
           in: path
           type: integer
           description: callserverid
+          required: true
         
         - name: version
           in: path
           type: string
           description: Version
+          required: true
         
         - in: header
           name: authorization
@@ -591,7 +998,7 @@ paths:
         
       responses:
        200:
-        description: Set Profile to callserver is done
+        description: Set Profile to callserver is completed
 
   /{version}/CloudConfiguration/Profile/{profileid}/SetProfileToEndUser/{enduser}:
     
@@ -602,16 +1009,19 @@ paths:
           in: path
           type: integer
           description: profileid
+          required: true
           
         - name: enduser
           in: path
           type: integer
           description: enduser
-        
+          required: true
+          
         - name: version
           in: path
           type: string
           description: Version
+          required: true
         
         - in: header
           name: authorization
@@ -639,6 +1049,7 @@ paths:
           in: path
           type: string
           description: Version
+          required: true
         
         - in: header
           name: authorization
@@ -649,6 +1060,62 @@ paths:
       responses:
         200:
           description: Profile details returned 
+    
+    delete: 
+      parameters: 
+      
+        - name: id
+          in: path
+          type: integer
+          description: ID of the Profile
+          required: true
+        
+        - name: version
+          in: path
+          type: string
+          description: Version
+          required: true
+        
+        - in: header
+          name: authorization
+          description: ""
+          required: true
+          type: string
+        
+      responses:
+        200:
+          description: Profile details removed 
+    
+    put: 
+      parameters: 
+      
+        - name: id
+          in: path
+          type: integer
+          description: ID of the Profile
+          required: true
+        
+        - name: version
+          in: path
+          type: string
+          description: Version
+          required: true
+        
+        - in: header
+          name: authorization
+          description: ""
+          required: true
+          type: string
+        
+        - name: New Profile is added 
+          in: body
+          description: Record
+          schema:
+           $ref: '#/definitions/UpdtProfile'
+        
+      responses:
+        200:
+          description: Profile details updated 
 
   /{version}/CloudConfiguration/Profiles :
    
@@ -659,6 +1126,7 @@ paths:
           in: path
           type: string
           description: Version
+          required: true
         
         - in: header
           name: authorization
@@ -692,13 +1160,61 @@ paths:
           in: path
           type: string
           description: Version
+          required: true
           
       responses:
        200:
         description: New profile has been inserted
 
+  /{version}/CloudConfiguration/IPAddress/{id} :
+    
+    delete:
 
+      parameters:
+        
+        - in: header
+          name: authorization
+          description: ""
+          required: true
+          type: string
+          
+        - name: version
+          in: path
+          type: string
+          description: Version
+          required: true
+        
+        - name: id
+          in: path
+          type: integer
+          description: ID of IP
+          required: true
+          
+      responses:
+       200:
+        description: New profile has been deleted
 
+  /{version}/CloudConfiguration/IPAddresses :
+    
+    get:
+    
+      parameters:
+        
+        - in: header
+          name: authorization
+          description: ""
+          required: true
+          type: string
+          
+        - name: version
+          in: path
+          type: string
+          description: Version
+          required: true
+          
+      responses:
+       200:
+        description: profile details recieved
 
 definitions:        
   Cloud:
@@ -718,7 +1234,21 @@ definitions:
       type: integer
      CompanyId:
       type: integer
-      
+  
+  UpdtCloud:
+    properties:
+     
+     CloudModel:
+      type: integer
+     Name: 
+      type: string
+     Class:
+      type: string
+     Type: 
+      type: string
+     Category:
+      type: string
+       
       
   CallServer:
     properties:
@@ -739,8 +1269,28 @@ definitions:
       type: integer
      Code:
       type: integer
-     InternalIP:
+     InternalMainIP:
       type: string
+  
+  UpdtCallServer:
+    properties:
+     
+     Activate:
+      type: boolean
+     Name: 
+      type: string
+     Class:
+      type: string
+     Type: 
+      type: string
+     Category:
+      type: string
+     Code:
+      type: integer
+     InternalMainIP:
+      type: string
+  
+  
       
   LoadBalancer:
     properties:
@@ -749,7 +1299,7 @@ definitions:
       type: string
      MainIP:
       type: string
-     ClusterId:
+     ClusterID:
       type: integer
       
   Telco:
@@ -768,19 +1318,36 @@ definitions:
       type: integer
      CompanyId:
       type: integer
+  
+  UpdtNetwork:
+    properties:
+     
+     Mask: 
+      type: integer
+      description: " 32,24 etc (Network prefix notation)"
+     NATIP:
+      type: string
+     
+      
+      
       
   CloudEndUser:
     properties:
      
-    
+     Provision: 
+      type: integer
+     Domain:
+      type: string
+     ClusterID:
+      type: integer
+  
+  UpdtCloudEndUser:
+    properties:
+     
      SIPConnectivityProvision: 
       type: integer
      Domain:
       type: string
-     TenantId:
-      type: integer
-     CompanyId:
-      type: integer
      ClusterID:
       type: integer
       
@@ -812,14 +1379,37 @@ definitions:
      CompanyId:
       type: integer
       
+  UpdtProfile:
+    properties:
+     
+     ProfileName:
+      type: string
+     MainIp: 
+      type: string
+     InternalIp:
+      type: string
+     InternalRtpIp:
+      type: string
+     ExternalIp:
+      type: string
+     ExternalRtpIp:
+      type: string
+     Port :
+      type: integer
+     ObjClass:
+      type: string
+     ObjType: 
+      type: string
+     ObjCategory:
+      type: string
+     
+      
       
   IP:
     properties:
      
      CallserverID:
       type: integer
-     MainIp: 
-      type: string
      IP:
       type: string
      IsAllocated:
