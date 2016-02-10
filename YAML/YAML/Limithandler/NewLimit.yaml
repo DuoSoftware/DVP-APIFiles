@@ -14,6 +14,31 @@ schemes:
 host: limithandler.104.131.67.21.xip.io
 basePath: /DVP/API
 paths:
+
+  '/{version}/LimitAPI/Schedule':
+    post:
+      parameters:
+        - name: version
+          in: path
+          type: string
+          description: Version checking
+          required: true
+          
+        - name: New Schedule Record
+          in: body
+          description: Record
+          schema:
+            $ref: '#/definitions/Schedule'
+            
+        - in: header
+          name: authorization
+          description: ''
+          required: true
+          type: string
+      responses:
+        '200':
+          description: New Schedule Record Added
+          
   '/{version}/LimitAPI/Schedule/Appointment':
     post:
       parameters:
@@ -35,7 +60,8 @@ paths:
       responses:
         '200':
           description: New Appointment Record Added
-  '/{version}/LimitAPI/Schedule':
+  
+  '/{version}/LimitAPI/InitialData':
     post:
       parameters:
         - name: version
@@ -43,11 +69,13 @@ paths:
           type: string
           description: Version checking
           required: true
-        - name: New Schedule Record
+          
+        - name: New InitialData Record
           in: body
           description: Record
           schema:
-            $ref: '#/definitions/Schedule'
+            $ref: '#/definitions/InitialData'
+            
         - in: header
           name: authorization
           description: ''
@@ -55,7 +83,9 @@ paths:
           type: string
       responses:
         '200':
-          description: New Schedule Record Added
+          description: New InitialData Record Added
+          
+  
   '/{version}/LimitAPI/Schedule/{id}':
     get:
       parameters:
@@ -64,38 +94,77 @@ paths:
           type: integer
           description: ID of the schedule
           required: true
+          
         - name: version
           in: path
           type: string
           description: Version checking
           required: true
+          
         - in: header
           name: authorization
           description: ''
           required: true
           type: string
+          
+      responses:
+        '200':
+          description: Schedule recieved
+    
+    post:
+      parameters:
+        - name: id
+          in: path
+          type: integer
+          description: ID of the schedule
+          required: true
+          
+        - name: version
+          in: path
+          type: string
+          description: Version checking
+          required: true
+          
+        - in: header
+          name: authorization
+          description: ''
+          required: true
+          type: string
+          
+        - name: Schedule Data
+          in: body
+          description: Record
+          schema:
+            $ref: '#/definitions/UpdtSchedule'
       responses:
         '200':
           description: Schedule picked
-          
-  '/{version}/LimitAPI/Schedules':
-    get:
+    
+    delete:
       parameters:
-        
+        - name: id
+          in: path
+          type: integer
+          description: ID of the schedule
+          required: true
+          
         - name: version
           in: path
           type: string
           description: Version checking
           required: true
+          
         - in: header
           name: authorization
           description: ''
           required: true
           type: string
+          
+    
       responses:
         '200':
-          description: Schedules picked
-  
+          description: Schedule deleted
+          
   '/{version}/LimitAPI/Schedule/{sid}/AddAppointment/{appid}':
     post:
       parameters:
@@ -104,16 +173,19 @@ paths:
           type: string
           description: Version checking
           required: true
+          
         - name: sid
           in: path
           type: integer
-          description: ScheduleId
+          description: Schedule ID
           required: true
+          
         - name: appid
           in: path
           type: integer
-          description: AppointmentID
+          description: Appointment ID
           required: true
+          
         - in: header
           name: authorization
           description: ''
@@ -121,7 +193,8 @@ paths:
           type: string
       responses:
         '200':
-          description: New Mapping happens
+          description: Add Appointment to Schedule succeeded
+  
   '/{version}/LimitAPI/Schedule/Appointment/{id}':
     post:
       parameters:
@@ -148,6 +221,12 @@ paths:
       responses:
         '200':
           description: Updation succeeded
+    
+    
+    
+   
+    
+    
   '/{version}/LimitAPI/Limit':
     post:
       parameters:
@@ -156,63 +235,44 @@ paths:
           type: string
           description: Version checking
           required: true
+          
         - name: Limit record
           in: body
           description: Record
           schema:
             $ref: '#/definitions/LimitInfo'
+            
         - in: header
           name: authorization
           description: ''
           required: true
           type: string
+          
       responses:
         '200':
           description: Limit record insertion Succeeded
-  '/{version}/LimitAPI/Limit/Max/{lid}':
-    post:
-      parameters:
-        - name: Update Max
-          in: body
-          description: Record
-          schema:
-            $ref: '#/definitions/LimMax'
-        - name: version
-          in: path
-          type: string
-          description: Version checking
-          required: true
-        - name: lid
-          in: path
-          type: integer
-          description: LimitId
-          required: true
-        - in: header
-          name: authorization
-          description: ''
-          required: true
-          type: string
-      responses:
-        '200':
-          description: Limit max updation Succeeded
+  
   '/{version}/LimitAPI/Limit/{lid}/Activate/{status}':
-    post:
+    put:
       parameters:
         - name: version
           in: path
           type: integer
           description: Version checking
           required: true
+          
         - name: lid
           in: path
           type: string
           description: LimitId
           required: true
+          
         - name: status
           in: path
           type: string
           description: LimitId
           required: true
+          
         - in: header
           name: authorization
           description: ''
@@ -220,41 +280,48 @@ paths:
           type: string
       responses:
         '200':
-          description: Limit max updation Succeeded
+          description: Limit Activated
+          
   '/{version}/LimitAPI/Schedule/Increment/{key}':
-    get:
+    post:
       parameters:
         - name: key
           in: path
           type: string
           description: ID of Limit
           required: true
+          
         - name: version
           in: path
           type: string
           description: Version checking
           required: true
+          
         - in: header
           name: authorization
           description: ''
           required: true
           type: string
+          
       responses:
         '200':
-          description: Incrementation happened
+          description: Limit incremented        
+          
   '/{version}/LimitAPI/Schedule/Decrement/{key}':
-    get:
+    post:
       parameters:
         - name: key
           in: path
           type: string
           description: ID of Limit
           required: true
+          
         - name: version
           in: path
           type: string
           description: Version checking
           required: true
+          
         - in: header
           name: authorization
           description: ''
@@ -262,7 +329,58 @@ paths:
           type: string
       responses:
         '200':
-          description: Decrementation happened
+          description: Decrementation happened        
+  
+  '/{version}/LimitAPI/Limit/{lid}/Max/{max}':
+    post:
+      parameters:
+        - name: max
+          in: path
+          type: integer
+          description: Max count
+          required: true
+            
+        - name: version
+          in: path
+          type: string
+          description: Version checking
+          required: true
+          
+        - name: lid
+          in: path
+          type: integer
+          description: LimitId
+          required: true
+          
+        - in: header
+          name: authorization
+          description: ''
+          required: true
+          type: string
+          
+      responses:
+        '200':
+          description: Max count of Limit updated
+   
+  '/{version}/LimitAPI/Limit/Restore':
+    post:
+      parameters:
+        
+        - name: version
+          in: path
+          type: string
+          description: Version checking
+          required: true
+          
+        - in: header
+          name: authorization
+          description: ''
+          required: true
+          type: string
+      responses:
+        '200':
+          description: Limit records are restored      
+          
   '/{version}/LimitAPI/Schedule/ValidAppointment/{scheduleID}':
     get:
       parameters:
@@ -271,11 +389,13 @@ paths:
           type: string
           description: Version checking
           required: true
+          
         - name: scheduleID
           in: path
           type: string
           description: Schedule Id of Appointment
           required: true
+          
         - in: header
           name: authorization
           description: ''
@@ -283,30 +403,54 @@ paths:
           type: string
       responses:
         '200':
-          description: Decrementation happened
+          description: Valid appointments of Schedule recieved      
+          
+  '/{version}/LimitAPI/Schedule/UnAssignedAppointments':
+    get:
+      parameters:
+        - name: version
+          in: path
+          type: string
+          description: Version checking
+          required: true
+
+          
+        - in: header
+          name: authorization
+          description: ''
+          required: true
+          type: string
+      responses:
+        '200':
+          description: Unassigned Appointment records recieved              
+          
   '/{version}/LimitAPI/Schedule/{id}/ValidAppointment/{date}/{time}':
     get:
       parameters:
         - name: id
           in: path
           type: string
-          description: date checking
+          description: Schedule ID
           required: true
+          
         - name: date
           in: path
           type: string
           description: date checking
           required: true
+          
         - name: time
           in: path
           type: string
           description: time checking
           required: true
+          
         - name: version
           in: path
           type: string
           description: Version checking
           required: true
+          
         - in: header
           name: authorization
           description: ''
@@ -314,7 +458,28 @@ paths:
           type: string
       responses:
         '200':
-          description: Decrementation happened
+          description: Valid appointment for given date and time        
+        
+  '/{version}/LimitAPI/Schedules':
+    get:
+      parameters:
+        
+        - name: version
+          in: path
+          type: string
+          description: Version checking
+          required: true
+          
+        - in: header
+          name: authorization
+          description: ''
+          required: true
+          type: string
+          
+      responses:
+        '200':
+          description: All Schedules recieved
+  
   
   '/{version}/LimitAPI/Schedule/{id}/Action':
     get:
@@ -324,40 +489,50 @@ paths:
           type: integer
           description: ID of the schedule
           required: true
+          
         - name: version
           in: path
           type: string
           description: Version checking
           required: true
+          
         - in: header
           name: authorization
           description: ''
           required: true
           type: string
+          
       responses:
         '200':
-          description: Schedule Action picked
-  '/{version}/LimitAPI/Schedule/{id}/Appointment':
+          description: Schedule Action recieved
+          
+  '/{version}/LimitAPI/Schedule/{id}/Appointments':
     get:
       parameters:
+      
         - name: id
           in: path
           type: integer
-          description: ID of the Appointment
+          description: ID of the Schedule
           required: true
+          
         - name: version
           in: path
           type: string
           description: Version checking
           required: true
+          
         - in: header
           name: authorization
           description: ''
           required: true
           type: string
+          
       responses:
         '200':
-          description: Appointment picked
+          description: Apointments of Schedule picked
+          
+          
   '/{version}/LimitAPI/Schedule/Appointmen/{id}/Action':
     get:
       parameters:
@@ -366,53 +541,63 @@ paths:
           type: integer
           description: ID of the Appointment
           required: true
+          
         - name: version
           in: path
           type: string
           description: Version checking
           required: true
+          
         - in: header
           name: authorization
           description: ''
           required: true
           type: string
+          
       responses:
         '200':
-          description: Appointment Action picked
+          description: Appointment Action recieved
+          
   '/{version}/LimitAPI/Limit/Current/{Rid}':
     get:
       parameters:
         - name: Rid
           in: path
           type: string
-          description: ID of the Appointment
+          description: ID of the Limit
           required: true
+          
         - name: version
           in: path
           type: string
           description: Version checking
           required: true
+          
         - in: header
           name: authorization
           description: ''
           required: true
           type: string
+          
       responses:
         '200':
-          description: Appointment Action picked
+          description: Current Limit count recieved
+          
   '/{version}/LimitAPI/Limit/MaxLimit/{Rid}':
     get:
       parameters:
         - name: Rid
           in: path
           type: string
-          description: ID of the Appointment
+          description: ID of the Limit
           required: true
+          
         - name: version
           in: path
           type: string
           description: Version checking
           required: true
+          
         - in: header
           name: authorization
           description: ''
@@ -420,7 +605,8 @@ paths:
           type: string
       responses:
         '200':
-          description: Max Limit picked
+          description: Max Limit count receieved
+          
   '/{version}/LimitAPI/Limit/Info':
     get:
       parameters:
@@ -430,14 +616,89 @@ paths:
           type: string
           description: Version checking
           required: true
+          
         - in: header
           name: authorization
           description: ''
           required: true
           type: string
+          
       responses:
         '200':
-          description: Limit Informations picked
+          description: Limit Informations receieved
+  
+  '/{version}/LimitAPI/Schedules/byCompany':
+    get:
+      parameters:
+        
+        - name: version
+          in: path
+          type: string
+          description: Version checking
+          required: true
+          
+        - in: header
+          name: authorization
+          description: ''
+          required: true
+          type: string
+          
+      responses:
+        '200':
+          description: Schedules of company received
+          
+  '/{version}/LimitAPI/Appointment/{id}':
+  
+    delete:
+      parameters:
+        - name: id
+          in: path
+          type: integer
+          description: ID of the Appointment
+          required: true
+          
+        - name: version
+          in: path
+          type: string
+          description: Version checking
+          required: true
+          
+        - in: header
+          name: authorization
+          description: ''
+          required: true
+          type: string
+          
+    
+      responses:
+        '200':
+          description: Appointment deleted
+    
+    
+    get:
+      parameters:
+        - name: id
+          in: path
+          type: integer
+          description: ID of the Appointment
+          required: true
+          
+        - name: version
+          in: path
+          type: string
+          description: Version checking
+          required: true
+          
+        - in: header
+          name: authorization
+          description: ''
+          required: true
+          type: string
+          
+      responses:
+        '200':
+          description: Appointment data recieved
+   
           
 definitions:
   Appointment:
@@ -460,6 +721,9 @@ definitions:
         type: string
       DaysOfWeek:
         $ref: '#/definitions/Days'
+      RecurrencePattern:
+        type: string
+        
   Days:
     type: object
     properties:
@@ -477,6 +741,7 @@ definitions:
         type: boolean
       Saturday:
         type: boolean
+        
   Schedule:
     properties:
       ScheduleName:
@@ -485,6 +750,29 @@ definitions:
         type: string
       ExtraData:
         type: string
+      Availability:
+        type: boolean
+        
+  InitialData:
+    properties:
+      Schedule:
+        type: array
+        items:
+         $ref: '#/definitions/Schedule'
+      Appointment:
+        type: array
+        items:
+         $ref: '#/definitions/Appointment'
+  
+  UpdtSchedule:
+    properties:
+      
+      Action:
+        type: string
+      ExtraData:
+        type: string
+      
+        
   UpdtApp:
     properties:
       Action:
@@ -501,6 +789,9 @@ definitions:
         type: string
       DaysOfWeek:
         $ref: '#/definitions/Days'
+      RecurrencePattern:
+        type: string
+        
   LimitInfo:
     properties:
       LimitDescription:
@@ -509,7 +800,4 @@ definitions:
         type: integer
       Enable:
         type: boolean
-  LimMax:
-    properties:
-      MaxCount:
-        type: integer
+  
