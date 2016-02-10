@@ -17,19 +17,23 @@ paths:
           description: Record
           schema:
             $ref: "#/definitions/AddNumber"
+            
         - name: hostVersion
           in: path
           type: string
           description: Version checking
           required: true
+          
         - in: header
           name: authorization
           description: ""
           required: true
           type: string
+          
       responses:
         "200":
           description: Adding Phone number to trunk is succceded
+          
   "/{hostVersion}/PhoneNumberTrunkApi/TrunkNumber/{PhoneNumber}":
     delete:
       parameters:
@@ -37,16 +41,20 @@ paths:
           in: path
           type: string
           description: PhoneNumber
+          required: true
+          
         - name: hostVersion
           in: path
           type: string
           description: Version checking
           required: true
+          
         - in: header
           name: authorization
           description: ""
           required: true
           type: string
+          
       responses:
         "200":
           description: Phone number deletion is succeeded
@@ -56,11 +64,14 @@ paths:
           in: path
           type: string
           description: phonenumber
+          required: true
+          
         - name: Body
           in: body
           description: Record
           schema:
-            $ref: "#/definitions/AddNumber"
+            $ref: "#/definitions/UpdtNumber"
+            
         - name: hostVersion
           in: path
           type: string
@@ -74,399 +85,6 @@ paths:
       responses:
         "200":
           description: Trunk availability is successfully changed
-  "/{hostVersion}/PhoneNumberTrunkApi/BuyNumber":
-    post:
-      parameters:
-        - name: Buy Number
-          in: body
-          description: Record
-          schema:
-            $ref: "#/definitions/BuyNumber"
-        - name: hostVersion
-          in: path
-          type: string
-          description: Version checking
-          required: true
-        - in: header
-          name: authorization
-          description: ""
-          required: true
-          type: string
-      responses:
-        "200":
-          description: Buy Number is succeeded
-  "/{hostVersion}/PhoneNumberTrunkApi/Trunk":
-    post:
-      parameters:
-        - name: Create Trunk
-          in: body
-          description: Record
-          schema:
-            $ref: "#/definitions/Trunk"
-        - name: hostVersion
-          in: path
-          type: string
-          description: Version checking
-          required: true
-        - in: header
-          name: authorization
-          description: ""
-          required: true
-          type: string
-      responses:
-        "200":
-          description: Buy Number is succeeded
-  "/{hostVersion}/PhoneNumberTrunkApi/Operator":
-    post:
-      parameters:
-        - name: Add Operator
-          in: body
-          description: Record
-          schema:
-            $ref: "#/definitions/Operator"
-        - name: hostVersion
-          in: path
-          type: string
-          description: Version checking
-          required: true
-        - in: header
-          name: authorization
-          description: ""
-          required: true
-          type: string
-      responses:
-        "200":
-          description: Adding new Operator is succeeded
-  "/{hostVersion}/PhoneNumberTrunkApi/Trunk/{id}":
-    post:
-      parameters:
-        - name: id
-          in: path
-          type: integer
-          description: id
-        - name: UpdateTrunk
-          in: body
-          description: Record
-          schema:
-            $ref: "#/definitions/Trunk"
-        - name: hostVersion
-          in: path
-          type: string
-          description: Version checking
-          required: true
-        - in: header
-          name: authorization
-          description: ""
-          required: true
-          type: string
-      responses:
-        "200":
-          description: Trunk detail updation is succeeded
-  "/{hostVersion}/PhoneNumberTrunkApi/Trunk/{id}/SetLoadBalancer/{lbId}":
-    post:
-      parameters:
-        - name: id
-          in: path
-          type: integer
-          description: id
-        - name: lbId
-          in: path
-          type: integer
-          description: lbId
-        - name: hostVersion
-          in: path
-          type: string
-          description: Version checking
-          required: true
-        - in: header
-          name: authorization
-          description: ""
-          required: true
-          type: string
-      responses:
-        "200":
-          description: Trunk is successfully attached to Load balancer
-  "/{hostVersion}/PhoneNumberTrunkApi/Trunk/{id}/SetSipProfile/{profId}":
-    post:
-      parameters:
-        - name: id
-          in: path
-          type: integer
-          description: id
-        - name: profId
-          in: path
-          type: integer
-          description: profId
-        - name: hostVersion
-          in: path
-          type: string
-          description: Version checking
-          required: true
-        - in: header
-          name: authorization
-          description: ""
-          required: true
-          type: string
-      responses:
-        "200":
-          description: Trunk is successfully attached to Sip profile
-  "/{hostVersion}/PhoneNumberTrunkApi/Trunk/{id}/SetTranslation/{transId}":
-    post:
-      parameters:
-        - name: id
-          in: path
-          type: integer
-          description: id
-        - name: transId
-          in: path
-          type: integer
-          description: transId
-        - name: hostVersion
-          in: path
-          type: string
-          description: Version checking
-          required: true
-        - in: header
-          name: authorization
-          description: ""
-          required: true
-          type: string
-      responses:
-        "200":
-          description: Trunk is successfully attached to Translation
-  "/{hostVersion}/PhoneNumberTrunkApi/Trunk/{id}/SetOperator/{opId}":
-    post:
-      parameters:
-        - name: id
-          in: path
-          type: integer
-          description: id
-        - name: opId
-          in: path
-          type: integer
-          description: opId
-        - name: hostVersion
-          in: path
-          type: string
-          description: Version checking
-          required: true
-        - in: header
-          name: authorization
-          description: ""
-          required: true
-          type: string
-      responses:
-        "200":
-          description: Operator is successfully assigned to Trunk
-  "/{hostVersion}/PhoneNumberTrunkApi/TrunkNumber/{trNum}/SetInboundLimit/{limId}":
-    post:
-      parameters:
-        - name: trNum
-          in: path
-          type: string
-          description: trNum
-        - name: limId
-          in: path
-          type: string
-          description: limId
-        - name: hostVersion
-          in: path
-          type: string
-          description: Version checking
-          required: true
-        - in: header
-          name: authorization
-          description: ""
-          required: true
-          type: string
-      responses:
-        "200":
-          description: Trunk number set inbound limit successfull
-  "/{hostVersion}/PhoneNumberTrunkApi/TrunkNumber/{trNum}/SetOutboundLimit/{limId}":
-    post:
-      parameters:
-        - name: trNum
-          in: path
-          type: string
-          description: trNum
-        - name: limId
-          in: path
-          type: string
-          description: limId
-        - name: hostVersion
-          in: path
-          type: string
-          description: Version checking
-          required: true
-        - in: header
-          name: authorization
-          description: ""
-          required: true
-          type: string
-      responses:
-        "200":
-          description: Trunk number set outbound limit successfull       
-  "/{hostVersion}/PhoneNumberTrunkApi/TrunkNumber/{trNum}/SetBothLimit/{limId}":
-    post:
-      parameters:
-        - name: trNum
-          in: path
-          type: string
-          description: trNum
-        - name: limId
-          in: path
-          type: string
-          description: limId
-        - name: hostVersion
-          in: path
-          type: string
-          description: Version checking
-          required: true
-        - in: header
-          name: authorization
-          description: ""
-          required: true
-          type: string
-      responses:
-        "200":
-          description: Trunk number set inbound limit successfull       
-  "/{hostVersion}/PhoneNumberTrunkApi/Trunk/{id}/Availability/{status}":
-    post:
-      parameters:
-        - name: id
-          in: path
-          type: integer
-          description: id
-        - name: status
-          in: path
-          type: boolean
-          description: status
-        - name: hostVersion
-          in: path
-          type: string
-          description: Version checking
-          required: true
-        - in: header
-          name: authorization
-          description: ""
-          required: true
-          type: string
-      responses:
-        "200":
-          description: Trunk availability is successfully changed
-  "/{hostVersion}/PhoneNumberTrunkApi/Trunk/{id}":
-    get:
-      parameters:
-        - name: id
-          in: path
-          type: integer
-          description: ID of the Trunk
-          required: true
-        - name: hostVersion
-          in: path
-          type: string
-          description: Version checking
-          required: true
-        - in: header
-          name: authorization
-          description: ""
-          required: true
-          type: string
-      responses:
-        "200":
-          description: All Trunk details of the ID are returned
-  "/{hostVersion}/PhoneNumberTrunkApi/Operator/{operatorId}/UnAllocatedNumbers":
-    get:
-      parameters:
-        - name: operatorId
-          in: path
-          type: integer
-          description: ID of the Operator
-          required: true
-        - name: hostVersion
-          in: path
-          type: string
-          description: Version checking
-          required: true
-        - in: header
-          name: authorization
-          description: ""
-          required: true
-          type: string
-      responses:
-        "200":
-          description: All unallocated numbers are  returned
-  "/{hostVersion}/PhoneNumberTrunkApi/Operator/{operatorId}/AllocatedNumbers":
-    get:
-      parameters:
-        - name: operatorId
-          in: path
-          type: integer
-          description: ID of the Operator
-          required: true
-        - name: hostVersion
-          in: path
-          type: string
-          description: Version checking
-          required: true
-        - in: header
-          name: authorization
-          description: ""
-          required: true
-          type: string
-      responses:
-        "200":
-          description: All allocated numbers are  returned
-  "/{hostVersion}/PhoneNumberTrunkApi/TrunkNumber/{phonenumber}/Availability/{enable}":
-    post:
-      parameters:
-        - name: phonenumber
-          in: path
-          type: string
-          description: phonenumber
-        - name: enable
-          in: path
-          type: boolean
-          description: enable
-        - name: hostVersion
-          in: path
-          type: string
-          description: Version checking
-          required: true
-        - in: header
-          name: authorization
-          description: ""
-          required: true
-          type: string
-      responses:
-        "200":
-          description: Phone Number availability is successfully changed
-  "/{hostVersion}/PhoneNumberTrunkApi/TrunkNumber/Category/{phone}":
-    post:
-      parameters:
-        - name: phone
-          in: path
-          type: string
-          description: PhoneNumber
-        - name: UpdateCategory
-          in: body
-          description: Record
-          schema:
-            $ref: "#/definitions/Updtcategory"
-        - name: hostVersion
-          in: path
-          type: string
-          description: Version checking
-          required: true
-        - in: header
-          name: authorization
-          description: ""
-          required: true
-          type: string
-      responses:
-        "200":
-          description: Trunk detail updation is succeeded
-  "/{hostVersion}/PhoneNumberTrunkApi/TrunkNumber/{PhoneNumber}":
     get:
       parameters:
       
@@ -475,11 +93,13 @@ paths:
           type: integer
           description: ID of the PhoneNumber
           required: true
+          
         - name: hostVersion
           in: path
           type: string
           description: Version checking
           required: true
+          
         - in: header
           name: authorization
           description: ""
@@ -487,7 +107,518 @@ paths:
           type: string
       responses:
         "200":
-          description: All Phone number details are  returned
+          description: Phone number details are  returned
+          
+  "/{hostVersion}/PhoneNumberTrunkApi/BuyNumber":
+    post:
+      parameters:
+        - name: Buy Number
+          in: body
+          description: Record
+          schema:
+            $ref: "#/definitions/BuyNumber"
+            
+        - name: hostVersion
+          in: path
+          type: string
+          description: Version checking
+          required: true
+          
+        - in: header
+          name: authorization
+          description: ""
+          required: true
+          type: string
+          
+      responses:
+        "200":
+          description: Buy Number is succeeded
+          
+  "/{hostVersion}/PhoneNumberTrunkApi/Trunk":
+    post:
+      parameters:
+        - name: Create Trunk
+          in: body
+          description: Record
+          schema:
+            $ref: "#/definitions/Trunk"
+            
+        - name: hostVersion
+          in: path
+          type: string
+          description: Version checking
+          required: true
+          
+        - in: header
+          name: authorization
+          description: ""
+          required: true
+          type: string
+          
+      responses:
+        "200":
+          description: Trunk added successfully
+          
+  "/{hostVersion}/PhoneNumberTrunkApi/Operator":
+    post:
+      parameters:
+        - name: Add Operator
+          in: body
+          description: Record
+          schema:
+            $ref: "#/definitions/Operator"
+            
+        - name: hostVersion
+          in: path
+          type: string
+          description: Version checking
+          required: true
+          
+        - in: header
+          name: authorization
+          description: ""
+          required: true
+          type: string
+          
+      responses:
+        "200":
+          description: Adding new Operator is succeeded
+          
+  "/{hostVersion}/PhoneNumberTrunkApi/Trunk/{id}":
+    post:
+      parameters:
+        - name: id
+          in: path
+          type: integer
+          description: id
+          required: true
+        
+        - name: Update trunk
+          in: body
+          description: Record
+          schema:
+            $ref: "#/definitions/UpdtTrunk"
+            
+        - name: hostVersion
+          in: path
+          type: string
+          description: Version checking
+          required: true
+          
+        - in: header
+          name: authorization
+          description: ""
+          required: true
+          type: string
+          
+      responses:
+        "200":
+          description: Trunk details updation is succeeded
+    
+    get:
+      parameters:
+      
+        - name: id
+          in: path
+          type: integer
+          description: id of Trunk
+          required: true
+           
+        - name: hostVersion
+          in: path
+          type: string
+          description: Version checking
+          required: true
+          
+        - in: header
+          name: authorization
+          description: ""
+          required: true
+          type: string
+          
+      responses:
+        "200":
+          description: Trunk details recieved successfully
+   
+  "/{hostVersion}/PhoneNumberTrunkApi/Trunk/{id}/SetCloud/{cloudId}":
+    post:
+      parameters:
+        - name: id
+          in: path
+          type: integer
+          description: Trunk ID
+          required: true
+          
+        - name: cloudId
+          in: path
+          type: integer
+          description: Id of Cloud
+          required: true
+          
+        - name: hostVersion
+          in: path
+          type: string
+          description: Version checking
+          required: true
+          
+        - in: header
+          name: authorization
+          description: ""
+          required: true
+          type: string
+      responses:
+        "200":
+          description: Trunk is successfully attached to cloud       
+          
+          
+  "/{hostVersion}/PhoneNumberTrunkApi/Trunk/{id}/SetSipProfile/{profId}":
+    post:
+      parameters:
+        - name: id
+          in: path
+          type: integer
+          description: id of trunk
+          required: true
+          
+        - name: profId
+          in: path
+          type: integer
+          description: Profile ID
+          required: true
+          
+        - name: hostVersion
+          in: path
+          type: string
+          description: Version checking
+          required: true
+          
+        - in: header
+          name: authorization
+          description: ""
+          required: true
+          type: string
+          
+      responses:
+        "200":
+          description: Trunk is successfully attached to Sip profile
+          
+  "/{hostVersion}/PhoneNumberTrunkApi/Trunk/{id}/SetTranslation/{transId}":
+    post:
+      parameters:
+        - name: id
+          in: path
+          type: integer
+          description: id of trunk
+          required: true
+          
+        - name: transId
+          in: path
+          type: integer
+          description: Translation ID
+          required: true
+          
+        - name: hostVersion
+          in: path
+          type: string
+          description: Version checking
+          required: true
+          
+        - in: header
+          name: authorization
+          description: ""
+          required: true
+          type: string
+          
+      responses:
+        "200":
+          description: Trunk is successfully attached to Translation
+          
+  "/{hostVersion}/PhoneNumberTrunkApi/Trunk/{id}/SetOperator/{opId}":
+    post:
+      parameters:
+        - name: id
+          in: path
+          type: integer
+          description: id of Trunk
+          required: true
+          
+        - name: opId
+          in: path
+          type: integer
+          description: Operator ID
+          required: true
+          
+        - name: hostVersion
+          in: path
+          type: string
+          description: Version checking
+          required: true
+          
+        - in: header
+          name: authorization
+          description: ""
+          required: true
+          type: string
+          
+      responses:
+        "200":
+          description: Operator is successfully assigned to Trunk
+  
+  "/{hostVersion}/PhoneNumberTrunkApi/Trunk/{id}/Availability/{status}":
+    post:
+      parameters:
+        - name: id
+          in: path
+          type: integer
+          description: id of trunk
+          required: true
+          
+        - name: status
+          in: path
+          type: boolean
+          description: availability status
+          required: true
+          
+        - name: hostVersion
+          in: path
+          type: string
+          description: Version checking
+          required: true
+          
+        - in: header
+          name: authorization
+          description: ""
+          required: true
+          type: string
+      responses:
+        "200":
+          description: Trunk availability is successfully updated
+  
+  "/{hostVersion}/PhoneNumberTrunkApi/TrunkNumber/{trNum}/SetInboundLimit/{limId}":
+    post:
+      parameters:
+        - name: trNum
+          in: path
+          type: string
+          description: Trunk Number
+          required: true
+          
+        - name: limId
+          in: path
+          type: string
+          description: ID of Limit
+          required: true
+          
+        - name: hostVersion
+          in: path
+          type: string
+          description: Version checking
+          required: true
+          
+        - in: header
+          name: authorization
+          description: ""
+          required: true
+          type: string
+          
+      responses:
+        "200":
+          description: Successfully set inbound limit to Trunk
+          
+  "/{hostVersion}/PhoneNumberTrunkApi/TrunkNumber/{trNum}/SetOutboundLimit/{limId}":
+    post:
+      parameters:
+        - name: trNum
+          in: path
+          type: string
+          description: Trunk Number
+          required: true
+          
+        - name: limId
+          in: path
+          type: string
+          description: Id of Limit
+          required: true
+          
+        - name: hostVersion
+          in: path
+          type: string
+          description: Version checking
+          required: true
+          
+        - in: header
+          name: authorization
+          description: ""
+          required: true
+          type: string
+          
+      responses:
+        "200":
+          description: Successfully added Outbound limit to Trnk number       
+  
+  "/{hostVersion}/PhoneNumberTrunkApi/TrunkNumber/{trNum}/SetBothLimit/{limId}":
+    post:
+      parameters:
+        - name: trNum
+          in: path
+          type: string
+          description: Trunk number
+          required: true
+          
+        - name: limId
+          in: path
+          type: string
+          description: Id of Limit
+          required: true
+          
+        - name: hostVersion
+          in: path
+          type: string
+          description: Version checking
+          required: true
+          
+        - in: header
+          name: authorization
+          description: ""
+          required: true
+          type: string
+          
+      responses:
+        "200":
+          description: Sum of Outbound and Inbound limits are successfully added 
+  
+  
+  "/{hostVersion}/PhoneNumberTrunkApi/Trunks":
+    get:
+      parameters:
+        
+        - name: hostVersion
+          in: path
+          type: string
+          description: Version checking
+          required: true
+          
+        - in: header
+          name: authorization
+          description: ""
+          required: true
+          type: string
+      responses:
+        "200":
+          description: All Trunk details of the ID are returned
+          
+  "/{hostVersion}/PhoneNumberTrunkApi/Operator/{operatorId}/UnAllocatedNumbers":
+    get:
+      parameters:
+        - name: operatorId
+          in: path
+          type: integer
+          description: ID of the Operator
+          required: true
+          
+        - name: hostVersion
+          in: path
+          type: string
+          description: Version checking
+          required: true
+          
+        - in: header
+          name: authorization
+          description: ""
+          required: true
+          type: string
+      responses:
+        "200":
+          description: All unallocated numbers of a operator are  returned
+          
+  "/{hostVersion}/PhoneNumberTrunkApi/Operator/{operatorId}/AllocatedNumbers":
+    get:
+      parameters:
+        - name: operatorId
+          in: path
+          type: integer
+          description: ID of the Operator
+          required: true
+          
+        - name: hostVersion
+          in: path
+          type: string
+          description: Version checking
+          required: true
+          
+        - in: header
+          name: authorization
+          description: ""
+          required: true
+          type: string
+          
+      responses:
+        "200":
+          description: All allocated numbers of a operator are  returned
+         
+          
+  "/{hostVersion}/PhoneNumberTrunkApi/TrunkNumber/{phonenumber}/Availability/{enable}":
+    post:
+      parameters:
+        - name: phonenumber
+          in: path
+          type: string
+          description: phonenumber
+          required: true
+          
+        - name: enable
+          in: path
+          type: boolean
+          description: Availability staus
+          required: true
+          
+        - name: hostVersion
+          in: path
+          type: string
+          description: Version checking
+          required: true
+          
+        - in: header
+          name: authorization
+          description: ""
+          required: true
+          type: string
+          
+      responses:
+        "200":
+          description: Availability of a phone number is successfully changed
+          
+  "/{hostVersion}/PhoneNumberTrunkApi/TrunkNumber/Category/{phone}":
+    post:
+      parameters:
+        - name: phone
+          in: path
+          type: string
+          description: PhoneNumber
+          required: true
+          
+        - name: UpdateCategory
+          in: body
+          description: Record
+          schema:
+            $ref: "#/definitions/Updtcategory"
+            
+        - name: hostVersion
+          in: path
+          type: string
+          description: Version checking
+          required: true
+          
+        - in: header
+          name: authorization
+          description: ""
+          required: true
+          type: string
+      responses:
+        "200":
+          description: Category of Phone number  is updated
+  
+    
   "/{hostVersion}/PhoneNumberTrunkApi/TrunkNumbers":
     get:
       parameters:
@@ -497,16 +628,48 @@ paths:
           type: string
           description: Version checking
           required: true
+          
         - in: header
           name: authorization
           description: ""
           required: true
           type: string
+          
       responses:
         "200":
           description: All Phone numbers of Company are  returned
+  
+  "/{hostVersion}/PhoneNumberTrunkApi/Trunk/{id}/PhoneNumbers":
+    get:
+      parameters:
+        
+        - name: hostVersion
+          in: path
+          type: string
+          description: Version checking
+          required: true
+          
+        - in: header
+          name: authorization
+          description: ""
+          required: true
+          type: string
+        
+        - name: id
+          in: path
+          type: string
+          description: ID of Trunk
+          required: true
+          
+      responses:
+        "200":
+          description: All Phone numbers of Trunk are  returned
+          
+          
 definitions:
+
   AddNumber:
+  
     properties:
       PhoneNumber:
         type: integer
@@ -528,6 +691,27 @@ definitions:
         }
       TrunkId:
         type: integer
+  
+  UpdtNumber:
+  
+    properties:
+      
+      ObjClass:
+        type: string
+      ObjType:
+        {
+          description: Number Type,
+          type: string,
+          enum: ["CALL", "FAX"]
+        }
+      ObjCategory:
+        {
+          description: Number Direction,
+          type: string,
+          enum: ["INBOUND", "OUTBOUND", "BOTH"]
+        }
+      
+  
   BuyNumber:
     properties:
       PhoneNumber:
@@ -536,6 +720,7 @@ definitions:
         type: integer
       TenantToChange:
         type: integer
+        
   Trunk:
     properties:
       TrunkCode:
@@ -554,6 +739,26 @@ definitions:
         type: boolean
       FaxType:
         type: string
+  
+  UpdtTrunk:
+    properties:
+    
+      TrunkName:
+        type: string
+      ObjClass:
+        type: string
+      ObjType:
+        type: string
+      ObjCategory:
+        type: string
+      IpUrl:
+        type: string
+      Enable:
+        type: boolean
+      FaxType:
+        type: string
+        
+        
   Operator:
     properties:
       OperatorCode:
@@ -569,7 +774,10 @@ definitions:
   
   Updtcategory:
     properties:
-      CompanyId:
-        type: integer
+      
       ObjCategory:
         type: string
+        
+  
+  
+  

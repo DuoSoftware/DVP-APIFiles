@@ -45,6 +45,74 @@
             }
         },
         "/{hostVersion}/PhoneNumberTrunkApi/TrunkNumber/{PhoneNumber}": {
+            "delete": {
+                "parameters": [
+                    {
+                        "name": "PhoneNumber",
+                        "in": "path",
+                        "type": "string",
+                        "description": "PhoneNumber",
+                        "required": true
+                    },
+                    {
+                        "name": "hostVersion",
+                        "in": "path",
+                        "type": "string",
+                        "description": "Version checking",
+                        "required": true
+                    },
+                    {
+                        "in": "header",
+                        "name": "authorization",
+                        "description": "",
+                        "required": true,
+                        "type": "string"
+                    }
+                ],
+                "responses": {
+                    "200": {
+                        "description": "Phone number deletion is succeeded"
+                    }
+                }
+            },
+            "post": {
+                "parameters": [
+                    {
+                        "name": "PhoneNumber",
+                        "in": "path",
+                        "type": "string",
+                        "description": "phonenumber",
+                        "required": true
+                    },
+                    {
+                        "name": "Body",
+                        "in": "body",
+                        "description": "Record",
+                        "schema": {
+                            "$ref": "#/definitions/UpdtNumber"
+                        }
+                    },
+                    {
+                        "name": "hostVersion",
+                        "in": "path",
+                        "type": "string",
+                        "description": "Version checking",
+                        "required": true
+                    },
+                    {
+                        "in": "header",
+                        "name": "authorization",
+                        "description": "",
+                        "required": true,
+                        "type": "string"
+                    }
+                ],
+                "responses": {
+                    "200": {
+                        "description": "Trunk availability is successfully changed"
+                    }
+                }
+            },
             "get": {
                 "parameters": [
                     {
@@ -71,7 +139,7 @@
                 ],
                 "responses": {
                     "200": {
-                        "description": "All Phone number details are  returned"
+                        "description": "Phone number details are  returned"
                     }
                 }
             }
@@ -137,7 +205,7 @@
                 ],
                 "responses": {
                     "200": {
-                        "description": "Buy Number is succeeded"
+                        "description": "Trunk added successfully"
                     }
                 }
             }
@@ -176,51 +244,22 @@
             }
         },
         "/{hostVersion}/PhoneNumberTrunkApi/Trunk/{id}": {
-            "get": {
-                "parameters": [
-                    {
-                        "name": "id",
-                        "in": "path",
-                        "type": "integer",
-                        "description": "ID of the Trunk",
-                        "required": true
-                    },
-                    {
-                        "name": "hostVersion",
-                        "in": "path",
-                        "type": "string",
-                        "description": "Version checking",
-                        "required": true
-                    },
-                    {
-                        "in": "header",
-                        "name": "authorization",
-                        "description": "",
-                        "required": true,
-                        "type": "string"
-                    }
-                ],
-                "responses": {
-                    "200": {
-                        "description": "All Trunk details of the ID are returned"
-                    }
-                }
-            }
-        },
-        "/{hostVersion}/PhoneNumberTrunkApi/Trunk/{id}/SetLoadBalancer/{lbId}": {
             "post": {
                 "parameters": [
                     {
                         "name": "id",
                         "in": "path",
                         "type": "integer",
-                        "description": "id"
+                        "description": "id",
+                        "required": true
                     },
                     {
-                        "name": "lbId",
-                        "in": "path",
-                        "type": "integer",
-                        "description": "lbId"
+                        "name": "Update trunk",
+                        "in": "body",
+                        "description": "Record",
+                        "schema": {
+                            "$ref": "#/definitions/UpdtTrunk"
+                        }
                     },
                     {
                         "name": "hostVersion",
@@ -239,7 +278,76 @@
                 ],
                 "responses": {
                     "200": {
-                        "description": "Trunk is successfully attached to Load balancer"
+                        "description": "Trunk details updation is succeeded"
+                    }
+                }
+            },
+            "get": {
+                "parameters": [
+                    {
+                        "name": "id",
+                        "in": "path",
+                        "type": "integer",
+                        "description": "id of Trunk",
+                        "required": true
+                    },
+                    {
+                        "name": "hostVersion",
+                        "in": "path",
+                        "type": "string",
+                        "description": "Version checking",
+                        "required": true
+                    },
+                    {
+                        "in": "header",
+                        "name": "authorization",
+                        "description": "",
+                        "required": true,
+                        "type": "string"
+                    }
+                ],
+                "responses": {
+                    "200": {
+                        "description": "Trunk details recieved successfully"
+                    }
+                }
+            }
+        },
+        "/{hostVersion}/PhoneNumberTrunkApi/Trunk/{id}/SetCloud/{cloudId}": {
+            "post": {
+                "parameters": [
+                    {
+                        "name": "id",
+                        "in": "path",
+                        "type": "integer",
+                        "description": "Trunk ID",
+                        "required": true
+                    },
+                    {
+                        "name": "cloudId",
+                        "in": "path",
+                        "type": "integer",
+                        "description": "Id of Cloud",
+                        "required": true
+                    },
+                    {
+                        "name": "hostVersion",
+                        "in": "path",
+                        "type": "string",
+                        "description": "Version checking",
+                        "required": true
+                    },
+                    {
+                        "in": "header",
+                        "name": "authorization",
+                        "description": "",
+                        "required": true,
+                        "type": "string"
+                    }
+                ],
+                "responses": {
+                    "200": {
+                        "description": "Trunk is successfully attached to cloud"
                     }
                 }
             }
@@ -251,13 +359,15 @@
                         "name": "id",
                         "in": "path",
                         "type": "integer",
-                        "description": "id"
+                        "description": "id of trunk",
+                        "required": true
                     },
                     {
                         "name": "profId",
                         "in": "path",
                         "type": "integer",
-                        "description": "profId"
+                        "description": "Profile ID",
+                        "required": true
                     },
                     {
                         "name": "hostVersion",
@@ -288,13 +398,15 @@
                         "name": "id",
                         "in": "path",
                         "type": "integer",
-                        "description": "id"
+                        "description": "id of trunk",
+                        "required": true
                     },
                     {
                         "name": "transId",
                         "in": "path",
                         "type": "integer",
-                        "description": "transId"
+                        "description": "Translation ID",
+                        "required": true
                     },
                     {
                         "name": "hostVersion",
@@ -325,13 +437,15 @@
                         "name": "id",
                         "in": "path",
                         "type": "integer",
-                        "description": "id"
+                        "description": "id of Trunk",
+                        "required": true
                     },
                     {
                         "name": "opId",
                         "in": "path",
                         "type": "integer",
-                        "description": "opId"
+                        "description": "Operator ID",
+                        "required": true
                     },
                     {
                         "name": "hostVersion",
@@ -355,20 +469,22 @@
                 }
             }
         },
-        "/{hostVersion}/PhoneNumberTrunkApi/TrunkNumber/{trNum}/SetInboundLimit/{limId}": {
+        "/{hostVersion}/PhoneNumberTrunkApi/Trunk/{id}/Availability/{status}": {
             "post": {
                 "parameters": [
                     {
-                        "name": "trNum",
+                        "name": "id",
                         "in": "path",
-                        "type": "string",
-                        "description": "trNum"
+                        "type": "integer",
+                        "description": "id of trunk",
+                        "required": true
                     },
                     {
-                        "name": "limId",
+                        "name": "status",
                         "in": "path",
-                        "type": "string",
-                        "description": "limId"
+                        "type": "boolean",
+                        "description": "availability status",
+                        "required": true
                     },
                     {
                         "name": "hostVersion",
@@ -387,7 +503,46 @@
                 ],
                 "responses": {
                     "200": {
-                        "description": "Trunk number set inbound limit successfull"
+                        "description": "Trunk availability is successfully updated"
+                    }
+                }
+            }
+        },
+        "/{hostVersion}/PhoneNumberTrunkApi/TrunkNumber/{trNum}/SetInboundLimit/{limId}": {
+            "post": {
+                "parameters": [
+                    {
+                        "name": "trNum",
+                        "in": "path",
+                        "type": "string",
+                        "description": "Trunk Number",
+                        "required": true
+                    },
+                    {
+                        "name": "limId",
+                        "in": "path",
+                        "type": "string",
+                        "description": "ID of Limit",
+                        "required": true
+                    },
+                    {
+                        "name": "hostVersion",
+                        "in": "path",
+                        "type": "string",
+                        "description": "Version checking",
+                        "required": true
+                    },
+                    {
+                        "in": "header",
+                        "name": "authorization",
+                        "description": "",
+                        "required": true,
+                        "type": "string"
+                    }
+                ],
+                "responses": {
+                    "200": {
+                        "description": "Successfully set inbound limit to Trunk"
                     }
                 }
             }
@@ -399,13 +554,15 @@
                         "name": "trNum",
                         "in": "path",
                         "type": "string",
-                        "description": "trNum"
+                        "description": "Trunk Number",
+                        "required": true
                     },
                     {
                         "name": "limId",
                         "in": "path",
                         "type": "string",
-                        "description": "limId"
+                        "description": "Id of Limit",
+                        "required": true
                     },
                     {
                         "name": "hostVersion",
@@ -424,7 +581,7 @@
                 ],
                 "responses": {
                     "200": {
-                        "description": "Trunk number set outbound limit successfull"
+                        "description": "Successfully added Outbound limit to Trnk number"
                     }
                 }
             }
@@ -436,13 +593,15 @@
                         "name": "trNum",
                         "in": "path",
                         "type": "string",
-                        "description": "trNum"
+                        "description": "Trunk number",
+                        "required": true
                     },
                     {
                         "name": "limId",
                         "in": "path",
                         "type": "string",
-                        "description": "limId"
+                        "description": "Id of Limit",
+                        "required": true
                     },
                     {
                         "name": "hostVersion",
@@ -461,26 +620,14 @@
                 ],
                 "responses": {
                     "200": {
-                        "description": "Trunk number set inbound limit successfull"
+                        "description": "Sum of Outbound and Inbound limits are successfully added"
                     }
                 }
             }
         },
-        "/{hostVersion}/PhoneNumberTrunkApi/Trunk/{id}/Availability/{status}": {
-            "post": {
+        "/{hostVersion}/PhoneNumberTrunkApi/Trunks": {
+            "get": {
                 "parameters": [
-                    {
-                        "name": "id",
-                        "in": "path",
-                        "type": "integer",
-                        "description": "id"
-                    },
-                    {
-                        "name": "status",
-                        "in": "path",
-                        "type": "boolean",
-                        "description": "status"
-                    },
                     {
                         "name": "hostVersion",
                         "in": "path",
@@ -498,7 +645,7 @@
                 ],
                 "responses": {
                     "200": {
-                        "description": "Trunk availability is successfully changed"
+                        "description": "All Trunk details of the ID are returned"
                     }
                 }
             }
@@ -530,7 +677,7 @@
                 ],
                 "responses": {
                     "200": {
-                        "description": "All unallocated numbers are  returned"
+                        "description": "All unallocated numbers of a operator are  returned"
                     }
                 }
             }
@@ -562,7 +709,7 @@
                 ],
                 "responses": {
                     "200": {
-                        "description": "All allocated numbers are  returned"
+                        "description": "All allocated numbers of a operator are  returned"
                     }
                 }
             }
@@ -574,13 +721,15 @@
                         "name": "phonenumber",
                         "in": "path",
                         "type": "string",
-                        "description": "phonenumber"
+                        "description": "phonenumber",
+                        "required": true
                     },
                     {
                         "name": "enable",
                         "in": "path",
                         "type": "boolean",
-                        "description": "enable"
+                        "description": "Availability staus",
+                        "required": true
                     },
                     {
                         "name": "hostVersion",
@@ -599,7 +748,7 @@
                 ],
                 "responses": {
                     "200": {
-                        "description": "Phone Number availability is successfully changed"
+                        "description": "Availability of a phone number is successfully changed"
                     }
                 }
             }
@@ -611,7 +760,8 @@
                         "name": "phone",
                         "in": "path",
                         "type": "string",
-                        "description": "PhoneNumber"
+                        "description": "PhoneNumber",
+                        "required": true
                     },
                     {
                         "name": "UpdateCategory",
@@ -638,7 +788,7 @@
                 ],
                 "responses": {
                     "200": {
-                        "description": "Trunk detail updation is succeeded"
+                        "description": "Category of Phone number  is updated"
                     }
                 }
             }
@@ -664,6 +814,38 @@
                 "responses": {
                     "200": {
                         "description": "All Phone numbers of Company are  returned"
+                    }
+                }
+            }
+        },
+        "/{hostVersion}/PhoneNumberTrunkApi/Trunk/{id}/PhoneNumbers": {
+            "get": {
+                "parameters": [
+                    {
+                        "name": "hostVersion",
+                        "in": "path",
+                        "type": "string",
+                        "description": "Version checking",
+                        "required": true
+                    },
+                    {
+                        "in": "header",
+                        "name": "authorization",
+                        "description": "",
+                        "required": true,
+                        "type": "string"
+                    },
+                    {
+                        "name": "id",
+                        "in": "path",
+                        "type": "string",
+                        "description": "ID of Trunk",
+                        "required": true
+                    }
+                ],
+                "responses": {
+                    "200": {
+                        "description": "All Phone numbers of Trunk are  returned"
                     }
                 }
             }
@@ -700,6 +882,30 @@
                 },
                 "TrunkId": {
                     "type": "integer"
+                }
+            }
+        },
+        "UpdtNumber": {
+            "properties": {
+                "ObjClass": {
+                    "type": "string"
+                },
+                "ObjType": {
+                    "description": "Number Type",
+                    "type": "string",
+                    "enum": [
+                        "CALL",
+                        "FAX"
+                    ]
+                },
+                "ObjCategory": {
+                    "description": "Number Direction",
+                    "type": "string",
+                    "enum": [
+                        "INBOUND",
+                        "OUTBOUND",
+                        "BOTH"
+                    ]
                 }
             }
         },
@@ -744,6 +950,31 @@
                 }
             }
         },
+        "UpdtTrunk": {
+            "properties": {
+                "TrunkName": {
+                    "type": "string"
+                },
+                "ObjClass": {
+                    "type": "string"
+                },
+                "ObjType": {
+                    "type": "string"
+                },
+                "ObjCategory": {
+                    "type": "string"
+                },
+                "IpUrl": {
+                    "type": "string"
+                },
+                "Enable": {
+                    "type": "boolean"
+                },
+                "FaxType": {
+                    "type": "string"
+                }
+            }
+        },
         "Operator": {
             "properties": {
                 "OperatorCode": {
@@ -765,9 +996,6 @@
         },
         "Updtcategory": {
             "properties": {
-                "CompanyId": {
-                    "type": "integer"
-                },
                 "ObjCategory": {
                     "type": "string"
                 }
