@@ -13,6 +13,7 @@ schemes:
 host : appregistry.104.131.67.21.xip.io
 basePath: /DVP/API
 paths:
+
   /{version}/APPRegistry/Developer:
     
     post:
@@ -38,7 +39,7 @@ paths:
           
       responses:
        200:
-        description: New Record Added
+        description: New Developer Added
         
   /{version}/APPRegistry/Application:
   
@@ -67,6 +68,7 @@ paths:
        200:
         description: New Voice app Record Added
         
+        
   /{version}/APPRegistry/Application/{AppID}/AssignToDeveloper/{DevID}:
   
     post:
@@ -82,13 +84,13 @@ paths:
         - name: AppID
           in: path
           type: string
-          description: ApplicationId
+          description: Application ID
           required: true
           
         - name: DevID
           in: path
           type: integer
-          description: Version checking
+          description: Developer ID
           required: true
         
         - in: header
@@ -99,7 +101,7 @@ paths:
          
       responses:
        200:
-        description: New Mapping happens
+        description: Application assigned to a Developer
    
   /{version}/APPRegistry/Application/{CAppID}/SetAsMasterApp/{MAppID}:
   
@@ -116,13 +118,13 @@ paths:
         - name: MAppID
           in: path
           type: string
-          description: Master ApplicationId
+          description: Master Application ID
           required: true
           
         - name: CAppID
           in: path
           type: integer
-          description: Child ApplicationId
+          description: Child Application ID
           required: true
         
         - in: header
@@ -133,7 +135,7 @@ paths:
          
       responses:
        200:
-        description: New Mapping happens 
+        description: Set master app to an app 
   
   
        
@@ -152,7 +154,7 @@ paths:
         - name: id
           in: path
           type: integer
-          description: Voice App Id
+          description: ID of an Application
           required: true
         
         - in: header
@@ -163,7 +165,38 @@ paths:
           
       responses:
        200:
-        description: New Mapping happens
+        description: Application record deleted
+    
+    put:
+      parameters:
+    
+        - name: version
+          in: path
+          type: string
+          description: Version checking
+          required: true
+        
+        - in: header
+          name: authorization
+          description: ""
+          required: true
+          type: string
+        
+        - name: id
+          in: path
+          type: integer
+          description: ID of Application
+          required: true
+        
+        - name: Voice App Record
+          in: body
+          description: Record
+          schema:
+           $ref: '#/definitions/UpdtVoiceApp'
+          
+      responses:
+        200:
+          description: Applications recieved (Active/Inactive)
         
   /{version}/APPRegistry/Application/{id}/Activate/{status}:
   
@@ -187,7 +220,7 @@ paths:
         - name: status
           in: path
           type: string
-          description: Status
+          description: Activation Status
           required: true
         
         - in: header
@@ -198,7 +231,7 @@ paths:
           
       responses:
        200:
-        description: Updation succeeded
+        description: Appication active status updated
         
   /{version}/APPRegistry/Application/{AppID}/URL:
   
@@ -231,11 +264,10 @@ paths:
           
       responses:
        200:
-        description: Url updation succeeded
+        description: Url of Application updation succeeded
   
   /{version}/APPRegistry/Application/{AppID}/Test:
-  
-    post:
+    get:
       
       parameters:
        
@@ -261,7 +293,7 @@ paths:
        200:
         description: Url updation succeeded
         
-  /{version}/APPRegistry/Applications/{DevID}:
+  /{version}/APPRegistry/Developer/{DevID}/Applications:
    
    get:
       parameters:
@@ -286,7 +318,7 @@ paths:
           
       responses:
         200:
-          description: Sends the Availability
+          description: All Applications of Developer recieved
           
   /{version}/APPRegistry/ApplicationDetails/{AppID}:
    
@@ -296,7 +328,7 @@ paths:
         - name: AppID
           in: path
           type: integer
-          description: ID of the VoiceApp
+          description: ID of the Application
           required: true
           
         - name: version
@@ -313,7 +345,59 @@ paths:
           
       responses:
         200:
-          description: Sends the Availability
+          description: All data of the Application recieved
+          
+  /{version}/APPRegistry/Applications:
+   
+   get:
+      parameters:
+    
+        - name: version
+          in: path
+          type: string
+          description: Version checking
+          required: true
+        
+        - in: header
+          name: authorization
+          description: ""
+          required: true
+          type: string
+          
+      responses:
+        200:
+          description: All data of the Application recieved
+  
+  /{version}/APPRegistry/Applications/{status}:
+   
+   get:
+      parameters:
+    
+        - name: version
+          in: path
+          type: string
+          description: Version checking
+          required: true
+        
+        - in: header
+          name: authorization
+          description: ""
+          required: true
+          type: string
+        
+        - name: status
+          in: path
+          type: integer
+          description: Active status of the Application
+          required: true
+          
+      responses:
+        200:
+          description: Applications recieved (Active/Inactive)
+          
+  
+   
+   
         
         
   
@@ -356,6 +440,21 @@ definitions:
      DevID:
       type: integer
      Url:
+      type: string
+      
+  UpdtVoiceApp:
+    properties:
+     AppName:
+      type: string
+     Description:
+      type: string
+     Url:
+      type: string
+     Availability:
+      type: boolean
+     IsDeveloper:
+      type: boolean
+     Protocol:
       type: string
       
   
