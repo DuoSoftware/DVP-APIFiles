@@ -1,0 +1,1720 @@
+{
+    "swagger": "2.0",
+    "info": {
+        "version": "1.0.0",
+        "title": "Echo",
+        "description": "#### Echos back every URL, method, parameter and header\nFeel free to make a path or an operation and use **Try Operation** to test it. The echo server will\nrender back everything.\n"
+    },
+    "schemes": [
+        "http"
+    ],
+    "host": "clusterconfig.104.131.67.21.xip.io",
+    "basePath": "/DVP/API",
+    "paths": {
+        "/{version}/CloudConfiguration/Cloud": {
+            "post": {
+                "parameters": [
+                    {
+                        "name": "Create Cloud",
+                        "in": "body",
+                        "description": "Record",
+                        "schema": {
+                            "$ref": "#/definitions/Cloud"
+                        }
+                    },
+                    {
+                        "name": "version",
+                        "in": "path",
+                        "type": "string",
+                        "description": "Version",
+                        "required": true
+                    },
+                    {
+                        "in": "header",
+                        "name": "authorization",
+                        "description": "",
+                        "required": true,
+                        "type": "string"
+                    }
+                ],
+                "responses": {
+                    "200": {
+                        "description": "New Cloud has been created"
+                    }
+                }
+            }
+        },
+        "/{version}/CloudConfiguration/Cloud/{id}/Activate/{status}": {
+            "post": {
+                "parameters": [
+                    {
+                        "name": "id",
+                        "in": "path",
+                        "type": "integer",
+                        "description": "id",
+                        "required": true
+                    },
+                    {
+                        "name": "status",
+                        "in": "path",
+                        "type": "boolean",
+                        "description": "status",
+                        "required": true
+                    },
+                    {
+                        "name": "version",
+                        "in": "path",
+                        "type": "string",
+                        "description": "Version",
+                        "required": true
+                    },
+                    {
+                        "in": "header",
+                        "name": "authorization",
+                        "description": "",
+                        "required": true,
+                        "type": "string"
+                    }
+                ],
+                "responses": {
+                    "200": {
+                        "description": "Cloud configuration succeeded"
+                    }
+                }
+            }
+        },
+        "/{version}/CloudConfiguration/Cloud/{id}": {
+            "get": {
+                "parameters": [
+                    {
+                        "name": "id",
+                        "in": "path",
+                        "type": "integer",
+                        "description": "ID of the cloud",
+                        "required": true
+                    },
+                    {
+                        "name": "version",
+                        "in": "path",
+                        "type": "string",
+                        "description": "Version",
+                        "required": true
+                    },
+                    {
+                        "in": "header",
+                        "name": "authorization",
+                        "description": "",
+                        "required": true,
+                        "type": "string"
+                    }
+                ],
+                "responses": {
+                    "200": {
+                        "description": "Cloud details returned"
+                    }
+                }
+            },
+            "put": {
+                "parameters": [
+                    {
+                        "name": "id",
+                        "in": "path",
+                        "type": "integer",
+                        "description": "ID of the cloud",
+                        "required": true
+                    },
+                    {
+                        "name": "Update Cloud",
+                        "in": "body",
+                        "description": "Record",
+                        "schema": {
+                            "$ref": "#/definitions/UpdtCloud"
+                        }
+                    },
+                    {
+                        "name": "version",
+                        "in": "path",
+                        "type": "string",
+                        "description": "Version",
+                        "required": true
+                    },
+                    {
+                        "in": "header",
+                        "name": "authorization",
+                        "description": "",
+                        "required": true,
+                        "type": "string"
+                    }
+                ],
+                "responses": {
+                    "200": {
+                        "description": "Cloud has been updated"
+                    }
+                }
+            }
+        },
+        "/{version}/CloudConfiguration/Cloud/{id}/ActiveCallservers": {
+            "get": {
+                "parameters": [
+                    {
+                        "name": "id",
+                        "in": "path",
+                        "type": "integer",
+                        "description": "ID of the cloud",
+                        "required": true
+                    },
+                    {
+                        "name": "version",
+                        "in": "path",
+                        "type": "string",
+                        "description": "Version",
+                        "required": true
+                    },
+                    {
+                        "in": "header",
+                        "name": "authorization",
+                        "description": "",
+                        "required": true,
+                        "type": "string"
+                    }
+                ],
+                "responses": {
+                    "200": {
+                        "description": "Cloud details returned"
+                    }
+                }
+            }
+        },
+        "/{version}/CloudConfiguration/Clouds": {
+            "get": {
+                "parameters": [
+                    {
+                        "name": "version",
+                        "in": "path",
+                        "type": "string",
+                        "description": "Version",
+                        "required": true
+                    },
+                    {
+                        "in": "header",
+                        "name": "authorization",
+                        "description": "",
+                        "required": true,
+                        "type": "string"
+                    }
+                ],
+                "responses": {
+                    "200": {
+                        "description": "All Cloud details returned"
+                    }
+                }
+            }
+        },
+        "/{version}/CloudConfiguration/CallServer": {
+            "post": {
+                "parameters": [
+                    {
+                        "name": "Create Cloud",
+                        "in": "body",
+                        "description": "Record",
+                        "schema": {
+                            "$ref": "#/definitions/CallServer"
+                        }
+                    },
+                    {
+                        "name": "version",
+                        "in": "path",
+                        "type": "string",
+                        "description": "Version",
+                        "required": true
+                    },
+                    {
+                        "in": "header",
+                        "name": "authorization",
+                        "description": "",
+                        "required": true,
+                        "type": "string"
+                    }
+                ],
+                "responses": {
+                    "200": {
+                        "description": "New Cloud has been created"
+                    }
+                }
+            }
+        },
+        "/{version}/CloudConfiguration/CallServer/UniqueCode": {
+            "post": {
+                "parameters": [
+                    {
+                        "name": "Add unique code",
+                        "in": "body",
+                        "description": "Record",
+                        "schema": {
+                            "$ref": "#/definitions/UCode"
+                        }
+                    },
+                    {
+                        "name": "version",
+                        "in": "path",
+                        "type": "string",
+                        "description": "Version",
+                        "required": true
+                    },
+                    {
+                        "in": "header",
+                        "name": "authorization",
+                        "description": "",
+                        "required": true,
+                        "type": "string"
+                    }
+                ],
+                "responses": {
+                    "200": {
+                        "description": "New Unique code has been added"
+                    }
+                }
+            }
+        },
+        "/{version}/CloudConfiguration/CallServer/{id}/Activate/{status}": {
+            "post": {
+                "parameters": [
+                    {
+                        "name": "id",
+                        "in": "path",
+                        "type": "integer",
+                        "description": "id",
+                        "required": true
+                    },
+                    {
+                        "name": "status",
+                        "in": "path",
+                        "type": "boolean",
+                        "description": "status",
+                        "required": true
+                    },
+                    {
+                        "name": "version",
+                        "in": "path",
+                        "type": "string",
+                        "description": "Version",
+                        "required": true
+                    },
+                    {
+                        "in": "header",
+                        "name": "authorization",
+                        "description": "",
+                        "required": true,
+                        "type": "string"
+                    }
+                ],
+                "responses": {
+                    "200": {
+                        "description": "call server activation is succeeded"
+                    }
+                }
+            }
+        },
+        "/{version}/CloudConfiguration/CallServer/{id}": {
+            "get": {
+                "parameters": [
+                    {
+                        "name": "id",
+                        "in": "path",
+                        "type": "integer",
+                        "description": "ID of the call server",
+                        "required": true
+                    },
+                    {
+                        "name": "version",
+                        "in": "path",
+                        "type": "string",
+                        "description": "Version",
+                        "required": true
+                    },
+                    {
+                        "in": "header",
+                        "name": "authorization",
+                        "description": "",
+                        "required": true,
+                        "type": "string"
+                    }
+                ],
+                "responses": {
+                    "200": {
+                        "description": "Call Server details returned"
+                    }
+                }
+            },
+            "put": {
+                "parameters": [
+                    {
+                        "name": "id",
+                        "in": "path",
+                        "type": "integer",
+                        "description": "ID of the call server",
+                        "required": true
+                    },
+                    {
+                        "name": "Create Cloud",
+                        "in": "body",
+                        "description": "Record",
+                        "schema": {
+                            "$ref": "#/definitions/UpdtCallServer"
+                        }
+                    },
+                    {
+                        "name": "version",
+                        "in": "path",
+                        "type": "string",
+                        "description": "Version",
+                        "required": true
+                    },
+                    {
+                        "in": "header",
+                        "name": "authorization",
+                        "description": "",
+                        "required": true,
+                        "type": "string"
+                    }
+                ],
+                "responses": {
+                    "200": {
+                        "description": "call server updated successfully"
+                    }
+                }
+            }
+        },
+        "/{version}/CloudConfiguration/CallServers": {
+            "get": {
+                "parameters": [
+                    {
+                        "name": "version",
+                        "in": "path",
+                        "type": "string",
+                        "description": "Version",
+                        "required": true
+                    },
+                    {
+                        "in": "header",
+                        "name": "authorization",
+                        "description": "",
+                        "required": true,
+                        "type": "string"
+                    }
+                ],
+                "responses": {
+                    "200": {
+                        "description": "All Call Server details returned"
+                    }
+                }
+            }
+        },
+        "/{version}/CloudConfiguration/CallServer/{id}/AssignTo/{cloudid}": {
+            "post": {
+                "parameters": [
+                    {
+                        "name": "id",
+                        "in": "path",
+                        "type": "integer",
+                        "description": "id",
+                        "required": true
+                    },
+                    {
+                        "name": "cloudid",
+                        "in": "path",
+                        "type": "integer",
+                        "description": "cloudid",
+                        "required": true
+                    },
+                    {
+                        "name": "version",
+                        "in": "path",
+                        "type": "string",
+                        "description": "Version",
+                        "required": true
+                    },
+                    {
+                        "in": "header",
+                        "name": "authorization",
+                        "description": "",
+                        "required": true,
+                        "type": "string"
+                    }
+                ],
+                "responses": {
+                    "200": {
+                        "description": "call server assigning to cloud is succeeded"
+                    }
+                }
+            },
+            "delete": {
+                "parameters": [
+                    {
+                        "name": "id",
+                        "in": "path",
+                        "type": "integer",
+                        "description": "id",
+                        "required": true
+                    },
+                    {
+                        "name": "cloudid",
+                        "in": "path",
+                        "type": "integer",
+                        "description": "cloudid",
+                        "required": true
+                    },
+                    {
+                        "name": "version",
+                        "in": "path",
+                        "type": "string",
+                        "description": "Version",
+                        "required": true
+                    },
+                    {
+                        "in": "header",
+                        "name": "authorization",
+                        "description": "",
+                        "required": true,
+                        "type": "string"
+                    }
+                ],
+                "responses": {
+                    "200": {
+                        "description": "Callserver successfully removed from cloud"
+                    }
+                }
+            }
+        },
+        "/{version}/CloudConfiguration/Cloud/{childid}/SetParent/{parentid}": {
+            "post": {
+                "parameters": [
+                    {
+                        "name": "childid",
+                        "in": "path",
+                        "type": "integer",
+                        "description": "childid",
+                        "required": true
+                    },
+                    {
+                        "name": "parentid",
+                        "in": "path",
+                        "type": "integer",
+                        "description": "parentid",
+                        "required": true
+                    },
+                    {
+                        "name": "version",
+                        "in": "path",
+                        "type": "string",
+                        "description": "Version",
+                        "required": true
+                    },
+                    {
+                        "in": "header",
+                        "name": "authorization",
+                        "description": "",
+                        "required": true,
+                        "type": "string"
+                    }
+                ],
+                "responses": {
+                    "200": {
+                        "description": "Set call server to a parent server is completed"
+                    }
+                }
+            }
+        },
+        "/{version}/CloudConfiguration/LoadBalancer": {
+            "post": {
+                "parameters": [
+                    {
+                        "name": "Create Load Balancer",
+                        "in": "body",
+                        "description": "Record",
+                        "schema": {
+                            "$ref": "#/definitions/LoadBalancer"
+                        }
+                    },
+                    {
+                        "name": "version",
+                        "in": "path",
+                        "type": "string",
+                        "description": "Version",
+                        "required": true
+                    },
+                    {
+                        "in": "header",
+                        "name": "authorization",
+                        "description": "",
+                        "required": true,
+                        "type": "string"
+                    }
+                ],
+                "responses": {
+                    "200": {
+                        "description": "New Load Balancer has been created"
+                    }
+                }
+            }
+        },
+        "/{version}/CloudConfiguration/Network/TelcoNetwork": {
+            "post": {
+                "parameters": [
+                    {
+                        "name": "Configure Telco NW",
+                        "in": "body",
+                        "description": "Record",
+                        "schema": {
+                            "$ref": "#/definitions/Telco"
+                        }
+                    },
+                    {
+                        "name": "version",
+                        "in": "path",
+                        "type": "string",
+                        "description": "Version",
+                        "required": true
+                    },
+                    {
+                        "in": "header",
+                        "name": "authorization",
+                        "description": "",
+                        "required": true,
+                        "type": "string"
+                    }
+                ],
+                "responses": {
+                    "200": {
+                        "description": "New Telco Newtwork has been configured"
+                    }
+                }
+            }
+        },
+        "/{version}/CloudConfiguration/Network/UserNetwork": {
+            "post": {
+                "parameters": [
+                    {
+                        "name": "Configure EndUser NW",
+                        "in": "body",
+                        "description": "Record",
+                        "schema": {
+                            "$ref": "#/definitions/Telco"
+                        }
+                    },
+                    {
+                        "name": "version",
+                        "in": "path",
+                        "type": "string",
+                        "description": "Version",
+                        "required": true
+                    },
+                    {
+                        "in": "header",
+                        "name": "authorization",
+                        "description": "",
+                        "required": true,
+                        "type": "string"
+                    }
+                ],
+                "responses": {
+                    "200": {
+                        "description": "New Telco Newtwork has been configured"
+                    }
+                }
+            }
+        },
+        "/{version}/CloudConfiguration/Network/{networkid}/SetTelcoNetworkToCloud/{cloudid}": {
+            "post": {
+                "parameters": [
+                    {
+                        "name": "networkid",
+                        "in": "path",
+                        "type": "integer",
+                        "description": "networkid",
+                        "required": true
+                    },
+                    {
+                        "name": "cloudid",
+                        "in": "path",
+                        "type": "integer",
+                        "description": "cloudid",
+                        "required": true
+                    },
+                    {
+                        "name": "version",
+                        "in": "path",
+                        "type": "string",
+                        "description": "Version",
+                        "required": true
+                    },
+                    {
+                        "in": "header",
+                        "name": "authorization",
+                        "description": "",
+                        "required": true,
+                        "type": "string"
+                    }
+                ],
+                "responses": {
+                    "200": {
+                        "description": "Set Telco Network to Cloud is done"
+                    }
+                }
+            },
+            "delete": {
+                "parameters": [
+                    {
+                        "name": "networkid",
+                        "in": "path",
+                        "type": "integer",
+                        "description": "networkid",
+                        "required": true
+                    },
+                    {
+                        "name": "cloudid",
+                        "in": "path",
+                        "type": "integer",
+                        "description": "cloudid",
+                        "required": true
+                    },
+                    {
+                        "name": "version",
+                        "in": "path",
+                        "type": "string",
+                        "description": "Version",
+                        "required": true
+                    },
+                    {
+                        "in": "header",
+                        "name": "authorization",
+                        "description": "",
+                        "required": true,
+                        "type": "string"
+                    }
+                ],
+                "responses": {
+                    "200": {
+                        "description": "Telco network removed from cloud"
+                    }
+                }
+            }
+        },
+        "/{version}/CloudConfiguration/Network/{networkid}/SetTelcoNetworkToUser/{userid}": {
+            "post": {
+                "parameters": [
+                    {
+                        "name": "networkid",
+                        "in": "path",
+                        "type": "integer",
+                        "description": "networkid",
+                        "required": true
+                    },
+                    {
+                        "name": "userid",
+                        "in": "path",
+                        "type": "integer",
+                        "description": "userid",
+                        "required": true
+                    },
+                    {
+                        "name": "version",
+                        "in": "path",
+                        "type": "string",
+                        "description": "Version",
+                        "required": true
+                    },
+                    {
+                        "in": "header",
+                        "name": "authorization",
+                        "description": "",
+                        "required": true,
+                        "type": "string"
+                    }
+                ],
+                "responses": {
+                    "200": {
+                        "description": "Set Telco Network to user is done"
+                    }
+                }
+            },
+            "delete": {
+                "parameters": [
+                    {
+                        "name": "networkid",
+                        "in": "path",
+                        "type": "integer",
+                        "description": "networkid",
+                        "required": true
+                    },
+                    {
+                        "name": "userid",
+                        "in": "path",
+                        "type": "integer",
+                        "description": "userid",
+                        "required": true
+                    },
+                    {
+                        "name": "version",
+                        "in": "path",
+                        "type": "string",
+                        "description": "Version",
+                        "required": true
+                    },
+                    {
+                        "in": "header",
+                        "name": "authorization",
+                        "description": "",
+                        "required": true,
+                        "type": "string"
+                    }
+                ],
+                "responses": {
+                    "200": {
+                        "description": "Removed telco network from user"
+                    }
+                }
+            }
+        },
+        "/{version}/CloudConfiguration/Networks": {
+            "get": {
+                "parameters": [
+                    {
+                        "name": "version",
+                        "in": "path",
+                        "type": "string",
+                        "description": "Version",
+                        "required": true
+                    },
+                    {
+                        "in": "header",
+                        "name": "authorization",
+                        "description": "",
+                        "required": true,
+                        "type": "string"
+                    }
+                ],
+                "responses": {
+                    "200": {
+                        "description": "All Network details returned"
+                    }
+                }
+            }
+        },
+        "/{version}/CloudConfiguration/Network/{id}": {
+            "get": {
+                "parameters": [
+                    {
+                        "name": "version",
+                        "in": "path",
+                        "type": "string",
+                        "description": "Version",
+                        "required": true
+                    },
+                    {
+                        "name": "id",
+                        "in": "path",
+                        "type": "integer",
+                        "description": "networkid",
+                        "required": true
+                    },
+                    {
+                        "in": "header",
+                        "name": "authorization",
+                        "description": "",
+                        "required": true,
+                        "type": "string"
+                    }
+                ],
+                "responses": {
+                    "200": {
+                        "description": "Network record returned"
+                    }
+                }
+            },
+            "put": {
+                "parameters": [
+                    {
+                        "name": "id",
+                        "in": "path",
+                        "type": "integer",
+                        "description": "networkid",
+                        "required": true
+                    },
+                    {
+                        "name": "version",
+                        "in": "path",
+                        "type": "string",
+                        "description": "Version",
+                        "required": true
+                    },
+                    {
+                        "in": "header",
+                        "name": "authorization",
+                        "description": "",
+                        "required": true,
+                        "type": "string"
+                    },
+                    {
+                        "name": "Configure Telco NW",
+                        "in": "body",
+                        "description": "Record",
+                        "schema": {
+                            "$ref": "#/definitions/UpdtNetwork"
+                        }
+                    }
+                ],
+                "responses": {
+                    "200": {
+                        "description": "Network record updated"
+                    }
+                }
+            },
+            "delete": {
+                "parameters": [
+                    {
+                        "name": "version",
+                        "in": "path",
+                        "type": "string",
+                        "description": "Version",
+                        "required": true
+                    },
+                    {
+                        "name": "id",
+                        "in": "path",
+                        "type": "integer",
+                        "description": "networkid",
+                        "required": true
+                    },
+                    {
+                        "in": "header",
+                        "name": "authorization",
+                        "description": "",
+                        "required": true,
+                        "type": "string"
+                    }
+                ],
+                "responses": {
+                    "200": {
+                        "description": "Network record deleted"
+                    }
+                }
+            }
+        },
+        "/{version}/CloudConfiguration/NetworksByClusterID/{id}": {
+            "get": {
+                "parameters": [
+                    {
+                        "name": "version",
+                        "in": "path",
+                        "type": "string",
+                        "description": "Version",
+                        "required": true
+                    },
+                    {
+                        "name": "id",
+                        "in": "path",
+                        "type": "integer",
+                        "description": "ID of cluster",
+                        "required": true
+                    },
+                    {
+                        "in": "header",
+                        "name": "authorization",
+                        "description": "",
+                        "required": true,
+                        "type": "string"
+                    }
+                ],
+                "responses": {
+                    "200": {
+                        "description": "All Network details of cluster returned"
+                    }
+                }
+            }
+        },
+        "/{version}/CloudConfiguration/CloudEndUser": {
+            "post": {
+                "parameters": [
+                    {
+                        "name": "Add Cloud EndUser",
+                        "in": "body",
+                        "description": "Record",
+                        "schema": {
+                            "$ref": "#/definitions/CloudEndUser"
+                        }
+                    },
+                    {
+                        "name": "version",
+                        "in": "path",
+                        "type": "string",
+                        "description": "Version",
+                        "required": true
+                    },
+                    {
+                        "in": "header",
+                        "name": "authorization",
+                        "description": "",
+                        "required": true,
+                        "type": "string"
+                    }
+                ],
+                "responses": {
+                    "200": {
+                        "description": "New Cloud end user has been added"
+                    }
+                }
+            }
+        },
+        "/{version}/CloudConfiguration/CloudEndUser/{id}": {
+            "put": {
+                "parameters": [
+                    {
+                        "name": "Add Cloud EndUser",
+                        "in": "body",
+                        "description": "Record",
+                        "schema": {
+                            "$ref": "#/definitions/UpdtCloudEndUser"
+                        }
+                    },
+                    {
+                        "name": "version",
+                        "in": "path",
+                        "type": "string",
+                        "description": "Version",
+                        "required": true
+                    },
+                    {
+                        "in": "header",
+                        "name": "authorization",
+                        "description": "",
+                        "required": true,
+                        "type": "string"
+                    },
+                    {
+                        "name": "id",
+                        "in": "path",
+                        "type": "integer",
+                        "description": "ID of Cloud Enduser",
+                        "required": true
+                    }
+                ],
+                "responses": {
+                    "200": {
+                        "description": "New Cloud end user has been added"
+                    }
+                }
+            },
+            "get": {
+                "parameters": [
+                    {
+                        "name": "version",
+                        "in": "path",
+                        "type": "string",
+                        "description": "Version",
+                        "required": true
+                    },
+                    {
+                        "in": "header",
+                        "name": "authorization",
+                        "description": "",
+                        "required": true,
+                        "type": "string"
+                    },
+                    {
+                        "name": "id",
+                        "in": "path",
+                        "type": "integer",
+                        "description": "ID of Cloud Enduser",
+                        "required": true
+                    }
+                ],
+                "responses": {
+                    "200": {
+                        "description": "Cloud enduser record found"
+                    }
+                }
+            },
+            "delete": {
+                "parameters": [
+                    {
+                        "name": "version",
+                        "in": "path",
+                        "type": "string",
+                        "description": "Version",
+                        "required": true
+                    },
+                    {
+                        "in": "header",
+                        "name": "authorization",
+                        "description": "",
+                        "required": true,
+                        "type": "string"
+                    },
+                    {
+                        "name": "id",
+                        "in": "path",
+                        "type": "integer",
+                        "description": "ID of Cloud Enduser",
+                        "required": true
+                    }
+                ],
+                "responses": {
+                    "200": {
+                        "description": "Cloud enduser record removed"
+                    }
+                }
+            }
+        },
+        "/{version}/CloudConfiguration/CloudEndUsers": {
+            "get": {
+                "parameters": [
+                    {
+                        "name": "version",
+                        "in": "path",
+                        "type": "string",
+                        "description": "Version",
+                        "required": true
+                    },
+                    {
+                        "in": "header",
+                        "name": "authorization",
+                        "description": "",
+                        "required": true,
+                        "type": "string"
+                    }
+                ],
+                "responses": {
+                    "200": {
+                        "description": "Cloud end user records recieved"
+                    }
+                }
+            }
+        },
+        "/{version}/CloudConfiguration/CloudEndUserByClusterID/{id}": {
+            "get": {
+                "parameters": [
+                    {
+                        "name": "version",
+                        "in": "path",
+                        "type": "string",
+                        "description": "Version",
+                        "required": true
+                    },
+                    {
+                        "name": "id",
+                        "in": "path",
+                        "type": "integer",
+                        "description": "CloudId",
+                        "required": true
+                    },
+                    {
+                        "in": "header",
+                        "name": "authorization",
+                        "description": "",
+                        "required": true,
+                        "type": "string"
+                    }
+                ],
+                "responses": {
+                    "200": {
+                        "description": "All records of Cloud end user has been recieved"
+                    }
+                }
+            }
+        },
+        "/{version}/CloudConfiguration/Profile": {
+            "post": {
+                "parameters": [
+                    {
+                        "name": "New Profile is added",
+                        "in": "body",
+                        "description": "Record",
+                        "schema": {
+                            "$ref": "#/definitions/Profile"
+                        }
+                    },
+                    {
+                        "name": "version",
+                        "in": "path",
+                        "type": "string",
+                        "description": "Version",
+                        "required": true
+                    },
+                    {
+                        "in": "header",
+                        "name": "authorization",
+                        "description": "",
+                        "required": true,
+                        "type": "string"
+                    }
+                ],
+                "responses": {
+                    "200": {
+                        "description": "New profile has been inserted"
+                    }
+                }
+            }
+        },
+        "/{version}/CloudConfiguration/Profile/{profileid}/SetProfileToCallServer/{callserverid}": {
+            "post": {
+                "parameters": [
+                    {
+                        "name": "profileid",
+                        "in": "path",
+                        "type": "integer",
+                        "description": "profileid",
+                        "required": true
+                    },
+                    {
+                        "name": "callserverid",
+                        "in": "path",
+                        "type": "integer",
+                        "description": "callserverid",
+                        "required": true
+                    },
+                    {
+                        "name": "version",
+                        "in": "path",
+                        "type": "string",
+                        "description": "Version",
+                        "required": true
+                    },
+                    {
+                        "in": "header",
+                        "name": "authorization",
+                        "description": "",
+                        "required": true,
+                        "type": "string"
+                    }
+                ],
+                "responses": {
+                    "200": {
+                        "description": "Set Profile to callserver is completed"
+                    }
+                }
+            }
+        },
+        "/{version}/CloudConfiguration/Profile/{profileid}/SetProfileToEndUser/{enduser}": {
+            "post": {
+                "parameters": [
+                    {
+                        "name": "profileid",
+                        "in": "path",
+                        "type": "integer",
+                        "description": "profileid",
+                        "required": true
+                    },
+                    {
+                        "name": "enduser",
+                        "in": "path",
+                        "type": "integer",
+                        "description": "enduser",
+                        "required": true
+                    },
+                    {
+                        "name": "version",
+                        "in": "path",
+                        "type": "string",
+                        "description": "Version",
+                        "required": true
+                    },
+                    {
+                        "in": "header",
+                        "name": "authorization",
+                        "description": "",
+                        "required": true,
+                        "type": "string"
+                    }
+                ],
+                "responses": {
+                    "200": {
+                        "description": "Set Profile to Enduser is done"
+                    }
+                }
+            }
+        },
+        "/{version}/CloudConfiguration/Profile/{id}": {
+            "get": {
+                "parameters": [
+                    {
+                        "name": "id",
+                        "in": "path",
+                        "type": "integer",
+                        "description": "ID of the Profile",
+                        "required": true
+                    },
+                    {
+                        "name": "version",
+                        "in": "path",
+                        "type": "string",
+                        "description": "Version",
+                        "required": true
+                    },
+                    {
+                        "in": "header",
+                        "name": "authorization",
+                        "description": "",
+                        "required": true,
+                        "type": "string"
+                    }
+                ],
+                "responses": {
+                    "200": {
+                        "description": "Profile details returned"
+                    }
+                }
+            },
+            "delete": {
+                "parameters": [
+                    {
+                        "name": "id",
+                        "in": "path",
+                        "type": "integer",
+                        "description": "ID of the Profile",
+                        "required": true
+                    },
+                    {
+                        "name": "version",
+                        "in": "path",
+                        "type": "string",
+                        "description": "Version",
+                        "required": true
+                    },
+                    {
+                        "in": "header",
+                        "name": "authorization",
+                        "description": "",
+                        "required": true,
+                        "type": "string"
+                    }
+                ],
+                "responses": {
+                    "200": {
+                        "description": "Profile details removed"
+                    }
+                }
+            },
+            "put": {
+                "parameters": [
+                    {
+                        "name": "id",
+                        "in": "path",
+                        "type": "integer",
+                        "description": "ID of the Profile",
+                        "required": true
+                    },
+                    {
+                        "name": "version",
+                        "in": "path",
+                        "type": "string",
+                        "description": "Version",
+                        "required": true
+                    },
+                    {
+                        "in": "header",
+                        "name": "authorization",
+                        "description": "",
+                        "required": true,
+                        "type": "string"
+                    },
+                    {
+                        "name": "New Profile is added",
+                        "in": "body",
+                        "description": "Record",
+                        "schema": {
+                            "$ref": "#/definitions/UpdtProfile"
+                        }
+                    }
+                ],
+                "responses": {
+                    "200": {
+                        "description": "Profile details updated"
+                    }
+                }
+            }
+        },
+        "/{version}/CloudConfiguration/Profiles": {
+            "get": {
+                "parameters": [
+                    {
+                        "name": "version",
+                        "in": "path",
+                        "type": "string",
+                        "description": "Version",
+                        "required": true
+                    },
+                    {
+                        "in": "header",
+                        "name": "authorization",
+                        "description": "",
+                        "required": true,
+                        "type": "string"
+                    }
+                ],
+                "responses": {
+                    "200": {
+                        "description": "All Profile details returned"
+                    }
+                }
+            }
+        },
+        "/{version}/CloudConfiguration/IPAddress": {
+            "post": {
+                "parameters": [
+                    {
+                        "name": "Configure IP",
+                        "in": "body",
+                        "description": "Record",
+                        "schema": {
+                            "$ref": "#/definitions/IP"
+                        }
+                    },
+                    {
+                        "in": "header",
+                        "name": "authorization",
+                        "description": "",
+                        "required": true,
+                        "type": "string"
+                    },
+                    {
+                        "name": "version",
+                        "in": "path",
+                        "type": "string",
+                        "description": "Version",
+                        "required": true
+                    }
+                ],
+                "responses": {
+                    "200": {
+                        "description": "New profile has been inserted"
+                    }
+                }
+            }
+        },
+        "/{version}/CloudConfiguration/IPAddress/{id}": {
+            "delete": {
+                "parameters": [
+                    {
+                        "in": "header",
+                        "name": "authorization",
+                        "description": "",
+                        "required": true,
+                        "type": "string"
+                    },
+                    {
+                        "name": "version",
+                        "in": "path",
+                        "type": "string",
+                        "description": "Version",
+                        "required": true
+                    },
+                    {
+                        "name": "id",
+                        "in": "path",
+                        "type": "integer",
+                        "description": "ID of IP",
+                        "required": true
+                    }
+                ],
+                "responses": {
+                    "200": {
+                        "description": "New profile has been deleted"
+                    }
+                }
+            }
+        },
+        "/{version}/CloudConfiguration/IPAddresses": {
+            "get": {
+                "parameters": [
+                    {
+                        "in": "header",
+                        "name": "authorization",
+                        "description": "",
+                        "required": true,
+                        "type": "string"
+                    },
+                    {
+                        "name": "version",
+                        "in": "path",
+                        "type": "string",
+                        "description": "Version",
+                        "required": true
+                    }
+                ],
+                "responses": {
+                    "200": {
+                        "description": "profile details recieved"
+                    }
+                }
+            }
+        }
+    },
+    "definitions": {
+        "Cloud": {
+            "properties": {
+                "CloudModel": {
+                    "type": "integer"
+                },
+                "Name": {
+                    "type": "string"
+                },
+                "Class": {
+                    "type": "string"
+                },
+                "Type": {
+                    "type": "string"
+                },
+                "Category": {
+                    "type": "string"
+                },
+                "TenantId": {
+                    "type": "integer"
+                },
+                "CompanyId": {
+                    "type": "integer"
+                }
+            }
+        },
+        "UpdtCloud": {
+            "properties": {
+                "CloudModel": {
+                    "type": "integer"
+                },
+                "Name": {
+                    "type": "string"
+                },
+                "Class": {
+                    "type": "string"
+                },
+                "Type": {
+                    "type": "string"
+                },
+                "Category": {
+                    "type": "string"
+                }
+            }
+        },
+        "CallServer": {
+            "properties": {
+                "Activate": {
+                    "type": "boolean"
+                },
+                "Name": {
+                    "type": "string"
+                },
+                "Class": {
+                    "type": "string"
+                },
+                "Type": {
+                    "type": "string"
+                },
+                "Category": {
+                    "type": "string"
+                },
+                "TenantId": {
+                    "type": "integer"
+                },
+                "CompanyId": {
+                    "type": "integer"
+                },
+                "Code": {
+                    "type": "integer"
+                },
+                "InternalMainIP": {
+                    "type": "string"
+                }
+            }
+        },
+        "UpdtCallServer": {
+            "properties": {
+                "Activate": {
+                    "type": "boolean"
+                },
+                "Name": {
+                    "type": "string"
+                },
+                "Class": {
+                    "type": "string"
+                },
+                "Type": {
+                    "type": "string"
+                },
+                "Category": {
+                    "type": "string"
+                },
+                "Code": {
+                    "type": "integer"
+                },
+                "InternalMainIP": {
+                    "type": "string"
+                }
+            }
+        },
+        "LoadBalancer": {
+            "properties": {
+                "Type": {
+                    "type": "string"
+                },
+                "MainIP": {
+                    "type": "string"
+                },
+                "ClusterID": {
+                    "type": "integer"
+                }
+            }
+        },
+        "Telco": {
+            "properties": {
+                "Network": {
+                    "type": "string",
+                    "description": "ex:- 192.168.1.0"
+                },
+                "Mask": {
+                    "type": "integer",
+                    "description": " 32,24 etc (Network prefix notation)"
+                },
+                "NATIP": {
+                    "type": "string"
+                },
+                "TenantId": {
+                    "type": "integer"
+                },
+                "CompanyId": {
+                    "type": "integer"
+                }
+            }
+        },
+        "UpdtNetwork": {
+            "properties": {
+                "Mask": {
+                    "type": "integer",
+                    "description": " 32,24 etc (Network prefix notation)"
+                },
+                "NATIP": {
+                    "type": "string"
+                }
+            }
+        },
+        "CloudEndUser": {
+            "properties": {
+                "Provision": {
+                    "type": "integer"
+                },
+                "Domain": {
+                    "type": "string"
+                },
+                "ClusterID": {
+                    "type": "integer"
+                }
+            }
+        },
+        "UpdtCloudEndUser": {
+            "properties": {
+                "SIPConnectivityProvision": {
+                    "type": "integer"
+                },
+                "Domain": {
+                    "type": "string"
+                },
+                "ClusterID": {
+                    "type": "integer"
+                }
+            }
+        },
+        "Profile": {
+            "properties": {
+                "ProfileName": {
+                    "type": "string"
+                },
+                "MainIp": {
+                    "type": "string"
+                },
+                "InternalIp": {
+                    "type": "string"
+                },
+                "InternalRtpIp": {
+                    "type": "string"
+                },
+                "ExternalIp": {
+                    "type": "string"
+                },
+                "ExternalRtpIp": {
+                    "type": "string"
+                },
+                "Port": {
+                    "type": "integer"
+                },
+                "ObjClass": {
+                    "type": "string"
+                },
+                "ObjType": {
+                    "type": "string"
+                },
+                "ObjCategory": {
+                    "type": "string"
+                },
+                "TenantId": {
+                    "type": "integer"
+                },
+                "CompanyId": {
+                    "type": "integer"
+                }
+            }
+        },
+        "UpdtProfile": {
+            "properties": {
+                "ProfileName": {
+                    "type": "string"
+                },
+                "MainIp": {
+                    "type": "string"
+                },
+                "InternalIp": {
+                    "type": "string"
+                },
+                "InternalRtpIp": {
+                    "type": "string"
+                },
+                "ExternalIp": {
+                    "type": "string"
+                },
+                "ExternalRtpIp": {
+                    "type": "string"
+                },
+                "Port": {
+                    "type": "integer"
+                },
+                "ObjClass": {
+                    "type": "string"
+                },
+                "ObjType": {
+                    "type": "string"
+                },
+                "ObjCategory": {
+                    "type": "string"
+                }
+            }
+        },
+        "IP": {
+            "properties": {
+                "CallserverID": {
+                    "type": "integer"
+                },
+                "IP": {
+                    "type": "string"
+                },
+                "IsAllocated": {
+                    "type": "boolean"
+                }
+            }
+        },
+        "UCode": {
+            "properties": {
+                "Code": {
+                    "type": "integer"
+                }
+            }
+        }
+    }
+}

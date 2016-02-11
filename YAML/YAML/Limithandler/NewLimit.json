@@ -8,25 +8,26 @@
     "schemes": [
         "http"
     ],
-    "host": "clusterconfig.104.131.67.21.xip.io",
+    "host": "limithandler.104.131.67.21.xip.io",
     "basePath": "/DVP/API",
     "paths": {
-        "/{version}/CloudConfiguration/Cloud": {
+        "/{version}/LimitAPI/Schedule": {
             "post": {
                 "parameters": [
-                    {
-                        "name": "Create Cloud",
-                        "in": "body",
-                        "description": "Record",
-                        "schema": {
-                            "$ref": "#/definitions/Cloud"
-                        }
-                    },
                     {
                         "name": "version",
                         "in": "path",
                         "type": "string",
-                        "description": "Version"
+                        "description": "Version checking",
+                        "required": true
+                    },
+                    {
+                        "name": "New Schedule Record",
+                        "in": "body",
+                        "description": "Record",
+                        "schema": {
+                            "$ref": "#/definitions/Schedule"
+                        }
                     },
                     {
                         "in": "header",
@@ -38,503 +39,311 @@
                 ],
                 "responses": {
                     "200": {
-                        "description": "New Cloud has been created"
+                        "description": "New Schedule Record Added"
                     }
                 }
             }
         },
-        "/{version}/CloudConfiguration/Cloud/{id}/Activate/{status}": {
+        "/{version}/LimitAPI/Schedule/Appointment": {
+            "post": {
+                "parameters": [
+                    {
+                        "name": "version",
+                        "in": "path",
+                        "type": "string",
+                        "description": "Version checking",
+                        "required": true
+                    },
+                    {
+                        "name": "New Appointment Record",
+                        "in": "body",
+                        "description": "Record",
+                        "schema": {
+                            "$ref": "#/definitions/Appointment"
+                        }
+                    },
+                    {
+                        "in": "header",
+                        "name": "authorization",
+                        "description": "",
+                        "required": true,
+                        "type": "string"
+                    }
+                ],
+                "responses": {
+                    "200": {
+                        "description": "New Appointment Record Added"
+                    }
+                }
+            }
+        },
+        "/{version}/LimitAPI/InitialData": {
+            "post": {
+                "parameters": [
+                    {
+                        "name": "version",
+                        "in": "path",
+                        "type": "string",
+                        "description": "Version checking",
+                        "required": true
+                    },
+                    {
+                        "name": "New InitialData Record",
+                        "in": "body",
+                        "description": "Record",
+                        "schema": {
+                            "$ref": "#/definitions/InitialData"
+                        }
+                    },
+                    {
+                        "in": "header",
+                        "name": "authorization",
+                        "description": "",
+                        "required": true,
+                        "type": "string"
+                    }
+                ],
+                "responses": {
+                    "200": {
+                        "description": "New InitialData Record Added"
+                    }
+                }
+            }
+        },
+        "/{version}/LimitAPI/Schedule/{id}": {
+            "get": {
+                "parameters": [
+                    {
+                        "name": "id",
+                        "in": "path",
+                        "type": "integer",
+                        "description": "ID of the schedule",
+                        "required": true
+                    },
+                    {
+                        "name": "version",
+                        "in": "path",
+                        "type": "string",
+                        "description": "Version checking",
+                        "required": true
+                    },
+                    {
+                        "in": "header",
+                        "name": "authorization",
+                        "description": "",
+                        "required": true,
+                        "type": "string"
+                    }
+                ],
+                "responses": {
+                    "200": {
+                        "description": "Schedule recieved"
+                    }
+                }
+            },
             "post": {
                 "parameters": [
                     {
                         "name": "id",
                         "in": "path",
                         "type": "integer",
-                        "description": "id"
+                        "description": "ID of the schedule",
+                        "required": true
+                    },
+                    {
+                        "name": "version",
+                        "in": "path",
+                        "type": "string",
+                        "description": "Version checking",
+                        "required": true
+                    },
+                    {
+                        "in": "header",
+                        "name": "authorization",
+                        "description": "",
+                        "required": true,
+                        "type": "string"
+                    },
+                    {
+                        "name": "Schedule Data",
+                        "in": "body",
+                        "description": "Record",
+                        "schema": {
+                            "$ref": "#/definitions/UpdtSchedule"
+                        }
+                    }
+                ],
+                "responses": {
+                    "200": {
+                        "description": "Schedule picked"
+                    }
+                }
+            },
+            "delete": {
+                "parameters": [
+                    {
+                        "name": "id",
+                        "in": "path",
+                        "type": "integer",
+                        "description": "ID of the schedule",
+                        "required": true
+                    },
+                    {
+                        "name": "version",
+                        "in": "path",
+                        "type": "string",
+                        "description": "Version checking",
+                        "required": true
+                    },
+                    {
+                        "in": "header",
+                        "name": "authorization",
+                        "description": "",
+                        "required": true,
+                        "type": "string"
+                    }
+                ],
+                "responses": {
+                    "200": {
+                        "description": "Schedule deleted"
+                    }
+                }
+            }
+        },
+        "/{version}/LimitAPI/Schedule/{sid}/AddAppointment/{appid}": {
+            "post": {
+                "parameters": [
+                    {
+                        "name": "version",
+                        "in": "path",
+                        "type": "string",
+                        "description": "Version checking",
+                        "required": true
+                    },
+                    {
+                        "name": "sid",
+                        "in": "path",
+                        "type": "integer",
+                        "description": "Schedule ID",
+                        "required": true
+                    },
+                    {
+                        "name": "appid",
+                        "in": "path",
+                        "type": "integer",
+                        "description": "Appointment ID",
+                        "required": true
+                    },
+                    {
+                        "in": "header",
+                        "name": "authorization",
+                        "description": "",
+                        "required": true,
+                        "type": "string"
+                    }
+                ],
+                "responses": {
+                    "200": {
+                        "description": "Add Appointment to Schedule succeeded"
+                    }
+                }
+            }
+        },
+        "/{version}/LimitAPI/Schedule/Appointment/{id}": {
+            "post": {
+                "parameters": [
+                    {
+                        "name": "version",
+                        "in": "path",
+                        "type": "string",
+                        "description": "Version checking",
+                        "required": true
+                    },
+                    {
+                        "name": "id",
+                        "in": "path",
+                        "type": "integer",
+                        "description": "AppointmentID",
+                        "required": true
+                    },
+                    {
+                        "name": "Availability updation",
+                        "in": "body",
+                        "description": "Record",
+                        "schema": {
+                            "$ref": "#/definitions/UpdtApp"
+                        }
+                    },
+                    {
+                        "in": "header",
+                        "name": "authorization",
+                        "description": "",
+                        "required": true,
+                        "type": "string"
+                    }
+                ],
+                "responses": {
+                    "200": {
+                        "description": "Updation succeeded"
+                    }
+                }
+            }
+        },
+        "/{version}/LimitAPI/Limit": {
+            "post": {
+                "parameters": [
+                    {
+                        "name": "version",
+                        "in": "path",
+                        "type": "string",
+                        "description": "Version checking",
+                        "required": true
+                    },
+                    {
+                        "name": "Limit record",
+                        "in": "body",
+                        "description": "Record",
+                        "schema": {
+                            "$ref": "#/definitions/LimitInfo"
+                        }
+                    },
+                    {
+                        "in": "header",
+                        "name": "authorization",
+                        "description": "",
+                        "required": true,
+                        "type": "string"
+                    }
+                ],
+                "responses": {
+                    "200": {
+                        "description": "Limit record insertion Succeeded"
+                    }
+                }
+            }
+        },
+        "/{version}/LimitAPI/Limit/{lid}/Activate/{status}": {
+            "put": {
+                "parameters": [
+                    {
+                        "name": "version",
+                        "in": "path",
+                        "type": "integer",
+                        "description": "Version checking",
+                        "required": true
+                    },
+                    {
+                        "name": "lid",
+                        "in": "path",
+                        "type": "string",
+                        "description": "LimitId",
+                        "required": true
                     },
                     {
                         "name": "status",
                         "in": "path",
-                        "type": "boolean",
-                        "description": "status"
-                    },
-                    {
-                        "name": "version",
-                        "in": "path",
                         "type": "string",
-                        "description": "Version"
-                    },
-                    {
-                        "in": "header",
-                        "name": "authorization",
-                        "description": "",
-                        "required": true,
-                        "type": "string"
-                    }
-                ],
-                "responses": {
-                    "200": {
-                        "description": "Cloud configuration succeeded"
-                    }
-                }
-            }
-        },
-        "/{version}/CloudConfiguration/Cloud/{id}": {
-            "get": {
-                "parameters": [
-                    {
-                        "name": "id",
-                        "in": "path",
-                        "type": "integer",
-                        "description": "ID of the cloud",
-                        "required": true
-                    },
-                    {
-                        "name": "version",
-                        "in": "path",
-                        "type": "string",
-                        "description": "Version"
-                    },
-                    {
-                        "in": "header",
-                        "name": "authorization",
-                        "description": "",
-                        "required": true,
-                        "type": "string"
-                    }
-                ],
-                "responses": {
-                    "200": {
-                        "description": "Cloud details returned"
-                    }
-                }
-            }
-        },
-        "/{version}/CloudConfiguration/Clouds": {
-            "get": {
-                "parameters": [
-                    {
-                        "name": "version",
-                        "in": "path",
-                        "type": "string",
-                        "description": "Version"
-                    },
-                    {
-                        "in": "header",
-                        "name": "authorization",
-                        "description": "",
-                        "required": true,
-                        "type": "string"
-                    }
-                ],
-                "responses": {
-                    "200": {
-                        "description": "All Cloud details returned"
-                    }
-                }
-            }
-        },
-        "/{version}/CloudConfiguration/CallServer": {
-            "post": {
-                "parameters": [
-                    {
-                        "name": "Create Cloud",
-                        "in": "body",
-                        "description": "Record",
-                        "schema": {
-                            "$ref": "#/definitions/CallServer"
-                        }
-                    },
-                    {
-                        "name": "version",
-                        "in": "path",
-                        "type": "string",
-                        "description": "Version"
-                    },
-                    {
-                        "in": "header",
-                        "name": "authorization",
-                        "description": "",
-                        "required": true,
-                        "type": "string"
-                    }
-                ],
-                "responses": {
-                    "200": {
-                        "description": "New Cloud has been created"
-                    }
-                }
-            }
-        },
-        "/{version}/CloudConfiguration/CallServer/{id}/Activate/{status}": {
-            "post": {
-                "parameters": [
-                    {
-                        "name": "id",
-                        "in": "path",
-                        "type": "integer",
-                        "description": "id"
-                    },
-                    {
-                        "name": "status",
-                        "in": "path",
-                        "type": "boolean",
-                        "description": "status"
-                    },
-                    {
-                        "name": "version",
-                        "in": "path",
-                        "type": "string",
-                        "description": "Version"
-                    },
-                    {
-                        "in": "header",
-                        "name": "authorization",
-                        "description": "",
-                        "required": true,
-                        "type": "string"
-                    }
-                ],
-                "responses": {
-                    "200": {
-                        "description": "call server activation is succeeded"
-                    }
-                }
-            }
-        },
-        "/{version}/CloudConfiguration/CallServer/{id}": {
-            "get": {
-                "parameters": [
-                    {
-                        "name": "id",
-                        "in": "path",
-                        "type": "integer",
-                        "description": "ID of the call server",
-                        "required": true
-                    },
-                    {
-                        "name": "version",
-                        "in": "path",
-                        "type": "string",
-                        "description": "Version"
-                    },
-                    {
-                        "in": "header",
-                        "name": "authorization",
-                        "description": "",
-                        "required": true,
-                        "type": "string"
-                    }
-                ],
-                "responses": {
-                    "200": {
-                        "description": "Call Server details returned"
-                    }
-                }
-            }
-        },
-        "/{version}/CloudConfiguration/CallServers": {
-            "get": {
-                "parameters": [
-                    {
-                        "name": "version",
-                        "in": "path",
-                        "type": "string",
-                        "description": "Version"
-                    },
-                    {
-                        "in": "header",
-                        "name": "authorization",
-                        "description": "",
-                        "required": true,
-                        "type": "string"
-                    }
-                ],
-                "responses": {
-                    "200": {
-                        "description": "All Call Server details returned"
-                    }
-                }
-            }
-        },
-        "/{version}/CloudConfiguration/CallServer/{id}/AssignTo/{cloudid}": {
-            "post": {
-                "parameters": [
-                    {
-                        "name": "id",
-                        "in": "path",
-                        "type": "integer",
-                        "description": "id"
-                    },
-                    {
-                        "name": "cloudid",
-                        "in": "path",
-                        "type": "integer",
-                        "description": "cloudid"
-                    },
-                    {
-                        "name": "version",
-                        "in": "path",
-                        "type": "string",
-                        "description": "Version"
-                    },
-                    {
-                        "in": "header",
-                        "name": "authorization",
-                        "description": "",
-                        "required": true,
-                        "type": "string"
-                    }
-                ],
-                "responses": {
-                    "200": {
-                        "description": "call server assigning to cloud is succeeded"
-                    }
-                }
-            }
-        },
-        "/{version}/CloudConfiguration/Cloud/{childid}/SetParent/{parentid}": {
-            "post": {
-                "parameters": [
-                    {
-                        "name": "childid",
-                        "in": "path",
-                        "type": "integer",
-                        "description": "childid"
-                    },
-                    {
-                        "name": "parentid",
-                        "in": "path",
-                        "type": "integer",
-                        "description": "parentid"
-                    },
-                    {
-                        "name": "version",
-                        "in": "path",
-                        "type": "string",
-                        "description": "Version"
-                    },
-                    {
-                        "in": "header",
-                        "name": "authorization",
-                        "description": "",
-                        "required": true,
-                        "type": "string"
-                    }
-                ],
-                "responses": {
-                    "200": {
-                        "description": "Set call server to a parent server is completed"
-                    }
-                }
-            }
-        },
-        "/{version}/CloudConfiguration/LoadBalancer": {
-            "post": {
-                "parameters": [
-                    {
-                        "name": "Create Load Balancer",
-                        "in": "body",
-                        "description": "Record",
-                        "schema": {
-                            "$ref": "#/definitions/LoadBalancer"
-                        }
-                    },
-                    {
-                        "name": "version",
-                        "in": "path",
-                        "type": "string",
-                        "description": "Version"
-                    },
-                    {
-                        "in": "header",
-                        "name": "authorization",
-                        "description": "",
-                        "required": true,
-                        "type": "string"
-                    }
-                ],
-                "responses": {
-                    "200": {
-                        "description": "New Load Balancer has been created"
-                    }
-                }
-            }
-        },
-        "/{version}/CloudConfiguration/Network/TelcoNetwork": {
-            "post": {
-                "parameters": [
-                    {
-                        "name": "Configure Telco NW",
-                        "in": "body",
-                        "description": "Record",
-                        "schema": {
-                            "$ref": "#/definitions/Telco"
-                        }
-                    },
-                    {
-                        "name": "version",
-                        "in": "path",
-                        "type": "string",
-                        "description": "Version"
-                    },
-                    {
-                        "in": "header",
-                        "name": "authorization",
-                        "description": "",
-                        "required": true,
-                        "type": "string"
-                    }
-                ],
-                "responses": {
-                    "200": {
-                        "description": "New Telco Newtwork has been configured"
-                    }
-                }
-            }
-        },
-        "/{version}/CloudConfiguration/Network/UserNetwork": {
-            "post": {
-                "parameters": [
-                    {
-                        "name": "Configure EndUser NW",
-                        "in": "body",
-                        "description": "Record",
-                        "schema": {
-                            "$ref": "#/definitions/Telco"
-                        }
-                    },
-                    {
-                        "name": "version",
-                        "in": "path",
-                        "type": "string",
-                        "description": "Version"
-                    },
-                    {
-                        "in": "header",
-                        "name": "authorization",
-                        "description": "",
-                        "required": true,
-                        "type": "string"
-                    }
-                ],
-                "responses": {
-                    "200": {
-                        "description": "New Telco Newtwork has been configured"
-                    }
-                }
-            }
-        },
-        "/{version}/CloudConfiguration/Network/{networkid}/SetTelcoNetworkToCloud/{cloudid}": {
-            "post": {
-                "parameters": [
-                    {
-                        "name": "networkid",
-                        "in": "path",
-                        "type": "integer",
-                        "description": "networkid"
-                    },
-                    {
-                        "name": "cloudid",
-                        "in": "path",
-                        "type": "integer",
-                        "description": "cloudid"
-                    },
-                    {
-                        "name": "version",
-                        "in": "path",
-                        "type": "string",
-                        "description": "Version"
-                    },
-                    {
-                        "in": "header",
-                        "name": "authorization",
-                        "description": "",
-                        "required": true,
-                        "type": "string"
-                    }
-                ],
-                "responses": {
-                    "200": {
-                        "description": "Set Telco Network to Cloud is done"
-                    }
-                }
-            }
-        },
-        "/{version}/CloudConfiguration/Network/{networkid}/SetTelcoNetworkToUser/{userid}": {
-            "post": {
-                "parameters": [
-                    {
-                        "name": "networkid",
-                        "in": "path",
-                        "type": "integer",
-                        "description": "networkid"
-                    },
-                    {
-                        "name": "userid",
-                        "in": "path",
-                        "type": "integer",
-                        "description": "userid"
-                    },
-                    {
-                        "name": "version",
-                        "in": "path",
-                        "type": "string",
-                        "description": "Version"
-                    },
-                    {
-                        "in": "header",
-                        "name": "authorization",
-                        "description": "",
-                        "required": true,
-                        "type": "string"
-                    }
-                ],
-                "responses": {
-                    "200": {
-                        "description": "Set Telco Network to user is done"
-                    }
-                }
-            }
-        },
-        "/{version}/CloudConfiguration/Networks": {
-            "get": {
-                "parameters": [
-                    {
-                        "name": "version",
-                        "in": "path",
-                        "type": "string",
-                        "description": "Version"
-                    },
-                    {
-                        "in": "header",
-                        "name": "authorization",
-                        "description": "",
-                        "required": true,
-                        "type": "string"
-                    }
-                ],
-                "responses": {
-                    "200": {
-                        "description": "All Network details returned"
-                    }
-                }
-            }
-        },
-        "/{version}/CloudConfiguration/NetworksByClusterID/{id}": {
-            "get": {
-                "parameters": [
-                    {
-                        "name": "version",
-                        "in": "path",
-                        "type": "string",
-                        "description": "Version"
-                    },
-                    {
-                        "name": "id",
-                        "in": "path",
-                        "type": "integer",
-                        "description": "ID of the call server",
+                        "description": "LimitId",
                         "required": true
                     },
                     {
@@ -547,192 +356,27 @@
                 ],
                 "responses": {
                     "200": {
-                        "description": "All Network details returned"
+                        "description": "Limit Activated"
                     }
                 }
             }
         },
-        "/{version}/CloudConfiguration/CloudEndUser": {
+        "/{version}/LimitAPI/Schedule/Increment/{key}": {
             "post": {
                 "parameters": [
                     {
-                        "name": "Add Cloud EndUser",
-                        "in": "body",
-                        "description": "Record",
-                        "schema": {
-                            "$ref": "#/definitions/CloudEndUser"
-                        }
-                    },
-                    {
-                        "name": "version",
+                        "name": "key",
                         "in": "path",
                         "type": "string",
-                        "description": "Version"
-                    },
-                    {
-                        "in": "header",
-                        "name": "authorization",
-                        "description": "",
-                        "required": true,
-                        "type": "string"
-                    }
-                ],
-                "responses": {
-                    "200": {
-                        "description": "New Cloud end user has been inserted"
-                    }
-                }
-            }
-        },
-        "/{version}/CloudConfiguration/CloudEndUserByClusterID/{id}": {
-            "get": {
-                "parameters": [
-                    {
-                        "name": "version",
-                        "in": "path",
-                        "type": "string",
-                        "description": "Version"
-                    },
-                    {
-                        "name": "id",
-                        "in": "path",
-                        "type": "integer",
-                        "description": "CloudId"
-                    },
-                    {
-                        "in": "header",
-                        "name": "authorization",
-                        "description": "",
-                        "required": true,
-                        "type": "string"
-                    }
-                ],
-                "responses": {
-                    "200": {
-                        "description": "All records of Cloud end user has been recieved"
-                    }
-                }
-            }
-        },
-        "/{version}/CloudConfiguration/Profile": {
-            "post": {
-                "parameters": [
-                    {
-                        "name": "New Profile is added",
-                        "in": "body",
-                        "description": "Record",
-                        "schema": {
-                            "$ref": "#/definitions/Profile"
-                        }
-                    },
-                    {
-                        "name": "version",
-                        "in": "path",
-                        "type": "string",
-                        "description": "Version"
-                    },
-                    {
-                        "in": "header",
-                        "name": "authorization",
-                        "description": "",
-                        "required": true,
-                        "type": "string"
-                    }
-                ],
-                "responses": {
-                    "200": {
-                        "description": "New profile has been inserted"
-                    }
-                }
-            }
-        },
-        "/{version}/CloudConfiguration/Profile/{profileid}/SetProfileToCallServer/{callserverid}": {
-            "post": {
-                "parameters": [
-                    {
-                        "name": "profileid",
-                        "in": "path",
-                        "type": "integer",
-                        "description": "profileid"
-                    },
-                    {
-                        "name": "callserverid",
-                        "in": "path",
-                        "type": "integer",
-                        "description": "callserverid"
-                    },
-                    {
-                        "name": "version",
-                        "in": "path",
-                        "type": "string",
-                        "description": "Version"
-                    },
-                    {
-                        "in": "header",
-                        "name": "authorization",
-                        "description": "",
-                        "required": true,
-                        "type": "string"
-                    }
-                ],
-                "responses": {
-                    "200": {
-                        "description": "Set Profile to callserver is done"
-                    }
-                }
-            }
-        },
-        "/{version}/CloudConfiguration/Profile/{profileid}/SetProfileToEndUser/{enduser}": {
-            "post": {
-                "parameters": [
-                    {
-                        "name": "profileid",
-                        "in": "path",
-                        "type": "integer",
-                        "description": "profileid"
-                    },
-                    {
-                        "name": "enduser",
-                        "in": "path",
-                        "type": "integer",
-                        "description": "enduser"
-                    },
-                    {
-                        "name": "version",
-                        "in": "path",
-                        "type": "string",
-                        "description": "Version"
-                    },
-                    {
-                        "in": "header",
-                        "name": "authorization",
-                        "description": "",
-                        "required": true,
-                        "type": "string"
-                    }
-                ],
-                "responses": {
-                    "200": {
-                        "description": "Set Profile to Enduser is done"
-                    }
-                }
-            }
-        },
-        "/{version}/CloudConfiguration/Profile/{id}": {
-            "get": {
-                "parameters": [
-                    {
-                        "name": "id",
-                        "in": "path",
-                        "type": "integer",
-                        "description": "ID of the Profile",
+                        "description": "ID of Limit",
                         "required": true
                     },
                     {
                         "name": "version",
                         "in": "path",
                         "type": "string",
-                        "description": "Version"
+                        "description": "Version checking",
+                        "required": true
                     },
                     {
                         "in": "header",
@@ -744,19 +388,123 @@
                 ],
                 "responses": {
                     "200": {
-                        "description": "Profile details returned"
+                        "description": "Limit incremented"
                     }
                 }
             }
         },
-        "/{version}/CloudConfiguration/Profiles": {
+        "/{version}/LimitAPI/Schedule/Decrement/{key}": {
+            "post": {
+                "parameters": [
+                    {
+                        "name": "key",
+                        "in": "path",
+                        "type": "string",
+                        "description": "ID of Limit",
+                        "required": true
+                    },
+                    {
+                        "name": "version",
+                        "in": "path",
+                        "type": "string",
+                        "description": "Version checking",
+                        "required": true
+                    },
+                    {
+                        "in": "header",
+                        "name": "authorization",
+                        "description": "",
+                        "required": true,
+                        "type": "string"
+                    }
+                ],
+                "responses": {
+                    "200": {
+                        "description": "Decrementation happened"
+                    }
+                }
+            }
+        },
+        "/{version}/LimitAPI/Limit/{lid}/Max/{max}": {
+            "post": {
+                "parameters": [
+                    {
+                        "name": "max",
+                        "in": "path",
+                        "type": "integer",
+                        "description": "Max count",
+                        "required": true
+                    },
+                    {
+                        "name": "version",
+                        "in": "path",
+                        "type": "string",
+                        "description": "Version checking",
+                        "required": true
+                    },
+                    {
+                        "name": "lid",
+                        "in": "path",
+                        "type": "integer",
+                        "description": "LimitId",
+                        "required": true
+                    },
+                    {
+                        "in": "header",
+                        "name": "authorization",
+                        "description": "",
+                        "required": true,
+                        "type": "string"
+                    }
+                ],
+                "responses": {
+                    "200": {
+                        "description": "Max count of Limit updated"
+                    }
+                }
+            }
+        },
+        "/{version}/LimitAPI/Limit/Restore": {
+            "post": {
+                "parameters": [
+                    {
+                        "name": "version",
+                        "in": "path",
+                        "type": "string",
+                        "description": "Version checking",
+                        "required": true
+                    },
+                    {
+                        "in": "header",
+                        "name": "authorization",
+                        "description": "",
+                        "required": true,
+                        "type": "string"
+                    }
+                ],
+                "responses": {
+                    "200": {
+                        "description": "Limit records are restored"
+                    }
+                }
+            }
+        },
+        "/{version}/LimitAPI/Schedule/ValidAppointment/{scheduleID}": {
             "get": {
                 "parameters": [
                     {
                         "name": "version",
                         "in": "path",
                         "type": "string",
-                        "description": "Version"
+                        "description": "Version checking",
+                        "required": true
+                    },
+                    {
+                        "name": "scheduleID",
+                        "in": "path",
+                        "type": "string",
+                        "description": "Schedule Id of Appointment",
+                        "required": true
                     },
                     {
                         "in": "header",
@@ -768,21 +516,20 @@
                 ],
                 "responses": {
                     "200": {
-                        "description": "All Profile details returned"
+                        "description": "Valid appointments of Schedule recieved"
                     }
                 }
             }
         },
-        "/{version}/CloudConfiguration/IPAddress": {
-            "post": {
+        "/{version}/LimitAPI/Schedule/UnAssignedAppointments": {
+            "get": {
                 "parameters": [
                     {
-                        "name": "Configure IP",
-                        "in": "body",
-                        "description": "Record",
-                        "schema": {
-                            "$ref": "#/definitions/IP"
-                        }
+                        "name": "version",
+                        "in": "path",
+                        "type": "string",
+                        "description": "Version checking",
+                        "required": true
                     },
                     {
                         "in": "header",
@@ -790,184 +537,499 @@
                         "description": "",
                         "required": true,
                         "type": "string"
+                    }
+                ],
+                "responses": {
+                    "200": {
+                        "description": "Unassigned Appointment records recieved"
+                    }
+                }
+            }
+        },
+        "/{version}/LimitAPI/Schedule/{id}/ValidAppointment/{date}/{time}": {
+            "get": {
+                "parameters": [
+                    {
+                        "name": "id",
+                        "in": "path",
+                        "type": "string",
+                        "description": "Schedule ID",
+                        "required": true
+                    },
+                    {
+                        "name": "date",
+                        "in": "path",
+                        "type": "string",
+                        "description": "date checking",
+                        "required": true
+                    },
+                    {
+                        "name": "time",
+                        "in": "path",
+                        "type": "string",
+                        "description": "time checking",
+                        "required": true
                     },
                     {
                         "name": "version",
                         "in": "path",
                         "type": "string",
-                        "description": "Version"
+                        "description": "Version checking",
+                        "required": true
+                    },
+                    {
+                        "in": "header",
+                        "name": "authorization",
+                        "description": "",
+                        "required": true,
+                        "type": "string"
                     }
                 ],
                 "responses": {
                     "200": {
-                        "description": "New profile has been inserted"
+                        "description": "Valid appointment for given date and time"
+                    }
+                }
+            }
+        },
+        "/{version}/LimitAPI/Schedules": {
+            "get": {
+                "parameters": [
+                    {
+                        "name": "version",
+                        "in": "path",
+                        "type": "string",
+                        "description": "Version checking",
+                        "required": true
+                    },
+                    {
+                        "in": "header",
+                        "name": "authorization",
+                        "description": "",
+                        "required": true,
+                        "type": "string"
+                    }
+                ],
+                "responses": {
+                    "200": {
+                        "description": "All Schedules recieved"
+                    }
+                }
+            }
+        },
+        "/{version}/LimitAPI/Schedule/{id}/Action": {
+            "get": {
+                "parameters": [
+                    {
+                        "name": "id",
+                        "in": "path",
+                        "type": "integer",
+                        "description": "ID of the schedule",
+                        "required": true
+                    },
+                    {
+                        "name": "version",
+                        "in": "path",
+                        "type": "string",
+                        "description": "Version checking",
+                        "required": true
+                    },
+                    {
+                        "in": "header",
+                        "name": "authorization",
+                        "description": "",
+                        "required": true,
+                        "type": "string"
+                    }
+                ],
+                "responses": {
+                    "200": {
+                        "description": "Schedule Action recieved"
+                    }
+                }
+            }
+        },
+        "/{version}/LimitAPI/Schedule/{id}/Appointments": {
+            "get": {
+                "parameters": [
+                    {
+                        "name": "id",
+                        "in": "path",
+                        "type": "integer",
+                        "description": "ID of the Schedule",
+                        "required": true
+                    },
+                    {
+                        "name": "version",
+                        "in": "path",
+                        "type": "string",
+                        "description": "Version checking",
+                        "required": true
+                    },
+                    {
+                        "in": "header",
+                        "name": "authorization",
+                        "description": "",
+                        "required": true,
+                        "type": "string"
+                    }
+                ],
+                "responses": {
+                    "200": {
+                        "description": "Apointments of Schedule picked"
+                    }
+                }
+            }
+        },
+        "/{version}/LimitAPI/Schedule/Appointmen/{id}/Action": {
+            "get": {
+                "parameters": [
+                    {
+                        "name": "id",
+                        "in": "path",
+                        "type": "integer",
+                        "description": "ID of the Appointment",
+                        "required": true
+                    },
+                    {
+                        "name": "version",
+                        "in": "path",
+                        "type": "string",
+                        "description": "Version checking",
+                        "required": true
+                    },
+                    {
+                        "in": "header",
+                        "name": "authorization",
+                        "description": "",
+                        "required": true,
+                        "type": "string"
+                    }
+                ],
+                "responses": {
+                    "200": {
+                        "description": "Appointment Action recieved"
+                    }
+                }
+            }
+        },
+        "/{version}/LimitAPI/Limit/Current/{Rid}": {
+            "get": {
+                "parameters": [
+                    {
+                        "name": "Rid",
+                        "in": "path",
+                        "type": "string",
+                        "description": "ID of the Limit",
+                        "required": true
+                    },
+                    {
+                        "name": "version",
+                        "in": "path",
+                        "type": "string",
+                        "description": "Version checking",
+                        "required": true
+                    },
+                    {
+                        "in": "header",
+                        "name": "authorization",
+                        "description": "",
+                        "required": true,
+                        "type": "string"
+                    }
+                ],
+                "responses": {
+                    "200": {
+                        "description": "Current Limit count recieved"
+                    }
+                }
+            }
+        },
+        "/{version}/LimitAPI/Limit/MaxLimit/{Rid}": {
+            "get": {
+                "parameters": [
+                    {
+                        "name": "Rid",
+                        "in": "path",
+                        "type": "string",
+                        "description": "ID of the Limit",
+                        "required": true
+                    },
+                    {
+                        "name": "version",
+                        "in": "path",
+                        "type": "string",
+                        "description": "Version checking",
+                        "required": true
+                    },
+                    {
+                        "in": "header",
+                        "name": "authorization",
+                        "description": "",
+                        "required": true,
+                        "type": "string"
+                    }
+                ],
+                "responses": {
+                    "200": {
+                        "description": "Max Limit count receieved"
+                    }
+                }
+            }
+        },
+        "/{version}/LimitAPI/Limit/Info": {
+            "get": {
+                "parameters": [
+                    {
+                        "name": "version",
+                        "in": "path",
+                        "type": "string",
+                        "description": "Version checking",
+                        "required": true
+                    },
+                    {
+                        "in": "header",
+                        "name": "authorization",
+                        "description": "",
+                        "required": true,
+                        "type": "string"
+                    }
+                ],
+                "responses": {
+                    "200": {
+                        "description": "Limit Informations receieved"
+                    }
+                }
+            }
+        },
+        "/{version}/LimitAPI/Schedules/byCompany": {
+            "get": {
+                "parameters": [
+                    {
+                        "name": "version",
+                        "in": "path",
+                        "type": "string",
+                        "description": "Version checking",
+                        "required": true
+                    },
+                    {
+                        "in": "header",
+                        "name": "authorization",
+                        "description": "",
+                        "required": true,
+                        "type": "string"
+                    }
+                ],
+                "responses": {
+                    "200": {
+                        "description": "Schedules of company received"
+                    }
+                }
+            }
+        },
+        "/{version}/LimitAPI/Appointment/{id}": {
+            "delete": {
+                "parameters": [
+                    {
+                        "name": "id",
+                        "in": "path",
+                        "type": "integer",
+                        "description": "ID of the Appointment",
+                        "required": true
+                    },
+                    {
+                        "name": "version",
+                        "in": "path",
+                        "type": "string",
+                        "description": "Version checking",
+                        "required": true
+                    },
+                    {
+                        "in": "header",
+                        "name": "authorization",
+                        "description": "",
+                        "required": true,
+                        "type": "string"
+                    }
+                ],
+                "responses": {
+                    "200": {
+                        "description": "Appointment deleted"
+                    }
+                }
+            },
+            "get": {
+                "parameters": [
+                    {
+                        "name": "id",
+                        "in": "path",
+                        "type": "integer",
+                        "description": "ID of the Appointment",
+                        "required": true
+                    },
+                    {
+                        "name": "version",
+                        "in": "path",
+                        "type": "string",
+                        "description": "Version checking",
+                        "required": true
+                    },
+                    {
+                        "in": "header",
+                        "name": "authorization",
+                        "description": "",
+                        "required": true,
+                        "type": "string"
+                    }
+                ],
+                "responses": {
+                    "200": {
+                        "description": "Appointment data recieved"
                     }
                 }
             }
         }
     },
     "definitions": {
-        "Cloud": {
+        "Appointment": {
             "properties": {
-                "CloudModel": {
+                "ScheduleId": {
                     "type": "integer"
                 },
-                "Name": {
+                "AppointmentName": {
                     "type": "string"
                 },
-                "Class": {
+                "Action": {
                     "type": "string"
                 },
-                "Type": {
+                "ExtraData": {
                     "type": "string"
                 },
-                "Category": {
+                "StartDate": {
                     "type": "string"
                 },
-                "TenantId": {
-                    "type": "integer"
+                "EndDate": {
+                    "type": "string"
                 },
-                "CompanyId": {
-                    "type": "integer"
+                "StartTime": {
+                    "type": "string"
+                },
+                "EndTime": {
+                    "type": "string"
+                },
+                "DaysOfWeek": {
+                    "$ref": "#/definitions/Days"
+                },
+                "RecurrencePattern": {
+                    "type": "string"
                 }
             }
         },
-        "CallServer": {
+        "Days": {
+            "type": "object",
             "properties": {
-                "Activate": {
+                "Sunday": {
                     "type": "boolean"
                 },
-                "Name": {
+                "Monday": {
+                    "type": "boolean"
+                },
+                "Tuesday": {
+                    "type": "boolean"
+                },
+                "Wednesday": {
+                    "type": "boolean"
+                },
+                "Thursday": {
+                    "type": "boolean"
+                },
+                "Friday": {
+                    "type": "boolean"
+                },
+                "Saturday": {
+                    "type": "boolean"
+                }
+            }
+        },
+        "Schedule": {
+            "properties": {
+                "ScheduleName": {
                     "type": "string"
                 },
-                "Class": {
+                "Action": {
                     "type": "string"
                 },
-                "Type": {
+                "ExtraData": {
                     "type": "string"
                 },
-                "Category": {
+                "Availability": {
+                    "type": "boolean"
+                }
+            }
+        },
+        "InitialData": {
+            "properties": {
+                "Schedule": {
+                    "type": "array",
+                    "items": {
+                        "$ref": "#/definitions/Schedule"
+                    }
+                },
+                "Appointment": {
+                    "type": "array",
+                    "items": {
+                        "$ref": "#/definitions/Appointment"
+                    }
+                }
+            }
+        },
+        "UpdtSchedule": {
+            "properties": {
+                "Action": {
                     "type": "string"
                 },
-                "TenantId": {
-                    "type": "integer"
-                },
-                "CompanyId": {
-                    "type": "integer"
-                },
-                "Code": {
-                    "type": "integer"
-                },
-                "InternalIP": {
+                "ExtraData": {
                     "type": "string"
                 }
             }
         },
-        "LoadBalancer": {
+        "UpdtApp": {
             "properties": {
-                "Type": {
+                "Action": {
                     "type": "string"
                 },
-                "MainIP": {
+                "ExtraData": {
                     "type": "string"
                 },
-                "ClusterId": {
-                    "type": "integer"
+                "StartDate": {
+                    "type": "string"
+                },
+                "EndDate": {
+                    "type": "string"
+                },
+                "StartTime": {
+                    "type": "string"
+                },
+                "EndTime": {
+                    "type": "string"
+                },
+                "DaysOfWeek": {
+                    "$ref": "#/definitions/Days"
+                },
+                "RecurrencePattern": {
+                    "type": "string"
                 }
             }
         },
-        "Telco": {
+        "LimitInfo": {
             "properties": {
-                "Network": {
-                    "type": "string",
-                    "description": "ex:- 192.168.1.0"
-                },
-                "Mask": {
-                    "type": "integer",
-                    "description": " 32,24 etc (Network prefix notation)"
-                },
-                "NATIP": {
+                "LimitDescription": {
                     "type": "string"
                 },
-                "TenantId": {
+                "MaxCount": {
                     "type": "integer"
                 },
-                "CompanyId": {
-                    "type": "integer"
-                }
-            }
-        },
-        "CloudEndUser": {
-            "properties": {
-                "SIPConnectivityProvision": {
-                    "type": "integer"
-                },
-                "Domain": {
-                    "type": "string"
-                },
-                "TenantId": {
-                    "type": "integer"
-                },
-                "CompanyId": {
-                    "type": "integer"
-                },
-                "ClusterID": {
-                    "type": "integer"
-                }
-            }
-        },
-        "Profile": {
-            "properties": {
-                "ProfileName": {
-                    "type": "string"
-                },
-                "MainIp": {
-                    "type": "string"
-                },
-                "InternalIp": {
-                    "type": "string"
-                },
-                "InternalRtpIp": {
-                    "type": "string"
-                },
-                "ExternalIp": {
-                    "type": "string"
-                },
-                "ExternalRtpIp": {
-                    "type": "string"
-                },
-                "Port": {
-                    "type": "integer"
-                },
-                "ObjClass": {
-                    "type": "string"
-                },
-                "ObjType": {
-                    "type": "string"
-                },
-                "ObjCategory": {
-                    "type": "string"
-                },
-                "TenantId": {
-                    "type": "integer"
-                },
-                "CompanyId": {
-                    "type": "integer"
-                }
-            }
-        },
-        "IP": {
-            "properties": {
-                "CallserverID": {
-                    "type": "integer"
-                },
-                "MainIp": {
-                    "type": "string"
-                },
-                "IP": {
-                    "type": "string"
-                },
-                "IsAllocated": {
+                "Enable": {
                     "type": "boolean"
                 }
             }
