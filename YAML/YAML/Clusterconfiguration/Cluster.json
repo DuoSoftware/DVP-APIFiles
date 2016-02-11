@@ -243,6 +243,39 @@
                 }
             }
         },
+        "/{version}/CloudConfiguration/CallServer/UniqueCode": {
+            "post": {
+                "parameters": [
+                    {
+                        "name": "Add unique code",
+                        "in": "body",
+                        "description": "Record",
+                        "schema": {
+                            "$ref": "#/definitions/UCode"
+                        }
+                    },
+                    {
+                        "name": "version",
+                        "in": "path",
+                        "type": "string",
+                        "description": "Version",
+                        "required": true
+                    },
+                    {
+                        "in": "header",
+                        "name": "authorization",
+                        "description": "",
+                        "required": true,
+                        "type": "string"
+                    }
+                ],
+                "responses": {
+                    "200": {
+                        "description": "New Unique code has been added"
+                    }
+                }
+            }
+        },
         "/{version}/CloudConfiguration/CallServer/{id}/Activate/{status}": {
             "post": {
                 "parameters": [
@@ -1673,6 +1706,13 @@
                 },
                 "IsAllocated": {
                     "type": "boolean"
+                }
+            }
+        },
+        "UCode": {
+            "properties": {
+                "Code": {
+                    "type": "integer"
                 }
             }
         }
