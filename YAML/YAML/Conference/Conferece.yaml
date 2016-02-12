@@ -14,6 +14,7 @@ schemes:
 host: conference.104.131.67.21.xip.io
 basePath: /DVP/API
 paths:
+
   '/{version}/ConferenceApi/ConferenceRoom':
     post:
       parameters:
@@ -35,48 +36,37 @@ paths:
       responses:
         '200':
           description: New Conference Room Added
-  '/{version}/ConferenceApi/ConferenceRooms':
-    get:
-      parameters:
-        - name: version
-          in: path
-          type: string
-          description: Version checking
-          required: true
-        - in: header
-          name: authorization
-          description: ''
-          required: true
-          type: string
-      responses:
-        '200':
-          description: Get Conference Rooms
+  
   '/{version}/ConferenceApi/ConferenceRoom/{ConfName}':
-    post:
+    put:
       parameters:
         - name: Conference Room Details
           in: body
           description: Update
           schema:
-            $ref: '#/definitions/Conference'
+            $ref: '#/definitions/UpdtConference'
+            
         - name: version
           in: path
           type: string
           description: Version checking
           required: true
+          
         - name: ConfName
           in: path
           type: string
           description: Conference Room Name
           required: true
+          
         - in: header
           name: authorization
           description: ''
           required: true
           type: string
+          
       responses:
         '200':
-          description: New Conference user adding happens
+          description: Conference updated
     get:
       parameters:
         - name: ConfName
@@ -84,16 +74,19 @@ paths:
           type: string
           description: Conference name
           required: true
+          
         - name: version
           in: path
           type: string
           description: Version checking
           required: true
+          
         - in: header
           name: authorization
           description: ''
           required: true
           type: string
+          
       responses:
         '200':
           description: Get Conference User details succeeded
@@ -104,19 +97,23 @@ paths:
           type: string
           description: Conference name
           required: true
+          
         - name: version
           in: path
           type: string
           description: Version checking
           required: true
+          
         - in: header
           name: authorization
           description: ''
           required: true
           type: string
+          
       responses:
         '200':
-          description: Delete Conference Room succeeded
+          description: Conference Room Deleted succeeded
+  
   '/{version}/ConferenceApi/ConferenceRoom/{ConfName}/Time':
     post:
       parameters:
@@ -124,7 +121,8 @@ paths:
           in: body
           description: Update
           schema:
-            $ref: '#/definitions/Conference'
+            $ref: '#/definitions/UpdtConfTime'
+            
         - name: version
           in: path
           type: string
@@ -143,6 +141,7 @@ paths:
       responses:
         '200':
           description: New Mapping happens
+          
   '/{version}/ConferenceApi/Conference/{CfName}/AssignCloudEndUser/{CloudUserId}':
     post:
       parameters:
@@ -151,16 +150,19 @@ paths:
           type: string
           description: Conference name
           required: true
+          
         - name: CloudUserId
           in: path
           type: string
           description: CloudUser Id
           required: true
+          
         - name: version
           in: path
           type: string
           description: Version checking
           required: true
+          
         - in: header
           name: authorization
           description: ''
@@ -168,7 +170,8 @@ paths:
           type: string
       responses:
         '200':
-          description: Updation succeeded
+          description: Cloud end user assigned to Conference successfully
+  
   '/{version}/ConferenceApi/ConferenceUser':
     post:
       parameters:
@@ -177,19 +180,23 @@ paths:
           description: Update
           schema:
             $ref: '#/definitions/User'
+            
         - name: version
           in: path
           type: string
           description: Version checking
           required: true
+          
         - in: header
           name: authorization
           description: ''
           required: true
           type: string
+          
       responses:
         '200':
-          description: Extension status updated
+          description: New Conference user added
+  
   '/{version}/ConferenceApi/ConferenceUser/{UserId}/AssignToRoom/{RoomName}':
     post:
       parameters:
@@ -198,24 +205,60 @@ paths:
           type: string
           description: Version checking
           required: true
+          
         - name: UserId
           in: path
           type: string
-          description: UserID
+          description: Id of Conference user
           required: true
+          
         - name: RoomName
           in: path
           type: integer
           description: ConferenceRoom Name
           required: true
+          
         - in: header
           name: authorization
           description: ''
           required: true
           type: string
+          
       responses:
         '200':
-          description: map extension with user succeeded
+          description: Conference user added to conference successfully
+    
+  '/{version}/ConferenceApi/ConferenceUser/{UserId}/AddToRoom/{RoomName}':
+    post:
+      parameters:
+        - name: version
+          in: path
+          type: string
+          description: Version checking
+          required: true
+          
+        - name: UserId
+          in: path
+          type: string
+          description: Id of Conference user
+          required: true
+          
+        - name: RoomName
+          in: path
+          type: integer
+          description: ConferenceRoom Name
+          required: true
+          
+        - in: header
+          name: authorization
+          description: ''
+          required: true
+          type: string
+          
+      responses:
+        '200':
+          description: Sipuser in Conference user list added to conference successfully        
+  
   '/{version}/ConferenceApi/ConferenceUser/{UserId}/Mode':
     post:
       parameters:
@@ -224,24 +267,29 @@ paths:
           type: string
           description: UserID
           required: true
+          
         - name: Add Sip User group
           in: body
           description: Record
           schema:
             $ref: '#/definitions/Modes'
+            
         - in: header
           name: authorization
           description: ''
           required: true
           type: string
+          
         - name: version
           in: path
           type: string
           description: Version checking
           required: true
+          
       responses:
         '200':
-          description: New user group added
+          description: User modes updated
+  
   '/{version}/ConferenceApi/ConferenceUser/{UserId}':
     delete:
       parameters:
@@ -250,16 +298,19 @@ paths:
           type: string
           description: Version checking
           required: true
+          
         - in: header
           name: authorization
           description: ''
           required: true
+          
           type: string
         - name: UserId
           in: path
           type: integer
           description: Conference UserID
           required: true
+          
       responses:
         '200':
           description: Conference user Deleted
@@ -270,6 +321,28 @@ paths:
           type: integer
           description: Name of Group
           required: true
+          
+        - name: version
+          in: path
+          type: string
+          description: Version checking
+          required: true
+          
+        - in: header
+          name: authorization
+          description: ''
+          required: true
+          type: string
+          
+      responses:
+        '200':
+          description: Conference user record recieved
+  
+  
+          
+  '/{version}/ConferenceApi/ConferenceRooms':
+    get:
+      parameters:
         - name: version
           in: path
           type: string
@@ -282,10 +355,277 @@ paths:
           type: string
       responses:
         '200':
-          description: Update sip user group succeeded
+          description: Get Conference Rooms
           
+  '/{version}/ConferenceOperations/ConferenceUser/{User}/Mute':
+    get:
+      parameters:
+        - name: version
+          in: path
+          type: string
+          description: Version checking
+          required: true
           
+        - name: User
+          in: path
+          type: string
+          description: Name of User
+          required: true
           
+        - in: header
+          name: authorization
+          description: ''
+          required: true
+          type: string
+          
+      responses:
+        '200':
+          description: User mute mode on
+         
+  '/{version}/ConferenceOperations/ConferenceUser/{User}/UnMute':
+    get:
+      parameters:
+        - name: version
+          in: path
+          type: string
+          description: Version checking
+          required: true
+          
+        - name: User
+          in: path
+          type: string
+          description: Name of User
+          required: true
+          
+        - in: header
+          name: authorization
+          description: ''
+          required: true
+          type: string
+          
+      responses:
+        '200':
+          description: User mute mode off
+  
+  '/{version}/ConferenceOperations/ConferenceUser/{User}/Deaf':
+    get:
+      parameters:
+        - name: version
+          in: path
+          type: string
+          description: Version checking
+          required: true
+          
+        - name: User
+          in: path
+          type: string
+          description: Name of user
+          required: true
+          
+        - in: header
+          name: authorization
+          description: ''
+          required: true
+          type: string
+          
+      responses:
+        '200':
+          description: User Deaf mode on
+  
+  '/{version}/ConferenceOperations/ConferenceUser/{User}/UnDeaf':
+    get:
+      parameters:
+        - name: version
+          in: path
+          type: string
+          description: Version checking
+          required: true
+          
+        - name: User
+          in: path
+          type: string
+          description: Name of User
+          required: true
+          
+        - in: header
+          name: authorization
+          description: ''
+          required: true
+          type: string
+          
+      responses:
+        '200':
+          description: User Deaf mode off
+  
+  '/{version}/ConferenceOperations/ConferenceUser/{User}/Kick':
+    get:
+      parameters:
+        - name: version
+          in: path
+          type: string
+          description: Version checking
+          required: true
+          
+        - name: User
+          in: path
+          type: string
+          description: Name of User
+          required: true
+          
+        - in: header
+          name: authorization
+          description: ''
+          required: true
+          type: string
+          
+      responses:
+        '200':
+          description: User kicked from conference
+  
+  '/{version}/ConferenceOperations/Conference/{ConfName}/Users/Mute':
+    get:
+      parameters:
+        - name: version
+          in: path
+          type: string
+          description: Version checking
+          required: true
+          
+        - name: ConfName
+          in: path
+          type: string
+          description: Name of Conference
+          required: true
+          
+        - in: header
+          name: authorization
+          description: ''
+          required: true
+          type: string
+          
+      responses:
+        '200':
+          description: All users of conference Muted
+  '/{version}/ConferenceOperations/Conference/{ConfName}/Users/UnMute':
+    get:
+      parameters:
+        - name: version
+          in: path
+          type: string
+          description: Version checking
+          required: true
+          
+        - name: ConfName
+          in: path
+          type: string
+          description: Name of Conference
+          required: true
+          
+        - in: header
+          name: authorization
+          description: ''
+          required: true
+          type: string
+          
+      responses:
+        '200':
+          description: All users of conference Unmuted
+  '/{version}/ConferenceOperations/Conference/{ConfName}/Users/Deaf':
+    get:
+      parameters:
+        - name: version
+          in: path
+          type: string
+          description: Version checking
+          required: true
+          
+        - name: ConfName
+          in: path
+          type: string
+          description: Name of Conference
+          required: true
+          
+        - in: header
+          name: authorization
+          description: ''
+          required: true
+          type: string
+          
+      responses:
+        '200':
+          description: All users of conference Deafed
+  '/{version}/ConferenceOperations/Conference/{ConfName}/Users/UnDeaf':
+    get:
+      parameters:
+        - name: version
+          in: path
+          type: string
+          description: Version checking
+          required: true
+          
+        - name: ConfName
+          in: path
+          type: string
+          description: Name of Conference
+          required: true
+          
+        - in: header
+          name: authorization
+          description: ''
+          required: true
+          type: string
+          
+      responses:
+        '200':
+          description: All users of conference UnDeafed
+  '/{version}/ConferenceOperations/Conference/{ConfName}/Lock':
+    get:
+      parameters:
+        - name: version
+          in: path
+          type: string
+          description: Version checking
+          required: true
+          
+        - name: ConfName
+          in: path
+          type: string
+          description: Name of Conference
+          required: true
+          
+        - in: header
+          name: authorization
+          description: ''
+          required: true
+          type: string
+          
+      responses:
+        '200':
+          description: Conference Locked
+  '/{version}/ConferenceOperations/Conference/{ConfName}/UnLock':
+    get:
+      parameters:
+        - name: version
+          in: path
+          type: string
+          description: Version checking
+          required: true
+          
+        - name: ConfName
+          in: path
+          type: string
+          description: Name of Conference
+          required: true
+          
+        - in: header
+          name: authorization
+          description: ''
+          required: true
+          type: string
+          
+      responses:
+        '200':
+          description: Conference UnLocked
           
   '/{version}/Conference/{confName}/user':
     
@@ -296,21 +636,24 @@ paths:
           type: string
           description: Name of Conference
           required: true
+          
         - name: version
           in: path
           type: string
           description: Version checking
           required: true
+          
         - in: header
           name: authorization
           description: ''
           required: true
           type: string
+          
         - name: ConfUser data
           in: body
           description: Record
           schema:
-            $ref: '#/definitions/User'
+            $ref: '#/definitions/UpdtUser'
           
       responses:
         '200':
@@ -326,11 +669,13 @@ paths:
           type: string
           description: UserId of ConferenceUser
           required: true
+          
         - name: version
           in: path
           type: string
           description: Version checking
           required: true
+          
         - in: header
           name: authorization
           description: ''
@@ -356,11 +701,13 @@ paths:
           type: string
           description: confName of Conference
           required: true
+          
         - name: version
           in: path
           type: string
           description: Version checking
           required: true
+          
         - in: header
           name: authorization
           description: ''
@@ -370,7 +717,7 @@ paths:
           
       responses:
         '200':
-          description: Conference user Updated          
+          description: Conference users recieved 
           
           
           
@@ -395,6 +742,38 @@ definitions:
         type: boolean
       MaxUser:
         type: string
+      Pin:
+        type: string
+        
+  UpdtConference:
+    properties:
+      
+      AllowAnonymousUser:
+        type: boolean
+      StartTime:
+        type: string
+      EndTime:
+        type: string
+      Domain:
+        type: string
+      IsLocked:
+        type: boolean
+      MaxUser:
+        type: string
+      Pin:
+        type: string
+  
+  UpdtConfTime:
+    properties:
+      
+      
+      StartTime:
+        type: string
+      EndTime:
+        type: string
+      
+  
+  
   User:
     properties:
       SipUserUuid:
@@ -427,6 +806,7 @@ definitions:
         enum:
           - IN
           - OUT
+      
   Modes:
     properties:
       Def:
@@ -469,3 +849,5 @@ definitions:
         enum:
           - IN
           - OUT
+      UserStatus:
+        type: boolean
