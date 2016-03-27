@@ -15,7 +15,7 @@ host: conference.104.131.67.21.xip.io
 basePath: /DVP/API
 paths:
 
-  '/{version}/ConferenceApi/ConferenceRoom':
+  '/{version}/ConferenceConfiguration/ConferenceRoom':
     post:
       parameters:
         - name: New Context Record
@@ -37,7 +37,7 @@ paths:
         '200':
           description: New Conference Room Added
   
-  '/{version}/ConferenceApi/ConferenceRoom/{ConfName}':
+  '/{version}/ConferenceConfiguration/ConferenceRoom/{ConfName}':
     put:
       parameters:
         - name: Conference Room Details
@@ -114,7 +114,7 @@ paths:
         '200':
           description: Conference Room Deleted succeeded
   
-  '/{version}/ConferenceApi/ConferenceRoom/{ConfName}/Time':
+  '/{version}/ConferenceConfiguration/ConferenceRoom/{ConfName}/Time':
     post:
       parameters:
         - name: Conference Room Times
@@ -142,7 +142,7 @@ paths:
         '200':
           description: New Mapping happens
           
-  '/{version}/ConferenceApi/Conference/{CfName}/AssignCloudEndUser/{CloudUserId}':
+  '/{version}//ConferenceConfiguration/ConferenceRoom/{CfName}/AssignCloudEndUser/{CloudUserId}':
     post:
       parameters:
         - name: CfName
@@ -172,7 +172,7 @@ paths:
         '200':
           description: Cloud end user assigned to Conference successfully
   
-  '/{version}/ConferenceApi/ConferenceUser':
+  '/{version}/ConferenceConfiguration/ConferenceUser':
     post:
       parameters:
         - name: Conference Room Times
@@ -197,7 +197,7 @@ paths:
         '200':
           description: New Conference user added
   
-  '/{version}/ConferenceApi/ConferenceUser/{UserId}/AssignToRoom/{RoomName}':
+  '/{version}/ConferenceConfiguration/ConferenceUser/{UserId}/AssignToRoom/{RoomName}':
     post:
       parameters:
         - name: version
@@ -228,7 +228,7 @@ paths:
         '200':
           description: Conference user added to conference successfully
     
-  '/{version}/ConferenceApi/ConferenceUser/{UserId}/AddToRoom/{RoomName}':
+  '/{version}/ConferenceConfiguration/ConferenceUser/{UserId}/AddToRoom/{RoomName}':
     post:
       parameters:
         - name: version
@@ -259,7 +259,7 @@ paths:
         '200':
           description: Sipuser in Conference user list added to conference successfully        
   
-  '/{version}/ConferenceApi/ConferenceUser/{UserId}/Mode':
+  '/{version}/ConferenceConfiguration/ConferenceUser/{UserId}/Mode':
     post:
       parameters:
         - name: UserId
@@ -290,7 +290,7 @@ paths:
         '200':
           description: User modes updated
   
-  '/{version}/ConferenceApi/ConferenceUser/{UserId}':
+  '/{version}/ConferenceConfiguration/ConferenceUser/{UserId}':
     delete:
       parameters:
         - name: version
@@ -340,7 +340,7 @@ paths:
   
   
           
-  '/{version}/ConferenceApi/ConferenceRooms':
+  '/{version}/ConferenceConfiguration/ConferenceRooms':
     get:
       parameters:
         - name: version
@@ -506,6 +506,7 @@ paths:
       responses:
         '200':
           description: All users of conference Muted
+          
   '/{version}/ConferenceOperations/Conference/{ConfName}/Users/UnMute':
     get:
       parameters:
@@ -602,7 +603,7 @@ paths:
       responses:
         '200':
           description: Conference Locked
-  '/{version}/ConferenceOperations/Conference/{ConfName}/UnLock':
+  '/{version}/ConferenceOperations/Conference/{ConfName}/Unlock':
     get:
       parameters:
         - name: version

@@ -11,7 +11,7 @@
     "host": "conference.104.131.67.21.xip.io",
     "basePath": "/DVP/API",
     "paths": {
-        "/{version}/ConferenceApi/ConferenceRoom": {
+        "/{version}/ConferenceConfiguration/ConferenceRoom": {
             "post": {
                 "parameters": [
                     {
@@ -44,7 +44,7 @@
                 }
             }
         },
-        "/{version}/ConferenceApi/ConferenceRoom/{ConfName}": {
+        "/{version}/ConferenceConfiguration/ConferenceRoom/{ConfName}": {
             "put": {
                 "parameters": [
                     {
@@ -144,7 +144,7 @@
                 }
             }
         },
-        "/{version}/ConferenceApi/ConferenceRoom/{ConfName}/Time": {
+        "/{version}/ConferenceConfiguration/ConferenceRoom/{ConfName}/Time": {
             "post": {
                 "parameters": [
                     {
@@ -184,7 +184,7 @@
                 }
             }
         },
-        "/{version}/ConferenceApi/Conference/{CfName}/AssignCloudEndUser/{CloudUserId}": {
+        "/{version}//ConferenceConfiguration/ConferenceRoom/{CfName}/AssignCloudEndUser/{CloudUserId}": {
             "post": {
                 "parameters": [
                     {
@@ -223,7 +223,7 @@
                 }
             }
         },
-        "/{version}/ConferenceApi/ConferenceUser": {
+        "/{version}/ConferenceConfiguration/ConferenceUser": {
             "post": {
                 "parameters": [
                     {
@@ -256,7 +256,7 @@
                 }
             }
         },
-        "/{version}/ConferenceApi/ConferenceUser/{UserId}/AssignToRoom/{RoomName}": {
+        "/{version}/ConferenceConfiguration/ConferenceUser/{UserId}/AssignToRoom/{RoomName}": {
             "post": {
                 "parameters": [
                     {
@@ -295,7 +295,7 @@
                 }
             }
         },
-        "/{version}/ConferenceApi/ConferenceUser/{UserId}/AddToRoom/{RoomName}": {
+        "/{version}/ConferenceConfiguration/ConferenceUser/{UserId}/AddToRoom/{RoomName}": {
             "post": {
                 "parameters": [
                     {
@@ -334,7 +334,7 @@
                 }
             }
         },
-        "/{version}/ConferenceApi/ConferenceUser/{UserId}/Mode": {
+        "/{version}/ConferenceConfiguration/ConferenceUser/{UserId}/Mode": {
             "post": {
                 "parameters": [
                     {
@@ -374,7 +374,7 @@
                 }
             }
         },
-        "/{version}/ConferenceApi/ConferenceUser/{UserId}": {
+        "/{version}/ConferenceConfiguration/ConferenceUser/{UserId}": {
             "delete": {
                 "parameters": [
                     {
@@ -436,7 +436,7 @@
                 }
             }
         },
-        "/{version}/ConferenceApi/ConferenceRooms": {
+        "/{version}/ConferenceConfiguration/ConferenceRooms": {
             "get": {
                 "parameters": [
                     {
@@ -781,7 +781,7 @@
                 }
             }
         },
-        "/{version}/ConferenceOperations/Conference/{ConfName}/UnLock": {
+        "/{version}/ConferenceOperations/Conference/{ConfName}/Unlock": {
             "get": {
                 "parameters": [
                     {
