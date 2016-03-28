@@ -391,7 +391,7 @@ paths:
         
   
         
-  /DVP/API/:version/CallRuleApi/CallRule/{ruleId}/SetApplication/{appId}:
+  /DVP/API/{hostVersion}/CallRuleApi/CallRule/{ruleId}/SetApplication/{appId}:
     
     post:
     
@@ -406,6 +406,12 @@ paths:
           in: path
           type: integer
           description: ruleId
+          required: true
+		  
+		- name: hostVersion
+          in: path
+          type: string
+          description: API version
           required: true
         
           
