@@ -488,7 +488,7 @@
                 }
             }
         },
-        "/DVP/API/:version/CallRuleApi/CallRule/{ruleId}/SetApplication/{appId}": {
+        "/DVP/API/{hostVersion}/CallRuleApi/CallRule/{ruleId}/SetApplication/{appId}": {
             "post": {
                 "parameters": [
                     {
@@ -503,6 +503,13 @@
                         "in": "path",
                         "type": "integer",
                         "description": "ruleId",
+                        "required": true
+                    },
+                    {
+                        "name": "hostVersion",
+                        "in": "path",
+                        "type": "integer",
+                        "description": "hostVersion",
                         "required": true
                     }
                 ],
