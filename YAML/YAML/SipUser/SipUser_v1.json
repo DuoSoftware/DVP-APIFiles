@@ -1043,17 +1043,9 @@
                 }
             }
         },
-        "/{version}/SipUser/AssignDidNumberToExtension": {
+        "/{version}/SipUser/DidNumber/{didNum}/AssignToExt/{ext}": {
             "post": {
                 "parameters": [
-                    {
-                        "name": "Assign Did to Extension",
-                        "in": "body",
-                        "description": "Update",
-                        "schema": {
-                            "$ref": "#/definitions/DidvsExtension"
-                        }
-                    },
                     {
                         "name": "version",
                         "in": "path",
@@ -1067,6 +1059,20 @@
                         "description": "",
                         "required": true,
                         "type": "string"
+                    },
+                    {
+                        "name": "didNum",
+                        "in": "path",
+                        "type": "string",
+                        "description": "Did Number",
+                        "required": true
+                    },
+                    {
+                        "name": "ext",
+                        "in": "path",
+                        "type": "string",
+                        "description": "Extension",
+                        "required": true
                     }
                 ],
                 "responses": {
@@ -1244,16 +1250,6 @@
                 },
                 "DodActive": {
                     "type": "boolean"
-                }
-            }
-        },
-        "DidvsExtension": {
-            "properties": {
-                "ExtensionId": {
-                    "type": "integer"
-                },
-                "DidId": {
-                    "type": "integer"
                 }
             }
         }
