@@ -568,7 +568,7 @@ paths:
     
     
         
-  /{hostVersion}/PBXService/PBXUser/{PbxUserUuid}/PbxUserTemplate:
+  /{hostVersion}/PBXService/PBXUser/{PbxUserUuid}/PBXUserTemplate:
     
     post:
     
@@ -767,7 +767,7 @@ paths:
           description: Pbx users returned
           
           
-  /{hostVersion}/PBXService/PBXUser/{pbxUserUuid}/PbxUserTemplates:
+  /{hostVersion}/PBXService/PBXUser/{pbxUserUuid}/PBXUserTemplates:
    
    get:
       parameters:

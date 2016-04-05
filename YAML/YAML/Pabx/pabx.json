@@ -641,7 +641,7 @@
                 }
             }
         },
-        "/{hostVersion}/PBXService/PBXUser/{PbxUserUuid}/PbxUserTemplate": {
+        "/{hostVersion}/PBXService/PBXUser/{PbxUserUuid}/PBXUserTemplate": {
             "post": {
                 "parameters": [
                     {
@@ -864,7 +864,7 @@
                 }
             }
         },
-        "/{hostVersion}/PBXService/PBXUser/{pbxUserUuid}/PbxUserTemplates": {
+        "/{hostVersion}/PBXService/PBXUser/{pbxUserUuid}/PBXUserTemplates": {
             "get": {
                 "parameters": [
                     {
