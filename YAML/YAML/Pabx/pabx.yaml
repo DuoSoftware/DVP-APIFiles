@@ -603,7 +603,7 @@ paths:
         description: PbxUserTemplate Added  
         
         
-  /{hostVersion}/PBXService/PbxUser/{pbxUser}/SetActiveTemplate/{templateId}:
+  /{hostVersion}/PBXService/PBXUser/{pbxUser}/SetActiveTemplate/{templateId}:
     
     post:
     
@@ -637,7 +637,7 @@ paths:
        200:
         description: PbxUserTemplate Assigned
         
-  /{hostVersion}/PBXService/PbxUser/{PbxUserUuid}/ActiveTemplate/UnAssign:
+  /{hostVersion}/PBXService/PBXUser/{PbxUserUuid}/ActiveTemplate/UnAssign:
     
     post:
     
@@ -666,7 +666,7 @@ paths:
         description: PbxUserTemplate Un Assigned 
         
         
-  /{hostVersion}/PBXService/PbxUserTemplate/{templateId} :
+  /{hostVersion}/PBXService/PBXUserTemplate/{templateId} :
     
     delete:
     
@@ -767,7 +767,7 @@ paths:
           description: Pbx users returned
           
           
-  /{hostVersion}/PBXService/PbxUser/{pbxUserUuid}/PbxUserTemplates:
+  /{hostVersion}/PBXService/PBXUser/{pbxUserUuid}/PbxUserTemplates:
    
    get:
       parameters:
@@ -798,7 +798,7 @@ paths:
           
 
           
-  /{hostVersion}/PBXService/PbxMasterData:
+  /{hostVersion}/PBXService/PBXMasterData:
     
     post:
     

@@ -681,7 +681,7 @@
                 }
             }
         },
-        "/{hostVersion}/PBXService/PbxUser/{pbxUser}/SetActiveTemplate/{templateId}": {
+        "/{hostVersion}/PBXService/PBXUser/{pbxUser}/SetActiveTemplate/{templateId}": {
             "post": {
                 "parameters": [
                     {
@@ -720,7 +720,7 @@
                 }
             }
         },
-        "/{hostVersion}/PBXService/PbxUser/{PbxUserUuid}/ActiveTemplate/UnAssign": {
+        "/{hostVersion}/PBXService/PBXUser/{PbxUserUuid}/ActiveTemplate/UnAssign": {
             "post": {
                 "parameters": [
                     {
@@ -752,7 +752,7 @@
                 }
             }
         },
-        "/{hostVersion}/PBXService/PbxUserTemplate/{templateId}": {
+        "/{hostVersion}/PBXService/PBXUserTemplate/{templateId}": {
             "delete": {
                 "parameters": [
                     {
@@ -864,7 +864,7 @@
                 }
             }
         },
-        "/{hostVersion}/PBXService/PbxUser/{pbxUserUuid}/PbxUserTemplates": {
+        "/{hostVersion}/PBXService/PBXUser/{pbxUserUuid}/PbxUserTemplates": {
             "get": {
                 "parameters": [
                     {
@@ -896,7 +896,7 @@
                 }
             }
         },
-        "/{hostVersion}/PBXService/PbxMasterData": {
+        "/{hostVersion}/PBXService/PBXMasterData": {
             "post": {
                 "parameters": [
                     {
