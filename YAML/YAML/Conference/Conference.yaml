@@ -11,17 +11,18 @@ info:
     render back everything.
 schemes:
   - http
-host: sipuserendpointservice.104.131.67.21.xip.io
+host: conference.104.131.67.21.xip.io
 basePath: /DVP/API
 paths:
-  '/{version}/SipUser/Context':
+
+  '/{version}/ConferenceConfiguration/ConferenceRoom':
     post:
       parameters:
         - name: New Context Record
           in: body
           description: Record
           schema:
-            $ref: '#/definitions/Context'
+            $ref: '#/definitions/Conference'
         - name: version
           in: path
           type: string
@@ -34,66 +35,103 @@ paths:
           type: string
       responses:
         '200':
-          description: New Context Record Added
-  '/{version}/SipUser/User':
-    post:
-      parameters:
-        - name: New UAC Record
-          in: body
-          description: Record
-          schema:
-            $ref: '#/definitions/UAC'
-        - name: version
-          in: path
-          type: string
-          description: Version checking
-          required: true
-        - in: header
-          name: authorization
-          description: ''
-          required: true
-          type: string
-      responses:
-        '200':
-          description: New User Record Added
-          
-  '/{version}/SipUser/User/{Username}':
+          description: New Conference Room Added
+  
+  '/{version}/ConferenceConfiguration/ConferenceRoom/{ConfName}':
     put:
       parameters:
-        - name: Update sipuser details
+        - name: Conference Room Details
           in: body
           description: Update
           schema:
-            $ref: '#/definitions/UpdtUAC'
+            $ref: '#/definitions/UpdtConference'
+            
         - name: version
           in: path
           type: string
           description: Version checking
           required: true
-        - name: Username
+          
+        - name: ConfName
           in: path
           type: string
-          description: UserName of UAC
+          description: Conference Room Name
           required: true
+          
         - in: header
           name: authorization
           description: ''
           required: true
           type: string
+          
       responses:
         '200':
-          description: Sipuser details updated
+          description: Conference updated
     get:
       parameters:
-        - name: Username
+        - name: ConfName
           in: path
-          type: integer
-          description: Username of Sipuser
+          type: string
+          description: Conference name
           required: true
+          
         - name: version
           in: path
           type: string
           description: Version checking
+          required: true
+          
+        - in: header
+          name: authorization
+          description: ''
+          required: true
+          type: string
+          
+      responses:
+        '200':
+          description: Get Conference User details succeeded
+    delete:
+      parameters:
+        - name: ConfName
+          in: path
+          type: string
+          description: Conference name
+          required: true
+          
+        - name: version
+          in: path
+          type: string
+          description: Version checking
+          required: true
+          
+        - in: header
+          name: authorization
+          description: ''
+          required: true
+          type: string
+          
+      responses:
+        '200':
+          description: Conference Room Deleted succeeded
+  
+  '/{version}/ConferenceConfiguration/ConferenceRoom/{ConfName}/Time':
+    post:
+      parameters:
+        - name: Conference Room Times
+          in: body
+          description: Update
+          schema:
+            $ref: '#/definitions/UpdtConfTime'
+            
+        - name: version
+          in: path
+          type: string
+          description: Version checking
+          required: true
+        - name: ConfName
+          in: path
+          type: string
+          description: Conference name
           required: true
         - in: header
           name: authorization
@@ -102,108 +140,95 @@ paths:
           type: string
       responses:
         '200':
-          description: Get user details succeeded
+          description: New Mapping happens
+          
+  '/{version}//ConferenceConfiguration/ConferenceRoom/{CfName}/AssignCloudEndUser/{CloudUserId}':
+    post:
+      parameters:
+        - name: CfName
+          in: path
+          type: string
+          description: Conference name
+          required: true
+          
+        - name: CloudUserId
+          in: path
+          type: string
+          description: CloudUser Id
+          required: true
+          
+        - name: version
+          in: path
+          type: string
+          description: Version checking
+          required: true
+          
+        - in: header
+          name: authorization
+          description: ''
+          required: true
+          type: string
+      responses:
+        '200':
+          description: Cloud end user assigned to Conference successfully
+  
+  '/{version}/ConferenceConfiguration/ConferenceUser':
+    post:
+      parameters:
+        - name: Conference Room Times
+          in: body
+          description: Update
+          schema:
+            $ref: '#/definitions/User'
+            
+        - name: version
+          in: path
+          type: string
+          description: Version checking
+          required: true
+          
+        - in: header
+          name: authorization
+          description: ''
+          required: true
+          type: string
+          
+      responses:
+        '200':
+          description: New Conference user added
+  
+  '/{version}/ConferenceConfiguration/ConferenceUser/{UserId}/AssignToRoom/{RoomName}':
+    post:
+      parameters:
+        - name: version
+          in: path
+          type: string
+          description: Version checking
+          required: true
+          
+        - name: UserId
+          in: path
+          type: string
+          description: Id of Conference user
+          required: true
+          
+        - name: RoomName
+          in: path
+          type: integer
+          description: ConferenceRoom Name
+          required: true
+          
+        - in: header
+          name: authorization
+          description: ''
+          required: true
+          type: string
+          
+      responses:
+        '200':
+          description: Conference user added to conference successfully
     
-    
-  '/{version}/SipUser/Users':
-    get:
-      parameters:
-        
-        - name: version
-          in: path
-          type: string
-          description: Version checking
-          required: true
-          
-        - in: header
-          name: authorization
-          description: ''
-          required: true
-          type: string
-      responses:
-        '200':
-          description: All user records recieved       
-          
-  '/{version}/SipUser/User/{Username}/Status/{st}':
-    put:
-      parameters:
-        
-        - name: version
-          in: path
-          type: string
-          description: Version checking
-          required: true
-          
-        - name: Username
-          in: path
-          type: string
-          description: UserName of UAC
-          required: true
-          
-        - name: st
-          in: path
-          type: string
-          description: Status of UAC
-          required: true
-          
-        - in: header
-          name: authorization
-          description: ''
-          required: true
-          type: string
-      responses:
-        '200':
-          description: Ststus updation succeeded
-          
-  '/{version}/SipUser/Extension':
-    post:
-      parameters:
-        - name: AddExtention
-          in: body
-          description: Record
-          schema:
-            $ref: '#/definitions/Extention'
-        - name: version
-          in: path
-          type: string
-          description: Version checking
-          required: true
-        - in: header
-          name: authorization
-          description: ''
-          required: true
-          type: string
-          
-      responses:
-        '200':
-          description: Updation succeeded
-  '/{version}/SipUser/Extension/{extension}/Status/{st}':
-    post:
-      parameters:
-        - name: extension
-          in: path
-          type: string
-          description: extension
-          required: true
-        - name: st
-          in: path
-          description: Status
-          type: boolean
-          required: true
-        - name: version
-          in: path
-          type: string
-          description: Version checking
-          required: true
-        - in: header
-          name: authorization
-          description: ''
-          required: true
-          type: string
-      responses:
-        '200':
-          description: Extension status updated
-  '/{version}/SipUser/Extension/{extension}/AssignToSipUser/{id}':
+  '/{version}/ConferenceConfiguration/ConferenceUser/{UserId}/AddToRoom/{RoomName}':
     post:
       parameters:
         - name: version
@@ -211,464 +236,111 @@ paths:
           type: string
           description: Version checking
           required: true
-        - name: extension
+          
+        - name: UserId
           in: path
           type: string
-          description: Extension
+          description: Id of Conference user
           required: true
-        - name: id
+          
+        - name: RoomName
           in: path
           type: integer
-          description: UAC ID
+          description: ConferenceRoom Name
           required: true
+          
         - in: header
           name: authorization
           description: ''
           required: true
           type: string
+          
       responses:
         '200':
-          description: map extension with user succeeded
-  '/{version}/SipUser/Group':
+          description: Sipuser in Conference user list added to conference successfully        
+  
+  '/{version}/ConferenceConfiguration/ConferenceUser/{UserId}/Mode':
     post:
       parameters:
-        - name: Add Sip User group
-          in: body
-          description: Record
-          schema:
-            $ref: '#/definitions/UserGroup'
-        - in: header
-          name: authorization
-          description: ''
-          required: true
-          type: string
-        - name: version
-          in: path
-          type: string
-          description: Version checking
-          required: true
-      responses:
-        '200':
-          description: New user group added
-  '/{version}/SipUser/Group/{id}':
-    post:
-      parameters:
-        - name: Update Sip User group
-          in: body
-          description: Record
-          schema:
-            $ref: '#/definitions/UserGroup'
-        - name: version
-          in: path
-          type: string
-          description: Version checking
-          required: true
-        - in: header
-          name: authorization
-          description: ''
-          required: true
-          type: string
-        - name: id
-          in: path
-          type: integer
-          description: Version checking
-          required: true
-      responses:
-        '200':
-          description: Update sip user group succeeded
-    get:
-      parameters:
-        - name: id
-          in: path
-          type: integer
-          description: Name of Group
-          required: true
-        - name: version
-          in: path
-          type: string
-          description: Version checking
-          required: true
-        - in: header
-          name: authorization
-          description: ''
-          required: true
-          type: string
-      responses:
-        '200':
-          description: Update sip user group succeeded
-  '/{version}/SipUser/{SipID}/AssignToGroup/{grpid}':
-    post:
-      parameters:
-        - name: version
-          in: path
-          type: string
-          description: Version checking
-          required: true
-        - name: SipID
+        - name: UserId
           in: path
           type: string
           description: UserID
           required: true
-        - name: grpid
-          in: path
-          type: integer
-          description: Group ID
-          required: true
-        - in: header
-          name: authorization
-          description: ''
-          required: true
-          type: string
-      responses:
-        '200':
-          description: map extension with user succeeded
-  '/{version}/SipUser/Extension/{extension}/AssignToGroup/{grpid}':
-    post:
-      parameters:
-        - name: extension
-          in: path
-          type: string
-          description: Extension
-          required: true
-        - name: grpid
-          in: path
-          type: integer
-          description: Group Id
-          required: true
-        - in: header
-          name: authorization
-          description: ''
-          required: true
-          type: string
-        - name: version
-          in: path
-          type: string
-          description: Version checking
-          required: true
-      responses:
-        '200':
-          description: Map extension with group succeeded
-  '/{version}/SipUser/User/ByUUID/{uuid}':
-    get:
-      parameters:
-        - name: uuid
-          in: path
-          type: string
-          description: UUID of the Developer
-          required: true
-        - name: version
-          in: path
-          type: string
-          description: Version checking
-          required: true
-        - in: header
-          name: authorization
-          description: ''
-          required: true
-          type: string
-      responses:
-        '200':
-          description: Sends the Availability
-  '/{version}/SipUser/Context/ByCompany/{companyid}':
-    get:
-      parameters:
-        - name: companyid
-          in: path
-          type: integer
-          description: Company ID
-          required: true
-        - name: version
-          in: path
-          type: string
-          description: Version checking
-          required: true
-        - in: header
-          name: authorization
-          description: ''
-          required: true
-          type: string
-      responses:
-        '200':
-          description: All contexts of the company returns
-  '/{version}/SipUser/Group/User/{sipid}':
-    get:
-      parameters:
-        - name: sipid
-          in: path
-          type: integer
-          description: ID of SipEndpoint
-          required: true
-        - name: version
-          in: path
-          type: string
-          description: Version checking
-          required: true
-        - in: header
-          name: authorization
-          description: ''
-          required: true
-          type: string
-      responses:
-        '200':
-          description: "Endpoint's group details found"
-  '/{version}/SipUser/Groups/Company/{companyid}':
-    get:
-      parameters:
-        - name: companyid
-          in: path
-          type: integer
-          description: ID of Company
-          required: true
-        - name: version
-          in: path
-          type: string
-          description: Version checking
-          required: true
-        - in: header
-          name: authorization
-          description: ''
-          required: true
-          type: string
-      responses:
-        '200':
-          description: All groups of company
-  '/{version}/Users/InGroup/{groupid}':
-    get:
-      parameters:
-        - name: groupid
-          in: path
-          type: integer
-          description: ID of Group
-          required: true
-        - name: version
-          in: path
-          type: string
-          description: Version checking
-          required: true
-        - in: header
-          name: authorization
-          description: ''
-          required: true
-          type: string
-      responses:
-        '200':
-          description: All users of group
-  '/{version}/SipUser/Users/OfCompany/{compid}':
-    get:
-      parameters:
-        - name: compid
-          in: path
-          type: integer
-          description: ID of Company
-          required: true
-        - name: version
-          in: path
-          type: string
-          description: Version checking
-          required: true
-        - in: header
-          name: authorization
-          description: ''
-          required: true
-          type: string
-      responses:
-        '200':
-          description: All users of company
-  '/{version}/SipUser/Extension/{extension}/User':
-    get:
-      parameters:
-        - name: extension
-          in: path
-          type: string
-          description: ID of Extension
-          required: true
-        - name: version
-          in: path
-          type: string
-          description: Version checking
-          required: true
-        - in: header
-          name: authorization
-          description: ''
-          required: true
-          type: string
-      responses:
-        '200':
-          description: All users of Extension
-  '/{version}/SipUser/Extensions/OfCompany/{companyid}':
-    get:
-      parameters:
-        - name: companyid
-          in: path
-          type: integer
-          description: ID of Company
-          required: true
-        - name: version
-          in: path
-          type: string
-          description: Version checking
-          required: true
-        - in: header
-          name: authorization
-          description: ''
-          required: true
-          type: string
-      responses:
-        '200':
-          description: All Extensions of Extension
-  '/{version}/SipUser/Extension/{extention}':
-    get:
-      parameters:
-        - name: extention
-          in: path
-          type: string
-          description: Extension
-          required: true
-        - name: version
-          in: path
-          type: string
-          description: Version checking
-          required: true
-        - in: header
-          name: authorization
-          description: ''
-          required: true
-          type: string
-      responses:
-        '200':
-          description: All Details of Extension
-  '/{version}/SipUser/DidNumber':
-    post:
-      parameters:
-        - name: Add new Did number data
+          
+        - name: Add Sip User group
           in: body
           description: Record
           schema:
-            $ref: '#/definitions/DidNumber'
-        - name: version
-          in: path
-          type: string
-          description: Version checking
-          required: true
+            $ref: '#/definitions/Modes'
+            
         - in: header
           name: authorization
           description: ''
           required: true
           type: string
-      responses:
-        '200':
-          description: Did Number added Successfully
-  '/{version}/SipUser/EmergencyNumber':
-    post:
-      parameters:
-        - name: Add new Emergency number data
-          in: body
-          description: Record
-          schema:
-            $ref: '#/definitions/EmergencyNumber'
+          
         - name: version
           in: path
           type: string
           description: Version checking
           required: true
-        - in: header
-          name: authorization
-          description: ''
-          required: true
-          type: string
+          
       responses:
         '200':
-          description: EmergencyNumber added Successfully
-  '/{version}/SipUser/DodNumber':
-    post:
-      parameters:
-        - name: Assign DodNumber to Extension
-          in: body
-          description: Record
-          schema:
-            $ref: '#/definitions/AssignDod'
-        - name: version
-          in: path
-          type: string
-          description: Version checking
-          required: true
-        - in: header
-          name: authorization
-          description: ''
-          required: true
-          type: string
-      responses:
-        '200':
-          description: Assign DodNumber to Extension succeeded
-  '/{version}/SipUser/DidNumber/{id}/Activate/{isActive}':
-    post:
-      parameters:
-        - name: id
-          in: path
-          type: integer
-          description: Did number record ID
-          required: true
-        - name: isActive
-          in: path
-          type: boolean
-          description: Activate Status
-          required: true
-        - name: version
-          in: path
-          type: string
-          description: Version checking
-          required: true
-        - in: header
-          name: authorization
-          description: ''
-          required: true
-          type: string
-      responses:
-        '200':
-          description: Did number activation succeded
-  '/{version}/SipUser/DidNumber/{id}':
+          description: User modes updated
+  
+  '/{version}/ConferenceConfiguration/ConferenceUser/{UserId}':
     delete:
       parameters:
-        - name: id
+        - name: version
+          in: path
+          type: string
+          description: Version checking
+          required: true
+          
+        - in: header
+          name: authorization
+          description: ''
+          required: true
+          
+          type: string
+        - name: UserId
           in: path
           type: integer
-          description: Did number record ID
+          description: Conference UserID
           required: true
-        - name: version
-          in: path
-          type: string
-          description: Version checking
-          required: true
-        - in: header
-          name: authorization
-          description: ''
-          required: true
-          type: string
+          
       responses:
         '200':
-          description: Did number deletion succeded
-  '/{version}/SipUser/EmergencyNumber/{emergencyNum}':
-    delete:
+          description: Conference user Deleted
+    get:
       parameters:
-        - name: emergencyNum
+        - name: UserId
           in: path
-          type: string
-          description: EmergencyNumber
+          type: integer
+          description: Name of Group
           required: true
+          
         - name: version
           in: path
           type: string
           description: Version checking
           required: true
+          
         - in: header
           name: authorization
           description: ''
           required: true
           type: string
+          
       responses:
         '200':
-          description: EmergencyNumber deletion succeded
-  '/{version}/SipUser/EmergencyNumbers':
+          description: Conference user record recieved
+  
+  
+          
+  '/{version}/ConferenceConfiguration/ConferenceRooms':
     get:
       parameters:
         - name: version
@@ -683,8 +355,9 @@ paths:
           type: string
       responses:
         '200':
-          description: All Details of EmergencyNumbers
-  '/{version}/SipUser/DidNumbers':
+          description: Get Conference Rooms
+          
+  '/{version}/ConferenceOperations/ConferenceUser/{User}/Mute':
     get:
       parameters:
         - name: version
@@ -692,155 +365,490 @@ paths:
           type: string
           description: Version checking
           required: true
+          
+        - name: User
+          in: path
+          type: string
+          description: Name of User
+          required: true
+          
         - in: header
           name: authorization
           description: ''
           required: true
           type: string
+          
       responses:
         '200':
-          description: All Details of DidNumbers
-  '/{version}/SipUser/DidNumber/{didNum}/AssignToExt/{ext}':
+          description: User mute mode on
+         
+  '/{version}/ConferenceOperations/ConferenceUser/{User}/UnMute':
+    get:
+      parameters:
+        - name: version
+          in: path
+          type: string
+          description: Version checking
+          required: true
+          
+        - name: User
+          in: path
+          type: string
+          description: Name of User
+          required: true
+          
+        - in: header
+          name: authorization
+          description: ''
+          required: true
+          type: string
+          
+      responses:
+        '200':
+          description: User mute mode off
+  
+  '/{version}/ConferenceOperations/ConferenceUser/{User}/Deaf':
+    get:
+      parameters:
+        - name: version
+          in: path
+          type: string
+          description: Version checking
+          required: true
+          
+        - name: User
+          in: path
+          type: string
+          description: Name of user
+          required: true
+          
+        - in: header
+          name: authorization
+          description: ''
+          required: true
+          type: string
+          
+      responses:
+        '200':
+          description: User Deaf mode on
+  
+  '/{version}/ConferenceOperations/ConferenceUser/{User}/UnDeaf':
+    get:
+      parameters:
+        - name: version
+          in: path
+          type: string
+          description: Version checking
+          required: true
+          
+        - name: User
+          in: path
+          type: string
+          description: Name of User
+          required: true
+          
+        - in: header
+          name: authorization
+          description: ''
+          required: true
+          type: string
+          
+      responses:
+        '200':
+          description: User Deaf mode off
+  
+  '/{version}/ConferenceOperations/ConferenceUser/{User}/Kick':
+    get:
+      parameters:
+        - name: version
+          in: path
+          type: string
+          description: Version checking
+          required: true
+          
+        - name: User
+          in: path
+          type: string
+          description: Name of User
+          required: true
+          
+        - in: header
+          name: authorization
+          description: ''
+          required: true
+          type: string
+          
+      responses:
+        '200':
+          description: User kicked from conference
+  
+  '/{version}/ConferenceOperations/Conference/{ConfName}/Users/Mute':
+    get:
+      parameters:
+        - name: version
+          in: path
+          type: string
+          description: Version checking
+          required: true
+          
+        - name: ConfName
+          in: path
+          type: string
+          description: Name of Conference
+          required: true
+          
+        - in: header
+          name: authorization
+          description: ''
+          required: true
+          type: string
+          
+      responses:
+        '200':
+          description: All users of conference Muted
+          
+  '/{version}/ConferenceOperations/Conference/{ConfName}/Users/UnMute':
+    get:
+      parameters:
+        - name: version
+          in: path
+          type: string
+          description: Version checking
+          required: true
+          
+        - name: ConfName
+          in: path
+          type: string
+          description: Name of Conference
+          required: true
+          
+        - in: header
+          name: authorization
+          description: ''
+          required: true
+          type: string
+          
+      responses:
+        '200':
+          description: All users of conference Unmuted
+  '/{version}/ConferenceOperations/Conference/{ConfName}/Users/Deaf':
+    get:
+      parameters:
+        - name: version
+          in: path
+          type: string
+          description: Version checking
+          required: true
+          
+        - name: ConfName
+          in: path
+          type: string
+          description: Name of Conference
+          required: true
+          
+        - in: header
+          name: authorization
+          description: ''
+          required: true
+          type: string
+          
+      responses:
+        '200':
+          description: All users of conference Deafed
+  '/{version}/ConferenceOperations/Conference/{ConfName}/Users/UnDeaf':
+    get:
+      parameters:
+        - name: version
+          in: path
+          type: string
+          description: Version checking
+          required: true
+          
+        - name: ConfName
+          in: path
+          type: string
+          description: Name of Conference
+          required: true
+          
+        - in: header
+          name: authorization
+          description: ''
+          required: true
+          type: string
+          
+      responses:
+        '200':
+          description: All users of conference UnDeafed
+  '/{version}/ConferenceOperations/Conference/{ConfName}/Lock':
+    get:
+      parameters:
+        - name: version
+          in: path
+          type: string
+          description: Version checking
+          required: true
+          
+        - name: ConfName
+          in: path
+          type: string
+          description: Name of Conference
+          required: true
+          
+        - in: header
+          name: authorization
+          description: ''
+          required: true
+          type: string
+          
+      responses:
+        '200':
+          description: Conference Locked
+  '/{version}/ConferenceOperations/Conference/{ConfName}/Unlock':
+    get:
+      parameters:
+        - name: version
+          in: path
+          type: string
+          description: Version checking
+          required: true
+          
+        - name: ConfName
+          in: path
+          type: string
+          description: Name of Conference
+          required: true
+          
+        - in: header
+          name: authorization
+          description: ''
+          required: true
+          type: string
+          
+      responses:
+        '200':
+          description: Conference UnLocked
+          
+  '/{version}/Conference/{confName}/user':
+    
     post:
       parameters:
-        
+        - name: confName
+          in: path
+          type: string
+          description: Name of Conference
+          required: true
+          
         - name: version
           in: path
           type: string
           description: Version checking
           required: true
-		  
+          
+        - in: header
+          name: authorization
+          description: ''
+          required: true
+          type: string
+          
+        - name: ConfUser data
+          in: body
+          description: Record
+          schema:
+            $ref: '#/definitions/UpdtUser'
+          
+      responses:
+        '200':
+          description: Conference user added
+                  
+          
+  '/{version}/ConferenceUser/{UserId}':
+    
+    put:
+      parameters:
+        - name: UserId
+          in: path
+          type: string
+          description: UserId of ConferenceUser
+          required: true
+          
+        - name: version
+          in: path
+          type: string
+          description: Version checking
+          required: true
+          
+        - in: header
+          name: authorization
+          description: ''
+          required: true
+          type: string
+        - name: ConfUser data
+          in: body
+          description: Record
+          schema:
+            $ref: '#/definitions/UpdtUser'
+          
+      responses:
+        '200':
+          description: Conference user Updated   
+          
+          
+  '/{version}/Conference/{confName}/users':
+    
+    get:
+      parameters:
+        - name: confName
+          in: path
+          type: string
+          description: confName of Conference
+          required: true
+          
+        - name: version
+          in: path
+          type: string
+          description: Version checking
+          required: true
+          
         - in: header
           name: authorization
           description: ''
           required: true
           type: string
         
-        - name: didNum
-          in: path
-          type: string
-          description: Did Number
-          required: true
-        
-        - name: ext
-          in: path
-          type: string
-          description: Extension
-          required: true
-		  
-		   
-		  
+          
       responses:
         '200':
-          description: Did Assign to Extention succeded
+          description: Conference users recieved 
+          
+          
+          
 definitions:
-  Context:
-    properties:
-      Context:
-        type: string
-      Description:
-        type: string
-      ContextCat:
-        type: string
-      AddUser:
-        type: string
-      UpdateUser:
-        type: string
-  UAC:
-    properties:
-      SipUsername:
-        type: string
-      Password:
-        type: string
-      Enabled:
-        type: boolean
-      ExtraData:
-        type: string
-      EmailAddress:
-        type: string
-      GuRefId:
-        type: string
-      AddUser:
-        type: string
-      UpdateUser:
-        type: string
-      Context:
-        type: string
-      CloudEndUserId:
-        type: integer
-      TransInternalEnable:
-        type: boolean
-      TransExternalEnable:
-        type: boolean
-      TransConferenceEnable:
-        type: boolean
-      TransGroupEnable:
-        type: boolean
-  UpdtUAC:
-    properties:
-      Password:
-        type: string
-      ExtraData:
-        type: string
-      GuRefId:
-        type: string
-      TransInternalEnable:
-        type: boolean
-      TransExternalEnable:
-        type: boolean
-      TransConferenceEnable:
-        type: boolean
-      TransGroupEnable:
-        type: boolean
-  Extention:
+  Conference:
     properties:
       Extension:
         type: string
-      ExtensionName:
+      ConferenceName:
         type: string
-      ExtraData:
+      Description:
         type: string
-      AddUser:
-        type: string
-      UpdateUser:
-        type: string
-      Enabled:
+      AllowAnonymousUser:
         type: boolean
-      ExtRefId:
+      StartTime:
         type: string
-      ObjCategory:
-        description: Extension Catagory
-        type: string
-        enum:
-          - USER
-          - GROUP
-          - FAX
-          - CONFERENCE
-          - IVR
-  UserGroup:
-    properties:
-      GroupName:
+      EndTime:
         type: string
       Domain:
         type: string
-      ExtraData:
-        type: string
-  DidNumber:
-    properties:
-      DidNumber:
-        type: string
-      DidActive:
+      IsLocked:
         type: boolean
-  EmergencyNumber:
+      MaxUser:
+        type: string
+      Pin:
+        type: string
+        
+  UpdtConference:
     properties:
-      EmergencyNumber:
-        type: string
-  AssignDod:
-    properties:
-      UserUuid:
-        type: string
-      DodNumber:
-        type: string
-      DodActive:
+      
+      AllowAnonymousUser:
         type: boolean
+      StartTime:
+        type: string
+      EndTime:
+        type: string
+      Domain:
+        type: string
+      IsLocked:
+        type: boolean
+      MaxUser:
+        type: string
+      Pin:
+        type: string
   
+  UpdtConfTime:
+    properties:
+      
+      
+      StartTime:
+        type: string
+      EndTime:
+        type: string
+      
+  
+  
+  User:
+    properties:
+      SipUserUuid:
+        type: string
+      ActiveTalker:
+        type: boolean
+      Def:
+        type: boolean
+      Mute:
+        type: boolean
+      Mod:
+        type: boolean
+      ObjCategory:
+        description: User catagory
+        type: string
+        enum:
+          - EXTERNAL
+          - INRENAL
+      CurrentDef:
+        type: boolean
+      CurrentMute:
+        type: boolean
+      CurrentMod:
+        type: boolean
+      Destination:
+        type: string
+      JoinType:
+        description: Join Types
+        type: string
+        enum:
+          - IN
+          - OUT
+      
+  Modes:
+    properties:
+      Def:
+        type: boolean
+      Mute:
+        type: boolean
+      Mod:
+        type: boolean
+        
+        
+  UpdtUser:
+    properties:
+      SipUserUuid:
+        type: string
+      ActiveTalker:
+        type: boolean
+      Def:
+        type: boolean
+      Mute:
+        type: boolean
+      Mod:
+        type: boolean
+      ObjCategory:
+        description: User catagory
+        type: string
+        enum:
+          - EXTERNAL
+          - INRENAL
+      CurrentDef:
+        type: boolean
+      CurrentMute:
+        type: boolean
+      CurrentMod:
+        type: boolean
+      Destination:
+        type: string
+      JoinType:
+        description: Join Types
+        type: string
+        enum:
+          - IN
+          - OUT
+      UserStatus:
+        type: boolean

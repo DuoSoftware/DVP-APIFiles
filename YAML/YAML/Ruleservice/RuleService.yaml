@@ -1,22 +1,21 @@
----
 swagger: '2.0'
 info:
   version: 1.0.0
   title: Echo
-  description: |
+  description: >
     #### Echos back every URL, method, parameter and header
-    Feel free to make a path or an operation and use **Try Operation** to test it. The echo server will
+
+    Feel free to make a path or an operation and use **Try Operation** to test
+    it. The echo server will
+
     render back everything.
 schemes:
   - http
-
 host: ruleservice.104.131.67.21.xip.io
 basePath: /DVP/API
 paths:
-
-  /{hostVersion}/CallRuleApi/CallRules:
-   
-   get:
+  '/{hostVersion}/CallRuleApi/CallRules':
+    get:
       description: Api method to retrieve all call rules
       parameters:
         - name: hostVersion
@@ -24,688 +23,487 @@ paths:
           type: string
           description: API version
           required: true
-        
         - in: header
           name: authorization
-          description: ""
+          description: ''
           required: true
           type: string
-        
       responses:
         '200':
           description: Call rules returned
-          
-  /{hostVersion}/CallRuleApi/CallRules/Direction/{direction}:
-   
-   get:
+  '/{hostVersion}/CallRuleApi/CallRules/Direction/{direction}':
+    get:
       description: Api method to retrieve all call rules
       parameters:
-      
         - name: direction
           in: path
           type: string
           description: direction
           required: true
-      
         - name: hostVersion
           in: path
           type: string
           description: API version
           required: true
-        
         - in: header
           name: authorization
-          description: ""
+          description: ''
           required: true
           type: string
-        
       responses:
         '200':
-          description: Call rules returned 
-          
-  /{hostVersion}/CallRuleApi/CallRule/{id}:
-   
-   get:
-      description: API method to retrieve a call rule with given id
-      parameters:
-      
-        - name: id
-          in: path
-          type: integer
-          description: Call rule id
-          required: true
-        
-        - name: hostVersion
-          in: path
-          type: string
-          description: API version
-          required: true
-        
-        - in: header
-          name: authorization
-          description: ""
-          required: true
-          type: string
-        
-      responses:
-        '200':
-          description: Call rule returned
-          
-  /{hostVersion}/CallRuleApi/CallRule/Outbound/ANI/{ani}/DNIS/{dnis}:
-   
-   get:
-      description: API method to pick correct outbound rule, do neccessary translations and provide complete set of data required to put an outbound call
-      parameters:
-      
-        - name: ani
-          in: path
-          type: string
-          description: From number to match
-          required: true
-          
-        - name: dnis
-          in: path
-          type: string
-          description: To number to match
-          required: true  
-        
-        - name: hostVersion
-          in: path
-          type: string
-          description: API version
-          required: true
-        
-        - in: header
-          name: authorization
-          description: ""
-          required: true
-          type: string
-        
-      responses:
-        '200':
-          description: Complete outbound rule returned
-          
-  /{hostVersion}/CallRuleApi/CallRule/{id}/SetNumber/{trNum}:
-    
-    post:
-      
-      description: Method to set an outbound trunk number to an outbound rule
-      parameters:
-      
-        - name: id
-          in: path
-          type: integer
-          description: Call rule id
-          required: true
-          
-        - name: trNum
-          in: path
-          type: string
-          description: Outbound trunk number
-          required: true
-          
-        - name: hostVersion
-          in: path
-          type: string
-          description: API version
-          required: true
-        
-        - in: header
-          name: authorization
-          description: ""
-          type: string
-          required: true
-          
-      responses:
-        '200':
-          description: Trunk number has been set
-          
-  /{hostVersion}/CallRuleApi/CallRule/{id}/SetRegEx:
-    
-    post:
-    
-      parameters:
-        - name: id
-          in: path
-          type: integer
-          description: Call rule id
-          required: true
-          
-        - name: hostVersion
-          in: path
-          type: string
-          description: API version
-          required: true
-        
-        - in: header
-          name: authorization
-          description: ""
-          type: string
-          required: true
-        
-        - name: callruleRegEx Details
-          in: body
-          description: Call rule regular expressions
-          schema:
-           $ref: '#/definitions/CallRuleRegEx'
-          
-        
-          
-      responses:
-       '200':
-        description: call rule regex succeeded
-        
-        
-  /{hostVersion}/CallRuleApi/CallRule/{id}/SetAvailability/{enabled} :
-    
-    post:
-    
-      parameters:
-        - name: id
-          in: path
-          type: integer
-          description: Call rule id
-          required: true
-        
-        - name: enabled
-          in: path
-          type: boolean
-          description: Call rule availability
-          required: true
-          
-        - name: hostVersion
-          in: path
-          type: string
-          description: API version
-          required: true
-        
-        - in: header
-          name: authorization
-          description: ""
-          type: string
-          required: true
-          
-      responses:
-       '200':
-        description: call availability has been set
-        
-  /{hostVersion}/CallRuleApi/CallRule/{id}/SetPriority/{priority} :
-    
-    post:
-    
-      parameters:
-        - name: id
-          in: path
-          type: integer
-          description: Call rule id
-          required: true
-          
-        - name: priority
-          in: path
-          type: integer
-          description: Priority
-          required: true
-          
-        - name: hostVersion
-          in: path
-          type: string
-          description: API version
-          required: true
-        
-        - in: header
-          name: authorization
-          description: ""
-          type: string
-          required: true
-          
-          
-      responses:
-       '200':
-        description: call priority has been set
-        
-  /{hostVersion}/CallRuleApi/CallRule/{id}/SetSchedule/{scheduleId} :
-    
-    post:
-    
-      parameters:
-        - name: id
-          in: path
-          type: integer
-          description: Call rule id
-          required: true
-          
-        - name: scheduleId
-          in: path
-          type: integer
-          description: Schedule id
-          required: true
-        
-        - name: hostVersion
-          in: path
-          type: string
-          description: API version
-          required: true
-        
-        - in: header
-          name: authorization
-          description: ""
-          type: string
-          required: true
-        
-      responses:
-       '200':
-        description: Call RuleSchedule has been set   
-        
-  /{hostVersion}/CallRuleApi/CallRule/{id}/SetDNISTranslation/{transId} :
-    
-    post:
-    
-      parameters:
-        - name: id
-          in: path
-          type: integer
-          description: Call rule id
-          required: true
-          
-        - name: transId
-          in: path
-          type: integer
-          description: DNIS Translation id
-          required: true
-        
-        - name: hostVersion
-          in: path
-          type: string
-          description: API version
-          required: true
-        
-        - in: header
-          name: authorization
-          description: ""
-          required: true
-          type: string
-          
-      responses:
-       '200':
-        description: Call rule translation has been set 
-        
-  /{hostVersion}/CallRuleApi/CallRule/{id}/SetANITranslation/{transId} :
-    
-    post:
-    
-      parameters:
-        - name: id
-          in: path
-          type: integer
-          description: Call rule id
-          required: true
-          
-        - name: transId
-          in: path
-          type: integer
-          description: ANI Translation id
-          required: true
-        
-        - name: hostVersion
-          in: path
-          type: string
-          description: API version
-          required: true
-        
-        - in: header
-          name: authorization
-          description: ""
-          required: true
-          type: string
-          
-      responses:
-       '200':
-        description: Call rule translation has been set 
-        
-  /{hostVersion}/CallRuleApi/CallRule :
-    
-    post:
-    
-      parameters:
-        - name: New Call Rule
-          in: body
-          description: Record
-          schema:
-           $ref: '#/definitions/CallRule'
-        
-        - name: hostVersion
-          in: path
-          type: string
-          description: API version
-          required: true
-        
-        - in: header
-          name: authorization
-          description: ""
-          type: string
-          required: true
-          
-      responses:
-       '200':
-        description: Call rule rule has been set 
-        
-  
-        
-  /DVP/API/:version/CallRuleApi/CallRule/{ruleId}/SetApplication/{appId}:
-    
-    post:
-    
-      parameters:
-        - name: appId
-          in: path
-          type: integer
-          description: appId
-          required: true
-          
-        - name: ruleId
-          in: path
-          type: integer
-          description: ruleId
-          required: true
-        
-          
-      responses:
-       '200':
-        description: App added to rule
-        
-        
-  /{hostVersion}/CallRuleApi/CallRule/{id} :
-    
+          description: Call rules returned
+  '/{hostVersion}/CallRuleApi/CallRule/{id}':
     delete:
-      
-    
       parameters:
         - name: id
           in: path
           type: integer
           description: id
           required: true
-          
         - name: hostVersion
           in: path
           type: string
           description: API Version
           required: true
-        
         - in: header
           name: authorization
-          description: ""
+          description: ''
           required: true
           type: string
-          
-        
-          
       responses:
-       '200':
-        description: Call rule has been deleted
-        
+        '200':
+          description: Call rule has been deleted
     put:
-    
       parameters:
         - name: Edit Call Rule
           in: body
           description: Record
           schema:
-           $ref: '#/definitions/CallRule'
-        
+            $ref: '#/definitions/CallRule'
         - name: hostVersion
           in: path
           type: string
           description: API version
           required: true
-          
         - name: id
           in: path
           type: integer
           description: rule id to edit
           required: true
-        
         - in: header
           name: authorization
-          description: ""
+          description: ''
           type: string
           required: true
-          
       responses:
-       '200':
-        description: Call rule rule has been set
-
-
-  /{hostVersion}/CallRuleApi/Translations:
-   
-   get:
+        '200':
+          description: Call rule rule has been set
+  '/{hostVersion}/CallRuleApi/CallRule/Outbound/ANI/{ani}/DNIS/{dnis}':
+    get:
+      description: 'API method to pick correct outbound rule, do neccessary translations and provide complete set of data required to put an outbound call'
       parameters:
+        - name: ani
+          in: path
+          type: string
+          description: From number to match
+          required: true
+        - name: dnis
+          in: path
+          type: string
+          description: To number to match
+          required: true
         - name: hostVersion
           in: path
           type: string
-          description: API Version
+          description: API version
           required: true
-        
         - in: header
           name: authorization
-          description: ""
+          description: ''
           required: true
           type: string
-        
       responses:
         '200':
-          description: Translations for Company returned 
-  
-  /{hostVersion}/CallRuleApi/Translation/{id}:
-   
-   get:
-      parameters:
-        - name: id
-          in: path
-          type: integer
-          description: Translation Id
-          required: true
-        
-        - name: hostVersion
-          in: path
-          type: string
-          description: API Version
-          required: true
-        
-        - in: header
-          name: authorization
-          description: ""
-          required: true
-          type: string
-        
-      responses:
-        '200':
-          description: Get translation success
-          
-   delete:
-      parameters:
-        - name: id
-          in: path
-          type: integer
-          description: Translation ID
-          required: true
-        
-        - name: hostVersion
-          in: path
-          type: string
-          description: API Version
-          required: true
-        
-        - in: header
-          name: authorization
-          description: ""
-          required: true
-          type: string
-        
-      responses:
-        '200':
-          description: Get translation success 
-          
-      
-  
-  /{hostVersion}/CallRuleApi/Translation :
-    
+          description: Complete outbound rule returned
+  '/{hostVersion}/CallRuleApi/CallRule/{id}/SetNumber/{trNum}':
     post:
-    
+      description: Method to set an outbound trunk number to an outbound rule
       parameters:
-        - name: Translation Details
-          in: body
-          description: Record
-          schema:
-           $ref: '#/definitions/Translation'
-        
+        - name: id
+          in: path
+          type: integer
+          description: Call rule id
+          required: true
+        - name: trNum
+          in: path
+          type: string
+          description: Outbound trunk number
+          required: true
         - name: hostVersion
           in: path
           type: string
-          description: API Version
+          description: API version
           required: true
-        
         - in: header
           name: authorization
-          description: ""
-          required: true
+          description: ''
           type: string
-          
+          required: true
       responses:
-       '200':
-        description: Translation added 
-  
-  /{hostVersion}/CallRuleApi/Translation/{id} :
-    
-    put:
-    
+        '200':
+          description: Trunk number has been set
+  '/{hostVersion}/CallRuleApi/CallRule/{id}/SetRegEx':
+    post:
       parameters:
-        - name: Translation Details
+        - name: id
+          in: path
+          type: integer
+          description: Call rule id
+          required: true
+        - name: hostVersion
+          in: path
+          type: string
+          description: API version
+          required: true
+        - in: header
+          name: authorization
+          description: ''
+          type: string
+          required: true
+        - name: callruleRegEx Details
+          in: body
+          description: Call rule regular expressions
+          schema:
+            $ref: '#/definitions/CallRuleRegEx'
+      responses:
+        '200':
+          description: call rule regex succeeded
+  '/{hostVersion}/CallRuleApi/CallRule/{id}/SetAvailability/{enabled}':
+    post:
+      parameters:
+        - name: id
+          in: path
+          type: integer
+          description: Call rule id
+          required: true
+        - name: enabled
+          in: path
+          type: boolean
+          description: Call rule availability
+          required: true
+        - name: hostVersion
+          in: path
+          type: string
+          description: API version
+          required: true
+        - in: header
+          name: authorization
+          description: ''
+          type: string
+          required: true
+      responses:
+        '200':
+          description: call availability has been set
+  '/{hostVersion}/CallRuleApi/CallRule/{id}/SetPriority/{priority}':
+    post:
+      parameters:
+        - name: id
+          in: path
+          type: integer
+          description: Call rule id
+          required: true
+        - name: priority
+          in: path
+          type: integer
+          description: Priority
+          required: true
+        - name: hostVersion
+          in: path
+          type: string
+          description: API version
+          required: true
+        - in: header
+          name: authorization
+          description: ''
+          type: string
+          required: true
+      responses:
+        '200':
+          description: call priority has been set
+  '/{hostVersion}/CallRuleApi/CallRule/{id}/SetSchedule/{scheduleId}':
+    post:
+      parameters:
+        - name: id
+          in: path
+          type: integer
+          description: Call rule id
+          required: true
+        - name: scheduleId
+          in: path
+          type: integer
+          description: Schedule id
+          required: true
+        - name: hostVersion
+          in: path
+          type: string
+          description: API version
+          required: true
+        - in: header
+          name: authorization
+          description: ''
+          type: string
+          required: true
+      responses:
+        '200':
+          description: Call RuleSchedule has been set
+  '/{hostVersion}/CallRuleApi/CallRule/{id}/SetDNISTranslation/{transId}':
+    post:
+      parameters:
+        - name: id
+          in: path
+          type: integer
+          description: Call rule id
+          required: true
+        - name: transId
+          in: path
+          type: integer
+          description: DNIS Translation id
+          required: true
+        - name: hostVersion
+          in: path
+          type: string
+          description: API version
+          required: true
+        - in: header
+          name: authorization
+          description: ''
+          required: true
+          type: string
+      responses:
+        '200':
+          description: Call rule translation has been set
+  '/{hostVersion}/CallRuleApi/CallRule/{id}/SetANITranslation/{transId}':
+    post:
+      parameters:
+        - name: id
+          in: path
+          type: integer
+          description: Call rule id
+          required: true
+        - name: transId
+          in: path
+          type: integer
+          description: ANI Translation id
+          required: true
+        - name: hostVersion
+          in: path
+          type: string
+          description: API version
+          required: true
+        - in: header
+          name: authorization
+          description: ''
+          required: true
+          type: string
+      responses:
+        '200':
+          description: Call rule translation has been set
+  '/{hostVersion}/CallRuleApi/CallRule':
+    post:
+      parameters:
+        - name: New Call Rule
           in: body
           description: Record
           schema:
-           $ref: '#/definitions/Translation'
-        
+            $ref: '#/definitions/CallRule'
+        - name: hostVersion
+          in: path
+          type: string
+          description: API version
+          required: true
+        - in: header
+          name: authorization
+          description: ''
+          type: string
+          required: true
+      responses:
+        '200':
+          description: Call rule rule has been set
+  '/DVP/API/{hostVersion}/CallRuleApi/CallRule/{ruleId}/SetApplication/{appId}':
+    post:
+      parameters:
+        - name: appId
+          in: path
+          type: integer
+          description: appId
+          required: true
+        - name: ruleId
+          in: path
+          type: integer
+          description: ruleId
+          required: true
+        - name: hostVersion
+          in: path
+          type: integer
+          description: hostVersion
+          required: true
+      responses:
+        '200':
+          description: App added to rule
+  '/{hostVersion}/CallRuleApi/Translations':
+    get:
+      parameters:
         - name: hostVersion
           in: path
           type: string
           description: API Version
           required: true
-        
         - in: header
           name: authorization
-          description: ""
+          description: ''
           required: true
           type: string
-          
+      responses:
+        '200':
+          description: Translations for Company returned
+  '/{hostVersion}/CallRuleApi/Translation/{id}':
+    put:
+      parameters:
+        - name: Translation Details
+          in: body
+          description: Record
+          schema:
+            $ref: '#/definitions/Translation'
+        - name: hostVersion
+          in: path
+          type: string
+          description: API Version
+          required: true
+        - in: header
+          name: authorization
+          description: ''
+          required: true
+          type: string
         - in: path
           name: id
-          description: ""
+          description: ''
           required: true
           type: integer
-          
       responses:
-       200:
-        description: Translation updated
-        
-     
+        '200':
+          description: Translation updated
+  '/{hostVersion}/CallRuleApi/Translation':
+    post:
+      parameters:
+        - name: Translation Details
+          in: body
+          description: Record
+          schema:
+            $ref: '#/definitions/Translation'
+        - name: hostVersion
+          in: path
+          type: string
+          description: API Version
+          required: true
+        - in: header
+          name: authorization
+          description: ''
+          required: true
+          type: string
+      responses:
+        '200':
+          description: Translation added
 definitions:
-
   CallRule:
     properties:
-     
-     Direction:
-      {
-        description: Call rule direction,
-        type: string,
-        enum: ["INBOUND", "OUTBOUND"]
-      }
-     Enable:
-      type: boolean
-     RegExPattern:
-      {
-        description: Regular expression type for DNIS,
-        type: string,
-        enum: ["STARTWITH", "EXACTMATCH", "ANY", "CUSTOM"]
-      }
-     ANIRegExPattern:
-      {
-        description: Regular expression type for ANI,
-        type: string,
-        enum: ["STARTWITH", "EXACTMATCH", "ANY", "CUSTOM"]
-      }
-     Context:
-      type: string
-     CallRuleDescription:
-      type: string
-     ObjCategory:
-      type: string
-     DNIS:
-      type: string
-     ANI:
-      type: string
-     Priority:
-      type: integer
-     TrunkNumber:
-      type: string
-     ExtraData:
-      type: string
-     ScheduleId:
-      type: string
-     
-  
+      Direction:
+        description: Call rule direction
+        type: string
+        enum:
+          - INBOUND
+          - OUTBOUND
+      Enable:
+        type: boolean
+      RegExPattern:
+        description: Regular expression type for DNIS
+        type: string
+        enum:
+          - STARTWITH
+          - EXACTMATCH
+          - ANY
+          - CUSTOM
+      ANIRegExPattern:
+        description: Regular expression type for ANI
+        type: string
+        enum:
+          - STARTWITH
+          - EXACTMATCH
+          - ANY
+          - CUSTOM
+      Context:
+        type: string
+      CallRuleDescription:
+        type: string
+      ObjCategory:
+        type: string
+      DNIS:
+        type: string
+      ANI:
+        type: string
+      Priority:
+        type: integer
+      TrunkNumber:
+        type: string
+      ExtraData:
+        type: string
+      ScheduleId:
+        type: string
   Translation:
     properties:
-     
-     TransName:
-      type: string
-     ObjType: 
-      type: string
-     ObjClass:
-      type: string
-     ObjCategory:
-      type: string
-     TransDescription :
-      type: string
-     Enabled:
-      type: boolean
-     LAdd:
-      type: string
-     LRemove:
-      type: integer
-     RAdd:
-      type: string
-     RRemove:
-      type: integer
-     Replace:
-      type: string
-  
-
-      
+      TransName:
+        type: string
+      ObjType:
+        type: string
+      ObjClass:
+        type: string
+      ObjCategory:
+        type: string
+      TransDescription:
+        type: string
+      Enabled:
+        type: boolean
+      LAdd:
+        type: string
+      LRemove:
+        type: integer
+      RAdd:
+        type: string
+      RRemove:
+        type: integer
+      Replace:
+        type: string
   CallRuleRegEx:
     properties:
-     
-     DNISRegExMethod:
-      {
-        description: Regular expression type for DNIS,
-        type: string,
-        enum: ["STARTWITH", "EXACTMATCH", "ANY", "CUSTOM"]
-      }
-     ANIRegExMethod:
-      {
-        description: Regular expression type for ANI,
-        type: string,
-        enum: ["STARTWITH", "EXACTMATCH", "ANY", "CUSTOM"]
-      }
-     DNIS:
-      description: To number
-      type: string
-     ANI:
-      description: From number
-      type: string
-  
-  
-    
-     
- 
- 
+      DNISRegExMethod:
+        description: Regular expression type for DNIS
+        type: string
+        enum:
+          - STARTWITH
+          - EXACTMATCH
+          - ANY
+          - CUSTOM
+      ANIRegExMethod:
+        description: Regular expression type for ANI
+        type: string
+        enum:
+          - STARTWITH
+          - EXACTMATCH
+          - ANY
+          - CUSTOM
+      DNIS:
+        description: To number
+        type: string
+      ANI:
+        description: From number
+        type: string

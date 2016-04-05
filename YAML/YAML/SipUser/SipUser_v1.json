@@ -15,6 +15,14 @@
             "post": {
                 "parameters": [
                     {
+                        "name": "New Context Record",
+                        "in": "body",
+                        "description": "Record",
+                        "schema": {
+                            "$ref": "#/definitions/Context"
+                        }
+                    },
+                    {
                         "name": "version",
                         "in": "path",
                         "type": "string",
@@ -27,19 +35,11 @@
                         "description": "",
                         "required": true,
                         "type": "string"
-                    },
-                    {
-                        "name": "Context Info",
-                        "in": "body",
-                        "description": "Record",
-                        "schema": {
-                            "$ref": "#/definitions/Context"
-                        }
                     }
                 ],
                 "responses": {
                     "200": {
-                        "description": "Save Context"
+                        "description": "New Context Record Added"
                     }
                 }
             }
@@ -789,74 +789,6 @@
                         "description": "All Details of Extension"
                     }
                 }
-            },
-            "delete": {
-                "parameters": [
-                    {
-                        "name": "extention",
-                        "in": "path",
-                        "type": "string",
-                        "description": "Extension",
-                        "required": true
-                    },
-                    {
-                        "name": "version",
-                        "in": "path",
-                        "type": "string",
-                        "description": "Version checking",
-                        "required": true
-                    },
-                    {
-                        "in": "header",
-                        "name": "authorization",
-                        "description": "",
-                        "required": true,
-                        "type": "string"
-                    }
-                ],
-                "responses": {
-                    "200": {
-                        "description": "Extension Deleted"
-                    }
-                }
-            },
-            "post": {
-                "parameters": [
-                    {
-                        "name": "extention",
-                        "in": "path",
-                        "type": "string",
-                        "description": "Extension",
-                        "required": true
-                    },
-                    {
-                        "name": "UpdateExtention",
-                        "in": "body",
-                        "description": "Record",
-                        "schema": {
-                            "$ref": "#/definitions/Extention"
-                        }
-                    },
-                    {
-                        "name": "version",
-                        "in": "path",
-                        "type": "string",
-                        "description": "Version checking",
-                        "required": true
-                    },
-                    {
-                        "in": "header",
-                        "name": "authorization",
-                        "description": "",
-                        "required": true,
-                        "type": "string"
-                    }
-                ],
-                "responses": {
-                    "200": {
-                        "description": "Update Extension"
-                    }
-                }
             }
         },
         "/{version}/SipUser/DidNumber": {
@@ -867,7 +799,7 @@
                         "in": "body",
                         "description": "Record",
                         "schema": {
-                            "$ref": "#/definitions/DID"
+                            "$ref": "#/definitions/DidNumber"
                         }
                     },
                     {
@@ -933,7 +865,7 @@
                         "in": "body",
                         "description": "Record",
                         "schema": {
-                            "$ref": "#/definitions/DOD"
+                            "$ref": "#/definitions/AssignDod"
                         }
                     },
                     {
@@ -1111,23 +1043,9 @@
                 }
             }
         },
-        "/{version}/SipUser/DidNumber/{didNum}/AssignToExt/{extension}": {
+        "/{version}/SipUser/DidNumber/{didNum}/AssignToExt/{ext}": {
             "post": {
                 "parameters": [
-                    {
-                        "name": "didNum",
-                        "in": "path",
-                        "type": "string",
-                        "description": "Did number",
-                        "required": true
-                    },
-                    {
-                        "name": "extension",
-                        "in": "path",
-                        "type": "string",
-                        "description": "Extension number",
-                        "required": true
-                    },
                     {
                         "name": "version",
                         "in": "path",
@@ -1141,295 +1059,25 @@
                         "description": "",
                         "required": true,
                         "type": "string"
+                    },
+                    {
+                        "name": "didNum",
+                        "in": "path",
+                        "type": "string",
+                        "description": "Did Number",
+                        "required": true
+                    },
+                    {
+                        "name": "ext",
+                        "in": "path",
+                        "type": "string",
+                        "description": "Extension",
+                        "required": true
                     }
                 ],
                 "responses": {
                     "200": {
                         "description": "Did Assign to Extention succeded"
-                    }
-                }
-            }
-        },
-        "/{version}/SipUser/DuoWorldUser": {
-            "post": {
-                "parameters": [
-                    {
-                        "name": "version",
-                        "in": "path",
-                        "type": "string",
-                        "description": "Version checking",
-                        "required": true
-                    },
-                    {
-                        "in": "header",
-                        "name": "authorization",
-                        "description": "",
-                        "required": true,
-                        "type": "string"
-                    },
-                    {
-                        "name": "Public User",
-                        "in": "body",
-                        "description": "Record",
-                        "schema": {
-                            "$ref": "#/definitions/PublicUser"
-                        }
-                    }
-                ],
-                "responses": {
-                    "200": {
-                        "description": "Save DuoWorld / Public User"
-                    }
-                }
-            }
-        },
-        "/{version}/SipUser/Context/{context}": {
-            "put": {
-                "parameters": [
-                    {
-                        "name": "context",
-                        "in": "path",
-                        "type": "string",
-                        "description": "Context",
-                        "required": true
-                    },
-                    {
-                        "name": "version",
-                        "in": "path",
-                        "type": "string",
-                        "description": "Version checking",
-                        "required": true
-                    },
-                    {
-                        "in": "header",
-                        "name": "authorization",
-                        "description": "",
-                        "required": true,
-                        "type": "string"
-                    },
-                    {
-                        "name": "Context Info",
-                        "in": "body",
-                        "description": "Record",
-                        "schema": {
-                            "$ref": "#/definitions/Context"
-                        }
-                    }
-                ],
-                "responses": {
-                    "200": {
-                        "description": "Update Context"
-                    }
-                }
-            },
-            "get": {
-                "parameters": [
-                    {
-                        "name": "context",
-                        "in": "path",
-                        "type": "string",
-                        "description": "Context",
-                        "required": true
-                    },
-                    {
-                        "name": "version",
-                        "in": "path",
-                        "type": "string",
-                        "description": "Version checking",
-                        "required": true
-                    },
-                    {
-                        "in": "header",
-                        "name": "authorization",
-                        "description": "",
-                        "required": true,
-                        "type": "string"
-                    }
-                ],
-                "responses": {
-                    "200": {
-                        "description": "Get Context By Name"
-                    }
-                }
-            },
-            "delete": {
-                "parameters": [
-                    {
-                        "name": "context",
-                        "in": "path",
-                        "type": "string",
-                        "description": "Context",
-                        "required": true
-                    },
-                    {
-                        "name": "version",
-                        "in": "path",
-                        "type": "string",
-                        "description": "Version checking",
-                        "required": true
-                    },
-                    {
-                        "in": "header",
-                        "name": "authorization",
-                        "description": "",
-                        "required": true,
-                        "type": "string"
-                    }
-                ],
-                "responses": {
-                    "200": {
-                        "description": "Delete Context By Name"
-                    }
-                }
-            }
-        },
-        "/{version}/SipUser/Contexts": {
-            "get": {
-                "parameters": [
-                    {
-                        "name": "version",
-                        "in": "path",
-                        "type": "string",
-                        "description": "Version checking",
-                        "required": true
-                    },
-                    {
-                        "in": "header",
-                        "name": "authorization",
-                        "description": "",
-                        "required": true,
-                        "type": "string"
-                    }
-                ],
-                "responses": {
-                    "200": {
-                        "description": "Get All Contexts"
-                    }
-                }
-            }
-        },
-        "/{version}/SipUser/TransferCode": {
-            "post": {
-                "parameters": [
-                    {
-                        "name": "version",
-                        "in": "path",
-                        "type": "string",
-                        "description": "Version checking",
-                        "required": true
-                    },
-                    {
-                        "in": "header",
-                        "name": "authorization",
-                        "description": "",
-                        "required": true,
-                        "type": "string"
-                    },
-                    {
-                        "name": "TransferCodeInfo",
-                        "in": "body",
-                        "description": "Payload",
-                        "schema": {
-                            "$ref": "#/definitions/TransferCode"
-                        }
-                    }
-                ],
-                "responses": {
-                    "200": {
-                        "description": "Add transfer code successfull"
-                    }
-                }
-            },
-            "get": {
-                "parameters": [
-                    {
-                        "name": "version",
-                        "in": "path",
-                        "type": "string",
-                        "description": "Version checking",
-                        "required": true
-                    },
-                    {
-                        "in": "header",
-                        "name": "authorization",
-                        "description": "",
-                        "required": true,
-                        "type": "string"
-                    }
-                ],
-                "responses": {
-                    "200": {
-                        "description": "Get transfer code successfull"
-                    }
-                }
-            }
-        },
-        "/{version}/SipUser/TransferCode/{id}": {
-            "put": {
-                "parameters": [
-                    {
-                        "name": "id",
-                        "in": "path",
-                        "type": "string",
-                        "description": "TransferCode id",
-                        "required": true
-                    },
-                    {
-                        "name": "version",
-                        "in": "path",
-                        "type": "string",
-                        "description": "Version checking",
-                        "required": true
-                    },
-                    {
-                        "in": "header",
-                        "name": "authorization",
-                        "description": "",
-                        "required": true,
-                        "type": "string"
-                    },
-                    {
-                        "name": "TransferCodeInfo",
-                        "in": "body",
-                        "description": "Payload",
-                        "schema": {
-                            "$ref": "#/definitions/TransferCode"
-                        }
-                    }
-                ],
-                "responses": {
-                    "200": {
-                        "description": "Update transfer code successfull"
-                    }
-                }
-            },
-            "delete": {
-                "parameters": [
-                    {
-                        "name": "id",
-                        "in": "path",
-                        "type": "string",
-                        "description": "TransferCode id",
-                        "required": true
-                    },
-                    {
-                        "name": "version",
-                        "in": "path",
-                        "type": "string",
-                        "description": "Version checking",
-                        "required": true
-                    },
-                    {
-                        "in": "header",
-                        "name": "authorization",
-                        "description": "",
-                        "required": true,
-                        "type": "string"
-                    }
-                ],
-                "responses": {
-                    "200": {
-                        "description": "Delete transfer code successfull"
                     }
                 }
             }
@@ -1447,10 +1095,10 @@
                 "ContextCat": {
                     "type": "string"
                 },
-                "ObjClass": {
+                "AddUser": {
                     "type": "string"
                 },
-                "ObjCategory": {
+                "UpdateUser": {
                     "type": "string"
                 }
             }
@@ -1481,14 +1129,11 @@
                 "UpdateUser": {
                     "type": "string"
                 },
-                "ContextId": {
+                "Context": {
                     "type": "string"
                 },
                 "CloudEndUserId": {
                     "type": "integer"
-                },
-                "Pin": {
-                    "type": "string"
                 },
                 "TransInternalEnable": {
                     "type": "boolean"
@@ -1501,28 +1146,6 @@
                 },
                 "TransGroupEnable": {
                     "type": "boolean"
-                }
-            }
-        },
-        "PublicUser": {
-            "properties": {
-                "SipUsername": {
-                    "type": "string"
-                },
-                "Password": {
-                    "type": "string"
-                },
-                "Enabled": {
-                    "type": "boolean"
-                },
-                "ExtraData": {
-                    "type": "string"
-                },
-                "EmailAddress": {
-                    "type": "string"
-                },
-                "GuRefId": {
-                    "type": "string"
                 }
             }
         },
@@ -1531,22 +1154,10 @@
                 "Password": {
                     "type": "string"
                 },
-                "Enabled": {
-                    "type": "boolean"
-                },
                 "ExtraData": {
                     "type": "string"
                 },
                 "GuRefId": {
-                    "type": "string"
-                },
-                "ContextId": {
-                    "type": "string"
-                },
-                "CloudEndUserId": {
-                    "type": "integer"
-                },
-                "Pin": {
                     "type": "string"
                 },
                 "TransInternalEnable": {
@@ -1560,31 +1171,6 @@
                 },
                 "TransGroupEnable": {
                     "type": "boolean"
-                }
-            }
-        },
-        "TransferCode": {
-            "properties": {
-                "InternalTransfer": {
-                    "type": "integer"
-                },
-                "ExternalTransfer": {
-                    "type": "integer"
-                },
-                "GroupTransfer": {
-                    "type": "integer"
-                },
-                "ConferenceTransfer": {
-                    "type": "integer"
-                },
-                "ObjClass": {
-                    "type": "string"
-                },
-                "ObjType": {
-                    "type": "string"
-                },
-                "ObjCategory": {
-                    "type": "string"
                 }
             }
         },
@@ -1597,6 +1183,12 @@
                     "type": "string"
                 },
                 "ExtraData": {
+                    "type": "string"
+                },
+                "AddUser": {
+                    "type": "string"
+                },
+                "UpdateUser": {
                     "type": "string"
                 },
                 "Enabled": {
@@ -1631,7 +1223,7 @@
                 }
             }
         },
-        "DID": {
+        "DidNumber": {
             "properties": {
                 "DidNumber": {
                     "type": "string"
@@ -1648,10 +1240,10 @@
                 }
             }
         },
-        "DOD": {
+        "AssignDod": {
             "properties": {
-                "ExtId": {
-                    "type": "integer"
+                "UserUuid": {
+                    "type": "string"
                 },
                 "DodNumber": {
                     "type": "string"

@@ -13,7 +13,7 @@ schemes:
 host: pbxservice.104.131.67.21.xip.io
 basePath: /DVP/API
 paths:
-
+        
   /{hostVersion}/PBXService/PBXUser/{PbxUserUuid}/AllowedNumbers:
     
     post:
@@ -24,6 +24,7 @@ paths:
           in: path
           type: string
           description: PbxUserUuid
+          required: true
           
         - name: hostVersion
           in: path
@@ -62,11 +63,13 @@ paths:
           in: path
           type: string
           description: PbxUserUuid
+          required: true
           
         - name: FileUuid
           in: path
           type: string
           description: FileUuid
+          required: true
           
         - name: hostVersion
           in: path
@@ -94,11 +97,13 @@ paths:
           in: path
           type: string
           description: PbxUserUuid
+          required: true
           
         - name: FileUuid
           in: path
           type: string
           description: FileUuid
+          required: true
           
         - name: hostVersion
           in: path
@@ -126,11 +131,13 @@ paths:
           in: path
           type: string
           description: PbxUserUuid
+          required: true
           
         - name: EnableStatus
           in: path
           type: boolean
           description: EnableStatus
+          required: true
           
         - name: hostVersion
           in: path
@@ -158,11 +165,13 @@ paths:
           in: path
           type: string
           description: PbxUserUuid
+          required: true
           
         - name: AllowedNumber
           in: path
           type: string
           description: AllowedNumber
+          required: true
           
         - name: hostVersion
           in: path
@@ -226,6 +235,7 @@ paths:
           in: path
           type: string
           description: userUuid
+          required: true
           
         - name: hostVersion
           in: path
@@ -252,6 +262,7 @@ paths:
           in: path
           type: string
           description: pbxUserUuid
+          required: true
           
         - name: hostVersion
           in: path
@@ -280,6 +291,7 @@ paths:
           in: path
           type: string
           description: userUuid
+          required: true
           
         - name: hostVersion
           in: path
@@ -310,6 +322,7 @@ paths:
           in: path
           type: string
           description: pbxUserUuid
+          required: true
           
         - name: hostVersion
           in: path
@@ -338,6 +351,7 @@ paths:
           in: path
           type: string
           description: follow me id
+          required: true
           
         - name: hostVersion
           in: path
@@ -363,6 +377,7 @@ paths:
           in: path
           type: integer
           description: fmId
+          required: true
           
         - name: hostVersion
           in: path
@@ -386,13 +401,12 @@ paths:
   /{hostVersion}/PBXService/Forwarding/{fwdId} :
     
     delete:
-      
-    
       parameters:
         - name: fwdId
           in: path
           type: integer
           description: fwdId
+          required: true
           
         - name: hostVersion
           in: path
@@ -419,6 +433,7 @@ paths:
           in: path
           type: string
           description: forwarding id
+          required: true
           
         - name: hostVersion
           in: path
@@ -465,151 +480,6 @@ paths:
        200:
         description: Pbx User Added
         
- 
-    
-    
-        
-  /{hostVersion}/PBXService/PbxUserTemplate:
-    
-    post:
-    
-      parameters:
-          
-        - name: hostVersion
-          in: path
-          type: string
-          description: Version checking
-          required: true
-        
-        - in: header
-          name: authorization
-          description: ""
-          required: true
-          type: string
-          
-        - name: PbxUserTemplate
-          in: body
-          description: PbxUserTemplate Details
-          schema:
-           $ref: '#/definitions/PbxUserTemplate'
-          
-      responses:
-       200:
-        description: PbxUserTemplate Added  
-        
-        
-  /{hostVersion}/PBXService/PBXUser/{pbxUser}/SetPbxUserTemplate/{templateId}:
-    
-    post:
-    
-      parameters:
-      
-        - name: pbxUser
-          in: path
-          type: string
-          description: pbxUser
-          
-        - name: templateId
-          in: path
-          type: integer
-          description: templateId
-          
-        - name: hostVersion
-          in: path
-          type: string
-          description: Version checking
-          required: true
-        
-        - in: header
-          name: authorization
-          description: ""
-          required: true
-          type: string
-          
-      responses:
-       200:
-        description: PbxUserTemplate Assigned
-        
-  /{hostVersion}/PBXService/PBXUser/{PbxUserUuid}/PbxUserTemplate/UnAssign:
-    
-    post:
-    
-      parameters:
-      
-        - name: PbxUserUuid
-          in: path
-          type: string
-          description: PbxUserUuid
-          
-        - name: hostVersion
-          in: path
-          type: string
-          description: Version checking
-          required: true
-        
-        - in: header
-          name: authorization
-          description: ""
-          required: true
-          type: string
-          
-      responses:
-       200:
-        description: PbxUserTemplate Un Assigned 
-        
-        
-  /{hostVersion}/PBXService/PbxUserTemplate/{templateId} :
-    
-    delete:
-    
-      parameters:
-        - name: templateId
-          in: path
-          type: string
-          description: templateId
-          
-        - name: hostVersion
-          in: path
-          type: string
-          description: Version checking
-          required: true
-        
-        - in: header
-          name: authorization
-          description: ""
-          required: true
-          type: string
-        
-          
-      responses:
-       200:
-        description: Pbx user template has been deleted
-        
-    get:
-      parameters:
-      
-        - name: templateId
-          in: path
-          type: string
-          description: pbx template id
-          
-        - name: hostVersion
-          in: path
-          type: string
-          description: Version checking
-          required: true
-        
-        - in: header
-          name: authorization
-          description: ""
-          required: true
-          type: string
-        
-      responses:
-        200:
-          description: Pbx user template returned
-          
-  
   /{hostVersion}/PBXService/PBXUser/{PbxUserUuid}:
    
    get:
@@ -619,6 +489,7 @@ paths:
           in: path
           type: string
           description: PbxUserUuid
+          required: true
           
         - name: hostVersion
           in: path
@@ -637,12 +508,13 @@ paths:
           description: Pbx User returned 
           
    delete:
-    
+  
       parameters:
         - name: PbxUserUuid
           in: path
           type: string
           description: pbxUserUuid
+          required: true
           
         - name: hostVersion
           in: path
@@ -688,11 +560,167 @@ paths:
           in: body
           description: PbxUser Details
           schema:
-           $ref: '#/definitions/PbxUser'
+           $ref: '#/definitions/UpdtPbxUser'
           
       responses:
        200:
         description: Pbx User Updated
+    
+    
+        
+  /{hostVersion}/PBXService/PBXUser/{PbxUserUuid}/PbxUserTemplate:
+    
+    post:
+    
+      parameters:
+          
+        - name: hostVersion
+          in: path
+          type: string
+          description: Version checking
+          required: true
+        
+        - in: header
+          name: authorization
+          description: ""
+          required: true
+          type: string
+        
+        - name: PbxUserUuid
+          in: path
+          type: string
+          description: pbxUserUuid
+          required: true
+          
+        - name: PbxUserTemplate
+          in: body
+          description: PbxUserTemplate Details
+          schema:
+           $ref: '#/definitions/PbxUserTemplate'
+          
+      responses:
+       200:
+        description: PbxUserTemplate Added  
+        
+        
+  /{hostVersion}/PBXService/PbxUser/{pbxUser}/SetActiveTemplate/{templateId}:
+    
+    post:
+    
+      parameters:
+      
+        - name: pbxUser
+          in: path
+          type: string
+          description: pbxUser
+          required: true
+          
+        - name: templateId
+          in: path
+          type: integer
+          description: templateId
+          required: true
+          
+        - name: hostVersion
+          in: path
+          type: string
+          description: Version checking
+          required: true
+        
+        - in: header
+          name: authorization
+          description: ""
+          required: true
+          type: string
+          
+      responses:
+       200:
+        description: PbxUserTemplate Assigned
+        
+  /{hostVersion}/PBXService/PbxUser/{PbxUserUuid}/ActiveTemplate/UnAssign:
+    
+    post:
+    
+      parameters:
+      
+        - name: PbxUserUuid
+          in: path
+          type: string
+          description: PbxUserUuid
+          required: true
+          
+        - name: hostVersion
+          in: path
+          type: string
+          description: Version checking
+          required: true
+        
+        - in: header
+          name: authorization
+          description: ""
+          required: true
+          type: string
+          
+      responses:
+       200:
+        description: PbxUserTemplate Un Assigned 
+        
+        
+  /{hostVersion}/PBXService/PbxUserTemplate/{templateId} :
+    
+    delete:
+    
+      parameters:
+        - name: templateId
+          in: path
+          type: string
+          description: templateId
+          required: true
+          
+        - name: hostVersion
+          in: path
+          type: string
+          description: Version checking
+          required: true
+        
+        - in: header
+          name: authorization
+          description: ""
+          required: true
+          type: string
+        
+          
+      responses:
+       200:
+        description: Pbx user template has been deleted
+        
+    get:
+      parameters:
+      
+        - name: templateId
+          in: path
+          type: string
+          description: pbx template id
+          required: true
+          
+        - name: hostVersion
+          in: path
+          type: string
+          description: Version checking
+          required: true
+        
+        - in: header
+          name: authorization
+          description: ""
+          required: true
+          type: string
+        
+      responses:
+        200:
+          description: Pbx user template returned
+          
+  
+ 
         
         
   /{hostVersion}/PBXService/FeatureCodes:
@@ -739,7 +767,7 @@ paths:
           description: Pbx users returned
           
           
-  /{hostVersion}/PBXService/PbxUserTemplates:
+  /{hostVersion}/PBXService/PbxUser/{pbxUserUuid}/PbxUserTemplates:
    
    get:
       parameters:
@@ -755,6 +783,12 @@ paths:
           description: ""
           required: true
           type: string
+        
+        - name: pbxUserUuid
+          in: path
+          type: string
+          description: Pbx user id
+          required: true
         
       responses:
         200:
@@ -791,18 +825,10 @@ paths:
       responses:
        200:
         description: Pbx Master Data Added
-        
-        
-  /{hostVersion}/PBXService/PbxMasterData/{id}:
-   
-   get:
+    
+    get:
       parameters:
         
-        - name: id
-          in: path
-          type: integer
-          description: id
-          
         - name: hostVersion
           in: path
           type: string
@@ -818,9 +844,16 @@ paths:
       responses:
         200:
           description: Pbx master data returned      
+        
+        
+  
+   
+   
           
      
 definitions:
+
+ 
 
   PbxUserTemplate:
     properties:
@@ -852,6 +885,8 @@ definitions:
      
      UserUuid:
       type: string
+     UserName:
+      type: string
      BypassMedia: 
       type: boolean
      IgnoreEarlyMedia:
@@ -880,12 +915,61 @@ definitions:
         type: string,
         enum: ["SEQUENTIAL", "PARALLEL"]
       }
+     PersonalGreetingEnabled:
+      type: boolean
+     DayGreetingFile:
+      type: string
+     NightGreetingFile:
+      type: string
      Pin:
       type: string
      TimeZone:
       type: string
   
+  UpdtPbxUser:
+    properties:
+     
 
+     UserName:
+      type: string
+     BypassMedia: 
+      type: boolean
+     IgnoreEarlyMedia:
+      type: boolean
+     VoicemailEnabled:
+      type: boolean
+     ScheduleId:
+      type: integer
+     AllowOutbound:
+      type: boolean
+     UserStatus:
+      {
+        description: User status,
+        type: string,
+        enum: ["DND", "AVAILABLE", "CALL_DIVERT"]
+      }
+     AdvancedRouteMethod :
+      {
+        description: Routing type,
+        type: string,
+        enum: ["FOLLOW_ME", "FORWARD"]
+      }
+     FollowMeMechanism:
+      {
+        description: Followme mechanism,
+        type: string,
+        enum: ["SEQUENTIAL", "PARALLEL"]
+      }
+     PersonalGreetingEnabled:
+      type: boolean
+     DayGreetingFile:
+      type: string
+     NightGreetingFile:
+      type: string
+     Pin:
+      type: string
+     TimeZone:
+      type: string
       
   FeatureCode:
     properties:

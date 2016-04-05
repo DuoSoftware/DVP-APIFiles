@@ -18,7 +18,8 @@
                         "name": "PbxUserUuid",
                         "in": "path",
                         "type": "string",
-                        "description": "PbxUserUuid"
+                        "description": "PbxUserUuid",
+                        "required": true
                     },
                     {
                         "name": "hostVersion",
@@ -61,13 +62,15 @@
                         "name": "PbxUserUuid",
                         "in": "path",
                         "type": "string",
-                        "description": "PbxUserUuid"
+                        "description": "PbxUserUuid",
+                        "required": true
                     },
                     {
                         "name": "FileUuid",
                         "in": "path",
                         "type": "string",
-                        "description": "FileUuid"
+                        "description": "FileUuid",
+                        "required": true
                     },
                     {
                         "name": "hostVersion",
@@ -98,13 +101,15 @@
                         "name": "PbxUserUuid",
                         "in": "path",
                         "type": "string",
-                        "description": "PbxUserUuid"
+                        "description": "PbxUserUuid",
+                        "required": true
                     },
                     {
                         "name": "FileUuid",
                         "in": "path",
                         "type": "string",
-                        "description": "FileUuid"
+                        "description": "FileUuid",
+                        "required": true
                     },
                     {
                         "name": "hostVersion",
@@ -135,13 +140,15 @@
                         "name": "PbxUserUuid",
                         "in": "path",
                         "type": "string",
-                        "description": "PbxUserUuid"
+                        "description": "PbxUserUuid",
+                        "required": true
                     },
                     {
                         "name": "EnableStatus",
                         "in": "path",
                         "type": "boolean",
-                        "description": "EnableStatus"
+                        "description": "EnableStatus",
+                        "required": true
                     },
                     {
                         "name": "hostVersion",
@@ -172,13 +179,15 @@
                         "name": "PbxUserUuid",
                         "in": "path",
                         "type": "string",
-                        "description": "PbxUserUuid"
+                        "description": "PbxUserUuid",
+                        "required": true
                     },
                     {
                         "name": "AllowedNumber",
                         "in": "path",
                         "type": "string",
-                        "description": "AllowedNumber"
+                        "description": "AllowedNumber",
+                        "required": true
                     },
                     {
                         "name": "hostVersion",
@@ -250,7 +259,8 @@
                         "name": "userUuid",
                         "in": "path",
                         "type": "string",
-                        "description": "userUuid"
+                        "description": "userUuid",
+                        "required": true
                     },
                     {
                         "name": "hostVersion",
@@ -279,7 +289,8 @@
                         "name": "userUuid",
                         "in": "path",
                         "type": "string",
-                        "description": "pbxUserUuid"
+                        "description": "pbxUserUuid",
+                        "required": true
                     },
                     {
                         "name": "hostVersion",
@@ -310,7 +321,8 @@
                         "name": "userUuid",
                         "in": "path",
                         "type": "string",
-                        "description": "userUuid"
+                        "description": "userUuid",
+                        "required": true
                     },
                     {
                         "name": "hostVersion",
@@ -347,7 +359,8 @@
                         "name": "userUuid",
                         "in": "path",
                         "type": "string",
-                        "description": "pbxUserUuid"
+                        "description": "pbxUserUuid",
+                        "required": true
                     },
                     {
                         "name": "hostVersion",
@@ -378,7 +391,8 @@
                         "name": "fmId",
                         "in": "path",
                         "type": "string",
-                        "description": "follow me id"
+                        "description": "follow me id",
+                        "required": true
                     },
                     {
                         "name": "hostVersion",
@@ -407,7 +421,8 @@
                         "name": "fmId",
                         "in": "path",
                         "type": "integer",
-                        "description": "fmId"
+                        "description": "fmId",
+                        "required": true
                     },
                     {
                         "name": "hostVersion",
@@ -438,7 +453,8 @@
                         "name": "fwdId",
                         "in": "path",
                         "type": "integer",
-                        "description": "fwdId"
+                        "description": "fwdId",
+                        "required": true
                     },
                     {
                         "name": "hostVersion",
@@ -467,7 +483,8 @@
                         "name": "fwdId",
                         "in": "path",
                         "type": "string",
-                        "description": "forwarding id"
+                        "description": "forwarding id",
+                        "required": true
                     },
                     {
                         "name": "hostVersion",
@@ -524,167 +541,6 @@
                 }
             }
         },
-        "/{hostVersion}/PBXService/PbxUserTemplate": {
-            "post": {
-                "parameters": [
-                    {
-                        "name": "hostVersion",
-                        "in": "path",
-                        "type": "string",
-                        "description": "Version checking",
-                        "required": true
-                    },
-                    {
-                        "in": "header",
-                        "name": "authorization",
-                        "description": "",
-                        "required": true,
-                        "type": "string"
-                    },
-                    {
-                        "name": "PbxUserTemplate",
-                        "in": "body",
-                        "description": "PbxUserTemplate Details",
-                        "schema": {
-                            "$ref": "#/definitions/PbxUserTemplate"
-                        }
-                    }
-                ],
-                "responses": {
-                    "200": {
-                        "description": "PbxUserTemplate Added"
-                    }
-                }
-            }
-        },
-        "/{hostVersion}/PBXService/PBXUser/{pbxUser}/SetPbxUserTemplate/{templateId}": {
-            "post": {
-                "parameters": [
-                    {
-                        "name": "pbxUser",
-                        "in": "path",
-                        "type": "string",
-                        "description": "pbxUser"
-                    },
-                    {
-                        "name": "templateId",
-                        "in": "path",
-                        "type": "integer",
-                        "description": "templateId"
-                    },
-                    {
-                        "name": "hostVersion",
-                        "in": "path",
-                        "type": "string",
-                        "description": "Version checking",
-                        "required": true
-                    },
-                    {
-                        "in": "header",
-                        "name": "authorization",
-                        "description": "",
-                        "required": true,
-                        "type": "string"
-                    }
-                ],
-                "responses": {
-                    "200": {
-                        "description": "PbxUserTemplate Assigned"
-                    }
-                }
-            }
-        },
-        "/{hostVersion}/PBXService/PBXUser/{PbxUserUuid}/PbxUserTemplate/UnAssign": {
-            "post": {
-                "parameters": [
-                    {
-                        "name": "PbxUserUuid",
-                        "in": "path",
-                        "type": "string",
-                        "description": "PbxUserUuid"
-                    },
-                    {
-                        "name": "hostVersion",
-                        "in": "path",
-                        "type": "string",
-                        "description": "Version checking",
-                        "required": true
-                    },
-                    {
-                        "in": "header",
-                        "name": "authorization",
-                        "description": "",
-                        "required": true,
-                        "type": "string"
-                    }
-                ],
-                "responses": {
-                    "200": {
-                        "description": "PbxUserTemplate Un Assigned"
-                    }
-                }
-            }
-        },
-        "/{hostVersion}/PBXService/PbxUserTemplate/{templateId}": {
-            "delete": {
-                "parameters": [
-                    {
-                        "name": "templateId",
-                        "in": "path",
-                        "type": "string",
-                        "description": "templateId"
-                    },
-                    {
-                        "name": "hostVersion",
-                        "in": "path",
-                        "type": "string",
-                        "description": "Version checking",
-                        "required": true
-                    },
-                    {
-                        "in": "header",
-                        "name": "authorization",
-                        "description": "",
-                        "required": true,
-                        "type": "string"
-                    }
-                ],
-                "responses": {
-                    "200": {
-                        "description": "Pbx user template has been deleted"
-                    }
-                }
-            },
-            "get": {
-                "parameters": [
-                    {
-                        "name": "templateId",
-                        "in": "path",
-                        "type": "string",
-                        "description": "pbx template id"
-                    },
-                    {
-                        "name": "hostVersion",
-                        "in": "path",
-                        "type": "string",
-                        "description": "Version checking",
-                        "required": true
-                    },
-                    {
-                        "in": "header",
-                        "name": "authorization",
-                        "description": "",
-                        "required": true,
-                        "type": "string"
-                    }
-                ],
-                "responses": {
-                    "200": {
-                        "description": "Pbx user template returned"
-                    }
-                }
-            }
-        },
         "/{hostVersion}/PBXService/PBXUser/{PbxUserUuid}": {
             "get": {
                 "parameters": [
@@ -692,7 +548,8 @@
                         "name": "PbxUserUuid",
                         "in": "path",
                         "type": "string",
-                        "description": "PbxUserUuid"
+                        "description": "PbxUserUuid",
+                        "required": true
                     },
                     {
                         "name": "hostVersion",
@@ -721,7 +578,8 @@
                         "name": "PbxUserUuid",
                         "in": "path",
                         "type": "string",
-                        "description": "pbxUserUuid"
+                        "description": "pbxUserUuid",
+                        "required": true
                     },
                     {
                         "name": "hostVersion",
@@ -772,13 +630,186 @@
                         "in": "body",
                         "description": "PbxUser Details",
                         "schema": {
-                            "$ref": "#/definitions/PbxUser"
+                            "$ref": "#/definitions/UpdtPbxUser"
                         }
                     }
                 ],
                 "responses": {
                     "200": {
                         "description": "Pbx User Updated"
+                    }
+                }
+            }
+        },
+        "/{hostVersion}/PBXService/PBXUser/{PbxUserUuid}/PbxUserTemplate": {
+            "post": {
+                "parameters": [
+                    {
+                        "name": "hostVersion",
+                        "in": "path",
+                        "type": "string",
+                        "description": "Version checking",
+                        "required": true
+                    },
+                    {
+                        "in": "header",
+                        "name": "authorization",
+                        "description": "",
+                        "required": true,
+                        "type": "string"
+                    },
+                    {
+                        "name": "PbxUserUuid",
+                        "in": "path",
+                        "type": "string",
+                        "description": "pbxUserUuid",
+                        "required": true
+                    },
+                    {
+                        "name": "PbxUserTemplate",
+                        "in": "body",
+                        "description": "PbxUserTemplate Details",
+                        "schema": {
+                            "$ref": "#/definitions/PbxUserTemplate"
+                        }
+                    }
+                ],
+                "responses": {
+                    "200": {
+                        "description": "PbxUserTemplate Added"
+                    }
+                }
+            }
+        },
+        "/{hostVersion}/PBXService/PbxUser/{pbxUser}/SetActiveTemplate/{templateId}": {
+            "post": {
+                "parameters": [
+                    {
+                        "name": "pbxUser",
+                        "in": "path",
+                        "type": "string",
+                        "description": "pbxUser",
+                        "required": true
+                    },
+                    {
+                        "name": "templateId",
+                        "in": "path",
+                        "type": "integer",
+                        "description": "templateId",
+                        "required": true
+                    },
+                    {
+                        "name": "hostVersion",
+                        "in": "path",
+                        "type": "string",
+                        "description": "Version checking",
+                        "required": true
+                    },
+                    {
+                        "in": "header",
+                        "name": "authorization",
+                        "description": "",
+                        "required": true,
+                        "type": "string"
+                    }
+                ],
+                "responses": {
+                    "200": {
+                        "description": "PbxUserTemplate Assigned"
+                    }
+                }
+            }
+        },
+        "/{hostVersion}/PBXService/PbxUser/{PbxUserUuid}/ActiveTemplate/UnAssign": {
+            "post": {
+                "parameters": [
+                    {
+                        "name": "PbxUserUuid",
+                        "in": "path",
+                        "type": "string",
+                        "description": "PbxUserUuid",
+                        "required": true
+                    },
+                    {
+                        "name": "hostVersion",
+                        "in": "path",
+                        "type": "string",
+                        "description": "Version checking",
+                        "required": true
+                    },
+                    {
+                        "in": "header",
+                        "name": "authorization",
+                        "description": "",
+                        "required": true,
+                        "type": "string"
+                    }
+                ],
+                "responses": {
+                    "200": {
+                        "description": "PbxUserTemplate Un Assigned"
+                    }
+                }
+            }
+        },
+        "/{hostVersion}/PBXService/PbxUserTemplate/{templateId}": {
+            "delete": {
+                "parameters": [
+                    {
+                        "name": "templateId",
+                        "in": "path",
+                        "type": "string",
+                        "description": "templateId",
+                        "required": true
+                    },
+                    {
+                        "name": "hostVersion",
+                        "in": "path",
+                        "type": "string",
+                        "description": "Version checking",
+                        "required": true
+                    },
+                    {
+                        "in": "header",
+                        "name": "authorization",
+                        "description": "",
+                        "required": true,
+                        "type": "string"
+                    }
+                ],
+                "responses": {
+                    "200": {
+                        "description": "Pbx user template has been deleted"
+                    }
+                }
+            },
+            "get": {
+                "parameters": [
+                    {
+                        "name": "templateId",
+                        "in": "path",
+                        "type": "string",
+                        "description": "pbx template id",
+                        "required": true
+                    },
+                    {
+                        "name": "hostVersion",
+                        "in": "path",
+                        "type": "string",
+                        "description": "Version checking",
+                        "required": true
+                    },
+                    {
+                        "in": "header",
+                        "name": "authorization",
+                        "description": "",
+                        "required": true,
+                        "type": "string"
+                    }
+                ],
+                "responses": {
+                    "200": {
+                        "description": "Pbx user template returned"
                     }
                 }
             }
@@ -833,7 +864,7 @@
                 }
             }
         },
-        "/{hostVersion}/PBXService/PbxUserTemplates": {
+        "/{hostVersion}/PBXService/PbxUser/{pbxUserUuid}/PbxUserTemplates": {
             "get": {
                 "parameters": [
                     {
@@ -849,6 +880,13 @@
                         "description": "",
                         "required": true,
                         "type": "string"
+                    },
+                    {
+                        "name": "pbxUserUuid",
+                        "in": "path",
+                        "type": "string",
+                        "description": "Pbx user id",
+                        "required": true
                     }
                 ],
                 "responses": {
@@ -889,17 +927,9 @@
                         "description": "Pbx Master Data Added"
                     }
                 }
-            }
-        },
-        "/{hostVersion}/PBXService/PbxMasterData/{id}": {
+            },
             "get": {
                 "parameters": [
-                    {
-                        "name": "id",
-                        "in": "path",
-                        "type": "integer",
-                        "description": "id"
-                    },
                     {
                         "name": "hostVersion",
                         "in": "path",
@@ -961,6 +991,9 @@
                 "UserUuid": {
                     "type": "string"
                 },
+                "UserName": {
+                    "type": "string"
+                },
                 "BypassMedia": {
                     "type": "boolean"
                 },
@@ -1000,6 +1033,77 @@
                         "SEQUENTIAL",
                         "PARALLEL"
                     ]
+                },
+                "PersonalGreetingEnabled": {
+                    "type": "boolean"
+                },
+                "DayGreetingFile": {
+                    "type": "string"
+                },
+                "NightGreetingFile": {
+                    "type": "string"
+                },
+                "Pin": {
+                    "type": "string"
+                },
+                "TimeZone": {
+                    "type": "string"
+                }
+            }
+        },
+        "UpdtPbxUser": {
+            "properties": {
+                "UserName": {
+                    "type": "string"
+                },
+                "BypassMedia": {
+                    "type": "boolean"
+                },
+                "IgnoreEarlyMedia": {
+                    "type": "boolean"
+                },
+                "VoicemailEnabled": {
+                    "type": "boolean"
+                },
+                "ScheduleId": {
+                    "type": "integer"
+                },
+                "AllowOutbound": {
+                    "type": "boolean"
+                },
+                "UserStatus": {
+                    "description": "User status",
+                    "type": "string",
+                    "enum": [
+                        "DND",
+                        "AVAILABLE",
+                        "CALL_DIVERT"
+                    ]
+                },
+                "AdvancedRouteMethod": {
+                    "description": "Routing type",
+                    "type": "string",
+                    "enum": [
+                        "FOLLOW_ME",
+                        "FORWARD"
+                    ]
+                },
+                "FollowMeMechanism": {
+                    "description": "Followme mechanism",
+                    "type": "string",
+                    "enum": [
+                        "SEQUENTIAL",
+                        "PARALLEL"
+                    ]
+                },
+                "PersonalGreetingEnabled": {
+                    "type": "boolean"
+                },
+                "DayGreetingFile": {
+                    "type": "string"
+                },
+                "NightGreetingFile": {
+                    "type": "string"
                 },
                 "Pin": {
                     "type": "string"
