@@ -44,7 +44,7 @@
                 }
             }
         },
-        "/{version}QueueMusic/Profile/{name}": {
+        "/{version}/QueueMusic/Profile/{name}": {
             "get": {
                 "parameters": [
                     {
